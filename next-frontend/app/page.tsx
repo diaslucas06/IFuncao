@@ -1,9 +1,9 @@
-import Header from "@/components/Header";
+import HeaderNotLogged from "@/components/HeaderNotLogged";
 
 export default function Home() {
   return (
     <div>
-      <Header/>
+      <HeaderNotLogged/>
     </div>
   );
 }

@@ -75,6 +75,7 @@
   --settings-card-color: var(--neutral-400-opacity-25);
   --profile-card-color: var(--neutral-400-opacity-25);
   --profile-button-color: var(--primary-800);
+  --profile-text-card-color: var(--primary-900);
   --search-color: var(--neutral-500);
   --sugestion-button-color: var(--primary-800);
   --sugestion-button-text-color: var(--neutral-0);
@@ -97,6 +98,7 @@
   --settings-card-color: var(--neutral-300-opacity-5);
   --profile-card-color: var(--primary-opacity-50);
   --profile-button-color: var(--neutral-0);
+  --profile-text-card-color: var(--neutral-0);
   --search-color: var(--neutral-0);
   --sugestion-button-color: var(--neutral-0);
   --sugestion-button-text-color: var(--primary-800);
@@ -105,7 +107,14 @@
   --arrow-color: var(--neutral-0);
   --card-head-color: var(--primary-900);
   --card-text-green-color: var(--primary-100);
+  --pincel: '/images/icons/pincel_dark.png';
 
+}
+
+/* Fontes para o tailwind */
+@theme {
+  --font-poppins-sans: var(--font-poppins), sans-serif;
+  --font-inter-sans: var(--font-inter), sans-serif;
 }
 
 body {
@@ -117,7 +126,33 @@ body {
 .card-profile {
   display: flex;
   flex-direction: column;
-  padding: 2.5rem; 
+  padding: 2rem 2.5rem; 
+  gap: 20px;
   background-color: var(--profile-card-color);
-  font-family: var(--font-poppins)
+  font-family: var(--font-poppins);
+  border-radius: 20px;
+  box-shadow: 3px 10px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.card-profile > h1 {
+  font-weight: bolder; 
+  font-size: 40px; 
+}
+
+.card-profile ul > li {
+  font-weight: medium; 
+  font-size: 32px; 
+}
+
+.card-profile > p  {
+  font-weight: 500; 
+  font-size: 24px; 
+}
+
+#card-profile-data {
+  width: 50%;
+}
+
+#card-profile-media {
+  gap: 5px;
 }

@@ -5,6 +5,7 @@ interface ProfileProps {
     ano: number,
     curso: string,
     matricula: number,
+    idade: number,
     imagem?: any
 }
 
@@ -23,9 +24,9 @@ export default function Profile(props:ProfileProps) {
             <div className="flex gap-15 text-(--neutral-0)">
                <Image className='absolute border-(--primary-800) border-3 rounded-[325px]' src={verificar_imagem(props.imagem) ? props.imagem: '/images/icons/user.png'} alt="User" width={325} height={325}/>
                 <div className='pl-95'>
-                    <h1 className="text-[48px] font-bold font-(--font-poppins)">{props.usuario}</h1>
-                    <p className="text-[32px] font-(--font-poppins)">{props.ano}° ano, {props.curso}</p>
-                    <p className="text-[32px] font-(--font-poppins)">{props.matricula}</p>
+                    <h1 className="text-[48px] font-bold font-poppins-sans">{props.usuario}</h1>
+                    <p className="text-[32px] font-poppins-sans">{props.ano}° ano, {props.curso}</p>
+                    <p className="text-[32px] font-poppins-sans">{props.matricula}, {props.idade} anos</p>
                 </div> 
             </div>
         </div>

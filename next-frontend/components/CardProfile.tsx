@@ -21,7 +21,7 @@ export function CardH1({ children }: CardProps) {
 
 export function CardLi({ children }: CardProps) {
     return (
-        <li className="font-medium text-[32px]">
+        <li className="font-normal text-[32px]">
             {children}
         </li>
     )

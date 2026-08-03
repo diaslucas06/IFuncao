@@ -19,7 +19,7 @@ export default function Header() {
     }, [])
 
     function verificar_caminho(caminho:string) {
-        if (caminho === nome_do_caminho) {
+        if (nome_do_caminho.includes(caminho)) {
             return true
         } else {
             return false
@@ -27,7 +27,7 @@ export default function Header() {
     }
 
     return (
-        <header className="flex justify-between items-center py-5 px-10 bg-(--primary-700) text-(--neutral-0)">
+        <header className="sticky top-0 z-50 flex justify-between items-center py-5 px-10 bg-(--primary-700) text-(--neutral-0)">
             <Image src={'/logo.png'} alt="Logo" width={225} height={65}/>
             <div className="flex justify-between items-center gap-20">
                 <Link href={'/inicio'} className={verificar_caminho('/inicio') ? 'text-2xl hover:font-medium bg-white rounded-md px-4 py-2 text-(--primary-700)': 'text-2xl hover:font-medium'}>Início</Link>

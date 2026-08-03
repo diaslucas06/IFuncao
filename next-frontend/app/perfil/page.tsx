@@ -68,12 +68,12 @@ export default function perfil() {
                     <CardBackground className="w-[50%] gap-[20px]">
                         <CardH1>Dados Pessoais</CardH1>
                         <ul className="flex flex-col gap-2">
-                            <CardLi><b>Nome completo:</b> {dados.nome}</CardLi>
-                            <CardLi><b>Matrícula:</b> {dados.matricula}</CardLi>
-                            <CardLi><b>E-mail:</b> {dados.email}</CardLi>
-                            <CardLi><b>Ano letivo:</b> {dados.ano_letivo}° ano</CardLi>
-                            <CardLi><b>Curso:</b> {dados.curso}</CardLi>
-                            <CardLi><b>Idade:</b> {dados.idade} anos</CardLi>
+                            <CardLi><b className="font-semibold">Nome completo:</b> {dados.nome}</CardLi>
+                            <CardLi><b className="font-semibold">Matrícula:</b> {dados.matricula}</CardLi>
+                            <CardLi><b className="font-semibold">E-mail:</b> {dados.email}</CardLi>
+                            <CardLi><b className="font-semibold">Ano letivo:</b> {dados.ano_letivo}° ano</CardLi>
+                            <CardLi><b className="font-semibold">Curso:</b> {dados.curso}</CardLi>
+                            <CardLi><b className="font-semibold">Idade:</b> {dados.idade} anos</CardLi>
                         </ul>
                     </CardBackground>
                     <CardBackground>
@@ -95,7 +95,7 @@ export default function perfil() {
                         </CardBackground>
                         <CardBackground className="gap-4">
                             <ButtonProfile icon={<PencilSparkles size={35} color="var(--profile-button-icon-color)"/>} text={'Editar'} callback={'/editarperfil'}/>
-                            <ButtonProfile icon={<Settings size={35} color="var(--profile-button-icon-color)"/>} text={'Configurações'} callback={'/configuracoes'}/>
+                            <ButtonProfile icon={<Settings size={35} color="var(--profile-button-icon-color)"/>} text={'Configurações'} callback={'/perfil/configuracoes/informacoes_basicas'}/>
                         </CardBackground>
                     </div>
                 </div>

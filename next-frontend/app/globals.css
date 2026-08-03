@@ -26,10 +26,10 @@
   --primary-opacity-70: rgba(0, 70, 32, 0.70);
 
   /* ACCENT */
-    --subtle: #CCD9D2;
-    --light-green: #DAFBE4;
-    --mint: #BFF6DB;
-    --soft-green: #E4F5E8;
+  --subtle: #CCD9D2;
+  --light-green: #DAFBE4;
+  --mint: #BFF6DB;
+  --soft-green: #E4F5E8;
 
   /* NEUTRAL */
   --neutral-0: #FFFFFF;
@@ -72,6 +72,7 @@
   --opacity-background-color: var(--neutral-400-opacity-25);
   --base-text-color: var(--neutral-900);
   --side-bar-color: var(--neutral-400-opacity-25);
+  --side-bar-text-color: var(--primary-900);
   --settings-card-color: var(--neutral-400-opacity-25);
   --profile-card-color: var(--neutral-400-opacity-25);
   --profile-button-color: var(--primary-800);
@@ -99,6 +100,7 @@
   --opacity-background-color: var(--neutral-300-opacity-5);
   --base-text-color: var(--neutral-0);
   --side-bar-color: var(--primary-opacity-50);
+  --side-bar-text-color: var(--neutral-0);
   --settings-card-color: var(--neutral-300-opacity-5);
   --profile-card-color: var(--primary-opacity-50);
   --profile-button-color: var(--neutral-0);

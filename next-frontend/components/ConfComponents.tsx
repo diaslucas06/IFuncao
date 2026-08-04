@@ -5,7 +5,7 @@ interface ConfComp {
 
 export function ConfDiv({children}:ConfComp) {
     return (
-        <div className="flex flex-col py-12 px-20 w-[100%] gap-7">
+        <div className="flex flex-col py-12 px-20 gap-7">
             {children}
         </div>
     )
@@ -56,5 +56,13 @@ export function ConfNotificacoesText({children}:ConfComp) {
         <p className="font-poppins-sans text-[32px]">
             {children}
         </p>
+    )
+}
+
+export function ConfInfoLi({children}:ConfComp) {
+    return (
+        <li className="text-[24px] font-poppins-sans">
+            {children}
+        </li>
     )
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import { useState } from "react";
 import { ConfDiv, ConfH1, ConfH2, ConfP, ConfCard, ConfLi } from "@/components/ConfComponents";
@@ -55,7 +56,7 @@ export default function informacoes_basicas() {
                     </div>
                 </ConfDiv>
             </div>
-            
+            <Footer/>
         </div>
     )
 }

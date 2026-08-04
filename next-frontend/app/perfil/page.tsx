@@ -1,6 +1,7 @@
 'use client'
 
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Profile from "@/components/Profile";
 import ButtonProfile from "@/components/ButtonProfile";
 import BarraProgresso from "@/components/BarraProgresso";
@@ -118,6 +119,7 @@ export default function perfil() {
                     </CardBackground>
                 </div>
             </main>
+            <Footer/>
         </div>
     )
 }

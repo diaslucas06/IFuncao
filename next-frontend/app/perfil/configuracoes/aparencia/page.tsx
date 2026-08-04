@@ -1,6 +1,7 @@
 'use client'
 
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import { useTheme } from "next-themes";
 import { ConfDiv, ConfH1, ConfH2, ConfP, ConfCard } from "@/components/ConfComponents";
@@ -46,7 +47,7 @@ export default function informacoes_basicas() {
                     </div>
                 </ConfDiv>
             </div>
-            
+            <Footer/>
         </div>
     )
 }

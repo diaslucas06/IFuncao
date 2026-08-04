@@ -1,6 +1,7 @@
 'use client'
 
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import { ConfDiv, ConfH1, ConfH2, ConfP, ConfCard, ConfLi, ConfNotificacoesText } from "@/components/ConfComponents";
 import { ToggleLeft, ToggleRight } from "lucide-react";
@@ -59,7 +60,7 @@ export default function informacoes_basicas() {
                     </div>
                 </ConfDiv>
             </div>
-            
+            <Footer/>
         </div>
     )
 }

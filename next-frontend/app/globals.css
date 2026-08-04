@@ -89,6 +89,7 @@
   --card-text-green-color: var(--primary-900);
   --porcentagem-background-color: var(--primary-opacity-70);
   --porcentagem-color: var(--primary-900);
+  --link-color: var(--primary-900);
 
 }
 
@@ -117,13 +118,25 @@
   --card-text-green-color: var(--primary-100);
   --porcentagem-background-color: var(--neutral-400-opacity-25);
   --porcentagem-color: var(--neutral-0);
+  --link-color: var(--neutral-0);
 
 }
 
-/* Fontes para o tailwind */
 @theme {
+
+  /* Fontes para o tailwind */
   --font-poppins-sans: var(--font-poppins), sans-serif;
   --font-inter-sans: var(--font-inter), sans-serif;
+
+  /* Breakpoints */
+  --breakpoint-pc: 1920px; /* Computador */
+  --breakpoint-lp: 1440px; /* Laptop */
+  --breakpoint-lt: 1024px; /* Laptop */
+  --breakpoint-lb: 768px; /* Tablet */
+  --breakpoint-ml: 425px; /* Mobile L */
+  --breakpoint-mm: 375px; /* Mobile M */
+  --breakpoint-ms: 320px; /* Mobile s */
+
 }
 
 body {

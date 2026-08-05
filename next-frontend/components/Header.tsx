@@ -13,22 +13,8 @@ export default function Header() {
     // montada serve para renderizar a página primeiro e depois definir os icones com base na preferencia de tema
     const [montada, setMontada] = useState(false)
     const [menuAberto, setMenuAberto] = useState(false)
-    const [largura_logo, setLarguraLogo] = useState<number>(0)
-    const [altura_logo, setAlturaLogo] = useState<number>(0)
     
     useEffect(() => {
-        if (window.innerWidth <= 1920) {
-            setLarguraLogo(225)
-            setAlturaLogo(65)
-        }
-        if (window.innerWidth <= 1440) {
-            setLarguraLogo(215)
-            setAlturaLogo(55)
-        }
-        if (window.innerWidth <= 1024) {
-            setLarguraLogo(195)
-            setAlturaLogo(45)
-        }
         setMontada(true)
     }, [])
 
@@ -42,7 +28,7 @@ export default function Header() {
 
     return (
         <header className="sticky top-0 z-50 flex justify-between items-center py-5 px-10 bg-(--primary-700) text-(--neutral-0) shadow-xl lg:gap-25 lp:gap-40 pc:gap-100">
-            <Image src={'/logo.png'} alt="Logo" width={largura_logo} height={altura_logo}/>
+            <Image className="h-auto lg:w-[200px] lp:w-[225px]" src={'/logo.png'} alt="Logo" width={225} height={65}/>
             <div className="flex flex-1 justify-between items-center">
                 <Link href={'/inicio'} className={verificar_caminho('/inicio') ? 'hover:font-medium bg-white rounded-md px-4 py-2 text-(--primary-700) lg:text-xl lp:text-2xl': 'hover:font-medium lg:text-xl lp:text-2xl'}>Início</Link>
                 <Link href={'/conteudos'} className={verificar_caminho('/conteudos') ? 'hover:font-medium bg-white rounded-md px-4 py-2 text-(--primary-700) lg:text-xl lp:text-2xl': 'hover:font-medium lg:text-xl lp:text-2xl'}>Conteúdos</Link>

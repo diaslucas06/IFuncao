@@ -6,11 +6,11 @@ interface BarraProgressoProps {
 export default function BarraProgresso(props:BarraProgressoProps) {
     return (
         <div>
-            {typeof props.ano === 'string' ? <p className="flex justify-start text-[20px] font-bold">{props.ano}:</p>: <p className="flex justify-start text-[20px] font-bold"> {props.ano}° ano:</p>}
+            <p className="flex justify-start font-bold lg:text-[16px] lp:text-[20px]">{typeof props.ano === 'string' ? `${props.ano}:`: `${props.ano}° ano:`}</p>
             <div className="bg-(--porcentagem-background-color) h-2 rounded-md w-full">
                 <div className="relative rounded-md h-2 bg-(--porcentagem-color)" style={{ width: `${props.porcentagem}%` }}></div>
             </div>
-            <p className="flex justify-end text-[20px] font-semibold pt-0.5">{props.porcentagem}%</p>
+            <p className="flex justify-end text-[20px] font-semibold pt-0.5 lg:text-[16px] lp:text-[20px]">{props.porcentagem}%</p>
         </div>
         
     )

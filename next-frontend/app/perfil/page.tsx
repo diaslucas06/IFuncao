@@ -9,10 +9,23 @@ import { CardBackground, CardH1, CardLi, CardP } from "@/components/CardProfile"
 import CardConteudo from "@/components/CardConteudo";
 import { Settings, PencilSparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function perfil() {
     const [inicioIndex, setInicioIndex] = useState(0)
-    const conteudos_por_pagina = 4
+    const [conteudos_por_pagina, setConteudosPorPagina] = useState(4)
+
+    useEffect(() => {
+        if (window.innerWidth === 1920) {
+            setConteudosPorPagina(4)
+        } 
+        if (window.innerWidth === 1440) {
+            setConteudosPorPagina(4)
+        }
+        if (window.innerWidth === 1024) {
+            setConteudosPorPagina(3)
+        }
+    }, [])
 
     let dados = {
         'nome': 'Maria José dos Santos',
@@ -64,9 +77,9 @@ export default function perfil() {
         <div>
             <Header/>
             <Profile usuario={'Nome do usuário'} ano={3} matricula={20241101110000} curso={'Informática para Internet'} idade={18} imagem={''}/>
-            <main className="flex flex-col p-10 pt-40 gap-7">
-                <div className="flex justify-between gap-5">
-                    <CardBackground className="w-[50%] gap-[20px]">
+            <main className="flex flex-col p-10 gap-7 lg:pt-28 lp:pt-30 pc:pt-40">
+                <div className="flex flex-1 flex-wrap justify-between gap-5">
+                    <CardBackground className="flex gap-[20px] lg:flex-1 pc:flex-1 pc:w-[47%]">
                         <CardH1>Dados Pessoais</CardH1>
                         <ul className="flex flex-col gap-2">
                             <CardLi><b className="font-semibold">Nome completo:</b> {dados.nome}</CardLi>
@@ -77,7 +90,7 @@ export default function perfil() {
                             <CardLi><b className="font-semibold">Idade:</b> {dados.idade} anos</CardLi>
                         </ul>
                     </CardBackground>
-                    <CardBackground>
+                    <CardBackground className="flex gap-[20px] lg:flex-1 pc:flex-none pc:w-[25%]">
                         <CardH1>Seu progresso por ano</CardH1>
                         <div>
                             <BarraProgresso ano={1} porcentagem={progresso.primeiro}/>
@@ -86,15 +99,15 @@ export default function perfil() {
                             <BarraProgresso ano={'Matemática Enem'} porcentagem={progresso["Matemática Enem"]}/>
                         </div>
                     </CardBackground>
-                    <div className="flex flex-col justify-between gap-4">
-                        <CardBackground className="gap-[5px]">
+                    <div className="flex justify-between gap-4 lg:w-[100%] lg:flex-row pc:w-[25%] pc:flex-col">
+                        <CardBackground className="flex lg:gap-[20px] lg:flex-3 lp:flex-1 pc:gap-[5px]">
                             <CardH1>Sua média</CardH1>
                             <CardP>Média das notas em matemática do ano letivo: </CardP>
                             <div>
                                 <p className="text-4xl text-(--profile-text-card-color) font-extrabold">{dados.media}</p>
                             </div>
                         </CardBackground>
-                        <CardBackground className="gap-4">
+                        <CardBackground className="flex flex-1 justify-between">
                             <ButtonProfile icon={<PencilSparkles size={35} color="var(--profile-button-icon-color)"/>} text={'Editar'} callback={'/editarperfil'}/>
                             <ButtonProfile icon={<Settings size={35} color="var(--profile-button-icon-color)"/>} text={'Configurações'} callback={'/perfil/configuracoes/informacoes_basicas'}/>
                         </CardBackground>
@@ -103,11 +116,11 @@ export default function perfil() {
                 <div className="flex justify-between gap-5">
                     <CardBackground className="w-[100%] gap-[20px]">
                         <CardH1>Histórico de conteúdos acessados</CardH1>
-                        <div className="flex justify-between items-center w-[100%]">
+                        <div className="flex items-center w-[100%]">
                             <button onClick={() => paginaAnterior()} disabled={inicioIndex === 0} className="disabled:opacity-30 transition-opacity">
                                 <ChevronLeft className='hover:cursor-pointer' size={40} color="var(--arrow-color)"/>
                             </button>
-                            <div className="flex items-center gap-3">
+                            <div className="flex flex-wrap items-center justify-around w-[100%]">
                                 {conteudosExibidos.map((conteudo, index) => (
                                     <CardConteudo key={conteudo.id} nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
                                 ))}

@@ -13,7 +13,7 @@ export function CardBackground({ children, className }: CardProps) {
 
 export function CardH1({ children }: CardProps) {
     return (
-        <h1 className="font-extrabold text-[40px]">
+        <h1 className="font-extrabold lg:text-[32px] pc:text-[40px]">
             {children}
         </h1>
     )
@@ -21,7 +21,7 @@ export function CardH1({ children }: CardProps) {
 
 export function CardLi({ children }: CardProps) {
     return (
-        <li className="font-normal text-[32px]">
+        <li className="font-normal lg:text-[20px] lp:text-[24px] pc:text-[32px]">
             {children}
         </li>
     )
@@ -29,7 +29,7 @@ export function CardLi({ children }: CardProps) {
 
 export function CardP({ children }: CardProps) {
     return (
-        <p className="font-medium text-[24px]">
+        <p className="font-medium lg:text-[20px] lp:text-[24px]">
             {children}
         </p>
     )

@@ -129,12 +129,9 @@
   --font-inter-sans: var(--font-inter), sans-serif;
 
   /* Breakpoints */
-  --breakpoint-pc: 1920px; /* Computador */
-  --breakpoint-lp: 1440px; /* Laptop */
-  --breakpoint-lt: 1024px; /* Laptop */
-  --breakpoint-lb: 768px; /* Tablet */
+  --breakpoint-pc: 120rem; /* Computador */
+  --breakpoint-lp: 89rem; /* Laptop */
   --breakpoint-ml: 425px; /* Mobile L */
-  --breakpoint-mm: 375px; /* Mobile M */
   --breakpoint-ms: 320px; /* Mobile s */
 
 }

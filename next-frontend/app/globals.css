@@ -90,6 +90,7 @@
   --porcentagem-background-color: var(--primary-opacity-70);
   --porcentagem-color: var(--primary-900);
   --link-color: var(--primary-900);
+  --menu-color: var(--primary-500);
 
 }
 
@@ -119,6 +120,7 @@
   --porcentagem-background-color: var(--neutral-400-opacity-25);
   --porcentagem-color: var(--neutral-0);
   --link-color: var(--neutral-0);
+  --menu-color: #000000;
 
 }
 

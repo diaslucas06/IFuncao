@@ -5,7 +5,7 @@ interface ConfComp {
 
 export function ConfDiv({children}:ConfComp) {
     return (
-        <div className="flex flex-col py-12 px-20 gap-7">
+        <div className="flex flex-col py-12 px-20 gap-7 w-full">
             {children}
         </div>
     )

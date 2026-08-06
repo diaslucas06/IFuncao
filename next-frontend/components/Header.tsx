@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
-import { Moon, Sun, Trophy } from 'lucide-react';
+import { Moon, Sun, Trophy, Home, Book, Menu } from 'lucide-react';
 
 export default function Header() {
     const nome_do_caminho = usePathname()
@@ -19,7 +19,7 @@ export default function Header() {
     }, [])
 
     function verificar_caminho(caminho:string) {
-        if (nome_do_caminho.includes(caminho)) {
+        if (nome_do_caminho === caminho) {
             return true
         } else {
             return false
@@ -27,23 +27,35 @@ export default function Header() {
     }
 
     return (
-        <header className="sticky top-0 z-50 flex justify-between items-center py-5 px-10 bg-(--primary-700) text-(--neutral-0) shadow-xl lg:gap-25 lp:gap-40 pc:gap-100">
-            <Image className="h-auto lg:w-[200px] lp:w-[225px]" src={'/logo.png'} alt="Logo" width={225} height={65}/>
-            <div className="flex flex-1 justify-between items-center">
-                <Link href={'/inicio'} className={verificar_caminho('/inicio') ? 'hover:font-medium bg-white rounded-md px-4 py-2 text-(--primary-700) lg:text-xl lp:text-2xl': 'hover:font-medium lg:text-xl lp:text-2xl'}>Início</Link>
-                <Link href={'/conteudos'} className={verificar_caminho('/conteudos') ? 'hover:font-medium bg-white rounded-md px-4 py-2 text-(--primary-700) lg:text-xl lp:text-2xl': 'hover:font-medium lg:text-xl lp:text-2xl'}>Conteúdos</Link>
+        <header className="sticky top-0 z-50 flex justify-between items-center bg-(--primary-700) text-(--neutral-0) shadow-xl py-2.5 px-5 md:py-5 md:px-10 md:gap-20 lg:gap-25 lp:gap-40 pc:gap-100">
+            <div className="flex md:hidden">
+                <Menu/>
+            </div>
+            <Image className="h-auto w-[130px] md:w-[150px] lg:w-[200px] lp:w-[225px]" src={'/logo.png'} alt="Logo" width={225} height={65}/>
+            <Link href={'/perfil'} className="flex md:hidden">
+                <Image src={'/images/icons/user.png'} alt="Logo" width={30} height={35}/>
+            </Link>
+            <div className="hidden flex-1 justify-between items-center md:flex">
+                <Link href={'/'} className={verificar_caminho('/') ? 'hover:font-medium bg-white rounded-md px-4 py-2 text-(--primary-700) md:text-lg lg:text-xl lp:text-2xl': 'hover:font-medium md:text-lg lg:text-xl lp:text-2xl'}>
+                    <Home className={verificar_caminho('/') ? 'md:flex lg:hidden': 'md:flex lg:hidden'}/>
+                    <p className={verificar_caminho('/') ? 'md:hidden lg:flex hover:font-medium': 'md:hidden lg:flex'}>Início</p>
+                </Link>
+                <Link href={'/conteudos'} className={verificar_caminho('/conteudos') ? 'hover:font-medium bg-white rounded-md px-4 py-2 text-(--primary-700) md:text-lg lg:text-xl lp:text-2xl': 'hover:font-medium md:text-lg lg:text-xl lp:text-2xl'}>
+                    <Book className={verificar_caminho('/conteudos') ? 'md:flex lg:hidden': 'md:flex lg:hidden'}/>
+                    <p className={verificar_caminho('/conteudos') ? 'md:hidden lg:flex hover:font-medium': 'md:hidden lg:flex'}>Conteúdos</p>
+                </Link>
                 <div className={verificar_caminho('/seuprogresso') ? 'bg-white rounded-md px-4 py-2 text-(--primary-700) items-center': ''}>
-                    <Link href={'/seuprogresso'} className="flex gap-4 text-2xl hover:font-medium">
-                        {verificar_caminho('/seuprogresso') ? <Trophy size={30} color="var(--primary-700)"/>: <Trophy size={30}/>}
-                        <p className={verificar_caminho('/seuprogresso') ? 'lg:text-xl lp:text-2xl':'lg:hidden lp:flex'}>Seu Progresso</p>
+                    <Link href={'/seuprogresso'} className="flex gap-4 hover:font-medium md:text-lg lg:text-xl lp:text-2xl">
+                        {verificar_caminho('/seuprogresso') ? <Trophy className="md:w-[25px] lg:w-[40px]" color="var(--primary-700)" size={30} />: <Trophy className="md:w-[25px] lg:w-[40px]" size={30}/>}
+                        <p className={verificar_caminho('/seuprogresso') ? 'md:hidden lg:flex':'md:hidden lp:flex'}>Seu Progresso</p>
                     </Link>
                 </div>
                 <div className='flex gap-4 items-center relative cursor-pointer' onClick={() => setMenuAberto(!menuAberto)}>
                     {/* a tela renderiza primeiro vazia e depois define o texto e o icone que vao aparecer de acordo com o tema que a pessoa escolheu */}
                     {montada ? (
                         <>
-                            {theme === 'dark' ? <Moon size={40}/>: <Sun size={40}/>}
-                            <p className="lg:hidden lp:flex text-2xl">
+                            {theme === 'dark' ? <Moon className="md:w-[30px] lg:w-[35px]" size={40}/>: <Sun className="md:w-[30px] lg:w-[35px]" size={40}/>}
+                            <p className="md:hidden lp:flex text-2xl">
                                 {theme === 'dark' ? 'Modo Escuro': 'Modo Claro'}
                             </p>
                         </>
@@ -69,9 +81,9 @@ export default function Header() {
                     )}
                 </div>
                 <div className={verificar_caminho('/perfil') ? 'flex bg-white rounded-md rounded-s-4xl pr-4 text-(--primary-700) items-center': ''}>
-                    <Link href={'/perfil'} className="flex gap-4 items-center text-2xl hover:font-medium">
-                        <Image className={verificar_caminho('/perfil') ? 'w-[50px] h-[50px]': ''} src={'/images/icons/user.png'} alt="Logo" width={40} height={35}/>
-                        <p className={verificar_caminho('/perfil') ? 'lg:text-xl lp:text-2xl':'lg:hidden lp:flex'}>Seu Perfil</p>
+                    <Link href={'/perfil'} className="flex gap-4 items-center md:text-lg lg:text-xl lp:text-2xl hover:font-medium">
+                        <Image className="h-auto md:w-[40px] lg:w-[50px]" src={'/images/icons/user.png'} alt="Logo" width={40} height={35}/>
+                        <p className={verificar_caminho('/perfil') ? '':'md:hidden lp:flex'}>Seu Perfil</p>
                     </Link>
                 </div>
             </div>

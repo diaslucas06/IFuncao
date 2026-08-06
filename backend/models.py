@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, ForeignKey, Date, Text, JSON
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-db = create_engine("sqlite:///meubanco.db")
-Session = sessionmaker(bind=db)
+db = create_engine("sqlite:///banco.db")
+
 Base = declarative_base()
 
 class Usuario(Base):
@@ -107,4 +107,3 @@ class Resposta_Questao(Base):
         self.respques_alternativa_escolhida = respques_alternativa_escolhida
         self.respques_acertou = respques_acertou
 
-Base.metadata.create_all(bind=db)

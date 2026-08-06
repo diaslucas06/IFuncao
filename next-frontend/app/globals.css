@@ -131,8 +131,7 @@
   /* Breakpoints */
   --breakpoint-pc: 120rem; /* Computador */
   --breakpoint-lp: 89rem; /* Laptop */
-  --breakpoint-ml: 425px; /* Mobile L */
-  --breakpoint-ms: 320px; /* Mobile s */
+  --breakpoint-ml: 26rem; /* Mobile L */
 
 }
 

@@ -5,14 +5,13 @@ import { usePathname } from 'next/navigation'
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
-import { Moon, Sun, Trophy, Home, Book, Menu, CircleX } from 'lucide-react';
+import { Moon, Sun, Trophy, Home, Book, Menu } from 'lucide-react';
 
 export default function Header() {
     const nome_do_caminho = usePathname()
     const {theme, setTheme} = useTheme()
     // montada serve para renderizar a página primeiro e depois definir os icones com base na preferencia de tema
     const [montada, setMontada] = useState(false)
-    const [menuTemaAberto, setMenuTemaAberto] = useState(false)
     const [menuAberto, setMenuAberto] = useState(false)
     
     useEffect(() => {
@@ -29,40 +28,9 @@ export default function Header() {
 
     return (
         <header className="sticky top-0 z-50 flex justify-between items-center bg-(--primary-700) text-(--neutral-0) shadow-xl py-2.5 px-5 md:py-5 md:px-10 md:gap-20 lg:gap-25 lp:gap-40 pc:gap-100">
-            <div className="flex md:hidden" onClick={() => setMenuAberto(!menuAberto)}>
-                {menuAberto ? <CircleX/>:<Menu/> }
+            <div className="flex md:hidden">
+                <Menu/>
             </div>
-            {menuAberto && (
-                <ul className="absolute group-hover:block bg-(--menu-color) ofset-0 top-full mt-5 left-5 right-5 rounded-lg">
-                    <li className="flex justify-between hover:bg-(--primary-900) rounded-md">
-                        <Link href={'/'} className='flex gap-5 p-5 hover:cursor-pointer'>
-                            <Home size={25}/>
-                            <p>Início</p>
-                        </Link>
-                    </li>
-                    <hr />
-                    <li className="flex justify-between hover:bg-(--primary-900) rounded-md">
-                        <Link href={'/'} className='flex gap-5 p-5 hover:cursor-pointer'>
-                            <Book size={25}/>
-                            <p>Conteúdos</p>
-                        </Link>
-                    </li>
-                    <hr />
-                    <li className="flex justify-between hover:bg-(--primary-900) rounded-md">
-                        <Link href={'/'} className='flex gap-5 p-5 hover:cursor-pointer'>
-                            <Trophy size={25}/>
-                            <p>Seu Progresso</p>
-                        </Link>
-                    </li>
-                    <hr />
-                    <li className="flex justify-between hover:bg-(--primary-900) rounded-md">
-                        <button className='flex gap-5 p-5 hover:cursor-pointer' onClick={() => {theme === 'dark' ? setTheme('light'): setTheme('dark')}}>
-                            {theme === 'dark' ? <Moon size={25}/>: <Sun size={25}/>}
-                            <p>Altere o tema do site</p>
-                        </button>
-                    </li>
-                </ul>
-            )}
             <Image className="h-auto w-[130px] md:w-[150px] lg:w-[200px] lp:w-[225px]" src={'/logo.png'} alt="Logo" width={225} height={65}/>
             <Link href={'/perfil'} className="flex md:hidden">
                 <Image src={'/images/icons/user.png'} alt="Logo" width={30} height={35}/>
@@ -82,7 +50,7 @@ export default function Header() {
                         <p className={verificar_caminho('/seuprogresso') ? 'md:hidden lg:flex':'md:hidden lp:flex'}>Seu Progresso</p>
                     </Link>
                 </div>
-                <div className='flex gap-4 items-center relative cursor-pointer' onClick={() => setMenuTemaAberto(!menuTemaAberto)}>
+                <div className='flex gap-4 items-center relative cursor-pointer' onClick={() => setMenuAberto(!menuAberto)}>
                     {/* a tela renderiza primeiro vazia e depois define o texto e o icone que vao aparecer de acordo com o tema que a pessoa escolheu */}
                     {montada ? (
                         <>
@@ -94,18 +62,18 @@ export default function Header() {
                     ) : (
                         <div></div>
                     )}
-                    {menuTemaAberto && (
+                    {menuAberto && (
                         <ul className="absolute rounded-md group-hover:block bg-black left-0 ofset-0 top-full mt-5">
                             <li className="flex justify-between hover:bg-(--primary-900) rounded-md">
-                                <button className='flex justify-between p-5 hover:cursor-pointer w-45 lg:w-55' onClick={() => setTheme('light')}>
-                                    <p className="lg:text-[20px]">Modo Claro</p>
+                                <button className='flex justify-between text-[20px] p-5 w-55 hover:cursor-pointer' onClick={() => setTheme('light')}>
+                                    Modo Claro
                                     <Sun size={25}/>
                                 </button>
                             </li>
                             <hr />
                             <li className="flex justify-between hover:bg-(--primary-900) rounded-md">
-                                <button className='flex justify-between p-5 hover:cursor-pointer w-45 lg:w-55' onClick={() => setTheme('dark')}>
-                                    <p className="lg:text-[20px]">Modo Escuro</p>
+                                <button className='flex justify-between text-[20px] p-5 w-55 hover:cursor-pointer' onClick={() => setTheme('dark')}>
+                                    Modo Escuro
                                     <Moon size={25}/>
                                 </button>
                             </li>

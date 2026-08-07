@@ -34,7 +34,7 @@ export default function HeaderNotLogged() {
             {menuAberto && (
                 <ul className="absolute group-hover:block bg-(--menu-color) ofset-0 top-full mt-5 left-5 right-5 rounded-lg">
                     <li className="flex justify-between hover:bg-(--primary-900) rounded-md">
-                        <Link href={'/inicio'} className='flex gap-5 p-5 hover:cursor-pointer'>
+                        <Link href={'/'} className='flex gap-5 p-5 hover:cursor-pointer'>
                             <Home size={25}/>
                             <p>Início</p>
                         </Link>
@@ -60,9 +60,9 @@ export default function HeaderNotLogged() {
                 {verificar_caminho('/login') ? <LogIn className="md:w-[25px] lg:w-[40px]" color="var(--primary-700)" size={25} />: <LogIn className="md:w-[25px] lg:w-[40px]" size={25}/>}
             </Link>
             <div className="hidden flex-1 justify-between items-center md:flex">
-                <Link href={'/inicio'} className={verificar_caminho('/inicio') ? 'hover:font-medium bg-white rounded-md px-4 py-2 text-(--primary-700) md:text-lg lg:text-xl lp:text-2xl': 'hover:font-medium md:text-lg lg:text-xl lp:text-2xl'}>
-                    <Home className={verificar_caminho('/inicio') ? 'md:flex lg:hidden': 'md:flex lg:hidden'}/>
-                    <p className={verificar_caminho('/inicio') ? 'md:hidden lg:flex hover:font-medium': 'md:hidden lg:flex'}>Início</p>
+                <Link href={'/'} className={verificar_caminho('/') ? 'hover:font-medium bg-white rounded-md px-4 py-2 text-(--primary-700) md:text-lg lg:text-xl lp:text-2xl': 'hover:font-medium md:text-lg lg:text-xl lp:text-2xl'}>
+                    <Home className={verificar_caminho('/') ? 'md:flex lg:hidden': 'md:flex lg:hidden'}/>
+                    <p className={verificar_caminho('/') ? 'md:hidden lg:flex hover:font-medium': 'md:hidden lg:flex'}>Início</p>
                 </Link>
                 <Link href={'/conteudos'} className={verificar_caminho('/conteudos') ? 'hover:font-medium bg-white rounded-md px-4 py-2 text-(--primary-700) md:text-lg lg:text-xl lp:text-2xl': 'hover:font-medium md:text-lg lg:text-xl lp:text-2xl'}>
                     <Book className={verificar_caminho('/conteudos') ? 'md:flex lg:hidden': 'md:flex lg:hidden'}/>

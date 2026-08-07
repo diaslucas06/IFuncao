@@ -51,7 +51,7 @@ export default function Login() {
                   className="w-full rounded-lg border bg-(--neutral-0) py-3 pl-12 pr-3 text-neutral-500"/>
               </div>
 
-              <Link href={"/inicio"}
+              <Link href={"/telaInicial"}
                 className="w-full bg-(--primary-700) rounded-full py-3 flex items-center justify-center text-white text-sm font-medium mt-4"
               >
                 Entrar

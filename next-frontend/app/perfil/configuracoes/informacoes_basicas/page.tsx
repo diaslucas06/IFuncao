@@ -53,6 +53,9 @@ export default function informacoes_basicas() {
                                 )}
                             </div>
                         </ConfCard>
+                        <ConfCard className='flex md:hidden'>
+                            <></> {/*  aqui vai ficar as outras opções que ou levarão para as outras pags de configurações ou serão as opções por inteiro */}
+                        </ConfCard>
                     </div>
                 </ConfDiv>
             </div>

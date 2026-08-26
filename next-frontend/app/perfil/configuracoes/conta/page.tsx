@@ -4,9 +4,13 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
+import { useState } from "react";
 import { ConfDiv, ConfH1, ConfH2, ConfCard, ConfInfoLi } from "@/components/ConfComponents";
+import MenuConf from "@/components/MenuConf";
+import { EllipsisVertical, ChevronUp } from "lucide-react";
 
 export default function informacoes_basicas() {
+    const [menuAberto, setMenuAberto] = useState(false)
 
     let dados = {
         'nome': 'Maria José dos Santos',
@@ -21,12 +25,20 @@ export default function informacoes_basicas() {
     return (
         <div>
             <Header/>
-            <div className="flex">
+            <div className="flex h-full">
                 <Sidebar/>
                 <ConfDiv>
-                    <ConfH1>
-                        Conta
-                    </ConfH1>
+                    <div className="flex items-center gap-3">
+                        <div className="flex md:hidden" onClick={() => setMenuAberto(!menuAberto)}>
+                            {menuAberto ? <ChevronUp/>: <EllipsisVertical/>}
+                        </div>
+                        <ConfH1>
+                            Conta
+                        </ConfH1>
+                    </div>
+                    {menuAberto && (
+                        <MenuConf/>
+                    )}
                     <div className="flex flex-col gap-3">
                         <ConfCard>
                             <ConfH2>Informações Pessoais</ConfH2>
@@ -41,9 +53,9 @@ export default function informacoes_basicas() {
                         <ConfCard>
                             <ConfH2>Opções</ConfH2>
                             <div className="flex flex-col gap-2">
-                                <Link className="font-poppins-sans font-semibold text-[24px] underline text-(--link-color)" href={''}>Desconectar do SUAP</Link>
-                                <Link className="font-poppins-sans font-semibold text-[24px] underline text-(--link-color)" href={''}>Sair do IFunção</Link>
-                                <Link className="font-poppins-sans font-semibold text-[24px] underline text-(--link-color)" href={''}>Apagar histórico de conteúdos vistos</Link>
+                                <Link className="font-poppins-sans font-semibold md:text-[20px] lp:text-[24px] underline text-(--link-color)" href={''}>Desconectar do SUAP</Link>
+                                <Link className="font-poppins-sans font-semibold md:text-[20px] lp:text-[24px] underline text-(--link-color)" href={''}>Sair do IFunção</Link>
+                                <Link className="font-poppins-sans font-semibold md:text-[20px] lp:text-[24px] underline text-(--link-color)" href={''}>Apagar histórico de conteúdos vistos</Link>
                             </div>
                         </ConfCard>
                     </div>

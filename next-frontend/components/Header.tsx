@@ -75,7 +75,7 @@ export default function Header() {
                         <p className={verificar_caminho('/seuprogresso') ? 'md:hidden lg:flex':'md:hidden lp:flex'}>Seu Progresso</p>
                     </Link>
                 </div>
-                <div className='flex gap-4 items-center relative cursor-pointer' onClick={() => setMenuTemaAberto(!menuAberto)}>
+                <div className='flex gap-4 items-center relative cursor-pointer' onClick={() => setMenuTemaAberto(!menuTemaAberto)}>
                     {/* a tela renderiza primeiro vazia e depois define o texto e o icone que vao aparecer de acordo com o tema que a pessoa escolheu */}
                     {montada ? (
                         <>

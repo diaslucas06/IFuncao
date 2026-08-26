@@ -54,7 +54,7 @@ export function ConfLi({children}:ConfComp) {
 
 export function ConfNotificacoesText({children}:ConfComp) {
     return (
-        <p className="font-poppins-sans text-[32px]">
+        <p className="font-poppins-sans md:text-[20px] lg:text-[24px] lp:text-[28px] pc:text-[32px]">
             {children}
         </p>
     )
@@ -62,7 +62,7 @@ export function ConfNotificacoesText({children}:ConfComp) {
 
 export function ConfInfoLi({children}:ConfComp) {
     return (
-        <li className="text-[24px] font-poppins-sans">
+        <li className="font-poppins-sans md:text-[20px] lp:text-[24px]">
             {children}
         </li>
     )

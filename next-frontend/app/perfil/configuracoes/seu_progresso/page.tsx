@@ -41,7 +41,7 @@ export default function informacoes_basicas() {
                                 <ConfInfoLi><b className="font-semibold">1° ano:</b> {notas.primeiro}</ConfInfoLi>
                                 <ConfInfoLi><b className="font-semibold">2° ano:</b> {notas.segundo}</ConfInfoLi>
                                 <ConfInfoLi><b className="font-semibold">3° ano:</b> {notas.terceiro}</ConfInfoLi>
-                                <p className="text-[32px] font-poppins-sans"><b>Média total:</b> {media(notas.primeiro, notas.segundo, notas.terceiro)}</p>
+                                <p className="text-[20px] md:text-[24px] lg:text-[28px] lp:text-[32px] font-poppins-sans"><b>Média total:</b> {media(notas.primeiro, notas.segundo, notas.terceiro)}</p>
                             </ul>
                         </ConfCard>
                         <ConfCard>

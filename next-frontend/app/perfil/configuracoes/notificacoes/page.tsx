@@ -17,7 +17,7 @@ export default function informacoes_basicas() {
     return (
         <div>
             <Header/>
-            <div className="flex">
+            <div className="flex h-dvh">
                 <Sidebar/>
                 <ConfDiv>
                     <ConfH1>
@@ -25,21 +25,21 @@ export default function informacoes_basicas() {
                     </ConfH1>
                     <div className="flex flex-col gap-3">
                         <ConfCard>
-                            <div className="flex gap-5">
+                            <div className="flex gap-2 md:gap-5 items-center">
                                 <button className="hover:cursor-pointer" onClick={() => setToogleNot(!ToogleNot)}>
-                                    {ToogleNot ? <ToggleRight size={50} color={'var(--base-text-color)'}/>: <ToggleLeft size={50} color={'var(--base-text-color)'}/>}
+                                    {ToogleNot ? <ToggleRight className="h-auto w-[40px] lg:w-[50px]" size={50} color={'var(--base-text-color)'}/>: <ToggleLeft className="h-auto w-[40px] lg:w-[50px]" size={50} color={'var(--base-text-color)'}/>}
                                 </button>
                                 <ConfNotificacoesText>Notificações ativas</ConfNotificacoesText>
                             </div>
-                            <div className="flex gap-5">
+                            <div className="flex gap-2 md:gap-5 items-center">
                                 <button className="hover:cursor-pointer" onClick={() => setToogleNotProg(!ToogleNotProg)}>
-                                    {ToogleNotProg ? <ToggleRight size={50} color={'var(--base-text-color)'}/>: <ToggleLeft size={50} color={'var(--base-text-color)'}/>}
+                                    {ToogleNotProg ? <ToggleRight className="h-auto w-[40px] lg:w-[50px]" size={50} color={'var(--base-text-color)'}/>: <ToggleLeft className="h-auto w-[40px] lg:w-[50px]" size={50} color={'var(--base-text-color)'}/>}
                                 </button>
                                 <ConfNotificacoesText>Notificar progresso</ConfNotificacoesText>
                             </div>
-                            <div className="flex gap-5">
+                            <div className="flex gap-2 md:gap-5 items-center">
                                 <button className="hover:cursor-pointer" onClick={() => setToogleNotLemb(!ToogleNotLemb)}>
-                                    {ToogleNotLemb ? <ToggleRight size={50} color={'var(--base-text-color)'}/>: <ToggleLeft size={50} color={'var(--base-text-color)'}/>}
+                                    {ToogleNotLemb ? <ToggleRight className="h-auto w-[40px] lg:w-[50px]" size={50} color={'var(--base-text-color)'}/>: <ToggleLeft className="h-auto w-[40px] lg:w-[50px]" size={50} color={'var(--base-text-color)'}/>}
                                 </button>
                                 <ConfNotificacoesText>Notificar lembretes para ofensiva</ConfNotificacoesText>
                             </div>
@@ -49,10 +49,6 @@ export default function informacoes_basicas() {
                         Suas notificações
                     </ConfH1>
                     <div className="flex flex-col gap-3">
-                        <ConfCard>
-                            <ConfH2>Continue sua ofensiva!</ConfH2>
-                            <ConfP>Você já tem 23 dias de ofensiva! Acesse o site e estude por alguns minutos para continuar não perder seus dias.</ConfP>
-                        </ConfCard>
                         <ConfCard>
                             <ConfH2>Continue sua ofensiva!</ConfH2>
                             <ConfP>Você já tem 23 dias de ofensiva! Acesse o site e estude por alguns minutos para continuar não perder seus dias.</ConfP>

@@ -130,31 +130,44 @@ export default function Inicio() {
     )
   } else {
     return (
-      <section>
+      <div>
         <HeaderNotLogged />
-        <div className="flex w-full min-h-screen">
-          <div className="w-1/2 p-12 bg-(--primary-900) text-(--neutral-0)">
-            <h1 className="text-3xl font-bold leading-tight mt-10">
+        <main className="w-full max-w-[1920px] mx-auto flex min-h-[calc(100vh-72px)] flex-col lg:flex-row">
+
+        <section className="w-full lp:w-1/2 bg-(--primary-800) text-(--neutral-0) flex flex-col justify-start items-start px-6 ml:px-12 pt-16 lp:pt-[140px]">
+
+          <div className="w-full ml:max-w-lg lp:max-w-[650px] mb-5">
+
+            <h1 className="text-2xl ml:text-3xl lp:text-4xl font-bold leading-[1.2]">
               Domine a Matemática do Ensino Médio ao ENEM.
             </h1>
-            <p className="mt-3">
+
+            <p className="mt-4 lp:mt-6 text-sm leading-relaxed ml:text-base lp:text-7 lp:leading-[1.5] pc:text-[28px]">
               No IFunção, você simplifica o que parece complexo. Acesse conteúdos
               completos do 1º ao 3º ano e conquiste a base necessária para
               gabaritar as provas mais difíceis.
             </p>
+
             <Link
-              href={"/login"}
-              className=" text-md w-[235px] h-[50px] bg-(--primary-700) rounded-2xl flex items-center justify-center mt-3"
+              href="/login"
+              className="flex items-center justify-center w-3/4 ml:w-1/2 lp:w-64 h-9 ml:h-10 mt-6 bg-(--primary-700) hover:bg-(--primary-500) text-sm lp:text-base font-medium rounded-3xl"
             >
               Acessar Conteúdos
             </Link>
+
           </div>
-          <div className=" flex items-center justify-center p-10">
-            <Image src="/images/illustrations/home-illustration.png" alt="Imagem dos estudantes" width={600} height={500}
-            />
-          </div>
+
+        </section>
+
+        <div className="w-full lp:w-1/2 flex items-center justify-center p-6 pc:p-12">
+          <Image
+            src="/images/illustrations/home-illustration.png" alt="Imagem dos estudantes" width={900} height={750}
+            className="h-auto w-full max-w-xl object-contain"
+          />
         </div>
-      </section>
+
+      </main>
+      </div>
     );
   }
 }

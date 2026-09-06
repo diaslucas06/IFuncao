@@ -44,6 +44,7 @@
   --neutral-300-opacity-5: rgba(217, 217, 217, 0.05);
   --neutral-400-opacity-25: rgba(195, 195, 195, 0.25);
   --neutral-500: #6D6969;
+  --neutral-550: rgba(38, 39, 40);
   --neutral-600: #292929;
   --neutral-700: #242A2E;
   --neutral-800-opacity-65: rgba(29, 30, 29, 0.65);
@@ -88,6 +89,7 @@
   --sugestion-button-text-color: var(--neutral-0);
   --sugestion-card-color: var(--neutral-0);
   --sugestion-card-text-color: var(--neutral-500);
+  --sugestion-tag-color: var(--primary-900);
   --arrow-color: var(--black-opacity-30);
   --card-green-color: var(--mint);
   --card-text-green-color: var(--primary-900);
@@ -128,6 +130,28 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
+  --theory-card-bg: var(--neutral-0);
+  --theory-card-border: var(--neutral-900);
+  --theory-card-text: var(--neutral-900);
+  --theory-header-bg: var(--mint);
+  --theory-header-text: var(--primary-900);
+  --theory-button-bg: var(--primary-700);
+  --theory-button-text: var(--neutral-0);
+
+  --question-card-bg: var(--neutral-0);
+  --question-card-border: var(--neutral-300);
+  --question-card-text: var(--neutral-900);
+
+  --question-option-bg: var(--neutral-0);
+  --question-option-border: var(--neutral-300);
+  --question-option-text: var(--neutral-900);
+
+  --btn-prev-bg: var(--neutral-75);
+  --btn-prev-text: var(--neutral-900);
+
+  --btn-next-bg: var(--primary-700);
+  --btn-next-text: var(--neutral-0);
+
 }
 
 .dark {
@@ -150,6 +174,7 @@
   --sugestion-button-text-color: var(--primary-800);
   --sugestion-card-color: var(--primary-opacity-50);
   --sugestion-card-text-color: var(--neutral-0);
+  --sugestion-tag-color: var(--primary-200);
   --arrow-color: var(--white-opacity-80);
   --card-head-color: var(--primary-900);
   --card-text-green-color: var(--primary-100);
@@ -188,6 +213,28 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  --theory-card-bg: var(--neutral-550);
+  --theory-card-border: var(--neutral-0);
+  --theory-card-text: var(--neutral-0);
+  --theory-header-bg: var(--primary-900);
+  --theory-header-text: var(--neutral-0);
+  --theory-button-bg: var(--primary-700);
+  --theory-button-text: var(--neutral-0);
+
+  --question-card-bg: var(--neutral-550);
+  --question-card-border: var(--neutral-550);
+  --question-card-text: var(--neutral-0);
+
+  --question-option-bg: var(--neutral-550);
+  --question-option-border: var(--neutral-400-opacity-25);
+  --question-option-text: var(--neutral-0);
+
+  --btn-prev-bg: var(--neutral-500);
+  --btn-prev-text: var(--neutral-900);
+
+  --btn-next-bg: var(--primary-500);
+  --btn-next-text: var(--neutral-0);
 
 }
 

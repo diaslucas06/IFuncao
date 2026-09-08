@@ -8,7 +8,7 @@ type StudySuggestionProps = {
 
 export default function StudySuggestion(props: StudySuggestionProps) {
   return (
-    <div className="bg-(--sugestion-card-color) flex flex-col lp:flex-row border-l-4 justify-between items-start lp:items-end gap-4 p-4 rounded-sm border-(--primary-200) shadow-md shadow-black/20">
+    <div className="bg-(--sugestion-card-color) flex flex-col lp:flex-row border-l-4 justify-between items-start lp:items-end basis-1/2 gap-4 p-4 rounded-sm border-(--primary-200) shadow-md shadow-black/20">
 
       <div className="flex-1 max-w-sm">
 

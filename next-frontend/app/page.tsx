@@ -6,17 +6,26 @@ import Link from "next/link";
 import Image from "next/image";
 import CardHistorico from "@/components/CardHistorico";
 import { CardBackground } from "@/components/CardProfile";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { BookOpen, CircleCheckBig, Target, Flame } from "lucide-react";
+import CardStatus from "@/components/CardStatus";
 import { useState } from "react";
+import StudySuggestion from "@/components/StudySuggestion";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 let pessoa_logada = true;
 
 export default function Inicio() {
+  const dadosProgresso = {
+    assuntosConcluidos: 3,
+    totalAssuntos: 30,
+    questoesRespondidas: 120,
+    totalAcertos: 89,
+    ofensiva: 10,
+    conteudoRecomendado: "Análise Combinatória",
+    etapa: 1,
+  };
 
   if (pessoa_logada) {
-
-    const [inicioIndex, setInicioIndex] = useState(0)
-    const [conteudos_por_pagina, setConteudosPorPagina] = useState(4)
 
     let historico = [
         {'id': 1, 'nome': 'MATEMÁTICA BÁSICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 50},
@@ -32,66 +41,75 @@ export default function Inicio() {
         {'id': 11, 'nome': 'PROGRESSÃO GEOMÉTRICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 20},
     ]
 
-    function proximaPagina() {
-        if (inicioIndex + conteudos_por_pagina <= historico.length) {
-            setInicioIndex(inicioIndex + conteudos_por_pagina)
-        }
-    }
-
-    function paginaAnterior() {
-        if (inicioIndex - conteudos_por_pagina >= 0) {
-            setInicioIndex(inicioIndex - conteudos_por_pagina)
-        }
-    }
-
-    // pega os 4 conteudos que devem ser dessa pagina
-    const conteudosExibidos = historico.slice(inicioIndex, inicioIndex + conteudos_por_pagina)
-
     return (
       <div>
         <Header/>
-        <main className="flex flex-col p-10 pt-20 gap-20">
-          <div className="flex gap-15 bg-(--primary-700) py-10 px-20 rounded-4xl">
-            <Image src={'/logo.png'} alt="Logo" width={520} height={145}/>
+        <main className="flex flex-col p-10 pt-20 gap-10">
+          <div className="flex items-center gap-15 bg-(--primary-700) py-10 px-20 rounded-4xl">
+            <Image src={'/logo.png'} alt="Logo" width={600} height={520}/>
             <p className="font-poppins-sans text-[32px] font-semibold text-white">Sua plataforma de estudos para Matemática do Ensino Médio Técnico Integrado do Instituto Federal do Rio Grande do Norte e para o ENEM. Acesse conteúdos, slides, questões e acompanhe sua evolução na disciplina.</p>
           </div>
           <div className="flex flex-col justify-between gap-5">
             <h1 className="text-[64px] font-bold">Sua Evolução</h1>
-            <CardBackground className="w-full gap-[20px] bg-(--settings-card-color)">
-              <div className="flex flex-col gap-2 flex-wrap items-center justify-around w-full ml:flex-row ml:gap-0">
-                  {conteudosExibidos.map((conteudo, index) => (
-                      <CardHistorico key={conteudo.id} nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
-                  ))}
-              </div>
+            <CardBackground className="w-full flex flex-row justify-between gap-4 bg-(--settings-card-color) grid grid-cols-2 lp:grid-cols-4">
+              <CardStatus
+                titulo="Assuntos concluídos" valor={`${dadosProgresso.assuntosConcluidos}/${dadosProgresso.totalAssuntos}`} icone={BookOpen} bgColor="bg-(--neutral-0)"
+                textColor="text-(--neutral-900)" iconeColor="text-(--primary-300)"
+              />
+
+              <CardStatus
+                titulo="Questões respondidas" valor={String(dadosProgresso.questoesRespondidas)} icone={CircleCheckBig} bgColor="bg-(--primary-800)"
+                textColor="text-(--neutral-0)" iconeColor="text-(--neutral-0)"
+              />
+              
+              <CardStatus
+                titulo="Total de acertos" valor={`${dadosProgresso.totalAcertos}%`} icone={Target} bgColor="bg-(--primary-300)"
+                textColor="text-(--neutral-0)" iconeColor="text-(--neutral-0)"
+              />
+
+              <CardStatus titulo="Ofensiva" valor={String(dadosProgresso.ofensiva)} icone={Flame} bgColor="bg-(--primary-200)" textColor="text-(--neutral-0)"
+                iconeColor="text-(--neutral-0)" descricao="dias"
+              />
             </CardBackground>
           </div>
           <div className="flex flex-col justify-between gap-5">
             <h1 className="text-[64px] font-bold">Sugestões com base no seu desempenho</h1>
-            <div className="flex flex-col gap-2 flex-wrap items-center justify-around w-full ml:flex-row ml:gap-0">
-                {conteudosExibidos.map((conteudo, index) => (
-                    <CardHistorico key={conteudo.id} nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
-                ))}
+            <div className="flex justify-between gap-5">
+              <StudySuggestion
+                conteudoRecomendado={dadosProgresso.conteudoRecomendado}
+                etapa={dadosProgresso.etapa}
+              />
+              <StudySuggestion
+                conteudoRecomendado={dadosProgresso.conteudoRecomendado}
+                etapa={dadosProgresso.etapa}
+              />
             </div>
           </div>
           <div className="flex flex-col justify-between gap-5">
             <h1 className="text-[64px] font-bold">Histórico de conteúdos acessados</h1>
             <CardBackground className="w-full gap-[20px] bg-(--settings-card-color)">
                 <div className="flex items-center w-full">
-                    <button onClick={() => paginaAnterior()} disabled={inicioIndex === 0} className="disabled:opacity-30 transition-opacity">
-                        <ChevronLeft className='hidden hover:cursor-pointer w-[20px] ml:flex ml:w-[25px] lg:w-[40px]' size={40} color="var(--arrow-color)"/>
-                    </button>
-                    <div className="flex flex-col gap-2 flex-wrap items-center justify-around w-full ml:flex-row ml:gap-0">
-                        {conteudosExibidos.map((conteudo, index) => (
-                            <CardHistorico key={conteudo.id} nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
-                        ))}
+                  <div className="flex items-center w-full px-10">
+                      <Carousel opts={{
+                              align: "start",
+                              slidesToScroll: 1,
+                          }} 
+                          className="flex flex-col flex-wrap items-center justify-between w-full ml:flex-row">
+                          <CarouselContent className="flex-col ml:flex-row">
+                              {historico.map((conteudo, index) => (
+                                  <CarouselItem className="basis-1/2 lg:basis-1/3 lp:basis-1/4" key={conteudo.id}>
+                                      <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
+                                  </CarouselItem>
+                              ))}
+                          </CarouselContent>
+                          <CarouselPrevious />
+                          <CarouselNext />
+                      </Carousel>
                     </div>
-                    <button onClick={() => proximaPagina()} disabled={inicioIndex + conteudos_por_pagina > historico.length} className="disabled:opacity-30 transition-opacity">
-                        <ChevronRight className='hidden hover:cursor-pointer w-[20px] ml:flex ml:w-[25px] lg:w-[40px]' size={40} color="var(--arrow-color)"/>
-                    </button>
                   </div>
             </CardBackground>
           </div>
-          <div className="flex gap-15 bg-(--primary-700) py-10 px-20 rounded-4xl">
+          <div className="flex items-center gap-15 bg-(--primary-700) py-10 px-20 rounded-4xl">
             <Image src={'/images/illustrations/olimpiadas.png'} alt="Logo" width={520} height={145}/>
             <p className="font-poppins-sans text-[32px] font-semibold text-white">As olimpíadas de Matemática nacionais são ótimas formas de se incentivar a estudar e praticar a matéria, oferecendo inúmeros benefícios que vão muito além da competição, impactando a vida acadêmica e pessoal dos estudante. As olimpíadas nacionais de matemática são:</p>
           </div>

@@ -5,7 +5,7 @@ interface CardProps {
 
 export function CardBackground({ children, className }: CardProps) {
     return (
-        <div className={`flex flex-col bg-(--profile-card-color) font-poppins-sans rounded-3xl shadow-xl p-5 md:px-8 md:py-6 lg:px-10 lg:py-8  ${className ? className: 'gap-[20px]'}`}>
+        <div className={`flex flex-col bg-(--profile-card-color) font-poppins-sans rounded-3xl shadow-xl p-5 md:px-5 md:py-6 lg:px-10 lg:py-8  ${className ? className: 'gap-[20px]'}`}>
             {children}
         </div>
     )

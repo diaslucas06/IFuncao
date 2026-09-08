@@ -12,14 +12,17 @@ type CardStatusProps = {
 
 export default function CardStatus(props:CardStatusProps){
     return(
-        <div className={`${props.bgColor} flex flex-col p-4 gap-4 shadow-md rounded-sm shadow-black/20`}>
-            <div className="flex justify-center mt-2">
-                <props.icone className={`${props.iconeColor} w-10 h-10 sm:w-12 sm:h-12 lg:w-18 lg:h-18`} />
+        <div className={`${props.bgColor} flex flex-col md:aspect-square lg:aspect-auto lp:aspect-square justify-between p-4 gap-4 shadow-md rounded-sm shadow-black/20 lg:basis-1/2 lg:basis-1/4`}>
+            
+            <div></div>
+            <div className="flex flex-col gap-5">
+                <div className="flex justify-center mt-2">
+                    <props.icone className={`${props.iconeColor} w-10 h-10 sm:w-12 sm:h-12 lg:w-20 lg:h-20 lp:w-30 lp:h-30`} />
+                </div>
+                <p className={`${props.textColor} text-center text-xs font-medium md:text-xl lp:text-2xl`}>
+                    {props.titulo}
+                </p>
             </div>
-
-            <p className={`${props.textColor} text-center text-xs font-medium md:text-xl`}>
-                {props.titulo}
-            </p>
 
             <div className="flex items-baseline flex-wrap mt-2">
                 <h2 className={`${props.textColor} text-sm lg:text-lg font-bold`}>

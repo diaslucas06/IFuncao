@@ -1,5 +1,3 @@
-'use client'
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Profile from "@/components/Profile";
@@ -7,28 +5,10 @@ import ButtonProfile from "@/components/ButtonProfile";
 import BarraProgresso from "@/components/BarraProgresso";
 import { CardBackground, CardH1, CardLi, CardP } from "@/components/CardProfile";
 import CardHistorico from "@/components/CardHistorico";
-import { Settings, PencilSparkles, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { Settings, PencilSparkles } from "lucide-react";
+import { CarouselItem, Carousel, CarouselContent, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
 export default function perfil() {
-    const [inicioIndex, setInicioIndex] = useState(0)
-    const [conteudos_por_pagina, setConteudosPorPagina] = useState(4)
-
-    useEffect(() => {
-        if (window.innerWidth <= 1920) {
-            setConteudosPorPagina(4)
-        } 
-        if (window.innerWidth <= 1024) {
-            setConteudosPorPagina(3)
-        }
-        if (window.innerWidth <= 545) {
-            setConteudosPorPagina(2)
-        }
-        if (window.innerWidth <= 415) {
-            setConteudosPorPagina(historico.length)
-        }
-    }, [])
 
     let dados = {
         'nome': 'Maria José dos Santos',
@@ -60,21 +40,6 @@ export default function perfil() {
         {'id': 10, 'nome': 'DIVISÃO', 'link': '/conteudos/matematica_basica', 'porcentagem': 100},
         {'id': 11, 'nome': 'PROGRESSÃO GEOMÉTRICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 20},
     ]
-
-    function proximaPagina() {
-        if (inicioIndex + conteudos_por_pagina <= historico.length) {
-            setInicioIndex(inicioIndex + conteudos_por_pagina)
-        }
-    }
-
-    function paginaAnterior() {
-        if (inicioIndex - conteudos_por_pagina >= 0) {
-            setInicioIndex(inicioIndex - conteudos_por_pagina)
-        }
-    }
-
-    // pega os 4 conteudos que devem ser dessa pagina
-    const conteudosExibidos = historico.slice(inicioIndex, inicioIndex + conteudos_por_pagina)
 
     return (
         <div>
@@ -119,18 +84,22 @@ export default function perfil() {
                 <div className="flex justify-between gap-5">
                     <CardBackground className="w-full gap-[20px]">
                         <CardH1>Histórico de conteúdos acessados</CardH1>
-                        <div className="flex items-center w-full">
-                            <button onClick={() => paginaAnterior()} disabled={inicioIndex === 0} className="disabled:opacity-30 transition-opacity">
-                                <ChevronLeft className='hidden hover:cursor-pointer w-[20px] ml:flex ml:w-[25px] lg:w-[40px]' size={40} color="var(--arrow-color)"/>
-                            </button>
-                            <div className="flex flex-col gap-2 flex-wrap items-center justify-around w-full ml:flex-row ml:gap-0">
-                                {conteudosExibidos.map((conteudo, index) => (
-                                    <CardHistorico key={conteudo.id} nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
-                                ))}
-                            </div>
-                            <button onClick={() => proximaPagina()} disabled={inicioIndex + conteudos_por_pagina > historico.length} className="disabled:opacity-30 transition-opacity">
-                                <ChevronRight className='hidden hover:cursor-pointer w-[20px] ml:flex ml:w-[25px] lg:w-[40px]' size={40} color="var(--arrow-color)"/>
-                            </button>
+                        <div className="flex items-center w-full px-10">
+                            <Carousel opts={{
+                                    align: "start",
+                                    slidesToScroll: 1,
+                                }} 
+                                className="flex flex-col flex-wrap items-center justify-between w-full ml:flex-row">
+                                <CarouselContent className="flex-col ml:flex-row">
+                                    {historico.map((conteudo, index) => (
+                                        <CarouselItem className="basis-1/2 lg:basis-1/3 lp:basis-1/4" key={conteudo.id}>
+                                            <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
+                                        </CarouselItem>
+                                    ))}
+                                </CarouselContent>
+                                <CarouselPrevious />
+                                <CarouselNext />
+                            </Carousel>
                          </div>
                     </CardBackground>
                 </div>

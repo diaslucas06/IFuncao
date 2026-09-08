@@ -25,7 +25,7 @@ export default function Progresso() {
             Sua Evolução
           </h1>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-6">
+          <div className="grid grid-cols-2 lp:grid-cols-4 gap-4 lg:gap-6 mt-6">
             
             <CardStatus
               titulo="Assuntos concluídos" valor={`${dadosProgresso.assuntosConcluidos}/${dadosProgresso.totalAssuntos}`} icone={BookOpen} bgColor="bg-(--neutral-0)"

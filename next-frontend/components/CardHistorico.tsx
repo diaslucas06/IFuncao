@@ -30,8 +30,8 @@ export default function CardHistorico(props:CardHistoricoProps) {
     const cor_atual = cores[props.index % 4]
     return (
         <Link href={props.link} className={`flex flex-col justify-between ${cor_atual.bg} w-full ml:w-auto ml:aspect-square p-3 md:p-5 rounded-xl shadow-lg`}>
-            <div className="flex-1 flex items-center justify-center w-full ml:w-[115px] md:w-[130px] lg:w-[190px] lp:w-[250px] pc:w-[350px]">
-                <p className={`font-poppins-sans text-center font-extrabold text-[14px] lg:text-[20px] lp:text-[24px] pc:text-[40px] ${cor_atual.texto}`}>{props.nome}</p>
+            <div className="flex-1 flex items-center justify-center text-center w-full">
+                <p className={`font-poppins-sans text-center font-extrabold text-[14px] md:text-[20px] lp:text-[24px] pc:text-[40px] ${cor_atual.texto}`}>{props.nome}</p>
             </div>
         </Link>
     )

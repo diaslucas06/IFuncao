@@ -44,14 +44,14 @@ export default function Inicio() {
     return (
       <div>
         <Header/>
-        <main className="flex flex-col p-10 pt-20 gap-10">
-          <div className="flex items-center gap-15 bg-(--primary-700) py-10 px-20 rounded-4xl">
-            <Image src={'/logo.png'} alt="Logo" width={600} height={520}/>
-            <p className="font-poppins-sans text-[32px] font-semibold text-white">Sua plataforma de estudos para Matemática do Ensino Médio Técnico Integrado do Instituto Federal do Rio Grande do Norte e para o ENEM. Acesse conteúdos, slides, questões e acompanhe sua evolução na disciplina.</p>
+        <main className="flex flex-col p-5 pb-10 md:p-10 md:pt-12 lg:pt-15 lp:pt-20 gap-8 md:gap-10">
+          <div className="flex flex-col lg:flex-row items-center gap-5 md:gap-10 lp:gap-15 bg-(--primary-700) py-5 md:py-10 px-5 md:px-10 lg:px-12 lp:px-20 rounded-4xl md:text-justify">
+            <Image className="h-auto w-[200px] md:w-[270px] lg:w-[350px] lp:w-[400px] pc:w-[600px]" src={'/logo.png'} alt="Logo" width={600} height={520}/>
+            <p className="font-poppins-sans lg:text-[18px] lp:text-[24px] pc:text-[32px] font-semibold text-white">Sua plataforma de estudos para Matemática do Ensino Médio Técnico Integrado do Instituto Federal do Rio Grande do Norte e para o ENEM. Acesse conteúdos, slides, questões e acompanhe sua evolução na disciplina.</p>
           </div>
-          <div className="flex flex-col justify-between gap-5">
-            <h1 className="text-[64px] font-bold">Sua Evolução</h1>
-            <CardBackground className="w-full flex flex-row justify-between gap-4 bg-(--settings-card-color) grid grid-cols-2 lp:grid-cols-4">
+          <div className="flex flex-col justify-between gap-3 md:gap-5">
+            <h1 className="text-[24px] md:text-[40px] lg:text-[48px] lp:text-[56px] pc:text-[64px] font-bold">Sua Evolução</h1>
+            <CardBackground className="w-full flex flex-row justify-between gap-2 md:gap-4 bg-(--settings-card-color) grid grid-cols-2 lp:grid-cols-4">
               <CardStatus
                 titulo="Assuntos concluídos" valor={`${dadosProgresso.assuntosConcluidos}/${dadosProgresso.totalAssuntos}`} icone={BookOpen} bgColor="bg-(--neutral-0)"
                 textColor="text-(--neutral-900)" iconeColor="text-(--primary-300)"
@@ -72,9 +72,9 @@ export default function Inicio() {
               />
             </CardBackground>
           </div>
-          <div className="flex flex-col justify-between gap-5">
-            <h1 className="text-[64px] font-bold">Sugestões com base no seu desempenho</h1>
-            <div className="flex justify-between gap-5">
+          <div className="flex flex-col justify-between gap-3 md:gap-5">
+            <h1 className="text-[24px] md:text-[40px] lg:text-[48px] lp:text-[56px] pc:text-[64px] font-bold">Sugestões com base no seu desempenho</h1>
+            <div className="flex flex-col md:flex-row justify-between gap-5">
               <StudySuggestion
                 conteudoRecomendado={dadosProgresso.conteudoRecomendado}
                 etapa={dadosProgresso.etapa}
@@ -85,60 +85,67 @@ export default function Inicio() {
               />
             </div>
           </div>
-          <div className="flex flex-col justify-between gap-5">
-            <h1 className="text-[64px] font-bold">Histórico de conteúdos acessados</h1>
+          <div className="flex flex-col justify-between gap-3 md:gap-5">
+            <h1 className="text-[24px] md:text-[40px] lg:text-[48px] lp:text-[56px] pc:text-[64px] font-bold">Histórico de conteúdos acessados</h1>
             <CardBackground className="w-full gap-[20px] bg-(--settings-card-color)">
                 <div className="flex items-center w-full">
-                  <div className="flex items-center w-full px-10">
-                      <Carousel opts={{
-                              align: "start",
-                              slidesToScroll: 1,
-                          }} 
-                          className="flex flex-col flex-wrap items-center justify-between w-full ml:flex-row">
-                          <CarouselContent className="flex-col ml:flex-row">
-                              {historico.map((conteudo, index) => (
-                                  <CarouselItem className="basis-1/2 lg:basis-1/3 lp:basis-1/4" key={conteudo.id}>
-                                      <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
-                                  </CarouselItem>
-                              ))}
-                          </CarouselContent>
-                          <CarouselPrevious />
-                          <CarouselNext />
-                      </Carousel>
-                    </div>
+                  <div className="items-center w-full px-10 hidden ml:flex">
+                    <Carousel opts={{
+                            align: "start",
+                            slidesToScroll: 1,
+                        }} 
+                        className="flex flex-col flex-wrap items-center justify-between w-full ml:flex-row">
+                        <CarouselContent>
+                            {historico.map((conteudo, index) => (
+                                <CarouselItem className="basis-1/2 lg:basis-1/3 lp:basis-1/4" key={conteudo.id}>
+                                    <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <CarouselPrevious />
+                        <CarouselNext />
+                    </Carousel>
                   </div>
+                  <div className="flex-col items-center w-full gap-2 flex ml:hidden">
+                    {historico.map((conteudo, index) => (
+                        <div className="w-full basis-1/2 lg:basis-1/3 lp:basis-1/4" key={conteudo.id}>
+                            <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
+                        </div>
+                    ))}
+                  </div>
+                </div>
             </CardBackground>
           </div>
-          <div className="flex items-center gap-15 bg-(--primary-700) py-10 px-20 rounded-4xl">
-            <Image src={'/images/illustrations/olimpiadas.png'} alt="Logo" width={520} height={145}/>
-            <p className="font-poppins-sans text-[32px] font-semibold text-white">As olimpíadas de Matemática nacionais são ótimas formas de se incentivar a estudar e praticar a matéria, oferecendo inúmeros benefícios que vão muito além da competição, impactando a vida acadêmica e pessoal dos estudante. As olimpíadas nacionais de matemática são:</p>
+          <div className="flex flex-col lg:flex-row items-center gap-5 md:gap-10 lp:gap-15 bg-(--primary-700) py-5 md:py-10 px-5 md:px-10 lg:px-12 lp:px-20 rounded-4xl md:text-justify">
+            <Image className="h-auto w-[200px] md:w-[270px] lg:w-[350px] lp:w-[400px] pc:w-[600px]" src={'/images/illustrations/olimpiadas.png'} alt="Logo" width={520} height={145}/>
+            <p className="font-poppins-sans lg:text-[18px] lp:text-[24px] pc:text-[32px] font-semibold text-white">As olimpíadas de Matemática nacionais são ótimas formas de se incentivar a estudar e praticar a matéria, oferecendo inúmeros benefícios que vão muito além da competição, impactando a vida acadêmica e pessoal dos estudante. As olimpíadas nacionais de matemática são:</p>
           </div>
-          <div className="flex justify-around items-start">
-            <div className="flex flex-col text-center w-1/4 justify-center items-center gap-10">
-              <a href="https://www.obmep.org.br/" className="bg-(--primary-800) rounded-full p-5 w-fit aspect-square">
-                <Image src={'/images/illustrations/olimpiadas/obmep.png'} alt="Logo" width={320} height={320}/>
+          <div className="flex flex-col md:flex-row justify-around items-center md:items-start gap-5 md:gap-0">
+            <div className="flex flex-col text-center md:w-1/4 justify-center items-center gap-3 md:gap-5 lg:gap-8 lp:gap-10">
+              <a href="https://www.obmep.org.br/" className="flex bg-(--primary-800) rounded-full p-2 md:p-3 lp:p-5 w-fit aspect-square items-center">
+                <Image className="h-auto w-[150px] md:w-[200px] lg:w-[270px] lp:w-[300px] pc:w-[320px]" src={'/images/illustrations/olimpiadas/obmep.png'} alt="Logo" width={320} height={320}/>
               </a>
               <div>
-                <h4 className="text-[40px] font-bold">OBMEP</h4>
-                <p className="text-[32px] font-medium">Olimpíada Brasileira de Matemática das Escolas Públicas</p>
+                <h4 className="text-[20px] md:text-[28px] lg:text-[32px] lp:text-[36px] pc:text-[40px] font-bold">OBMEP</h4>
+                <p className="md:text-[20px] lg:text-[24px] lp:text-[28px] pc:text-[32px] font-medium">Olimpíada Brasileira de Matemática das Escolas Públicas</p>
               </div>
             </div>
-            <div className="flex flex-col text-center w-1/4 justify-center items-center gap-10">
-              <a href="https://www.cangurudematematicabrasil.com.br/" className="flex bg-(--primary-800) rounded-full p-5 w-fit aspect-square items-center">
-                <Image src={'/images/illustrations/olimpiadas/canguru.png'} alt="Logo" width={320} height={320}/>
+            <div className="flex flex-col text-center md:w-1/4 justify-center items-center gap-3 md:gap-5 lg:gap-8 lp:gap-10">
+              <a href="https://www.cangurudematematicabrasil.com.br/" className="flex bg-(--primary-800) rounded-full p-2 md:p-3 lp:p-5 w-fit aspect-square items-center">
+                <Image className="h-auto w-[150px] md:w-[200px] lg:w-[270px] lp:w-[300px] pc:w-[320px]" src={'/images/illustrations/olimpiadas/canguru.png'} alt="Logo" width={320} height={320}/>
               </a>
               <div>
-                <h4 className="text-[40px] font-bold">CANGURU</h4>
-                <p className="text-[32px] font-medium">Canguru de matemática Brasil.</p>
+                <h4 className="text-[20px] md:text-[28px] lg:text-[32px] lp:text-[36px] pc:text-[40px] font-bold">CANGURU</h4>
+                <p className="md:text-[20px] lg:text-[24px] lp:text-[28px] pc:text-[32px] font-medium">Canguru de matemática Brasil.</p>
               </div>
             </div>
-            <div className="flex flex-col text-center w-1/4 justify-center items-center gap-10">
-              <a href="https://www.obm.org.br/" className="bg-(--primary-800) rounded-full p-5 w-fit">
-                <Image src={'/images/illustrations/olimpiadas/obm.png'} alt="Logo" width={320} height={320}/>
+            <div className="flex flex-col text-center md:w-1/4 justify-center items-center gap-3 md:gap-5 lg:gap-8 lp:gap-10">
+              <a href="https://www.obm.org.br/" className="flex bg-(--primary-800) rounded-full p-2 md:p-3 lp:p-5 w-fit aspect-square items-center">
+                <Image className="h-auto w-[150px] md:w-[200px] lg:w-[270px] lp:w-[300px] pc:w-[320px]" src={'/images/illustrations/olimpiadas/obm.png'} alt="Logo" width={320} height={320}/>
               </a>
               <div>
-                <h4 className="text-[40px] font-bold">OBM</h4>
-                <p className="text-[32px] font-medium">Olimpíada Brasileira de Matemática</p>
+                <h4 className="text-[20px] md:text-[28px] lg:text-[32px] lp:text-[36px] pc:text-[40px] font-bold">OBM</h4>
+                <p className="md:text-[20px] lg:text-[24px] lp:text-[28px] pc:text-[32px] font-medium">Olimpíada Brasileira de Matemática</p>
               </div>
             </div>
           </div>

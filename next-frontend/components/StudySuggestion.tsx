@@ -8,7 +8,7 @@ type StudySuggestionProps = {
 
 export default function StudySuggestion(props: StudySuggestionProps) {
   return (
-    <div className="bg-(--sugestion-card-color) flex flex-col lp:flex-row border-l-4 justify-between items-start lp:items-end basis-1/2 gap-4 p-4 rounded-sm border-(--primary-200) shadow-md shadow-black/20">
+    <div className="bg-(--sugestion-card-color) flex flex-col lp:flex-row border-l-4 justify-between items-start lp:items-end basis-1/2 gap-2 md:gap-4 p-4 rounded-sm border-(--primary-200) shadow-md shadow-black/20">
 
       <div className="flex-1 max-w-sm">
 
@@ -29,7 +29,7 @@ export default function StudySuggestion(props: StudySuggestionProps) {
       <div className="w-full ml:w-auto mt-2 ml:mt-0">
 
         <Link href="/conteudoRecomendado"
-          className="bg-(--sugestion-button-color) text-(--sugestion-button-text-color) flex items-center p-2 px-6 rounded-sm font-bold whitespace-nowrap"
+          className="bg-(--sugestion-button-color) text-(--sugestion-button-text-color) flex items-center p-2 px-4 md:px-6 rounded-sm font-bold whitespace-nowrap"
         >
           Ir para conteúdo
         </Link>

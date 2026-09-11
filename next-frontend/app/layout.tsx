@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Poppins, Geist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme_provider";
-import { cn } from "@/lib/utils";
 
 const geist = Geist({
   subsets:['latin'],
@@ -34,7 +33,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("h-full", "antialiased", poppins.variable, inter.variable, "font-sans", geist.variable)}
+      className={`${poppins.variable} ${inter.variable} ${geist.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider

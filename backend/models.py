@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, String, Integer, Boolean, ForeignKey, Date, Text, JSON
+from sqlalchemy import create_engine, Column, String, Integer, Boolean, ForeignKey, Date, Text, JSON, DateTime
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 db = create_engine("sqlite:///banco.db")
@@ -27,7 +27,16 @@ class Usuario(Base):
         self.user_curso = user_curso
         self.user_data_nascimento = user_data_nascimento
         self.user_foto_url = user_foto_url
-        self.user_ofensiva_dias = user_ofensiva_dias
+
+class Acesso(Base):
+
+    __tablename__ = "acessos"
+
+    ace_id = Column('ace_id', Integer, primary_key=True, autoincrement=True)
+    ace_user_id = Column('ace_user_id', ForeignKey('usuarios.user_id'))
+    ace_data = Column('ace_data', Date)
+    ace_hora_inicio = Column('ace_hora_inicio', DateTime)
+    ace_hora_fim = Column('ace_hora_fim', DateTime)
 
 class Questao(Base):
 
@@ -57,24 +66,11 @@ class Conteudo(Base):
     cont_id = Column('cont_id', Integer, primary_key=True, autoincrement=True)
     cont_nome = Column('cont_nome', String)
     cont_etapa = Column('cont_etapa', String)
+    cont_slide_pdf = Column('cont_slide_pdf', String)
 
     def __init__(self, cont_nome, cont_etapa):
         self.cont_nome = cont_nome
         self.cont_etapa = cont_etapa
-
-class Slide(Base):
-
-    __tablename__ = "slides" 
-
-    slid_id = Column('slid_id', Integer, primary_key=True, autoincrement=True)
-    slid_imagem_url = Column('slid_imagem_url', String)
-    slid_ordem = Column('slid_ordem', Integer)
-    slid_cont_id = Column('slid_cont_id', ForeignKey('conteudos.cont_id'))
-
-    def __init__(self, slid_imagem_url, slid_ordem, slid_cont_id):
-        self.slid_imagem_url = slid_imagem_url
-        self.slid_ordem = slid_ordem
-        self.slid_cont_id = slid_cont_id
 
 class Usuario_Conteudo(Base):
 

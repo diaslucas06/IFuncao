@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
-from datetime import date
+from datetime import date, datetime
 
 class UsuarioSchema(BaseModel):
     user_nome: str
@@ -10,7 +10,12 @@ class UsuarioSchema(BaseModel):
     user_curso: Optional[str] = None
     user_data_nascimento: Optional[date] = None
     user_foto_url: Optional[str] = None
-    user_ofensiva_dias: int = 0
 
     class Config:
         from_attributes = True
+
+class AcessoSchema(BaseModel):
+    ace_user_id: int
+    ace_data: date
+    ace_hora_inicio: datetime
+    ace_hora_fim: datetime

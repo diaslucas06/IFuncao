@@ -19,3 +19,7 @@ class AcessoSchema(BaseModel):
     ace_data: date
     ace_hora_inicio: datetime
     ace_hora_fim: datetime
+    
+class LoginSchema(BaseModel):
+    user_matricula: int
+    user_senha: str

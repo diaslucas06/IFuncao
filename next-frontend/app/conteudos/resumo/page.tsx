@@ -51,7 +51,7 @@ export default function conteudos() {
       <main className="p-5 mt-5 sm:mt-12 mx-5">
         <Resumo dados={dadosResumo} />
 
-        <div className="w-full mt-8 flex flex-col lg:flex-row gap-6 lg:items-start">
+        <div className="w-full mt-2 flex flex-col lg:flex-row gap-6 lg:items-start">
 
           <div className="w-full lg:w-2/3 lg:mt-6 min-w-0">
             <Carrossel slides={IMAGENS_TESTE} />

@@ -21,7 +21,7 @@ export default function Progresso() {
       <main className="flex-1 w-full mx-auto p-4 sm:p-6 lg:p-10">
         <section className="bg-(--settings-card-color) p-5 sm:p-8 rounded-xl shadow-sm border border-(--background-color)">
           
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-(--link-color)">
+          <h1 className="text-[24px] md:text-[40px] lg:text-[48px] lp:text-[56px] pc:text-[64px] font-bold text-(--link-color)">
             Sua Evolução
           </h1>
 

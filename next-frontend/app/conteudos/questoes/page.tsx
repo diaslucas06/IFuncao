@@ -54,9 +54,9 @@ export default function questoes() {
     <div className="min-h-screen">
       <Header />
 
-      <main className="max-w-7xl mx-2 sm:mx-4 lg:mx-8 p-4">
+      <main className="mx-2 sm:mx-4 lg:mx-8 p-4">
 
-        <h1 className="font-bold text-2xl ml:text-3xl mt-3">
+        <h1 className="text-[24px] md:text-[40px] lg:text-[48px] lp:text-[56px] pc:text-[64px] font-bold mt-3">
           Lista de exercícios
         </h1>
 
@@ -64,8 +64,8 @@ export default function questoes() {
 
           <section className="w-full lg:flex-1 min-w-0">
 
-            <div className="rounded-md p-3 w-full bg-(--theory-header-bg) text-(--theory-header-text)">
-              <h2 className="font-bold text-base ml:text-lg">
+            <div className="rounded-md bg-(--theory-header-bg) text-(--theory-header-text)">
+              <h2 className="font-bold  rounded-2xl ml-1.5 p-2 text-[20px] md:text-[28px] lg:text-[32px] pc:text-[36px]">
                 Questões de Análise Combinatória
               </h2>
             </div>
@@ -80,7 +80,7 @@ export default function questoes() {
 
           </section>
 
-          <div className="ml:w-[420px] lp:w-[480px] max-w-full shrink-0 self-start">
+          <div className="w-full md:w-[35%] max-w-full shrink-0 self-start">
             <TheoryReview />
           </div>
 

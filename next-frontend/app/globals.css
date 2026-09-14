@@ -145,6 +145,7 @@
   --question-option-bg: var(--neutral-0);
   --question-option-border: var(--neutral-300);
   --question-option-text: var(--neutral-900);
+  --question-resolution-text: var(--neutral-900);
 
   --btn-prev-bg: var(--neutral-75);
   --btn-prev-text: var(--neutral-900);
@@ -229,6 +230,7 @@
   --question-option-bg: var(--neutral-550);
   --question-option-border: var(--neutral-400-opacity-25);
   --question-option-text: var(--neutral-0);
+  --question-resolution-text: var(--neutral-900);
 
   --btn-prev-bg: var(--neutral-500);
   --btn-prev-text: var(--neutral-900);

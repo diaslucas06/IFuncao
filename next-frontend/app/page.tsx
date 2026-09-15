@@ -13,10 +13,24 @@ import CardInicio from "@/components/CardInicio";
 import CardOlimpiada from "@/components/CardOlimpiada";
 import StudySuggestion from "@/components/StudySuggestion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-
-let pessoa_logada = true;
+import { useEffect, useState } from "react";
 
 export default function Inicio() {
+  const [pessoa_logada, setPessoaLogada] = useState(false);
+  const [carregando, setCarregando] = useState(true);
+
+  useEffect(() => {
+    const usuarioSalvo = localStorage.getItem("usuario");
+    if (usuarioSalvo) {
+      setPessoaLogada(true);
+    }
+    setCarregando(false);
+  }, []);
+
+  if (carregando) {
+    return null; 
+  }
+
   const dadosProgresso = {
     assuntosConcluidos: 3,
     totalAssuntos: 30,

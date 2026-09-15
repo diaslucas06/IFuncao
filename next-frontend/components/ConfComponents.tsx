@@ -14,7 +14,7 @@ export function ConfDiv({children}:ConfComp) {
 
 export function ConfH1({children}:ConfComp) {
     return (
-        <h1 className="font-bold text-[24px] text-center md:text-start md:text-[28px] lg:text-[32px] lp:text-[40px] pc:text-[48px]">
+        <h1 className="font-bold text-2xl text-center md:text-start md:text-[28px] lg:text-[32px] lp:text-[40px] pc:text-5xl">
             {children}
         </h1>
     )
@@ -22,7 +22,7 @@ export function ConfH1({children}:ConfComp) {
 
 export function ConfH2({children}:ConfComp) {
     return (
-        <h2 className="font-bold text-[20px] md:text-[24px] lg:text-[28px] lp:text-[32px] pc:text-[36px]">
+        <h2 className="font-bold text-xl md:text-2xl lg:text-[28px] lp:text-[32px] pc:text-4xl">
             {children}
         </h2>
     )
@@ -30,7 +30,7 @@ export function ConfH2({children}:ConfComp) {
 
 export function ConfP({children}:ConfComp) {
     return (
-        <p className="font-poppins-sans lg:text-[20px] pc:text-[24px]">
+        <p className="font-poppins-sans lg:text-xl pc:text-2xl">
             {children}
         </p>
     )
@@ -46,7 +46,7 @@ export function ConfCard({children, tamanho, className}:ConfComp) {
 
 export function ConfLi({children}:ConfComp) {
     return (
-        <li className="flex flex-col justify-between lg:text-[20px] lg:p-5">
+        <li className="flex flex-col justify-between lg:text-xl lg:p-5">
             {children}
         </li>
     )
@@ -54,7 +54,7 @@ export function ConfLi({children}:ConfComp) {
 
 export function ConfNotificacoesText({children}:ConfComp) {
     return (
-        <p className="font-poppins-sans md:text-[20px] lg:text-[24px] lp:text-[28px] pc:text-[32px]">
+        <p className="font-poppins-sans md:text-xl lg:text-2xl lp:text-[28px] pc:text-[32px]">
             {children}
         </p>
     )
@@ -62,7 +62,7 @@ export function ConfNotificacoesText({children}:ConfComp) {
 
 export function ConfInfoLi({children}:ConfComp) {
     return (
-        <li className="font-poppins-sans md:text-[20px] lp:text-[24px]">
+        <li className="font-poppins-sans md:text-xl lp:text-2xl">
             {children}
         </li>
     )

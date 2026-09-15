@@ -88,14 +88,14 @@ export default function HeaderNotLogged() {
                         <ul className="absolute rounded-md group-hover:block bg-black right-0 ofset-0 top-full mt-5">
                             <li className="flex justify-between hover:bg-(--primary-900) rounded-md">
                                 <button className='flex justify-between p-5 hover:cursor-pointer w-45 lg:w-55' onClick={() => setTheme('light')}>
-                                    <p className="lg:text-[20px]">Modo Claro</p>
+                                    <p className="lg:text-xl">Modo Claro</p>
                                     <Sun size={25}/>
                                 </button>
                             </li>
                             <hr />
                             <li className="flex justify-between hover:bg-(--primary-900) rounded-md">
                                 <button className='flex justify-between p-5 hover:cursor-pointer w-45 lg:w-55' onClick={() => setTheme('dark')}>
-                                    <p className="lg:text-[20px]">Modo Escuro</p>
+                                    <p className="lg:text-xl">Modo Escuro</p>
                                     <Moon size={25}/>
                                 </button>
                             </li>

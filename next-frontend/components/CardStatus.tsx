@@ -19,18 +19,18 @@ export default function CardStatus(props:CardStatusProps){
                 <div className="flex justify-center md:mt-2">
                     <props.icone className={`${props.iconeColor} w-8 ml:w-10 h-10 sm:w-12 sm:h-12 md:w-15 md:h-15 lg:w-20 lg:h-20 lp:h-30`} />
                 </div>
-                <p className={`${props.textColor} text-center text-xs ml:text-[16px] font-medium md:text-xl lp:text-2xl`}>
+                <p className={`${props.textColor} text-center text-xs ml:text-base font-medium md:text-xl lp:text-2xl`}>
                     {props.titulo}
                 </p>
             </div>
 
             <div className="flex items-baseline flex-wrap md:mt-2">
-                <h2 className={`${props.textColor} text-[10px] ml:text-[12px] md:text-[16px] lg:text-lg font-bold`}>
+                <h2 className={`${props.textColor} text-[10px] ml:text-xs md:text-base lg:text-lg font-bold`}>
                     {props.valor}
                 </h2>
 
                 {props.descricao && (
-                <p className={`${props.textColor} text-center text-[10px] ml:text-[12px] md:text-[16px] lg:text-xl ml-1.5`}>
+                <p className={`${props.textColor} text-center text-[10px] ml:text-xs md:text-base lg:text-xl ml-1.5`}>
                     {props.descricao}
                 </p>
                 )}

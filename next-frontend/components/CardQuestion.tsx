@@ -37,18 +37,18 @@ export default function CardQuestion(props: CardQuestionProps) {
 
   return (
    <div className="border p-3 md:p-4 lp:p-6 rounded-sm w-full bg-(--question-card-bg) border-(--question-card-border) text-(--question-card-text)">
-      <h1 className="font-bold md:text-[20px] lp:text-[24px] pc:text-[28px]">{props.titulo}</h1>
+      <h1 className="font-bold md:text-xl lp:text-2xl pc:text-[28px]">{props.titulo}</h1>
 
-      <p className="font-normal md:text-[20px] lp:text-[24px] mt-1.5">{props.enunciado}</p>
+      <p className="font-normal md:text-xl lp:text-2xl mt-1.5">{props.enunciado}</p>
 
       <div className="flex flex-col justify-between gap-2 mt-3">
         {respondida && (
-            <h2 className="font-bold md:text-[18px] lp:text-[24px]">Resolução</h2>
+            <h2 className="font-bold md:text-[18px] lp:text-2xl">Resolução</h2>
          ) }
         {props.alternativas.map((alternativa) => (
             <div key={alternativa.id} className={`p-2 flex items-center gap-2 cursor-pointer w-full border rounded-md ${respondida ? (alternativa.id === props.respostaCorreta ? "bg-(--light-green) border-(--primary-100) text-(--question-resolution-text)" : alternativa.id === alternativaSelecionada ? "border-(--alert) bg-(--neutral-50) text-(--question-resolution-text)" : "hidden") : "text-(--question-option-text) border-(--question-option-border) shadow-sm shadow-(--neutral-500)"}`}>
                 <input type="radio" onChange={() => verificarResposta(alternativa.id)} checked={alternativaSelecionada === alternativa.id} className={`w-5 h-5 ${respondida ? (alternativa.id === props.respostaCorreta ? "accent-(--primary-900)" : alternativa.id === alternativaSelecionada ? "accent-(--dark)" : "") : ""}`} />
-                <label className="pl-1.5 font-normal md:text-[20px] lp:text-[24px]">
+                <label className="pl-1.5 font-normal md:text-xl lp:text-2xl">
                   {alternativa.texto}
                 </label>
             </div>
@@ -56,16 +56,16 @@ export default function CardQuestion(props: CardQuestionProps) {
       </div>
 
       {respondida && (
-        <div className="p-1 font-normal md:text-[20px] lp:text-[24px] text-(--question-card-text)">
+        <div className="p-1 font-normal md:text-xl lp:text-2xl text-(--question-card-text)">
             {props.resolucao}
         </div>
       )}
 
       <div className="flex justify-end gap-3 mt-6">
-        <button onClick={props.questaoAnterior } className="px-2 sm:px-5 py-2 rounded-full font-bold md:text-[12px] lp:text-[16px] uppercase bg-(--btn-prev-bg) text-(--btn-prev-text) hover:bg-(--neutral-0)">
+        <button onClick={props.questaoAnterior } className="px-2 sm:px-5 py-2 rounded-full font-bold md:text-xs lp:text-base uppercase bg-(--btn-prev-bg) text-(--btn-prev-text) hover:bg-(--neutral-0)">
           Anterior
         </button>
-        <button onClick={props.proximaQuestao} className="px-2 sm:px-5 py-2 rounded-full font-bold md:text-[12px] lp:text-[16px] uppercase bg-(--btn-next-bg) text-(--btn-next-text) hover:bg-(--primary-500)">
+        <button onClick={props.proximaQuestao} className="px-2 sm:px-5 py-2 rounded-full font-bold md:text-xs lp:text-base uppercase bg-(--btn-next-bg) text-(--btn-next-text) hover:bg-(--primary-500)">
           Próxima
         </button>
       </div>

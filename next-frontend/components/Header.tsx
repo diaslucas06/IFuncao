@@ -90,14 +90,14 @@ export default function Header() {
                     {menuTemaAberto && (
                         <ul className="absolute rounded-md group-hover:block bg-black left-0 ofset-0 top-full mt-5">
                             <li className="flex justify-between hover:bg-(--primary-900) rounded-md">
-                                <button className='flex justify-between text-[20px] p-5 w-55 hover:cursor-pointer' onClick={() => setTheme('light')}>
+                                <button className='flex justify-between text-xl p-5 w-55 hover:cursor-pointer' onClick={() => setTheme('light')}>
                                     Modo Claro
                                     <Sun size={25}/>
                                 </button>
                             </li>
                             <hr />
                             <li className="flex justify-between hover:bg-(--primary-900) rounded-md">
-                                <button className='flex justify-between text-[20px] p-5 w-55 hover:cursor-pointer' onClick={() => setTheme('dark')}>
+                                <button className='flex justify-between text-xl p-5 w-55 hover:cursor-pointer' onClick={() => setTheme('dark')}>
                                     Modo Escuro
                                     <Moon size={25}/>
                                 </button>

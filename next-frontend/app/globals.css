@@ -153,6 +153,9 @@
   --btn-next-bg: var(--primary-700);
   --btn-next-text: var(--neutral-0);
 
+  --border-search: var(--neutral-500);
+  --button-content-bg: var(--primary-opacity-26)
+
 }
 
 .dark {
@@ -238,6 +241,8 @@
   --btn-next-bg: var(--primary-500);
   --btn-next-text: var(--neutral-0);
 
+  --border-search: var(--neutral-0);
+  --button-content-bg: var(--primary-opacity-26)
 }
 
 @theme {
@@ -316,5 +321,7 @@ body {
     @apply font-sans;
 
   }
-
+  .h1_inicio {
+    @apply text-[24px] md:text-[40px] lg:text-[48px] lp:text-[56px] pc:text-[64px] font-bold;
+  }
 }

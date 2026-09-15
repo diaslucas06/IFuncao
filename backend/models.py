@@ -3,7 +3,7 @@ from pathlib import Path
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, ForeignKey, Date, Text, JSON, DateTime
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-db = create_engine(f"sqlite:///{Path(__file__).resolve().parent / 'banco.db'}")
+db = create_engine("sqlite:///banco.db")
 
 Base = declarative_base()
 

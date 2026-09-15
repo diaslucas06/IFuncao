@@ -72,7 +72,7 @@ export default function perfil() {
                             <CardH1>Sua média</CardH1>
                             <CardP>Média das notas em matemática do ano letivo: </CardP>
                             <div>
-                                <p className="text-[20px] md:text-3xl lp:text-4xl text-(--profile-text-card-color) font-extrabold">{dados.media}</p>
+                                <p className="text-base md:text-3xl lp:text-4xl text-(--profile-text-card-color) font-extrabold">{dados.media}</p>
                             </div>
                         </CardBackground>
                         <CardBackground className="flex flex-1 gap-2 justify-around md:gap-0 lp:justify-between">

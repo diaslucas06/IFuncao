@@ -14,7 +14,7 @@ export default function informacoes_basicas() {
     return (
         <div>
             <Header/>
-            <div className="flex">
+            <main className="flex">
                 <Sidebar/>
                 <ConfDiv>
                     <ConfH1>
@@ -46,7 +46,7 @@ export default function informacoes_basicas() {
                         </div>
                     </div>
                 </ConfDiv>
-            </div>
+            </main>
             <Footer/>
         </div>
     )

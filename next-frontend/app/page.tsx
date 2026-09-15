@@ -1,4 +1,5 @@
 'use client'
+
 import HeaderNotLogged from "@/components/HeaderNotLogged";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,7 +9,8 @@ import CardHistorico from "@/components/CardHistorico";
 import { CardBackground } from "@/components/CardProfile";
 import { BookOpen, CircleCheckBig, Target, Flame } from "lucide-react";
 import CardStatus from "@/components/CardStatus";
-import { useState } from "react";
+import CardInicio from "@/components/CardInicio";
+import CardOlimpiada from "@/components/CardOlimpiada";
 import StudySuggestion from "@/components/StudySuggestion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
@@ -45,35 +47,20 @@ export default function Inicio() {
       <div>
         <Header/>
         <main className="flex flex-col p-5 pb-10 md:p-10 md:pt-12 lg:pt-15 lp:pt-20 gap-8 md:gap-10">
-          <div className="flex flex-col lg:flex-row items-center gap-5 md:gap-10 lp:gap-15 bg-(--primary-700) py-5 md:py-10 px-5 md:px-10 lg:px-12 lp:px-20 rounded-4xl md:text-justify">
-            <Image className="h-auto w-[200px] md:w-[270px] lg:w-[350px] lp:w-[400px] pc:w-[600px]" src={'/logo.png'} alt="Logo" width={600} height={520}/>
-            <p className="font-poppins-sans lg:text-[18px] lp:text-[24px] pc:text-[32px] font-semibold text-white">Sua plataforma de estudos para Matemática do Ensino Médio Técnico Integrado do Instituto Federal do Rio Grande do Norte e para o ENEM. Acesse conteúdos, slides, questões e acompanhe sua evolução na disciplina.</p>
-          </div>
+          <CardInicio img="/logo.png" alt="Logo">
+            Sua plataforma de estudos para Matemática do Ensino Médio Técnico Integrado do Instituto Federal do Rio Grande do Norte e para o ENEM. Acesse conteúdos, slides, questões e acompanhe sua evolução na disciplina.
+          </CardInicio>
           <div className="flex flex-col justify-between gap-3 md:gap-5">
-            <h1 className="text-[24px] md:text-[40px] lg:text-[48px] lp:text-[56px] pc:text-[64px] font-bold">Sua Evolução</h1>
-            <CardBackground className="w-full flex flex-row justify-between gap-2 md:gap-4 bg-(--settings-card-color) grid grid-cols-2 lp:grid-cols-4">
-              <CardStatus
-                titulo="Assuntos concluídos" valor={`${dadosProgresso.assuntosConcluidos}/${dadosProgresso.totalAssuntos}`} icone={BookOpen} bgColor="bg-(--neutral-0)"
-                textColor="text-(--neutral-900)" iconeColor="text-(--primary-300)"
-              />
-
-              <CardStatus
-                titulo="Questões respondidas" valor={String(dadosProgresso.questoesRespondidas)} icone={CircleCheckBig} bgColor="bg-(--primary-800)"
-                textColor="text-(--neutral-0)" iconeColor="text-(--neutral-0)"
-              />
-              
-              <CardStatus
-                titulo="Total de acertos" valor={`${dadosProgresso.totalAcertos}%`} icone={Target} bgColor="bg-(--primary-300)"
-                textColor="text-(--neutral-0)" iconeColor="text-(--neutral-0)"
-              />
-
-              <CardStatus titulo="Ofensiva" valor={String(dadosProgresso.ofensiva)} icone={Flame} bgColor="bg-(--primary-200)" textColor="text-(--neutral-0)"
-                iconeColor="text-(--neutral-0)" descricao="dias"
-              />
+            <h1 className="h1_inicio">Sua Evolução</h1>
+            <CardBackground className="w-full flex flex-row justify-between gap-2 md:gap-4 bg-(--settings-card-color) grid grid-cols-2 lg:grid-cols-4">
+              <CardStatus titulo="Assuntos concluídos" valor={`${dadosProgresso.assuntosConcluidos}/${dadosProgresso.totalAssuntos}`} icone={BookOpen} bgColor="bg-(--neutral-0)" textColor="text-(--neutral-900)" iconeColor="text-(--primary-300)"/>
+              <CardStatus titulo="Questões respondidas" valor={String(dadosProgresso.questoesRespondidas)} icone={CircleCheckBig} bgColor="bg-(--primary-800)" textColor="text-(--neutral-0)" iconeColor="text-(--neutral-0)"/>
+              <CardStatus titulo="Total de acertos" valor={`${dadosProgresso.totalAcertos}%`} icone={Target} bgColor="bg-(--primary-300)" textColor="text-(--neutral-0)" iconeColor="text-(--neutral-0)"/>
+              <CardStatus titulo="Ofensiva" valor={String(dadosProgresso.ofensiva)} icone={Flame} bgColor="bg-(--primary-200)" textColor="text-(--neutral-0)" iconeColor="text-(--neutral-0)" descricao="dias"/>
             </CardBackground>
           </div>
           <div className="flex flex-col justify-between gap-3 md:gap-5">
-            <h1 className="text-[24px] md:text-[40px] lg:text-[48px] lp:text-[56px] pc:text-[64px] font-bold">Sugestões com base no seu desempenho</h1>
+            <h1 className="h1_inicio">Sugestões com base no seu desempenho</h1>
             <div className="flex flex-col md:flex-row justify-between gap-5">
               <StudySuggestion
                 conteudoRecomendado={dadosProgresso.conteudoRecomendado}
@@ -86,7 +73,7 @@ export default function Inicio() {
             </div>
           </div>
           <div className="flex flex-col justify-between gap-3 md:gap-5">
-            <h1 className="text-[24px] md:text-[40px] lg:text-[48px] lp:text-[56px] pc:text-[64px] font-bold">Histórico de conteúdos acessados</h1>
+            <h1 className="h1_inicio">Histórico de conteúdos acessados</h1>
             <CardBackground className="w-full gap-[20px] bg-(--settings-card-color)">
                 <div className="flex items-center w-full">
                   <div className="items-center w-full px-10 hidden ml:flex">
@@ -116,38 +103,13 @@ export default function Inicio() {
                 </div>
             </CardBackground>
           </div>
-          <div className="flex flex-col lg:flex-row items-center gap-5 md:gap-10 lp:gap-15 bg-(--primary-700) py-5 md:py-10 px-5 md:px-10 lg:px-12 lp:px-20 rounded-4xl md:text-justify">
-            <Image className="h-auto w-[200px] md:w-[270px] lg:w-[350px] lp:w-[400px] pc:w-[600px]" src={'/images/illustrations/olimpiadas.png'} alt="Logo" width={520} height={145}/>
-            <p className="font-poppins-sans lg:text-[18px] lp:text-[24px] pc:text-[32px] font-semibold text-white">As olimpíadas de Matemática nacionais são ótimas formas de se incentivar a estudar e praticar a matéria, oferecendo inúmeros benefícios que vão muito além da competição, impactando a vida acadêmica e pessoal dos estudante. As olimpíadas nacionais de matemática são:</p>
-          </div>
+          <CardInicio img="/images/illustrations/olimpiadas.png" alt="Olimpíadas">
+            As olimpíadas de Matemática nacionais são ótimas formas de se incentivar a estudar e praticar a matéria, oferecendo inúmeros benefícios que vão muito além da competição, impactando a vida acadêmica e pessoal dos estudante. As olimpíadas nacionais de matemática são:
+          </CardInicio>
           <div className="flex flex-col md:flex-row justify-around items-center md:items-start gap-5 md:gap-0">
-            <div className="flex flex-col text-center md:w-1/4 justify-center items-center gap-3 md:gap-5 lg:gap-8 lp:gap-10">
-              <a href="https://www.obmep.org.br/" className="flex bg-(--primary-800) rounded-full p-2 md:p-3 lp:p-5 w-fit aspect-square items-center">
-                <Image className="h-auto w-[150px] md:w-[200px] lg:w-[270px] lp:w-[300px] pc:w-[320px]" src={'/images/illustrations/olimpiadas/obmep.png'} alt="Logo" width={320} height={320}/>
-              </a>
-              <div>
-                <h4 className="text-[20px] md:text-[28px] lg:text-[32px] lp:text-[36px] pc:text-[40px] font-bold">OBMEP</h4>
-                <p className="md:text-[20px] lg:text-[24px] lp:text-[28px] pc:text-[32px] font-medium">Olimpíada Brasileira de Matemática das Escolas Públicas</p>
-              </div>
-            </div>
-            <div className="flex flex-col text-center md:w-1/4 justify-center items-center gap-3 md:gap-5 lg:gap-8 lp:gap-10">
-              <a href="https://www.cangurudematematicabrasil.com.br/" className="flex bg-(--primary-800) rounded-full p-2 md:p-3 lp:p-5 w-fit aspect-square items-center">
-                <Image className="h-auto w-[150px] md:w-[200px] lg:w-[270px] lp:w-[300px] pc:w-[320px]" src={'/images/illustrations/olimpiadas/canguru.png'} alt="Logo" width={320} height={320}/>
-              </a>
-              <div>
-                <h4 className="text-[20px] md:text-[28px] lg:text-[32px] lp:text-[36px] pc:text-[40px] font-bold">CANGURU</h4>
-                <p className="md:text-[20px] lg:text-[24px] lp:text-[28px] pc:text-[32px] font-medium">Canguru de matemática Brasil.</p>
-              </div>
-            </div>
-            <div className="flex flex-col text-center md:w-1/4 justify-center items-center gap-3 md:gap-5 lg:gap-8 lp:gap-10">
-              <a href="https://www.obm.org.br/" className="flex bg-(--primary-800) rounded-full p-2 md:p-3 lp:p-5 w-fit aspect-square items-center">
-                <Image className="h-auto w-[150px] md:w-[200px] lg:w-[270px] lp:w-[300px] pc:w-[320px]" src={'/images/illustrations/olimpiadas/obm.png'} alt="Logo" width={320} height={320}/>
-              </a>
-              <div>
-                <h4 className="text-[20px] md:text-[28px] lg:text-[32px] lp:text-[36px] pc:text-[40px] font-bold">OBM</h4>
-                <p className="md:text-[20px] lg:text-[24px] lp:text-[28px] pc:text-[32px] font-medium">Olimpíada Brasileira de Matemática</p>
-              </div>
-            </div>
+            <CardOlimpiada img="/images/illustrations/olimpiadas/obmep.png" title="OBMEP" text="Olimpíada Brasileira de Matemática das Escolas Públicas" link="https://www.obmep.org.br/"/>
+            <CardOlimpiada img="/images/illustrations/olimpiadas/canguru.png" title="CANGURU" text="Canguru de matemática Brasil" link="https://www.cangurudematematicabrasil.com.br/"/>
+            <CardOlimpiada img="/images/illustrations/olimpiadas/obm.png" title="OBM" text="Olimpíada Brasileira de Matemática" link="https://www.obm.org.br/"/>
           </div>
         </main>
         <Footer/>

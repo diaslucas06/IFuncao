@@ -6,9 +6,9 @@ export default function seguranca() {
     return (
         <div>
             <Header/>
-            <div className="flex">
+            <main className="flex">
                 <Sidebar/>
-            </div>
+            </main>
             <Footer/>
         </div>
     )

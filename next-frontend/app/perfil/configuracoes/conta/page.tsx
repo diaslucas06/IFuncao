@@ -25,7 +25,7 @@ export default function informacoes_basicas() {
     return (
         <div>
             <Header/>
-            <div className="flex h-full">
+            <main className="flex h-full">
                 <Sidebar/>
                 <ConfDiv>
                     <div className="flex items-center gap-3">
@@ -60,7 +60,7 @@ export default function informacoes_basicas() {
                         </ConfCard>
                     </div>
                 </ConfDiv>
-            </div>
+            </main>
             <Footer/>
         </div>
     )

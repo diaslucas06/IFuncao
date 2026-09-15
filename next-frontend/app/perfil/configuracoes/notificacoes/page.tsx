@@ -17,7 +17,7 @@ export default function informacoes_basicas() {
     return (
         <div>
             <Header/>
-            <div className="flex h-dvh">
+            <main className="flex h-dvh">
                 <Sidebar/>
                 <ConfDiv>
                     <ConfH1>
@@ -55,7 +55,7 @@ export default function informacoes_basicas() {
                         </ConfCard>
                     </div>
                 </ConfDiv>
-            </div>
+            </main>
             <Footer/>
         </div>
     )

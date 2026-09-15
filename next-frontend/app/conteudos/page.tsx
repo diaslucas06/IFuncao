@@ -2,7 +2,9 @@ import Header from "@/components/Header";
 import HeaderNotLogged from "@/components/HeaderNotLogged";
 import Footer from "@/components/Footer";
 import { CardBackground } from "@/components/CardProfile";
-import Link from "next/link";
+import CardConteudo from "@/components/CardConteudo";
+import ButtonContent from "@/components/ButtonContent";
+import BarraPesquisa from "@/components/BarraPesquisa";
 
 let logado = true
 
@@ -11,38 +13,22 @@ export default function seuprogresso() {
         return (
             <div>
                 <Header/>
-                <main className="flex flex-col p-10 gap-10">
+                <main className="flex flex-col p-5 md:p-10 gap-10 mb-6">
                     <div className="flex flex-col justify-between gap-5">
-                        <h1 className="text-[64px] font-bold">Conteúdos</h1>
+                        <div className="flex justify-between items-center">
+                            <h1 className="h1_inicio">Conteúdos</h1>
+                            <BarraPesquisa/>
+                        </div>
                         <CardBackground className="w-full bg-(--settings-card-color)">
-                            <div className="flex flex-col flex-wrap items-center w-full ml:flex-row ml:gap-15">
-                                <Link href={'/conteudos/conteudo/primeiro_ano'} className="bg-white w-full ml:w-auto ml:aspect-square p-3 md:p-5 rounded-xl shadow-lg">
-                                    <div className="flex-1 flex flex-col items-center justify-center aspect-square w-full ml:w-[115px] md:w-[130px] lg:w-[190px] lp:w-[250px] pc:w-[350px]">
-                                        <p className={`font-poppins-sans text-(--primary-800) text-center font-extrabold text-[14px] lg:text-[20px] lp:text-[24px] pc:text-[128px] mb-[-70px]`}>1</p>
-                                        <p className={`font-poppins-sans text-(--primary-800) text-center font-extrabold text-[14px] lg:text-[20px] lp:text-[24px] pc:text-[64px]`}>ano</p>
-                                    </div>
-                                </Link>
-                                <Link href={'/conteudos/conteudo/segundo_ano'} className="bg-(--primary-800) w-full ml:w-auto ml:aspect-square p-3 md:p-5 rounded-xl shadow-lg">
-                                    <div className="flex-1 flex flex-col items-center justify-center aspect-square w-full ml:w-[115px] md:w-[130px] lg:w-[190px] lp:w-[250px] pc:w-[350px]">
-                                        <p className={`font-poppins-sans text-white text-center font-extrabold text-[14px] lg:text-[20px] lp:text-[24px] pc:text-[128px] mb-[-70px]`}>2</p>
-                                        <p className={`font-poppins-sans text-white text-center font-extrabold text-[14px] lg:text-[20px] lp:text-[24px] pc:text-[64px]`}>ano</p>
-                                    </div>
-                                </Link>
-                                <Link href={'/conteudos/conteudo/terceiro_ano'} className="bg-(--primary-200) w-full ml:w-auto ml:aspect-square p-3 md:p-5 rounded-xl shadow-lg">
-                                    <div className="flex-1 flex flex-col items-center justify-center aspect-square w-full ml:w-[115px] md:w-[130px] lg:w-[190px] lp:w-[250px] pc:w-[350px]">
-                                        <p className={`font-poppins-sans text-(--primary-800) text-center font-extrabold text-[14px] lg:text-[20px] lp:text-[24px] pc:text-[128px] mb-[-70px]`}>3</p>
-                                        <p className={`font-poppins-sans text-(--primary-800) text-center font-extrabold text-[14px] lg:text-[20px] lp:text-[24px] pc:text-[64px]`}>ano</p>
-                                    </div>
-                                </Link>
-                                <Link href={'/conteudos/conteudo/enem'} className="bg-(--primary-300) w-full ml:w-auto ml:aspect-square p-3 md:p-5 rounded-xl shadow-lg">
-                                    <div className="flex-1 flex flex-col items-center justify-center aspect-square w-full ml:w-[115px] md:w-[130px] lg:w-[190px] lp:w-[250px] pc:w-[350px]">
-                                        <p className={`font-poppins-sans text-white text-center font-extrabold text-[14px] lg:text-[20px] lp:text-[24px] pc:text-[32px] mb-[-30px]`}>MATEMÁTICA</p>
-                                        <p className={`font-poppins-sans text-white text-center font-extrabold text-[14px] lg:text-[20px] lp:text-[24px] pc:text-[80px]`}>ENEM</p>
-                                    </div>
-                                </Link>
+                            <div className="w-full flex flex-row justify-between gap-2 md:gap-4 bg-(--settings-card-color) grid grid-cols-2 lg:grid-cols-4">
+                                <CardConteudo index={0} link="/conteudos/conteudo/primeiro_ano" linha1="1" linha2="ano"/>
+                                <CardConteudo index={1} link="/conteudos/conteudo/segundo_ano" linha1="2" linha2="ano"/>
+                                <CardConteudo index={2} link="/conteudos/conteudo/terceiro_ano" linha1="3" linha2="ano"/>
+                                <CardConteudo index={3} link="/conteudos/conteudo/enem" linha1="MATEMÁTICA" linha2="ENEM"/>
                             </div>
                         </CardBackground>
                     </div>
+                    <ButtonContent link="/conteudos/questoes" text="Acessar a página de questões"/>
                 </main>
                     
                 <Footer/>

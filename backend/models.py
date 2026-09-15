@@ -1,7 +1,9 @@
+from pathlib import Path
+
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, ForeignKey, Date, Text, JSON, DateTime
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-db = create_engine("sqlite:///banco.db")
+db = create_engine(f"sqlite:///{Path(__file__).resolve().parent / 'banco.db'}")
 
 Base = declarative_base()
 
@@ -17,6 +19,7 @@ class Usuario(Base):
     user_curso = Column('user_curso', String)
     user_data_nascimento = Column('user_data_nascimento', Date)
     user_foto_url = Column('user_foto_url', String)
+    user_ofensiva_dias = Column('user_ofensiva_dias', Integer)
 
     def __init__(self, user_nome, user_matricula, user_email, user_ano_letivo, user_curso, user_data_nascimento, user_foto_url, user_ofensiva_dias):
         self.user_nome = user_nome

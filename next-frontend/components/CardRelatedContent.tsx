@@ -24,9 +24,9 @@ export default function CardRelatedContent({
     <div className="w-full bg-(--opacity-background-color) rounded-md p-2">
 
       <div className="flex items-center justify-start gap-1 mt-1.5">
-        <BookMarked className="w-6 h-6 ml-1.5 lg:w-7 lg:h-7 shrink-0" />
+        <BookMarked className="ml-1 w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 lp:w-10 lp:h-10 pc:w-12 pc:h-12 shrink-0" />
 
-        <h1 className="text-lg md:text-xl lg:text-xl font-bold px-2">
+        <h1 className="text-left ml-0.5 text-[16px] md:text-[24px] lg:text-[28px] pc:text-[36px] pc:text-center font-bold px-2">
           Conteúdos Relacionados
         </h1>
       </div>
@@ -35,7 +35,7 @@ export default function CardRelatedContent({
         {conteudo.relacionados.map((item) => (
           <li
             key={item.id}
-            className="text-base md:text-lg lg:text-lg mx-1.5 my-2.5 hover:text-(--primary-500)"
+            className="font-normal text-[16px] md:text-[18px] lp:text-[24px]  mx-1.5 my-2.5 hover:text-(--primary-500)"
           >
             <hr className="my-2.5 w-full" />
 

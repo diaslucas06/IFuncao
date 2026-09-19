@@ -135,7 +135,7 @@ export default function Inicio() {
         <HeaderNotLogged />
         <main className="w-full max-w-[1920px] mx-auto flex min-h-[calc(100vh-72px)] flex-col lg:flex-row">
 
-        <section className="w-full lp:w-1/2 bg-(--primary-800) text-(--neutral-0) flex flex-col justify-start items-start px-6 ml:px-12 pt-16 lp:pt-[140px]">
+        <section className="w-full lp:w-1/2 bg-(--primary-800) text-(--neutral-0) flex flex-col justify-start items-start px-6 ml:px-12 pt-16 pb-10 lp:pt-[140px]">
 
           <div className="w-full ml:max-w-lg lp:max-w-[650px] mb-5">
 
@@ -162,12 +162,13 @@ export default function Inicio() {
 
         <div className="w-full lp:w-1/2 flex items-center justify-center p-6 pc:p-12">
           <Image
-            src="/images/illustrations/home-illustration.png" alt="Imagem dos estudantes" width={900} height={750}
-            className="h-auto w-full max-w-xl object-contain"
+            src="/images/illustrations/home-illustration.svg" alt="Imagem dos estudantes" width={900} height={750}
+            className="h-auto  object-contain pc:w-[800px]"
           />
         </div>
 
       </main>
+      <Footer/>
       </div>
     );
   }

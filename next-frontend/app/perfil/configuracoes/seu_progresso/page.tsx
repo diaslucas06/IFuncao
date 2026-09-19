@@ -26,7 +26,7 @@ export default function informacoes_basicas() {
     }
 
     return (
-        <div>
+        <div className="min-h-screen">
             <Header/>
             <main className="flex">
                 <Sidebar/>

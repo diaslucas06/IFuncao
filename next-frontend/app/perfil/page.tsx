@@ -45,7 +45,7 @@ export default function perfil() {
         <div>
             <Header/>
             <Profile usuario={'Nome do usuário'} ano={3} matricula={20241101110000} curso={'Informática para Internet'} idade={18} imagem={''}/>
-            <main className="flex flex-col p-5 pt-10 gap-5 md:p-10 md:pt-20 lg:gap-7 lg:pt-28 lp:pt-30 pc:pt-40">
+            <main className="flex flex-col p-5 pt-10 gap-5 md:p-10 md:pt-20 lg:gap-7 lg:pt-33 lp:pt-35 pc:pt-45">
                 <div className="flex flex-1 flex-wrap justify-between gap-5">
                     <CardBackground className="flex gap-[20px] flex-1/1 lg:flex-1 pc:flex-1 pc:w-[47%]">
                         <CardH1>Dados Pessoais</CardH1>

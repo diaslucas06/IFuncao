@@ -6,6 +6,7 @@ import Sidebar from "@/components/Sidebar";
 import { useState } from "react";
 import { ConfDiv, ConfH1, ConfH2, ConfP, ConfCard, ConfLi } from "@/components/ConfComponents";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import Link from "next/link";
 
 export default function informacoes_basicas() {
     const [menuAberto, setMenuAberto] = useState(false)
@@ -22,9 +23,16 @@ export default function informacoes_basicas() {
             <main className="flex">
                 <Sidebar/>
                 <ConfDiv>
-                    <ConfH1>
-                        Informações Básicas
-                    </ConfH1>
+                    <div className="hidden md:flex">
+                        <ConfH1>
+                            Informações Básicas
+                        </ConfH1>
+                    </div>
+                    <div className="flex md:hidden justify-center">
+                        <ConfH1>
+                            Configurações
+                        </ConfH1>
+                    </div>
                     <div className="flex flex-col gap-3">
                         <ConfCard>
                             <ConfH2>IFunção</ConfH2>
@@ -33,6 +41,15 @@ export default function informacoes_basicas() {
                         <ConfCard>
                             <ConfH2>Como usar</ConfH2>
                             <ConfP>Para utilizar a plataforma <b>IFunção</b>, é necessário se conectar por meio do SUAP, dessa forma, você poderá acessar todos os conteúdos e questões disponíveis no site, podendo acompanhar seu progresso e personalizar seu perfil com uma foto e nome de usuário próprio.</ConfP>
+                        </ConfCard>
+                        <ConfCard className='flex md:hidden'>
+                            <Link href={'/perfil/configuracoes/conta'} className="font-bold text-xl">Conta</Link>
+                        </ConfCard>
+                        <ConfCard className='flex md:hidden'>
+                            <Link href={'/perfil/configuracoes/seguranca'} className="font-bold text-xl">Segurança</Link>
+                        </ConfCard>
+                        <ConfCard className='flex md:hidden'>
+                            <Link href={'/perfil/configuracoes/seu_progresso'} className="font-bold text-xl">Progresso</Link>
                         </ConfCard>
                         <ConfCard>
                             <ConfH2>Ajuda</ConfH2>
@@ -52,9 +69,6 @@ export default function informacoes_basicas() {
                                     </ul>
                                 )}
                             </div>
-                        </ConfCard>
-                        <ConfCard className='flex md:hidden'>
-                            <></> {/*  aqui vai ficar as outras opções que ou levarão para as outras pags de configurações ou serão as opções por inteiro */}
                         </ConfCard>
                     </div>
                 </ConfDiv>

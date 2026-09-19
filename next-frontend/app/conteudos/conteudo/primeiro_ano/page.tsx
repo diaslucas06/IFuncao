@@ -5,6 +5,7 @@ import HeaderNotLogged from "@/components/HeaderNotLogged";
 import Footer from "@/components/Footer";
 import { CardBackground } from "@/components/CardProfile";
 import CardHistorico from "@/components/CardHistorico";
+import BarraPesquisa from "@/components/BarraPesquisa";
 
 let logado = true
 
@@ -30,11 +31,16 @@ export default function seuprogresso() {
                 <Header/>
                 <main className="flex flex-col p-10 gap-10">
                     <div className="flex flex-col justify-between gap-5">
-                        <h1 className="text-[64px] font-bold">Conteúdos - 1° ano </h1>
+                        <div className="flex flex-col lg:flex-row justify-between items-center">
+                            <h1 className="h1_inicio">Conteúdos - 1° ano</h1>
+                            <BarraPesquisa/>
+                        </div>
                         <CardBackground className="w-full bg-(--settings-card-color)">
-                            <div className="flex flex-col flex-wrap items-center w-full ml:flex-row ml:gap-15">
+                            <div className="flex flex-wrap gap-3 lg:gap-8 lp:gap-11">
                                 {historico.map((conteudo, index) => (
-                                    <CardHistorico key={conteudo.id} nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
+                                    <div key={conteudo.id} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
+                                       <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/> 
+                                    </div>
                                 ))}
                             </div>
                         </CardBackground>

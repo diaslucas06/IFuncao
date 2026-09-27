@@ -7,14 +7,14 @@ from jose import jwt, JWTError
 # Ajuste os imports abaixo de acordo com os arquivos do seu projeto
 from main import ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY
 from models import Usuario
-from schemas import LoginSchema, UsuarioSchema, PerfilSchema
-from dependencies import pegar_sessao  # Assumindo que você tem essa função que gera a sessão do DB
+from schemas import LoginSchema, UsuarioSchema, PerfilSchema, LoginResponseSchema
+from dependencies import pegar_sessao, pegar_usuario_logado  # Assumindo que você tem essa função que gera a sessão do DB
 
 auth_routes = APIRouter(prefix="/auth", tags=["Autenticação"])
 
-def criar_token(user_id):
-    data_expiracao = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    dic_info = {"sub": user_id, "exp": data_expiracao}
+def criar_token(user_id, duracao_token=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)):
+    data_expiracao = datetime.now(timezone.utc) + duracao_token
+    dic_info = {"sub": str(user_id), "exp": data_expiracao}
     jwt_codificado = jwt.encode(dic_info, SECRET_KEY, ALGORITHM)
     return jwt_codificado
 
@@ -23,7 +23,7 @@ URL_MEUS_DADOS = "https://suap.ifrn.edu.br/api/ensino/meus-dados-aluno/"
 URL_RH_EU = "https://suap.ifrn.edu.br/api/rh/eu/"
 HEADERS_PADRAO = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 
-@auth_routes.post("/login", response_model=UsuarioSchema)
+@auth_routes.post("/login", response_model=LoginResponseSchema)
 async def login(dados_login: LoginSchema, db: Session = Depends(pegar_sessao)):
     
     # 1. Tenta autenticar no SUAP
@@ -66,8 +66,6 @@ async def login(dados_login: LoginSchema, db: Session = Depends(pegar_sessao)):
                 db.commit()
                 db.refresh(usuario)
 
-            return usuario
-
         # 3. Se não existir, busca os dados completos no SUAP para criar a conta
         if not usuario:
             headers_auth = {
@@ -104,18 +102,22 @@ async def login(dados_login: LoginSchema, db: Session = Depends(pegar_sessao)):
                 user_foto_url=dados_perfil.get("foto", ""),
                 user_ofensiva_dias=0
             )
-
-            access_token = criar_token(usuario.id)
-
             
             db.add(usuario)
             db.commit()
             db.refresh(usuario)
 
-        # Retorna o usuário (o FastAPI usará o UsuarioSchema para formatar a saída automaticamente)
-        print(dados_suap)
-        return usuario, access_token
+        access_token = criar_token(usuario.id)
+        refresh_token = criar_token(usuario.id, duracao_token=timedelta(days=7))
 
-@auth_routes.post("/perfil", response_model=PerfilSchema)
-async def dados_perfil(db: Session = Depends(pegar_sessao)):
-    pass
+        # Retorna o usuário (o FastAPI usará o UsuarioSchema para formatar a saída automaticamente)
+        return {
+            "usuario": usuario,
+            "access_token": access_token,
+            "refresh_token": refresh_token,
+            "token_type": "bearer"
+        }
+
+@auth_routes.get("/perfil", response_model=PerfilSchema)
+async def dados_perfil(usuario: Usuario = Depends(pegar_usuario_logado)):
+    return usuario

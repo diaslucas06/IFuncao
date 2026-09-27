@@ -24,6 +24,15 @@ class LoginSchema(BaseModel):
     user_matricula: int
     user_senha: str
 
+class LoginResponseSchema(BaseModel):
+    usuario: UsuarioSchema
+    access_token: str
+    refresh_token: str
+    token_type: str
+
+    class Config:
+        from_attributes = True
+        
 class PerfilSchema(BaseModel):
     perfil_nome: str
     perfil_matricula: int

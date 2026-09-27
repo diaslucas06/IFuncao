@@ -1,14 +1,22 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 import httpx
+from jose import jwt, JWTError
 
 # Ajuste os imports abaixo de acordo com os arquivos do seu projeto
+from main import ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY
 from models import Usuario
-from schemas import LoginSchema, UsuarioSchema
+from schemas import LoginSchema, UsuarioSchema, PerfilSchema
 from dependencies import pegar_sessao  # Assumindo que você tem essa função que gera a sessão do DB
 
 auth_routes = APIRouter(prefix="/auth", tags=["Autenticação"])
+
+def criar_token(user_id):
+    data_expiracao = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    dic_info = {"sub": user_id, "exp": data_expiracao}
+    jwt_codificado = jwt.encode(dic_info, SECRET_KEY, ALGORITHM)
+    return jwt_codificado
 
 URL_TOKEN = "https://suap.ifrn.edu.br/api/token/pair"
 URL_MEUS_DADOS = "https://suap.ifrn.edu.br/api/ensino/meus-dados-aluno/"
@@ -96,6 +104,9 @@ async def login(dados_login: LoginSchema, db: Session = Depends(pegar_sessao)):
                 user_foto_url=dados_perfil.get("foto", ""),
                 user_ofensiva_dias=0
             )
+
+            access_token = criar_token(usuario.id)
+
             
             db.add(usuario)
             db.commit()
@@ -103,4 +114,8 @@ async def login(dados_login: LoginSchema, db: Session = Depends(pegar_sessao)):
 
         # Retorna o usuário (o FastAPI usará o UsuarioSchema para formatar a saída automaticamente)
         print(dados_suap)
-        return usuario
+        return usuario, access_token
+
+@auth_routes.post("/perfil", response_model=PerfilSchema)
+async def dados_perfil(db: Session = Depends(pegar_sessao)):
+    pass

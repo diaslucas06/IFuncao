@@ -23,3 +23,14 @@ class AcessoSchema(BaseModel):
 class LoginSchema(BaseModel):
     user_matricula: int
     user_senha: str
+
+class PerfilSchema(BaseModel):
+    perfil_nome: str
+    perfil_matricula: int
+    perfil_ano_letivo: Optional[str] = None
+    perfil_email: str
+    perfil_curso: Optional[str] = None
+    perfil_data_nascimento: Optional[date] = None
+    perfil_progresso: Optional[str] = None
+    perfil_mediageral: Optional[float] = None
+    perfil_foto_url: Optional[str] = None

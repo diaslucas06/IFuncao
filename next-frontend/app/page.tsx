@@ -131,11 +131,11 @@ export default function Inicio() {
     )
   } else {
     return (
-      <div>
+      <div className="flex flex-col justify-between h-screen">
         <HeaderNotLogged />
-        <main className="w-full max-w-[1920px] mx-auto flex min-h-[calc(100vh-72px)] flex-col lg:flex-row">
+        <main className="flex items-center justify-center h-full flex-col lg:flex-row">
 
-        <section className="w-full lp:w-1/2 bg-(--primary-800) text-(--neutral-0) flex flex-col justify-start items-start px-6 ml:px-12 pt-16 pb-10 lp:pt-[140px]">
+        <section className="w-full h-full lp:w-1/2 bg-(--primary-800) text-(--neutral-0) flex flex-col justify-center items-center lg:items-start px-6 ml:px-12 pt-16 pb-10">
 
           <div className="w-full ml:max-w-lg lp:max-w-[650px] mb-5">
 
@@ -151,7 +151,7 @@ export default function Inicio() {
 
             <Link
               href="/login"
-              className="flex items-center justify-center w-3/4 ml:w-1/2 lp:w-64 h-9 ml:h-10 mt-6 bg-(--primary-700) hover:bg-(--primary-500) text-sm lp:text-base font-medium rounded-3xl"
+              className="flex items-center justify-center mt-6 bg-(--primary-700) hover:bg-(--primary-500) text-sm lp:text-2xl p-2 md:p-3 lp:p-4 lp:w-1/2 font-medium rounded-full"
             >
               Acessar Conteúdos
             </Link>

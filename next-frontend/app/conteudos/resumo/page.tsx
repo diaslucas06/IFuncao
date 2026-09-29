@@ -25,7 +25,7 @@ const dadosResumo = {
   id: 1,
   titulo: "Matemática Básica",
   conteudo:
-    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam nulla et in saepe! Mollitia voluptatum accusantium at non corrupti ratione, quas suscipit enim reprehenderit iusto vel ipsa officiis iure libero?",
+    "A Matemática Básica reúne os conceitos fundamentais para o desenvolvimento do raciocínio lógico e é o pré-requisito para conteúdos mais avançados. Ela está presente em quase todas as questões de exames como o ENEM.",
 
   relacionados: [
     {

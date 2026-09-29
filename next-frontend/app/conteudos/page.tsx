@@ -28,7 +28,7 @@ export default function seuprogresso() {
 
     if (pessoa_logada) {
         return (
-            <div>
+            <div className="h-screen">
                 <Header/>
                 <main className="flex flex-col p-5 md:p-10 gap-10 mb-6">
                     <div className="flex flex-col justify-between gap-5">

@@ -2,13 +2,12 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from datetime import date, datetime, timedelta, timezone
 import httpx
-from jose import jwt, JWTError
+from jose import jwt
 
-# Ajuste os imports abaixo de acordo com os arquivos do seu projeto
-from main import ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY
+from config import ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY
 from models import Usuario
 from schemas import LoginSchema, UsuarioSchema, PerfilSchema, LoginResponseSchema
-from dependencies import pegar_sessao, pegar_usuario_logado  # Assumindo que você tem essa função que gera a sessão do DB
+from dependencies import pegar_sessao, pegar_usuario_logado 
 
 auth_routes = APIRouter(prefix="/auth", tags=["Autenticação"])
 
@@ -107,15 +106,15 @@ async def login(dados_login: LoginSchema, db: Session = Depends(pegar_sessao)):
             db.commit()
             db.refresh(usuario)
 
-        access_token = criar_token(usuario.id)
-        refresh_token = criar_token(usuario.id, duracao_token=timedelta(days=7))
+        access_token = criar_token(usuario.user_id)
+        refresh_token = criar_token(usuario.user_id, duracao_token=timedelta(days=7))
 
         # Retorna o usuário (o FastAPI usará o UsuarioSchema para formatar a saída automaticamente)
         return {
-            "usuario": usuario,
             "access_token": access_token,
             "refresh_token": refresh_token,
-            "token_type": "bearer"
+            "token_type": "bearer",
+            "usuario": usuario,
         }
 
 @auth_routes.get("/perfil", response_model=PerfilSchema)

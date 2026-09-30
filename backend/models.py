@@ -21,7 +21,7 @@ class Usuario(Base):
     user_foto_url = Column('user_foto_url', String)
     user_ofensiva_dias = Column('user_ofensiva_dias', Integer)
 
-    def __init__(self, user_nome, user_matricula, user_email, user_ano_letivo, user_curso, user_data_nascimento, user_foto_url, user_ofensiva_dias):
+    def __init__(self, user_nome, user_matricula, user_email, user_ano_letivo, user_curso, user_data_nascimento, user_foto_url):
         self.user_nome = user_nome
         self.user_matricula = user_matricula
         self.user_email = user_email

@@ -1,107 +1,84 @@
-from pathlib import Path
+from typing import Optional
+from datetime import date, datetime
 
-from sqlalchemy import create_engine, Column, String, Integer, Boolean, ForeignKey, Date, Text, JSON, DateTime
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy import create_engine, String, Integer, ForeignKey, Date, Text, JSON, DateTime, Enum, CheckConstraint, UniqueConstraint
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 db = create_engine("sqlite:///banco.db")
 
-Base = declarative_base()
+
+class Base(DeclarativeBase):
+    pass
 
 class Usuario(Base):
 
     __tablename__ = "usuarios" 
 
-    user_id = Column('user_id', Integer, primary_key=True, autoincrement=True, )
-    user_nome = Column('user_nome', String)
-    user_matricula = Column('user_matricula', Integer, unique=True, nullable=False)
-    user_email = Column('user_email', String)
-    user_ano_letivo = Column('user_ano_letivo', String)
-    user_curso = Column('user_curso', String)
-    user_data_nascimento = Column('user_data_nascimento', Date)
-    user_foto_url = Column('user_foto_url', String)
-    user_ofensiva_dias = Column('user_ofensiva_dias', Integer)
+    __table_args__ = (
+        CheckConstraint("user_ano_letivo BETWEEN 1 AND 4", name="ck_user_ano_letivo"),
+    )
 
-    def __init__(self, user_nome, user_matricula, user_email, user_ano_letivo, user_curso, user_data_nascimento, user_foto_url):
-        self.user_nome = user_nome
-        self.user_matricula = user_matricula
-        self.user_email = user_email
-        self.user_ano_letivo = user_ano_letivo
-        self.user_curso = user_curso
-        self.user_data_nascimento = user_data_nascimento
-        self.user_foto_url = user_foto_url
+    user_id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    user_nome: Mapped[str] = mapped_column(String(80))
+    user_matricula: Mapped[int] = mapped_column(unique=True)
+    user_email: Mapped[str] = mapped_column(String(100), unique=True)
+    user_ano_letivo: Mapped[Optional[int]] = mapped_column(Integer)
+    user_curso: Mapped[Optional[str]] = mapped_column(String(30))
+    user_data_nascimento: Mapped[Optional[date]] = mapped_column(Date)
+    user_foto_url: Mapped[Optional[str]] = mapped_column(String(100))
+    user_progresso: Mapped[dict] = mapped_column(JSON)
+    user_media_matematica: Mapped[Optional[float]]
 
 class Acesso(Base):
 
     __tablename__ = "acessos"
 
-    ace_id = Column('ace_id', Integer, primary_key=True, autoincrement=True)
-    ace_user_id = Column('ace_user_id', ForeignKey('usuarios.user_id'))
-    ace_data = Column('ace_data', Date)
-    ace_hora_inicio = Column('ace_hora_inicio', DateTime)
-    ace_hora_fim = Column('ace_hora_fim', DateTime)
+    ace_id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    ace_user_id: Mapped[int] = mapped_column(ForeignKey('usuarios.user_id'))
+    ace_hora_inicio: Mapped[datetime] = mapped_column(DateTime)
+    ace_hora_fim: Mapped[Optional[datetime]] = mapped_column(DateTime)
 
 class Questao(Base):
 
     __tablename__ = "questoes" 
 
-    ques_id = Column('ques_id', Integer, primary_key=True, autoincrement=True)
-    ques_enunciado = Column('ques_enunciado', Text)
-    ques_alternativas = Column('ques_alternativas', JSON)
-    ques_etapa = Column('ques_etapa', String)
-    ques_nivel_dificuldade = Column('ques_nivel_dificuldade', String)
-    ques_cont_id = Column('ques_cont_id', ForeignKey('conteudos.cont_id'))
-    ques_resposta_correta = Column('ques_resposta_correta', String)
-    
-
-    def __init__(self, ques_enunciado, ques_alternativas, ques_etapa, ques_nivel_dificuldade, ques_cont_id, ques_resposta_correta):
-        self.ques_enunciado = ques_enunciado
-        self.ques_alternativas = ques_alternativas
-        self.ques_etapa = ques_etapa
-        self.ques_nivel_dificuldade = ques_nivel_dificuldade 
-        self.ques_cont_id = ques_cont_id
-        self.ques_resposta_correta = ques_resposta_correta
+    ques_id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    ques_cont_id: Mapped[int] = mapped_column(ForeignKey('conteudos.cont_id'))
+    ques_enunciado: Mapped[str] = mapped_column(Text)
+    ques_alternativas: Mapped[dict] = mapped_column(JSON)
+    ques_etapa: Mapped[str] = mapped_column(Enum("1", "2", "3", "ENEM", name="etapa_enum"))
+    ques_nivel_dificuldade: Mapped[str] = mapped_column(Enum("Fácil", "Médio", "Difícil", name="nivel_dificuldade_enum"))
+    ques_resposta_correta: Mapped[str] = mapped_column(Enum("A", "B", "C", "D", "E", name="alternativa_enum"))
 
 class Conteudo(Base):
 
     __tablename__ = "conteudos" 
 
-    cont_id = Column('cont_id', Integer, primary_key=True, autoincrement=True)
-    cont_nome = Column('cont_nome', String)
-    cont_etapa = Column('cont_etapa', String)
-    cont_slide_pdf = Column('cont_slide_pdf', String)
-
-    def __init__(self, cont_nome, cont_etapa):
-        self.cont_nome = cont_nome
-        self.cont_etapa = cont_etapa
+    cont_id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    cont_nome: Mapped[str] = mapped_column(String(30))
+    cont_etapa: Mapped[str] = mapped_column(Enum("1", "2", "3", "ENEM", name="etapa_enum"))
+    cont_slide_pdf: Mapped[str] = mapped_column(String(255))
 
 class Usuario_Conteudo(Base):
 
     __tablename__ = "usuario_conteudos" 
 
-    usercont_id = Column('user_id', Integer, primary_key=True, autoincrement=True)
-    usercont_user_id = Column('usercont_user_id', ForeignKey('usuarios.user_id'))
-    usercont_cont_id = Column('usercont_cont_id', ForeignKey('conteudos.cont_id'))
-    usercont_concluido = Column('usercont_concluido', Boolean)
+    __table_args__ = (
+        UniqueConstraint("usercont_user_id", "usercont_cont_id", name="uq_user_conteudo"),
+    )
 
-    def __init__(self, usercont_user_id, usercont_cont_id, usercont_concluido):
-        self.usercont_user_id = usercont_user_id
-        self.usercont_cont_id = usercont_cont_id
-        self.usercont_concluido = usercont_concluido
+    usercont_id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    usercont_user_id: Mapped[int] = mapped_column(ForeignKey('usuarios.user_id'))
+    usercont_cont_id: Mapped[int] = mapped_column(ForeignKey('conteudos.cont_id'))
+    usercont_concluido: Mapped[bool] = mapped_column(default=False)
+    usercont_ultimo_acesso: Mapped[Optional[datetime]] = mapped_column(DateTime)
 
 class Resposta_Questao(Base):
 
     __tablename__ = "resposta_questoes" 
 
-    respques_id = Column('respques_id', Integer, primary_key=True, autoincrement=True)
-    respques_user_id = Column('respques_user_id', ForeignKey('usuarios.user_id'))
-    respques_ques_id = Column('respques_ques_id', ForeignKey('questoes.ques_id'))
-    respques_alternativa_escolhida = Column('respques_alternativa_escolhida', String)
-    respques_acertou = Column('respques_acertou', Boolean)
-    
-
-    def __init__(self, respques_user_id, respques_ques_id, respques_alternativa_escolhida, respques_acertou):
-        self.respques_user_id = respques_user_id
-        self.respques_ques_id = respques_ques_id
-        self.respques_alternativa_escolhida = respques_alternativa_escolhida
-        self.respques_acertou = respques_acertou
-
+    respques_id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    respques_user_id: Mapped[int] = mapped_column(ForeignKey('usuarios.user_id'))
+    respques_ques_id: Mapped[int] = mapped_column(ForeignKey('questoes.ques_id'))
+    respques_alternativa_escolhida: Mapped[str] = mapped_column(Enum("A", "B", "C", "D", "E", name="alternativa_enum"))
+    respques_acertou: Mapped[bool]

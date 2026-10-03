@@ -11,28 +11,28 @@ export default function questoes() {
   const questoes = [
     {
       id: 1,
-      enunciado: "Um técnico possui 15 jogadores...",
+      enunciado: " Um concurso para preencher 200 vagas recebeu 1600 inscrições. Quantos candidatos há para cada vaga?",
       alternativas: [
-        { id: "a", texto: "Resposta A" },
-        { id: "b", texto: "Resposta B" },
-        { id: "c", texto: "Resposta C" },
-        { id: "d", texto: "Resposta D" },
+        { id: "a", texto: "4" },
+        { id: "b", texto: "6" },
+        { id: "c", texto: "8" },
+        { id: "d", texto: "12" },
       ],
-      respostaCorreta: "a",
-      resolucao: "texto texto",
+      respostaCorreta: "c",
+      resolucao: "Comparando o número de candidatos com o número de vagas em uma divisão, temos: 1600:200 = 8/1, Sendo assim, a razão entre os números é 8 para 1, ou seja, há 8 candidatos para 1 vaga no concurso. Como um número dividido por 1 tem como resultado ele mesmo, então a alternativa correta é a letra c) 8.",
     },
 
     {
       id: 2,
-      enunciado: "Uma turma possui 30 alunos...",
+      enunciado: " Em uma seleção, a razão entre o número de homens e mulheres candidatos a vaga é 4/7. Sabendo que 32 candidatos são do sexo masculino, o número total de participantes na seleção é:",
       alternativas: [
-        { id: "a", texto: "Resposta A" },
-        { id: "b", texto: "Resposta B" },
-        { id: "c", texto: "Resposta C" },
-        { id: "d", texto: "Resposta D" },
+        { id: "a", texto: "56" },
+        { id: "b", texto: "72" },
+        { id: "c", texto: "88" },
+        { id: "d", texto: "94" },
       ],
       respostaCorreta: "b",
-      resolucao: "texto texto",
+      resolucao: "Primeiramente, calculamos, através da regra fundamental da proporção, o número de mulheres na seleção. Agora, somamos o número de homens e mulheres para encontrarmos o total de participantes. 56 + 32 = 88",
     },
   ];
 
@@ -66,7 +66,7 @@ export default function questoes() {
 
             <div className="rounded-md bg-(--theory-header-bg) text-(--theory-header-text)">
               <h2 className="font-bold  rounded-2xl ml-1.5 p-2 text-[20px] md:text-[28px] lg:text-[32px] pc:text-[36px]">
-                Questões de Análise Combinatória
+                Questões de Razão e Proporção
               </h2>
             </div>
 

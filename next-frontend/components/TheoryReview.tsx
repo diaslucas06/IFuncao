@@ -19,7 +19,7 @@ export default function TheoryReview() {
       <div className="p-6 bg-(--theory-card-bg) rounded-b-lg ">
 
         <p className="font-normal text-base md:text-lg lp:text-2xl  text-left text-(--theory-card-text) whitespace-normal leading-normal">
-          Reveja a teoria de Análise Combinatória antes de continuar resolvendo os exercícios.
+          Reveja a teoria de Razão e Proporção antes de continuar resolvendo os exercícios.
         </p>
 
         <Link

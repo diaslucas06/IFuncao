@@ -21,7 +21,7 @@ export default function CardRelatedContent({
   conteudo,
 }: ListaRelacionadosProps) {
   return (
-    <div className="w-full bg-(--opacity-background-color) rounded-md p-2">
+    <div className="w-full bg-(--settings-card-color) border-(--question-card-border)  rounded-md p-2">
 
       <div className="flex items-center justify-start gap-1 mt-1.5">
         <BookMarked className="ml-1 w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 lp:w-10 lp:h-10 pc:w-12 pc:h-12 shrink-0" />

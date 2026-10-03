@@ -1,63 +1,32 @@
-import Carrossel from "@/components/ContentCarousel";
+'use client'
+
 import Resumo from "@/components/ContentSummary";
 import Header from "@/components/Header";
 import CardRelatedContent from "@/components/CardRelatedContent";
+import dadosResumo from "@/data/conteudo.json";
+import dynamic from "next/dynamic";
 
-const IMAGENS_TESTE = [
-  {
-    id: 1,
-    url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=450&fit=crop",
-    alt: "Banner 1 - Arte Abstrata",
-  },
-  {
-    id: 2,
-    url: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&h=450&fit=crop",
-    alt: "Banner 3 - Neon",
-  },
-  {
-    id: 3,
-    url: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&h=450&fit=crop",
-    alt: "Banner 3 - Neon",
-  },
-];
+const PdfSlideViewer = dynamic(() => import("@/components/PdfSlideViewer"), {
+  ssr: false, 
+});
 
-const dadosResumo = {
-  id: 1,
-  titulo: "Matemática Básica",
-  conteudo:
-    "A Matemática Básica reúne os conceitos fundamentais para o desenvolvimento do raciocínio lógico e é o pré-requisito para conteúdos mais avançados. Ela está presente em quase todas as questões de exames como o ENEM.",
+const PDF_URL_TESTE = "/slides/GM-1-ANO.pdf";
 
-  relacionados: [
-    {
-      id: 2,
-      titulo: "Álgebra Linear",
-    },
-    {
-      id: 3,
-      titulo: "Geometria",
-    },
-    {
-      id: 4,
-      titulo: "Conteúdo",
-    },
-  ],
-};
-
-export default function conteudos() {
+export default function Conteudos() {
   return (
     <div>
       <Header />
 
-      <main className="p-5 mt-5 sm:mt-12 mx-5">
+      <main className="p-5 mt-2 sm:mt-6 mx-5">
         <Resumo dados={dadosResumo} />
 
-        <div className="w-full mt-2 flex flex-col lg:flex-row gap-6 lg:items-start">
-
-          <div className="w-full lg:w-2/3 lg:mt-6 min-w-0">
-            <Carrossel slides={IMAGENS_TESTE} />
+        <div className="w-full flex flex-col lg:flex-row gap-6 lg:items-start">
+          
+          <div className="w-full lg:w-2/3 lg:mt-4 min-w-0">
+            <PdfSlideViewer pdfUrl={PDF_URL_TESTE} />
           </div>
 
-          <div className="w-full lg:w-1/3 lg:mt-6 min-w-0">
+          <div className="w-full lg:w-1/3 lg:mt-4 min-w-0">
             <CardRelatedContent conteudo={dadosResumo} />
           </div>
 

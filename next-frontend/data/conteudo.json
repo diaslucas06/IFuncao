@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "titulo": "Razão e Proporção",
+  "conteudo": "Definição: A razão estabelece uma comparação entre duas grandezas, sendo o coeficiente entre dois números.\n\nJá a proporção é determinada pela igualdade entre duas razões, ou ainda, quando duas razões possuem o mesmo resultado.\nDessa forma, a razão está relacionada a divisão, para encontrá-la entre duas grandezas, as unidades de medida deverão ser iguais.",
+  "relacionados": [
+    { "id": 2, "titulo": "Regra de Três Simples e Composta" },
+    { "id": 3, "titulo": "Porcentagem e Razão Centesimal" },
+    { "id": 4, "titulo": "Escalas e Grandezas Proporcionais" }
+  ]
+}

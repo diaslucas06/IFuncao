@@ -6,6 +6,7 @@ from typing import List
 from models import db, Base, Usuario
 from schemas import UsuarioSchema
 from routes.auth_routes import auth_routes
+from routes.questoes_routes import questoes_routes  
 
 app = FastAPI()
 
@@ -19,6 +20,7 @@ app.add_middleware(
 
 # Registra as rotas do grupo
 app.include_router(auth_routes)
+app.include_router(questoes_routes)  
 
 @app.get("/")
 def home():

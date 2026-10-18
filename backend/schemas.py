@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, Dict
 from datetime import date, datetime
 
 class UsuarioSchema(BaseModel):
@@ -43,3 +43,17 @@ class PerfilSchema(BaseModel):
     perfil_progresso: Optional[str] = None
     perfil_mediageral: Optional[float] = None
     perfil_foto_url: Optional[str] = None
+    
+class QuestaoSchema(BaseModel):
+    ques_id: int
+    ques_cont_id: int
+    ques_enunciado: str
+    ques_imagem_url: Optional[str] = None
+    ques_alternativas: Dict[str, str]
+
+    class Config:
+        from_attributes = True
+
+class RespostaSchema(BaseModel):
+    respquest_ques_id: int
+    respquest_alternativa_escolhida: str

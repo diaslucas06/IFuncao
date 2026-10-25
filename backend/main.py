@@ -7,6 +7,7 @@ from models import db, Base, Usuario
 from schemas import UsuarioSchema
 from routes.auth_routes import auth_routes
 from routes.questoes_routes import questoes_routes  
+from routes.conteudos_routes import conteudos_routes
 
 app = FastAPI()
 
@@ -21,6 +22,7 @@ app.add_middleware(
 # Registra as rotas do grupo
 app.include_router(auth_routes)
 app.include_router(questoes_routes)  
+app.include_router(conteudos_routes)
 
 @app.get("/")
 def home():

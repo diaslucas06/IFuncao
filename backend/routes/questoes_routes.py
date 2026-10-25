@@ -18,7 +18,7 @@ async def listar_questoes_por_conteudo(
     
     if not questoes:
         raise HTTPException(
-            status_code=status.HTTP_44_NOT_FOUND,
+            status_code=status.HTTP_404_NOT_FOUND,
             detail="Nenhuma questão encontrada para este conteúdo."
         )
         

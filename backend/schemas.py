@@ -43,6 +43,18 @@ class PerfilSchema(BaseModel):
     perfil_progresso: Optional[str] = None
     perfil_mediageral: Optional[float] = None
     perfil_foto_url: Optional[str] = None
+
+class ConteudoSchema(BaseModel):
+    cont_id: int
+    cont_nome: str
+    cont_etapa: Dict[str, str]
+    cont_texto: str
+    cont_texto_resumo: str
+    cont_slide_pdf: Optional[str] = None
+    cont_relacionados: Dict[str, str]
+
+    class Config:
+        from_attributes = True
     
 class QuestaoSchema(BaseModel):
     ques_id: int

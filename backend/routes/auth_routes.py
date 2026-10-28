@@ -95,11 +95,12 @@ async def login(dados_login: LoginSchema, db: Session = Depends(pegar_sessao)):
                 user_nome=dados_perfil.get("nome_usual") or dados_perfil.get("nome") or "Aluno",
                 user_matricula=dados_login.user_matricula,
                 user_email=dados_suap.get("email_academico") or dados_suap.get("email_escolar") or "",
-                user_ano_letivo=dados_suap.get('periodo_referencia', ''), 
+                user_ano_letivo=int(dados_suap.get('periodo_referencia')) if dados_suap.get('periodo_referencia') else None,
                 user_curso=dados_suap.get("curso", ""),
                 user_data_nascimento=date.fromisoformat(data_nascimento) if data_nascimento else None,
                 user_foto_url=dados_perfil.get("foto", ""),
-                user_ofensiva_dias=0
+                user_progresso={},
+                user_notas_matematica={},
             )
             
             db.add(usuario)

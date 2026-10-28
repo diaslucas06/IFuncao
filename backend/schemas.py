@@ -34,15 +34,18 @@ class LoginResponseSchema(BaseModel):
         from_attributes = True
         
 class PerfilSchema(BaseModel):
-    perfil_nome: str
-    perfil_matricula: int
-    perfil_ano_letivo: Optional[str] = None
-    perfil_email: str
-    perfil_curso: Optional[str] = None
-    perfil_data_nascimento: Optional[date] = None
-    perfil_progresso: Optional[str] = None
-    perfil_mediageral: Optional[float] = None
-    perfil_foto_url: Optional[str] = None
+    user_id: int
+    user_nome: str
+    user_matricula: int
+    user_email: str
+    user_ano_letivo: Optional[int] = None
+    user_curso: Optional[str] = None
+    user_data_nascimento: Optional[date] = None
+    user_foto_url: Optional[str] = None
+
+    class Config:
+        from_attributes = True
+
 
 class ConteudoSchema(BaseModel):
     cont_id: int

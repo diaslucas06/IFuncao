@@ -30,7 +30,7 @@ def pegar_usuario_logado(
     except JWTError:
         raise HTTPException(status_code=401, detail="Token inválido ou expirado")
 
-    usuario = db.query(Usuario).filter(Usuario.id == int(user_id)).first()
+    usuario = db.query(Usuario).filter(Usuario.user_id == int(user_id)).first()
     if not usuario:
         raise HTTPException(status_code=401, detail="Usuário não encontrado")
     return usuario

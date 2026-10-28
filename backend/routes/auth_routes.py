@@ -117,6 +117,7 @@ async def login(dados_login: LoginSchema, db: Session = Depends(pegar_sessao)):
             "usuario": usuario,
         }
 
-@auth_routes.get("/perfil", response_model=PerfilSchema)
+@auth_routes.get("/perfil", response_model=PerfilSchema, status_code=status.HTTP_200_OK)
 async def dados_perfil(usuario: Usuario = Depends(pegar_usuario_logado)):
+    """Retorna os dados do perfil do usuário autenticado."""
     return usuario

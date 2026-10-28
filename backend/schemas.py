@@ -1,12 +1,12 @@
 from pydantic import BaseModel
-from typing import Optional, Dict
+from typing import Optional, Dict, Union
 from datetime import date, datetime
 
 class UsuarioSchema(BaseModel):
     user_nome: str
     user_matricula: int
     user_email: str
-    user_ano_letivo: Optional[str] = None
+    user_ano_letivo: Optional[Union[int, str]] = None
     user_curso: Optional[str] = None
     user_data_nascimento: Optional[date] = None
     user_foto_url: Optional[str] = None
@@ -38,7 +38,7 @@ class PerfilSchema(BaseModel):
     user_nome: str
     user_matricula: int
     user_email: str
-    user_ano_letivo: Optional[int] = None
+    user_ano_letivo: Optional[Union[int, str]] = None
     user_curso: Optional[str] = None
     user_data_nascimento: Optional[date] = None
     user_foto_url: Optional[str] = None

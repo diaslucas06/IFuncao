@@ -1,3 +1,4 @@
+'use client'
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Profile from "@/components/Profile";
@@ -5,20 +6,55 @@ import ButtonProfile from "@/components/ButtonProfile";
 import BarraProgresso from "@/components/BarraProgresso";
 import { CardBackground, CardH1, CardLi, CardP } from "@/components/CardProfile";
 import CardHistorico from "@/components/CardHistorico";
-import { Settings, PencilSparkles } from "lucide-react";
+import { Settings, LogOut } from "lucide-react";
+import { useEffect, useState } from "react";
 import { CarouselItem, Carousel, CarouselContent, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
-export default function perfil() {
+interface Usuario {
+    user_nome: string;
+    user_matricula: number;
+    user_email: string;
+    user_ano_letivo: number;
+    user_curso: string;
+    user_data_nascimento: string;
+    user_foto_url: string;
+}
 
-    let dados = {
-        'nome': 'Maria José dos Santos',
-        'matricula': 20241101110000,
-        'email': 'maria.jose@escolar.ifrn.edu.br',
-        'ano_letivo': 3,
-        'curso': 'Informática para Internet',
-        'idade': 18,
-        'media': 80
-    }
+export default function perfil() {
+    const [perfil, setPerfil] = useState<Usuario | null>(null);
+    const [erro, setErro] = useState<string | null>(null);
+
+    useEffect (() => {
+        const usuario = localStorage.getItem('usuario');
+        if (!usuario) {
+            setErro("Usuário não está logado.");
+            window.location.href = '/login';
+            return;
+        }
+        const usuarioObjeto = JSON.parse(usuario);
+        const token = usuarioObjeto.access_token
+        fetch('http://localhost:8000/auth/perfil', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` 
+            }
+        })
+        .then((resposta) => {
+            if (!resposta.ok) {
+                throw new Error('Erro ao carregar perfil');
+            }
+            return resposta.json(); 
+        })
+        .then((objetoDados) => {
+            setPerfil(objetoDados); 
+            console.log(objetoDados)
+        })
+        .catch((err) => {
+            setErro(err.message);
+            window.location.href = '/login';
+        });
+    }, [])
 
     let progresso = {
         'primeiro': 100,
@@ -44,18 +80,18 @@ export default function perfil() {
     return (
         <div>
             <Header/>
-            <Profile usuario={'Nome do usuário'} ano={3} matricula={20241101110000} curso={'Informática para Internet'} idade={18} imagem={''}/>
+            <Profile usuario={perfil?.user_nome} ano={perfil?.user_ano_letivo} matricula={perfil?.user_matricula} curso={perfil?.user_curso} imagem={perfil?.user_foto_url}/>
             <main className="flex flex-col p-5 pt-10 gap-5 md:p-10 md:pt-20 lg:gap-7 lg:pt-33 lp:pt-35 pc:pt-45">
                 <div className="flex flex-1 flex-wrap justify-between gap-5">
                     <CardBackground className="flex gap-[20px] flex-1/1 lg:flex-1 pc:flex-1 pc:w-[47%]">
                         <CardH1>Dados Pessoais</CardH1>
                         <ul className="flex flex-col gap-2">
-                            <CardLi><b className="font-semibold">Nome completo:</b> {dados.nome}</CardLi>
-                            <CardLi><b className="font-semibold">Matrícula:</b> {dados.matricula}</CardLi>
-                            <CardLi><b className="font-semibold">E-mail:</b> {dados.email}</CardLi>
-                            <CardLi><b className="font-semibold">Ano letivo:</b> {dados.ano_letivo}° ano</CardLi>
-                            <CardLi><b className="font-semibold">Curso:</b> {dados.curso}</CardLi>
-                            <CardLi><b className="font-semibold">Idade:</b> {dados.idade} anos</CardLi>
+                            <CardLi><b className="font-semibold">Nome completo:</b> {perfil?.user_nome}</CardLi>
+                            <CardLi><b className="font-semibold">Matrícula:</b> {perfil?.user_matricula}</CardLi>
+                            <CardLi><b className="font-semibold">E-mail:</b> {perfil?.user_email}</CardLi>
+                            <CardLi><b className="font-semibold">Ano letivo:</b> {perfil?.user_ano_letivo}° ano</CardLi>
+                            <CardLi><b className="font-semibold">Curso:</b> {perfil?.user_curso}</CardLi>
+                            <CardLi><b className="font-semibold">Data de nascimento:</b> {perfil?.user_data_nascimento}</CardLi>
                         </ul>
                     </CardBackground>
                     <CardBackground className="flex gap-[20px] flex-1/1 lg:flex-1 pc:flex-none pc:w-[25%]">
@@ -72,12 +108,12 @@ export default function perfil() {
                             <CardH1>Sua média</CardH1>
                             <CardP>Média das notas em matemática do ano letivo: </CardP>
                             <div>
-                                <p className="text-base md:text-3xl lp:text-4xl text-(--profile-text-card-color) font-extrabold">{dados.media}</p>
+                                <p className="text-base md:text-3xl lp:text-4xl text-(--profile-text-card-color) font-extrabold"></p>
                             </div>
                         </CardBackground>
-                        <CardBackground className="flex flex-1 gap-2 justify-around md:gap-0 lp:justify-between">
-                            <ButtonProfile icon={<PencilSparkles size={35} color="var(--profile-button-icon-color)" className="w-[25px] md:w-[35px]"/>} text={'Editar'} callback={'/editarperfil'}/>
+                        <CardBackground className="flex flex-1 gap-2 justify-around md:gap-0 lp:justify-around">
                             <ButtonProfile icon={<Settings size={35} color="var(--profile-button-icon-color)" className="w-[25px] md:w-[35px]"/>} text={'Configurações'} callback={'/perfil/configuracoes/informacoes_basicas'}/>
+                            <ButtonProfile icon={<LogOut size={35} color="var(--profile-button-icon-color)" className="w-[25px] md:w-[35px]"/>} text={'Sair'} callback={'/sair'}/>
                         </CardBackground>
                     </div>
                 </div>

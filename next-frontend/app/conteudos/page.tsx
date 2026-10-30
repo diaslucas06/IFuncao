@@ -16,14 +16,14 @@ export default function seuprogresso() {
     const [carregando, setCarregando] = useState(true);
 
     useEffect(() => {
-    const usuarioSalvo = localStorage.getItem("usuario");
-    if (usuarioSalvo) {
-        setPessoaLogada(true);
-    }
-    setCarregando(false);
-    }, []);
-    if (carregando) {
-        return null; 
+        const usuarioSalvo = localStorage.getItem("usuario");
+        if (usuarioSalvo) {
+            setPessoaLogada(true);
+        }
+        setCarregando(false);
+        }, []);
+        if (carregando) {
+            return null; 
     }
 
     if (pessoa_logada) {

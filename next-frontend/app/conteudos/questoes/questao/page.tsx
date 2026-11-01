@@ -3,40 +3,41 @@
 import CardQuestion from "@/components/CardQuestion";
 import Header from "@/components/Header";
 import TheoryReview from "@/components/TheoryReview";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function questoes() {
+  const [questoes, setQuestoes] = useState<any[]>([]);
   const [questaoAtual, setQuestaoAtual] = useState<number>(0);
+  const [carregando, setCarregando] = useState<boolean>(true);
 
-  const questoes = [
-    {
-      id: 1,
-      enunciado: "Um técnico possui 15 jogadores...",
-      alternativas: [
-        { id: "a", texto: "Resposta A" },
-        { id: "b", texto: "Resposta B" },
-        { id: "c", texto: "Resposta C" },
-        { id: "d", texto: "Resposta D" },
-      ],
-      respostaCorreta: "a",
-      resolucao: "texto texto",
-    },
+  useEffect(() => {
+    fetch(`http://localhost:8000/questoes/conteudo/1`)
 
-    {
-      id: 2,
-      enunciado: "Uma turma possui 30 alunos...",
-      alternativas: [
-        { id: "a", texto: "Resposta A" },
-        { id: "b", texto: "Resposta B" },
-        { id: "c", texto: "Resposta C" },
-        { id: "d", texto: "Resposta D" },
-      ],
-      respostaCorreta: "b",
-      resolucao: "texto texto",
-    },
-  ];
+    .then((resposta) =>{
+      if (!resposta.ok){
+         throw new Error('Erro ao carregar questões');
+      }
+
+      return resposta.json()
+    })
+
+    .then((dados) => {
+      setQuestoes(dados)
+      setCarregando(false)
+    })
+
+    .catch((erro) => {
+          console.log(erro)
+      });
+
+  }, [])
+
+  if (carregando) {
+    return <div>Carregando questões...</div>;
+  }
 
   const questao = questoes[questaoAtual];
+  const ehUltimaQuestao = questaoAtual === questoes.length - 1;
 
   function proximaQuestao() {
     if (questaoAtual < questoes.length - 1) {
@@ -48,6 +49,33 @@ export default function questoes() {
     if (questaoAtual > 0) {
       setQuestaoAtual(questaoAtual - 1);
     }
+  }
+  
+  function concluirConteudo() {
+    const dadosUsuario = localStorage.getItem('usuario');
+    if (!dadosUsuario) {
+        console.log("Nenhum dado do usuário encontrado");
+        return;
+    }
+
+    const token = JSON.parse(dadosUsuario).access_token;
+
+    fetch('http://localhost:8000/conteudos/concluir', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        cont_id: 1 
+      })
+    })
+    .then(res => res.json())
+    .then(dados => {
+      console.log("Conteúdo concluido com sucesso:", dados);
+      window.location.href = "/conteudos"; 
+    })
+    .catch(err => console.log("Erro ao concluir conteudo:", err));
   }
 
   return (
@@ -69,12 +97,12 @@ export default function questoes() {
                 Questões de Análise Combinatória
               </h2>
             </div>
-
+            
             <div className="flex flex-col gap-4 mt-3">
-              <CardQuestion key={questao.id} titulo={`Questão ${questao.id}`}
-                enunciado={questao.enunciado} alternativas={questao.alternativas}
-                respostaCorreta={questao.respostaCorreta} resolucao={questao.resolucao}
-                proximaQuestao={proximaQuestao} questaoAnterior={questaoAnterior}
+              <CardQuestion key={questao.ques_id} idQuestao={questao.ques_id} titulo={`Questão ${questao.ques_id}`}
+                enunciado={questao.ques_enunciado} alternativas={questao.ques_alternativas}
+                respostaCorreta={questao.ques_resposta_correta} resolucao={questao.ques_resolucao}
+                proximaQuestao={proximaQuestao} questaoAnterior={questaoAnterior} ehUltimaQuestao={ehUltimaQuestao} concluirConteudo={concluirConteudo}
               />
             </div>
 

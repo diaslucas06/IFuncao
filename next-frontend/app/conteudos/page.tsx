@@ -7,23 +7,13 @@ import { CardBackground } from "@/components/CardProfile";
 import CardConteudo from "@/components/CardConteudo";
 import ButtonContent from "@/components/ButtonContent";
 import BarraPesquisa from "@/components/BarraPesquisa";
-import { useEffect, useState } from "react";
-
-let logado = true
+import { useAuth } from "@/components/ui/auth";
 
 export default function seuprogresso() {
-    const [pessoa_logada, setPessoaLogada] = useState(false);
-    const [carregando, setCarregando] = useState(true);
-
-    useEffect(() => {
-        const usuarioSalvo = localStorage.getItem("usuario");
-        if (usuarioSalvo) {
-            setPessoaLogada(true);
-        }
-        setCarregando(false);
-        }, []);
-        if (carregando) {
-            return null; 
+    const { pessoa_logada, carregando } = useAuth()
+      
+    if (carregando) {
+        return null; 
     }
 
     if (pessoa_logada) {

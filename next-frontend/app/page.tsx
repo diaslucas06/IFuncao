@@ -14,19 +14,11 @@ import CardOlimpiada from "@/components/CardOlimpiada";
 import StudySuggestion from "@/components/StudySuggestion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
+import { useAuth } from "@/components/ui/auth";
 
 export default function Inicio() {
-  const [pessoa_logada, setPessoaLogada] = useState(false);
-  const [carregando, setCarregando] = useState(true);
-
-  useEffect(() => {
-    const usuarioSalvo = localStorage.getItem("usuario");
-    if (usuarioSalvo) {
-      setPessoaLogada(true);
-    }
-    setCarregando(false);
-  }, []);
-
+  const { pessoa_logada, carregando } = useAuth()
+  
   if (carregando) {
     return null; 
   }

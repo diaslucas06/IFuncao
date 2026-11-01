@@ -2,7 +2,7 @@
 
 import HeaderNotLogged from "@/components/HeaderNotLogged";
 import Image from "next/image";
-import { User, Lock, Eye } from "lucide-react";
+import { User, Lock, Eye, EyeOff } from "lucide-react";
 import { useEffect, useState } from "react";
 import Footer from "@/components/Footer";
 
@@ -11,6 +11,7 @@ export default function Login() {
   const [senha, setSenha] = useState("");
   const [entrar, setEntrar] = useState(false);
   const [mensagemErro, setMensagemErro] = useState("");
+  const [mostrarSenha, setMostrarSenha] = useState(false);
 
   useEffect(() => {
     if (!entrar) return;
@@ -90,12 +91,18 @@ export default function Login() {
                     size={24}
                     className="text-(--neutral-900) absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
                   />
-                  <input type="password"  id="senha" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)}
+                  <input type={mostrarSenha ? "text" : "password"}  id="senha" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)}
                     className="w-full rounded-lg border bg-(--neutral-0) md:text-[16px] lp:text-[20px] py-2.5 pl-11 pr-11 text-(--neutral-500) outline-none"
                   />
-                  <Eye
-                    size={24} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-(--neutral-900) cursor-pointer"
-                  />
+                  {mostrarSenha ? (
+                    <EyeOff size={24} onClick={() => setMostrarSenha(false)}
+                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-(--neutral-900) cursor-pointer"
+                    />
+                  ) : (
+                    <Eye size={24} onClick={() => setMostrarSenha(true)}
+                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-(--neutral-900) cursor-pointer"
+                    />
+                  )}
                 </div>
 
                 <button type="submit" disabled={entrar}
@@ -103,18 +110,6 @@ export default function Login() {
                 >
                   {entrar ? "Entrando..." : "Entrar"}
                 </button>
-
-                <div className="flex items-center gap-4 mt-6">
-                  <hr className="flex-1" />
-                  <span className="md:text-[20px] lp:text-[24px]">Ou</span>
-                  <hr className="flex-1" />
-                </div>
-
-                <div className="flex justify-center">
-                  <Image src="/images/icons/logoSuap.png" alt="Logo do suap" width={50} height={40}
-                    className="mt-4 h-auto w-auto"
-                  />
-                </div>
               </form>
             </div>
           </section>

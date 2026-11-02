@@ -13,8 +13,7 @@ import CardInicio from "@/components/CardInicio";
 import CardOlimpiada from "@/components/CardOlimpiada";
 import StudySuggestion from "@/components/StudySuggestion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { useEffect, useState } from "react";
-import { useAuth } from "@/components/ui/auth";
+import { useAuth } from "@/utils/auth"
 
 export default function Inicio() {
   const { pessoa_logada, carregando } = useAuth()

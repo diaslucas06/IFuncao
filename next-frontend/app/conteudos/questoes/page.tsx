@@ -61,7 +61,7 @@ export default function seuprogresso() {
                             <BarraPesquisa/>
                         </div>
                         <CardBackground className="w-full bg-(--settings-card-color)">
-                            <div className="w-full flex flex-row justify-between gap-2 md:gap-4 bg-(--settings-card-color) grid grid-cols-2 lg:grid-cols-4">
+                            <div className="w-full flex flex-row justify-between gap-2 md:gap-4 grid grid-cols-2 lg:grid-cols-4">
                                 <CardConteudo index={0} link="/conteudos/conteudo/primeiro_ano" linha1="1" linha2="ano"/>
                                 <CardConteudo index={1} link="/conteudos/conteudo/segundo_ano" linha1="2" linha2="ano"/>
                                 <CardConteudo index={2} link="/conteudos/conteudo/terceiro_ano" linha1="3" linha2="ano"/>

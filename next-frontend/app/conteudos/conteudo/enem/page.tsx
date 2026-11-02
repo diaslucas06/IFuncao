@@ -5,10 +5,30 @@ import HeaderNotLogged from "@/components/HeaderNotLogged";
 import Footer from "@/components/Footer";
 import { CardBackground } from "@/components/CardProfile";
 import CardHistorico from "@/components/CardHistorico";
+import BarraPesquisa from "@/components/BarraPesquisa";
+import { useState, useEffect, use } from "react";
+import { useAuth } from "@/utils/auth";
+import { buscarConteudo } from "@/utils/buscarConteudo";
+import { conteudoEtapa } from "@/utils/conteudoEtapa";
 
-let logado = true
+interface Conteudo {
+    id: number,
+    nome: string,
+    link: string,
+    porcentagem: number
+}
 
-export default function seuprogresso() {
+export default function conteudoENEM() {
+    const [cont_nome, setContNome] = useState("");
+    const [conteudo, setConteudo] = useState<Conteudo | null>(null);
+    const [erro, setErro] = useState("");
+    const {pessoa_logada, carregando} = useAuth()
+
+    const conteudos = conteudoEtapa('ENEM', setErro)
+
+    if (carregando) {
+        return null;
+    }
 
     let historico = [
         {'id': 1, 'nome': 'MATEMÁTICA BÁSICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 50},
@@ -24,29 +44,41 @@ export default function seuprogresso() {
         {'id': 11, 'nome': 'PROGRESSÃO GEOMÉTRICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 20},
     ]
     
-    if (logado) {
+    if (pessoa_logada) {
         return (
-            <div>
+            <div className="container">
                 <Header/>
                 <main className="flex flex-col p-10 gap-10">
                     <div className="flex flex-col justify-between gap-5">
-                        <h1 className="text-[64px] font-bold">Conteúdos - ENEM </h1>
-                        <CardBackground className="w-full bg-(--settings-card-color)">
-                            <div className="flex flex-col flex-wrap items-center w-full ml:flex-row ml:gap-15">
-                                {historico.map((conteudo, index) => (
-                                    <CardHistorico key={conteudo.id} nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
-                                ))}
+                        <div className="flex flex-col lg:flex-row justify-between items-center">
+                            <h1 className="h1_inicio">Conteúdos - ENEM</h1>
+                            <BarraPesquisa cont_nome={cont_nome} setContNome={setContNome} setErro={setErro} setConteudo={setConteudo} etapa="ENEM" buscarConteudo={buscarConteudo} />
+                        </div>
+                        {conteudo ? 
+                            <div key={conteudo.id} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
+                                <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={0}/> 
                             </div>
-                        </CardBackground>
+                            : 
+                            <CardBackground className="w-full bg-(--settings-card-color)">
+                                {erro ? <p className="font-bold text-2xl">{erro}</p>: ''}
+                                <div className="flex flex-wrap gap-3 lg:gap-8 lp:gap-11">
+                                    {conteudos?.map((conteudo, index) => (
+                                        <div key={conteudo.id} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
+                                            <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/> 
+                                        </div>
+                                    ))}
+                                </div>
+                            </CardBackground>
+                        }
                     </div>
                 </main>
                     
-                <Footer/>
+                <Footer position="fixed"/>
             </div>
         )
     }
     return (
-        <div>
+        <div className="container">
             <HeaderNotLogged/>
             <Footer/>
         </div>

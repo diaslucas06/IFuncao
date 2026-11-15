@@ -9,6 +9,8 @@ from routes.auth_routes import auth_routes
 from routes.questoes_routes import questoes_routes  
 from routes.conteudos_routes import conteudos_routes
 
+from contextlib import contextmanager
+
 app = FastAPI()
 
 app.add_middleware(

@@ -24,7 +24,6 @@ export default function seuprogresso() {
                     <div className="flex flex-col justify-between gap-5">
                         <div className="flex justify-between items-center">
                             <h1 className="h1_inicio">Conteúdos</h1>
-                            <BarraPesquisa/>
                         </div>
                         <CardBackground className="w-full bg-(--settings-card-color)">
                             <div className="w-full flex flex-row justify-between gap-2 md:gap-4 grid grid-cols-2 lg:grid-cols-4">

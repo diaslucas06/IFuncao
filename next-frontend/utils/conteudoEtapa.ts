@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 interface Conteudo {
-    id: number,
-    nome: string,
-    link: string,
-    porcentagem: number
+    cont_id: number,
+    cont_nome: string,
+    cont_link: string,
+    cont_porcentagem: number
 }
 
 export function conteudoEtapa(etapa:string, setErro:any) {

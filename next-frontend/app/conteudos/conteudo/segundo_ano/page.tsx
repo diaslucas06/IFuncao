@@ -12,14 +12,12 @@ import { buscarConteudo } from "@/utils/buscarConteudo";
 import { conteudoEtapa } from "@/utils/conteudoEtapa";
 
 interface Conteudo {
-    id: number,
-    nome: string,
-    link: string,
-    porcentagem: number
+    cont_id: number,
+    cont_nome: string,
+    cont_porcentagem: number
 }
 
-export default function conteudo2ano() {
-    const [cont_nome, setContNome] = useState("");
+export default function conteudo1ano() {
     const [conteudo, setConteudo] = useState<Conteudo | null>(null);
     const [erro, setErro] = useState("");
     const {pessoa_logada, carregando} = useAuth()
@@ -29,20 +27,6 @@ export default function conteudo2ano() {
     if (carregando) {
         return null;
     }
-
-    let historico = [
-        {'id': 1, 'nome': 'MATEMÁTICA BÁSICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 50},
-        {'id': 2, 'nome': 'TRIGONOMETRIA', 'link': '/conteudos/matematica_basica', 'porcentagem': 0},
-        {'id': 3, 'nome': 'GEOMETRIA', 'link': '/conteudos/matematica_basica', 'porcentagem': 80},
-        {'id': 4, 'nome': 'PROGRESSÃO ARITMÉTICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 100},
-        {'id': 5, 'nome': 'MATEMÁTICA FINANCEIRA', 'link': '/conteudos/matematica_basica', 'porcentagem': 40},
-        {'id': 6, 'nome': 'MATRIZ', 'link': '/conteudos/matematica_basica', 'porcentagem': 100},
-        {'id': 7, 'nome': 'PROGRESSÃO GEOMÉTRICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 20},
-        {'id': 8, 'nome': 'DIVISÃO', 'link': '/conteudos/matematica_basica', 'porcentagem': 100},
-        {'id': 9, 'nome': 'PROGRESSÃO GEOMÉTRICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 20},
-        {'id': 10, 'nome': 'DIVISÃO', 'link': '/conteudos/matematica_basica', 'porcentagem': 100},
-        {'id': 11, 'nome': 'PROGRESSÃO GEOMÉTRICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 20},
-    ]
     
     if (pessoa_logada) {
         return (
@@ -52,23 +36,35 @@ export default function conteudo2ano() {
                     <div className="flex flex-col justify-between gap-5">
                         <div className="flex flex-col lg:flex-row justify-between items-center">
                             <h1 className="h1_inicio">Conteúdos - 2° ano</h1>
-                            <BarraPesquisa cont_nome={cont_nome} setContNome={setContNome} setErro={setErro} setConteudo={setConteudo} etapa="2" buscarConteudo={buscarConteudo} />
+                            <BarraPesquisa setErro={setErro} setConteudo={setConteudo} etapa="1" buscarConteudo={buscarConteudo} />
                         </div>
                         {conteudo ? 
-                            <div key={conteudo.id} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
-                                <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={0}/> 
-                            </div>
-                            : 
                             <CardBackground className="w-full bg-(--settings-card-color)">
-                                {erro ? <p className="font-bold text-2xl">{erro}</p>: ''}
                                 <div className="flex flex-wrap gap-3 lg:gap-8 lp:gap-11">
-                                    {conteudos?.map((conteudo, index) => (
-                                        <div key={conteudo.id} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
-                                            <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/> 
-                                        </div>
-                                    ))}
+                                    <div key={conteudo.cont_id} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
+                                        <CardHistorico nome={conteudo.cont_nome}  porcentagem={conteudo.cont_porcentagem} index={0}/> 
+                                    </div>
                                 </div>
                             </CardBackground>
+                            : 
+                            <>
+                                {erro ? 
+                                    <CardBackground className="w-full bg-(--settings-card-color)">
+                                        <p className="font-bold text-2xl">{erro}</p>
+                                    </CardBackground>
+                                    : 
+                                    ''
+                                }
+                                <CardBackground className="w-full bg-(--settings-card-color)">
+                                    <div className="flex flex-wrap gap-3 lg:gap-8 lp:gap-11">
+                                        {conteudos?.map((conteudo, index) => (
+                                            <div key={index} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
+                                                <CardHistorico nome={conteudo.cont_nome}  porcentagem={conteudo.cont_porcentagem} index={index}/> 
+                                            </div>
+                                        ))}
+                                    </div>
+                                </CardBackground>
+                            </>
                         }
                     </div>
                 </main>

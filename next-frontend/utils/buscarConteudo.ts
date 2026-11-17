@@ -8,7 +8,9 @@ export function buscarConteudo(etapa:string, conteudo:string, setConteudo:any, s
     }
     const usuarioObjeto = JSON.parse(usuario);
     const token = usuarioObjeto.access_token
-    fetch(`http://localhost:8000/conteudos/${etapa}/${conteudo}`, {
+    const nome = decodeURIComponent(conteudo).trim();
+
+    fetch(`http://localhost:8000/conteudos/${etapa}/${encodeURIComponent(nome)}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

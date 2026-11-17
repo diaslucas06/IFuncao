@@ -12,14 +12,12 @@ import { buscarConteudo } from "@/utils/buscarConteudo";
 import { conteudoEtapa } from "@/utils/conteudoEtapa";
 
 interface Conteudo {
-    id: number,
-    nome: string,
-    link: string,
-    porcentagem: number
+    cont_id: number,
+    cont_nome: string,
+    cont_porcentagem: number
 }
 
 export default function conteudo1ano() {
-    const [cont_nome, setContNome] = useState("");
     const [conteudo, setConteudo] = useState<Conteudo | null>(null);
     const [erro, setErro] = useState("");
     const {pessoa_logada, carregando} = useAuth()
@@ -52,23 +50,35 @@ export default function conteudo1ano() {
                     <div className="flex flex-col justify-between gap-5">
                         <div className="flex flex-col lg:flex-row justify-between items-center">
                             <h1 className="h1_inicio">Conteúdos - 1° ano</h1>
-                            <BarraPesquisa cont_nome={cont_nome} setContNome={setContNome} setErro={setErro} setConteudo={setConteudo} etapa="1" buscarConteudo={buscarConteudo} />
+                            <BarraPesquisa setErro={setErro} setConteudo={setConteudo} etapa="1" buscarConteudo={buscarConteudo} />
                         </div>
                         {conteudo ? 
-                            <div key={conteudo.id} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
-                                <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={0}/> 
-                            </div>
-                            : 
                             <CardBackground className="w-full bg-(--settings-card-color)">
-                                {erro ? <p className="font-bold text-2xl">{erro}</p>: ''}
                                 <div className="flex flex-wrap gap-3 lg:gap-8 lp:gap-11">
-                                    {conteudos?.map((conteudo, index) => (
-                                        <div key={conteudo.id} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
-                                            <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/> 
-                                        </div>
-                                    ))}
+                                    <div key={conteudo.cont_id} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
+                                        <CardHistorico nome={conteudo.cont_nome}  porcentagem={conteudo.cont_porcentagem} index={0}/> 
+                                    </div>
                                 </div>
                             </CardBackground>
+                            : 
+                            <>
+                                {erro ? 
+                                    <CardBackground className="w-full bg-(--settings-card-color)">
+                                        <p className="font-bold text-2xl">{erro}</p>
+                                    </CardBackground>
+                                    : 
+                                    ''
+                                }
+                                <CardBackground className="w-full bg-(--settings-card-color)">
+                                    <div className="flex flex-wrap gap-3 lg:gap-8 lp:gap-11">
+                                        {conteudos?.map((conteudo, index) => (
+                                            <div key={index} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
+                                                <CardHistorico nome={conteudo.cont_nome}  porcentagem={conteudo.cont_porcentagem} index={index}/> 
+                                            </div>
+                                        ))}
+                                    </div>
+                                </CardBackground>
+                            </>
                         }
                     </div>
                 </main>

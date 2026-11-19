@@ -4,14 +4,22 @@ import CardQuestion from "@/components/CardQuestion";
 import Header from "@/components/Header";
 import TheoryReview from "@/components/TheoryReview";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+
 
 export default function questoes() {
   const [questoes, setQuestoes] = useState<any[]>([]);
   const [questaoAtual, setQuestaoAtual] = useState<number>(0);
   const [carregando, setCarregando] = useState<boolean>(true);
 
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+  const nome = searchParams.get("nome") || "Conteúdo";
+
   useEffect(() => {
-    fetch(`http://localhost:8000/questoes/conteudo/1`)
+    if (!id) return;
+  
+    fetch(`http://localhost:8000/questoes/conteudo/${id}`)
 
     .then((resposta) =>{
       if (!resposta.ok){
@@ -34,6 +42,17 @@ export default function questoes() {
 
   if (carregando) {
     return <div>Carregando questões...</div>;
+  }
+
+  if (questoes.length === 0) {
+    return (
+      <div className="min-h-screen">
+        <Header />
+        <main className="p-8">
+          <h2 className="text-2xl font-bold">Nenhuma questão encontrada para {nome}.</h2>
+        </main>
+      </div>
+    );
   }
 
   const questao = questoes[questaoAtual];
@@ -67,7 +86,7 @@ export default function questoes() {
         'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
-        cont_id: 1 
+        cont_id: Number(id)
       })
     })
     .then(res => res.json())
@@ -94,7 +113,7 @@ export default function questoes() {
 
             <div className="rounded-md bg-(--theory-header-bg) text-(--theory-header-text)">
               <h2 className="font-bold  rounded-2xl ml-1.5 p-2 text-[20px] md:text-[28px] lg:text-[32px] pc:text-[36px]">
-                Questões de Análise Combinatória
+                Questões de {nome}
               </h2>
             </div>
             
@@ -109,7 +128,7 @@ export default function questoes() {
           </section>
 
           <div className="w-full md:w-[35%] max-w-full shrink-0 self-start">
-            <TheoryReview />
+            <TheoryReview id={id} nome={nome} />
           </div>
 
         </div>
@@ -117,3 +136,4 @@ export default function questoes() {
     </div>
   );
 }
+

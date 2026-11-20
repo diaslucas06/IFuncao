@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from models import Questao, RespostaQuestao, Usuario
+from models import Questao, RespostaQuestao, Usuario, AlternativaEnum
 from schemas import QuestaoSchema, RespostaSchema
 from dependencies import pegar_sessao, pegar_usuario_logado
 
@@ -31,7 +31,7 @@ async def responder_questao(
     usuario: Usuario = Depends(pegar_usuario_logado)
 ):
     # Verifica se a questão existe no banco
-    questao = db.query(Questao).filter(Questao.ques_id == dados.respquest_ques_id).first()
+    questao = db.query(Questao).filter(Questao.ques_id == dados.respques_ques_id).first()
     
     if not questao:
         raise HTTPException(
@@ -39,15 +39,23 @@ async def responder_questao(
             detail="Questão não encontrada."
         )
     
-    # Compara a resposta enviada com o gabarito
-    acertou = (dados.respquest_alternativa_escolhida.upper() == questao.ques_resposta_correta.upper())
+    # Extrai o valor string ("A", "B", "C", "D" ou "E") tanto do schema quanto do banco
+    escolhida = dados.respques_alternativa_escolhida.value
+    correta = (
+        questao.ques_resposta_correta.value
+        if hasattr(questao.ques_resposta_correta, "value")
+        else str(questao.ques_resposta_correta).strip().upper()
+    )
+    
+    # Booleano True ou False
+    acertou = (escolhida == correta)
     
     # Registra a tentativa do aluno
     nova_resposta = RespostaQuestao(
-        respquest_user_id=usuario.user_id,
-        respquest_ques_id=dados.respquest_ques_id,
-        respquest_alternativa_escolhida=dados.respquest_alternativa_escolhida,
-        respquest_acertou=acertou
+        respques_user_id=usuario.user_id,
+        respques_ques_id=questao.ques_id,
+        respques_alternativa_escolhida=AlternativaEnum(escolhida),
+        respques_acertou=acertou
     )
     
     db.add(nova_resposta)
@@ -57,5 +65,6 @@ async def responder_questao(
     return {
         "mensagem": "Resposta registrada com sucesso!",
         "acertou": acertou,
-        "resposta_correta": questao.ques_resposta_correta
+        "alternativa_escolhida": escolhida,
+        "resposta_correta": correta
     }

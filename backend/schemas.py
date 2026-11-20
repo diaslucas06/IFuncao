@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional, Dict, Union
 from datetime import date, datetime
+from models import AlternativaEnum
 
 class UsuarioSchema(BaseModel):
     user_nome: str
@@ -70,5 +71,5 @@ class QuestaoSchema(BaseModel):
         from_attributes = True
 
 class RespostaSchema(BaseModel):
-    respquest_ques_id: int
-    respquest_alternativa_escolhida: str
+    respques_ques_id: int
+    respques_alternativa_escolhida: AlternativaEnum

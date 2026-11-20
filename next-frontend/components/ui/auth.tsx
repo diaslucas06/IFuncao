@@ -27,7 +27,6 @@ export function useAuth() {
         })
         .then((objetoDados) => {
             setPessoaLogada(true)
-            console.log(objetoDados)
         })
         .catch((err) => {
             setPessoaLogada(false)

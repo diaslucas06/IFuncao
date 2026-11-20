@@ -1,5 +1,3 @@
-import Link from "next/link"
-
 interface CardHistoricoProps {
     nome: string,
     porcentagem: number,
@@ -31,6 +29,7 @@ const cores = [
 
 export default function CardHistorico(props:CardHistoricoProps) {
     const cor_atual = cores[props.index % 4]
+    const nome = encodeURIComponent(props.nome)
     return (
         <div className={`flex flex-col justify-between ${cor_atual.bg} hover:${cor_atual.hover} w-full ml:w-auto ml:aspect-square p-3 md:p-5 rounded-xl shadow-lg`}>
             <div className="flex-1 flex items-center justify-center text-center w-full">

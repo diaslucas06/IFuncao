@@ -8,6 +8,7 @@ from schemas import UsuarioSchema
 from routes.auth_routes import auth_routes
 from routes.questoes_routes import questoes_routes  
 from routes.conteudos_routes import conteudos_routes
+from routes.simulados_routes import simulados_routes
 
 from contextlib import contextmanager
 
@@ -25,6 +26,7 @@ app.add_middleware(
 app.include_router(auth_routes)
 app.include_router(questoes_routes)  
 app.include_router(conteudos_routes)
+app.include_router(simulados_routes)
 
 @app.get("/")
 def home():

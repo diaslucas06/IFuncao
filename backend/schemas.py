@@ -1,7 +1,7 @@
 from pydantic import BaseModel
-from typing import Optional, Dict, Union
+from typing import Optional, Dict, Union, List
 from datetime import date, datetime
-from models import AlternativaEnum
+from models import AlternativaEnum, EtapaEnum, DificuldadeEnum
 
 class UsuarioSchema(BaseModel):
     user_nome: str
@@ -73,3 +73,60 @@ class QuestaoSchema(BaseModel):
 class RespostaSchema(BaseModel):
     respques_ques_id: int
     respques_alternativa_escolhida: AlternativaEnum
+    
+class QuestaoSimuladoSchema(BaseModel):
+    ques_id: int
+    ques_enunciado: str
+    ques_imagem_url: Optional[str] = None
+    ques_alternativas: Dict[str, str]
+    ques_etapa: EtapaEnum
+    ques_nivel_dificuldade: DificuldadeEnum
+
+    class Config:
+        from_attributes = True
+
+class SimuladoIniciarResponse(BaseModel):
+    etapa: EtapaEnum
+    total_questoes: int
+    questoes: List[QuestaoSimuladoSchema]
+
+class RespostaItemSimulado(BaseModel):
+    ques_id: int
+    alternativa_escolhida: Optional[AlternativaEnum] = None
+
+class SimuladoFinalizarRequest(BaseModel):
+    etapa: EtapaEnum = EtapaEnum.ETAPA_1
+    respostas: List[RespostaItemSimulado]
+
+class DetalheCorrecaoQuestao(BaseModel):
+    ques_id: int
+    ques_enunciado: str
+    ques_imagem_url: Optional[str] = None
+    alternativa_escolhida: Optional[str] = None
+    resposta_correta: str
+    acertou: bool
+    ques_resolucao: Optional[str] = None
+    ques_resolucao_imagem_url: Optional[str] = None
+
+class SimuladoResultadoResponse(BaseModel):
+    sim_id: int
+    sim_etapa: EtapaEnum
+    sim_total_questoes: int
+    sim_acertos: int
+    sim_nota: int
+    sim_data_realizacao: datetime
+    detalhes: List[DetalheCorrecaoQuestao]
+
+    class Config:
+        from_attributes = True
+
+class SimuladoHistoricoItem(BaseModel):
+    sim_id: int
+    sim_etapa: EtapaEnum
+    sim_total_questoes: int
+    sim_acertos: int
+    sim_nota: int
+    sim_data_realizacao: datetime
+
+    class Config:
+        from_attributes = True

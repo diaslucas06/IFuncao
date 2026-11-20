@@ -52,6 +52,7 @@ class Usuario(Base):
     acessos: Mapped[List["Acesso"]] = relationship(back_populates="usuario", cascade="all, delete-orphan")
     conteudos_vinculados: Mapped[List["UsuarioConteudo"]] = relationship(back_populates="usuario")
     respostas: Mapped[List["RespostaQuestao"]] = relationship(back_populates="usuario")
+    simulados: Mapped[List["Simulado"]] = relationship(back_populates="usuario", cascade="all, delete-orphan")
 
 class Acesso(Base):
 
@@ -84,14 +85,17 @@ class Questao(Base):
     __tablename__ = "questoes" 
 
     ques_id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    ques_cont_id: Mapped[int] = mapped_column(ForeignKey('conteudos.cont_id'))
+    ques_cont_id: Mapped[Optional[int]] = mapped_column(ForeignKey('conteudos.cont_id'), nullable=True)
     ques_enunciado: Mapped[str] = mapped_column(Text)
+    ques_imagem_url: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
     ques_alternativas: Mapped[dict] = mapped_column(JSON)
     ques_etapa: Mapped[str] = mapped_column(Enum(EtapaEnum))
     ques_nivel_dificuldade: Mapped[str] = mapped_column(Enum(DificuldadeEnum))
     ques_resposta_correta: Mapped[str] = mapped_column(Enum(AlternativaEnum))
+    ques_resolucao: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    ques_resolucao_imagem_url: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
 
-    conteudo: Mapped["Conteudo"] = relationship(back_populates="questoes")
+    conteudo: Mapped[Optional["Conteudo"]] = relationship(back_populates="questoes")
     respostas: Mapped[List["RespostaQuestao"]] = relationship(back_populates="questao")
 
 class UsuarioConteudo(Base):
@@ -123,3 +127,18 @@ class RespostaQuestao(Base):
 
     usuario: Mapped["Usuario"] = relationship(back_populates="respostas")
     questao: Mapped["Questao"] = relationship(back_populates="respostas")
+
+class Simulado(Base):
+
+    __tablename__ = "simulados"
+
+    sim_id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    sim_user_id: Mapped[int] = mapped_column(ForeignKey('usuarios.user_id'))
+    sim_etapa: Mapped[str] = mapped_column(Enum(EtapaEnum))
+    sim_total_questoes: Mapped[int] = mapped_column(Integer)
+    sim_acertos: Mapped[int] = mapped_column(Integer)
+    sim_nota: Mapped[int] = mapped_column(Integer)
+    sim_detalhes_respostas: Mapped[dict] = mapped_column(JSON)
+    sim_data_realizacao: Mapped[datetime] = mapped_column(DateTime, default=func.now())
+
+    usuario: Mapped["Usuario"] = relationship(back_populates="simulados")

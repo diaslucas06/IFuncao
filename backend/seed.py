@@ -1002,6 +1002,419 @@ def povoar_conteudo_7(db: Session):
     db.add_all(questoes)
     db.commit()
 
+def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.com"):
+    questoes = [
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado=(
+                "1 - (Enem 2020) Uma empresa de ônibus utiliza um sistema de vendas de passagens que fornece a imagem de todos os assentos do ônibus, "
+                "diferenciando os assentos já vendidos, por uma cor mais escura, dos assentos ainda disponíveis. A empresa monitora, permanentemente, "
+                "o número de assentos já vendidos e compara-o com o número total de assentos do ônibus para avaliar a necessidade de alocação de veículos extras. "
+                "Na imagem tem-se a informação dos assentos já vendidos e dos ainda disponíveis em um determinado instante.\n"
+                "A razão entre o número de assentos já vendidos e o total de assentos desse ônibus, no instante considerado na imagem, é:"
+            ),
+            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q01_assentos_onibus.png",
+            ques_alternativas={"A": "a) 16/42", "B": "b) 16/26", "C": "c) 26/42", "D": "d) 42/26", "E": "e) 42/16"},
+            ques_resposta_correta=AlternativaEnum.A,
+            ques_resolucao="Contando os assentos na imagem, há 16 assentos escuros (já vendidos) em um total de 42 lugares. Assim, a razão procurada é 16/42.",
+            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/sim1_r01_razao_assentos.png",
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
+            ques_enunciado=(
+                "2 - (Enem 2020) O consumo de espumantes no Brasil tem aumentado nos últimos anos. Uma das etapas do seu processo de produção consiste no "
+                "envasamento da bebida em garrafas semelhantes às da imagem. Nesse processo, a vazão do líquido no interior da garrafa é constante e cessa "
+                "quando atinge o nível de envasamento.\n"
+                "Qual esboço de gráfico melhor representa a variação da altura do líquido em função do tempo, na garrafa indicada na imagem?"
+            ),
+            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q02_garrafa_graficos.png",
+            ques_alternativas={
+                "A": "a) Gráfico A",
+                "B": "b) Gráfico B",
+                "C": "c) Gráfico C",
+                "D": "d) Gráfico D",
+                "E": "e) Gráfico E",
+            },
+            ques_resposta_correta=AlternativaEnum.B,
+            ques_resolucao=(
+                "Como a vazão é constante: na 1ª seção (cilíndrica, de diâmetro constante), a altura cresce linearmente (reta inclinada). "
+                "Na 2ª seção (afunilamento da garrafa), o diâmetro diminui com a altura, fazendo o nível subir cada vez mais rápido (curva crescente côncava para cima)."
+            ),
+            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/sim1_r02_secoes_garrafa.png",
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado=(
+                "3 - O estádio do Maracanã passou por algumas modificações estruturais para a realização da Copa do Mundo de 2014, como, por exemplo, "
+                "as dimensões do campo retangular. Para se adaptar aos padrões da Fifa, as dimensões do campo foram reduzidas de 110 m × 75 m para 105 m × 68 m.\n"
+                "Em quantos metros quadrados a área do campo do Maracanã foi reduzida?"
+            ),
+            ques_imagem_url=None,
+            ques_alternativas={"A": "a) 24", "B": "b) 35", "C": "c) 555", "D": "d) 1110", "E": "e) 1145"},
+            ques_resposta_correta=AlternativaEnum.D,
+            ques_resolucao="Área original: 110 · 75 = 8.250 m². Área nova: 105 · 68 = 7.140 m². Redução: 8.250 - 7.140 = 1.110 m².",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado=(
+                "4 - O uso de aplicativos de transporte tem sido uma alternativa à população que busca preços mais competitivos para se locomover, "
+                "principalmente nas grandes cidades. Em geral, o valor V a ser pago, em real, varia em função de: tarifa base F (valor fixo), tempo T (em minuto) "
+                "e distância D (em quilômetro). Um desses aplicativos cobra R$ 2,00 de valor fixo, acrescido de R$ 0,26 por minuto de viagem e de R$ 1,40 por quilômetro rodado.\n"
+                "Nessas condições, a expressão que fornece o valor V a ser pago por uma viagem desse aplicativo é:"
+            ),
+            ques_imagem_url=None,
+            ques_alternativas={
+                "A": "a) 2,00F + 0,26T + 1,40D",
+                "B": "b) 2,00 + 0,26T + 1,40D",
+                "C": "c) 2,00 + 0,26T + D",
+                "D": "d) 0,26T + 1,40D",
+                "E": "e) F + T + D",
+            },
+            ques_resposta_correta=AlternativaEnum.B,
+            ques_resolucao="Somando o valor fixo de R$ 2,00 ao custo por minuto (0,26T) e ao custo por quilômetro (1,40D), temos V = 2,00 + 0,26T + 1,40D.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado=(
+                "5 - Os 100 funcionários de uma empresa estão distribuídos em dois setores: Produção e Administração. Os funcionários de um mesmo setor "
+                "recebem salários com valores iguais. O quadro apresenta a quantidade de funcionários por setor e seus respectivos salários.\n"
+                "A média dos salários dos 100 funcionários dessa empresa, em real, é:"
+            ),
+            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q05_quadro_salarios.png",
+            ques_alternativas={
+                "A": "a) 2 000,00.",
+                "B": "b) 2 500,00.",
+                "C": "c) 3 250,00.",
+                "D": "d) 4 500,00.",
+                "E": "e) 9 000,00.",
+            },
+            ques_resposta_correta=AlternativaEnum.C,
+            ques_resolucao="Média ponderada: (75 · 2.000 + 25 · 7.000) / 100 = (150.000 + 175.000) / 100 = 325.000 / 100 = R$ 3.250,00.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
+            ques_enunciado=(
+                "6 - O ideal é consumir 1 grama de carboidrato para cada minuto de caminhada. Um casal realizará diariamente 30 minutos de caminhada, "
+                "ingerindo, antes dessa atividade, a quantidade ideal de carboidratos recomendada. Para ter o consumo ideal apenas por meio do consumo de "
+                "pão de fôrma integral, o casal planeja garantir o suprimento de pães para um período de 30 dias ininterruptos. Sabe-se que cada pacote desse "
+                "pão vem com 18 fatias, e que cada uma delas tem 15 gramas de carboidratos.\n"
+                "A quantidade mínima de pacotes de pão de fôrma necessários para prover o suprimento a esse casal é:"
+            ),
+            ques_imagem_url=None,
+            ques_alternativas={"A": "a) 6", "B": "b) 7", "C": "c) 8", "D": "d) 9", "E": "e) 10"},
+            ques_resposta_correta=AlternativaEnum.B,
+            ques_resolucao=(
+                "Consumo diário do casal: 30 g · 2 pessoas = 60 g/dia. Em 30 dias: 60 · 30 = 1.800 g. "
+                "Cada pacote fornece 18 · 15 = 270 g. Dividindo: 1.800 / 270 ≈ 6,67 pacotes, sendo necessários no mínimo 7 pacotes."
+            ),
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado=(
+                "7 - Um investidor iniciante observou o gráfico que apresenta a evolução dos valores de duas criptomoedas A e B em relação ao tempo.\n"
+                "Durante horas consecutivas, esses valores foram observados em nove instantes, representados por horas exatas.\n"
+                "Em quantos desses instantes a criptomoeda A estava mais valorizada do que a criptomoeda B?"
+            ),
+            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q07_grafico_criptomoedas.png",
+            ques_alternativas={"A": "a) 3", "B": "b) 4", "C": "c) 6", "D": "d) 7", "E": "e) 9"},
+            ques_resposta_correta=AlternativaEnum.B,
+            ques_resolucao="Comparando as coordenadas de A (eixo horizontal) e B (eixo vertical) em cada um dos 9 pontos, verifica-se que x_A > y_B em 4 instantes.",
+            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/sim1_r07_diagonal_criptomoedas.png",
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
+            ques_enunciado=(
+                "8 - Um agricultor é informado sobre um método de proteção para sua lavoura que consiste em inserir larvas específicas, de rápida reprodução. "
+                "A reprodução dessas larvas faz com que sua população multiplique-se por 10 a cada 3 dias e, para evitar eventuais desequilíbrios, é possível cessar "
+                "essa reprodução aplicando-se um produto X. O agricultor decide iniciar esse método com 100 larvas e dispõe de 5 litros do produto X, cuja aplicação "
+                "recomendada é de exatamente 1 litro para cada população de 200 000 larvas. A quantidade total do produto X de que ele dispõe deverá ser aplicada de uma única vez.\n"
+                "Quantos dias após iniciado esse método o agricultor deverá aplicar o produto X?"
+            ),
+            ques_imagem_url=None,
+            ques_alternativas={"A": "a) 2", "B": "b) 4", "C": "c) 6", "D": "d) 12", "E": "e) 18"},
+            ques_resposta_correta=AlternativaEnum.D,
+            ques_resolucao=(
+                "Com 5 L, pode-se controlar 5 · 200.000 = 1.000.000 = 10⁶ larvas. "
+                "Pela função exponencial P(t) = 100 · 10^(t/3) = 10⁶ → 10^(t/3) = 10⁴ → t/3 = 4 → t = 12 dias."
+            ),
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado=(
+                "9 - Para concretar a laje de sua residência, uma pessoa contratou uma construtora. Tal empresa informa que o preço y do concreto bombeado é "
+                "composto de duas partes: uma fixa, chamada de taxa de bombeamento, e uma variável, que depende do volume x de concreto utilizado. "
+                "Sabe-se que a taxa de bombeamento custa R$ 500,00 e que o metro cúbico do concreto bombeado é de R$ 250,00.\n"
+                "A expressão que representa o preço y em função do volume x, em metro cúbico, é:"
+            ),
+            ques_imagem_url=None,
+            ques_alternativas={
+                "A": "a) y = 250x",
+                "B": "b) y = 500x",
+                "C": "c) y = 750x",
+                "D": "d) y = 250x + 500",
+                "E": "e) y = 500x + 250",
+            },
+            ques_resposta_correta=AlternativaEnum.D,
+            ques_resolucao="A função afim é formada pela parcela variável (250x) somada à taxa fixa de bombeamento (500), resultando em y = 250x + 500.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado=(
+                "10 - Entre maratonistas, um parâmetro utilizado é o de economia de corrida (EC). O valor desse parâmetro é calculado pela razão entre o consumo "
+                "de oxigênio, em mililitro (mL) por minuto (min), e a massa, em quilograma (kg), do atleta correndo a uma velocidade constante.\n"
+                "A unidade de medida da grandeza descrita pelo parâmetro EC é:"
+            ),
+            ques_imagem_url=None,
+            ques_alternativas={
+                "A": "a) min/mL.kg",
+                "B": "b) mL/min . kg",
+                "C": "c) min . mL/kg",
+                "D": "d) min . kg/mL",
+                "E": "e) mL . kg/min",
+            },
+            ques_resposta_correta=AlternativaEnum.B,
+            ques_resolucao="Dividindo a unidade de consumo de oxigênio (mL/min) pela unidade de massa (kg), obtém-se (mL/min) / kg = mL / (min · kg).",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
+            ques_enunciado=(
+                "11 - A figura ilustra uma roda-gigante no exato instante em que a cadeira onde se encontra a pessoa P está no ponto mais alto dessa roda-gigante.\n"
+                "Com o passar do tempo, à medida que a roda-gigante gira, com velocidade angular constante e no sentido horário, a altura da cadeira onde se "
+                "encontra a pessoa P, em relação ao solo, vai se alterando.\n"
+                "O gráfico que melhor representa a variação dessa altura, em função do tempo, contado a partir do instante em que a cadeira da pessoa P se "
+                "encontra na posição mais alta da roda-gigante, é:"
+            ),
+            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q11_roda_gigante.png",
+            ques_alternativas={
+                "A": "a) Gráfico A",
+                "B": "b) Gráfico B",
+                "C": "c) Gráfico C",
+                "D": "d) Gráfico D",
+                "E": "e) Gráfico E",
+            },
+            ques_resposta_correta=AlternativaEnum.A,
+            ques_resolucao="O movimento circular uniforme descreve uma função cossenoidal suave que inicia no ponto máximo, desce até o mínimo e retorna ao máximo sem quinas.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
+            ques_enunciado=(
+                "12 - (Enem 2017) Em um teleférico turístico, bondinhos saem de estações ao nível do mar e do topo de uma montanha. A travessia dura 1,5 minuto "
+                "e ambos os bondinhos se deslocam à mesma velocidade. Quarenta segundos após o bondinho A partir da estação ao nível do mar, ele cruza com o "
+                "bondinho B, que havia saído do topo da montanha.\n"
+                "Quantos segundos após a partida do bondinho B partiu o bondinho A?"
+            ),
+            ques_imagem_url=None,
+            ques_alternativas={"A": "a) 5", "B": "b) 10", "C": "c) 15", "D": "d) 20", "E": "e) 25"},
+            ques_resposta_correta=AlternativaEnum.B,
+            ques_resolucao=(
+                "A travessia total leva 1,5 min = 90 s. Como as velocidades são iguais, o ponto de encontro divide o percurso em trechos percorridos em 40 s e 50 s. "
+                "Logo, B já viajava há 50 s quando cruzou com A (que viajava há 40 s), tendo partido 50 - 40 = 10 segundos antes."
+            ),
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.DIFICIL,
+            ques_enunciado=(
+                "13 - (Enem 2013) O dono de um sítio pretende colocar uma haste de sustentação para melhor firmar dois postes de comprimentos iguais a 6 m e 4 m. "
+                "A figura representa a situação real na qual os postes são descritos pelos segmentos AC e BD e a haste é representada pelo segmento EF, "
+                "todos perpendiculares ao solo, que é indicado pelo segmento de reta AB. Os segmentos AD e BC representam cabos de aço que serão instalados.\n"
+                "Qual deve ser o valor do comprimento da haste EF?"
+            ),
+            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q13_postes_haste.png",
+            ques_alternativas={"A": "a) 1 m", "B": "b) 2 m", "C": "c) 2,4 m", "D": "d) 3 m", "E": "e) 2√6 m"},
+            ques_resposta_correta=AlternativaEnum.C,
+            ques_resolucao=(
+                "Por semelhança de triângulos, a altura EF é dada pelo produto das alturas dos postes dividido pela soma delas: "
+                "h = (6 · 4) / (6 + 4) = 24 / 10 = 2,4 m."
+            ),
+            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/sim1_r13_semelhanca_postes.png",
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado=(
+                "14 - Um adolescente, tendo em vista uma alimentação saudável, consome diariamente 7,5 dL de leite durante 1 mês (30 dias). "
+                "Sabe-se que o preço de um litro de leite é R$ 1,98.\n"
+                "Nessas condições, o custo mensal com o consumo de leite desse adolescente é de:"
+            ),
+            ques_imagem_url=None,
+            ques_alternativas={
+                "A": "a) R$ 14,85",
+                "B": "b) R$ 22,50",
+                "C": "c) R$ 44,55",
+                "D": "d) R$ 148,50",
+                "E": "e) R$ 445,50",
+            },
+            ques_resposta_correta=AlternativaEnum.C,
+            ques_resolucao="Convertendo: 7,5 dL = 0,75 L/dia. Em 30 dias: 0,75 · 30 = 22,5 L. Custo total: 22,5 · 1,98 = R$ 44,55.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado=(
+                "15 - (Enem 2020) Pesquisadores da Universidade de Tecnologia de Viena, na Áustria, produziram miniaturas de objetos em impressoras 3D de alta precisão. "
+                "A escultura apresentada é uma miniatura de um carro de Fórmula 1, com 100 micrômetros de comprimento. Um micrômetro é a milionésima parte de um metro.\n"
+                "Usando notação científica, qual é a representação do comprimento dessa miniatura, em metro?"
+            ),
+            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q15_carro_micrometro.png",
+            ques_alternativas={
+                "A": "a) 1,0 × 10⁻²",
+                "B": "b) 1,0 × 10⁻³",
+                "C": "c) 1,0 × 10⁻⁴",
+                "D": "d) 1,0 × 10⁻⁵",
+                "E": "e) 1,0 × 10⁻⁶",
+            },
+            ques_resposta_correta=AlternativaEnum.C,
+            ques_resolucao="Como 1 micrômetro = 10⁻⁶ m, temos 100 micrômetros = 100 · 10⁻⁶ m = 10² · 10⁻⁶ m = 1,0 · 10⁻⁴ m.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
+            ques_enunciado=(
+                "16 - De forma geral, são necessários 50 kg de bauxita para produzir 10 kg de alumínio. O Brasil fechou 2020 como um dos principais líderes "
+                "mundiais em reciclagem de latas de alumínio, obtendo um índice de reciclagem de 97,4% de um total de 4,0 × 10⁵ toneladas de latas vendidas. "
+                "Considere que a lata é constituída de alumínio puro.\n"
+                "Levando em conta apenas a reciclagem de latas, qual é o valor mais próximo da massa de bauxita, em tonelada, que deixou de ser extraída da natureza em 2020 no Brasil?"
+            ),
+            ques_imagem_url=None,
+            ques_alternativas={
+                "A": "a) 1,0 × 10⁴ ton",
+                "B": "b) 3,9 × 10⁵ ton",
+                "C": "c) 5,0 × 10⁵ ton",
+                "D": "d) 1,9 × 10⁶ ton",
+                "E": "e) 2,0 × 10⁷ ton",
+            },
+            ques_resposta_correta=AlternativaEnum.D,
+            ques_resolucao=(
+                "Alumínio reciclado: 0,974 · 4,0 · 10⁵ = 3,896 · 10⁵ t. Como são necessários 5 kg de bauxita para cada 1 kg de alumínio, "
+                "a massa de bauxita poupada é 5 · 3,896 · 10⁵ = 19,48 · 10⁵ ≈ 1,9 · 10⁶ toneladas."
+            ),
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
+            ques_enunciado=(
+                "17 - Ao calcular a média de suas notas em 4 provas, um estudante dividiu, por engano, a soma das notas por 5. Com isso, a média obtida foi "
+                "1 unidade menor do que deveria ser, caso fosse calculada corretamente.\n"
+                "O valor correto da média das notas desse estudante é:"
+            ),
+            ques_imagem_url=None,
+            ques_alternativas={"A": "a) 4", "B": "b) 5", "C": "c) 6", "D": "d) 19", "E": "e) 21"},
+            ques_resposta_correta=AlternativaEnum.B,
+            ques_resolucao="Seja S a soma das notas e M a média correta: S / 4 = M → S = 4M. Pelo erro: S / 5 = M - 1 → 4M = 5M - 5 → M = 5.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado=(
+                "18 - O gráfico apresenta o valor total de exportações e o valor total de importações, ao longo de um período, em bilhão de dólares. "
+                "O saldo da balança comercial brasileira é dado pelo valor total de exportações menos o valor total de importações num mesmo período.\n"
+                "Considere que os saldos nos três meses destacados sejam: S1 (junho de 2009), S2 (janeiro de 2010) e S3 (junho de 2010).\n"
+                "A ordenação dos saldos S1, S2 e S3, do maior para o menor, é:"
+            ),
+            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q18_balanca_comercial.png",
+            ques_alternativas={
+                "A": "a) S1, S3 e S2.",
+                "B": "b) S2, S1 e S3.",
+                "C": "c) S2, S3 e S1.",
+                "D": "d) S3, S1 e S2.",
+                "E": "e) S3, S2 e S1.",
+            },
+            ques_resposta_correta=AlternativaEnum.A,
+            ques_resolucao="Pelo gráfico: S1 ≈ 14,5 - 10 = 4,5 bi; S2 < 0 (importações superaram exportações); S3 ≈ 17,1 - 14,8 = 2,3 bi. Logo, S1 > S3 > S2.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado=(
+                "19 - Pesquisas indicam que o número de bactérias X é duplicado a cada quarto de hora. Um aluno resolveu fazer uma observação para verificar "
+                "a veracidade dessa afirmação. Ele usou uma população inicial de 10⁵ bactérias X e encerrou a observação ao final de uma hora.\n"
+                "Após uma hora do início do período de observação desse aluno, o número de bactérias X foi de:"
+            ),
+            ques_imagem_url=None,
+            ques_alternativas={
+                "A": "a) 2⁻² . 10⁵",
+                "B": "b) 2⁻¹ . 10⁵",
+                "C": "c) 2² . 10⁵",
+                "D": "d) 2³ . 10⁵",
+                "E": "e) 2⁴ . 10⁵",
+            },
+            ques_resposta_correta=AlternativaEnum.E,
+            ques_resolucao="Em 1 hora há 4 quartos de hora (4 períodos de 15 minutos). Como a população dobra 4 vezes, o total final será 2⁴ · 10⁵.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=None,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado=(
+                "20 - Uma pessoa ampliou uma foto no computador e, ao imprimi-la, verificou que a qualidade não estava boa. Ao pesquisar, descobriu que "
+                "um parâmetro que define a qualidade da imagem, ou resolução, pode ser considerado pela quantidade de pontos, chamados pixels, que há em "
+                "cada quadradinho de 1 cm de lado contido na imagem.\n"
+                "Considerando a pesquisa realizada, a unidade de medida do parâmetro de qualidade de uma imagem é expressa por:"
+            ),
+            ques_imagem_url=None,
+            ques_alternativas={
+                "A": "a) cm² ⋅ pixel",
+                "B": "b) cm ⋅ pixel",
+                "C": "c) cm / (pixel)²",
+                "D": "d) pixel / cm",
+                "E": "e) pixel / cm²",
+            },
+            ques_resposta_correta=AlternativaEnum.E,
+            ques_resolucao="Um quadrado de 1 cm de lado possui área igual a 1 cm². A razão entre a quantidade de pixels e a área é expressa em pixel / cm².",
+            ques_resolucao_imagem_url=None,
+        ),
+    ]
+    db.add_all(questoes)
+    db.commit()
+
+
 SEEDS = {
     "Trigonometria no Triângulo Retângulo": povoar_conteudo_3,
     "Funções e Função Afim (Função do 1º Grau)": povoar_conteudo_4,
@@ -1024,7 +1437,24 @@ def povoar_tudo(db: Session):
         except Exception:
             db.rollback()
             raise
+
+    simulado_existe = db.query(Questao).filter(
+        Questao.ques_cont_id.is_(None),
+        Questao.ques_etapa == EtapaEnum.ETAPA_1
+    ).first()
+
+    if simulado_existe:
+        ignorados.append("Simulado 1 - Etapa 1")
+    else:
+        try:
+            povoar_simulado_1(db)
+            inseridos.append("Simulado 1 - Etapa 1")
+        except Exception:
+            db.rollback()
+            raise
+
     return {"inseridos": inseridos, "ignorados": ignorados}
+
 
 def main():
     with sessao_seed() as session:
@@ -1032,6 +1462,7 @@ def main():
 
     print("Inseridos:", resultado["inseridos"])
     print("Ignorados (já existiam):", resultado["ignorados"])
+
 
 if __name__ == "__main__":
     main()

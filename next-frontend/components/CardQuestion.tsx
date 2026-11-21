@@ -10,29 +10,47 @@ type CardQuestionProps = {
   respostaCorreta: string;
   resolucao: string;
   resolucaoImagemUrl?: string | null;
+  respostaSalva?: {
+    alternativa: string;
+    acertou: boolean;
+    respostaCorreta: string;
+  };
   proximaQuestao: () => void;
   questaoAnterior: () => void;
   ehUltimaQuestao: boolean;        
   concluirConteudo: () => void;
-  aoResponder: (acertou: boolean) => void;
+  aoResponder: (quesId: number, alternativa: string, acertou: boolean, respostaCorreta: string) => void;
 };
 
 export default function CardQuestion(props: CardQuestionProps) {
-  const [alternativaSelecionada, setAlternativaSelecionada] = useState("");
-  const [respondida, setRespondida] = useState(false);
-  const [respostaCorreta, setRespostaCorreta] = useState<boolean | null>(null);
+  const [alternativaSelecionada, setAlternativaSelecionada] = useState(props.respostaSalva?.alternativa || "");
+  const [respondida, setRespondida] = useState(Boolean(props.respostaSalva));
+  const [respostaCorreta, setRespostaCorreta] = useState<boolean | null>(
+    props.respostaSalva ? props.respostaSalva.acertou : null
+  );
   const [verificando, setVerificando] = useState(false);
   const [erroResposta, setErroResposta] = useState("");
-  const [alternativaCorretaAPI, setAlternativaCorretaAPI] = useState<string | null>(null);
+  const [alternativaCorretaAPI, setAlternativaCorretaAPI] = useState<string | null>(
+    props.respostaSalva?.respostaCorreta || null
+  );
 
   useEffect(() => {
-    setAlternativaSelecionada("");
-    setRespondida(false);
-    setRespostaCorreta(null);
-    setVerificando(false);
-    setErroResposta("");
-    setAlternativaCorretaAPI(null);
-  }, [props.idQuestao]);
+    if (props.respostaSalva) {
+      setAlternativaSelecionada(props.respostaSalva.alternativa);
+      setRespondida(true);
+      setRespostaCorreta(props.respostaSalva.acertou);
+      setAlternativaCorretaAPI(props.respostaSalva.respostaCorreta);
+      setVerificando(false);
+      setErroResposta("");
+    } else {
+      setAlternativaSelecionada("");
+      setRespondida(false);
+      setRespostaCorreta(null);
+      setVerificando(false);
+      setErroResposta("");
+      setAlternativaCorretaAPI(null);
+    }
+  }, [props.idQuestao, props.respostaSalva]);
 
   
 function verificarResposta(id: string) {
@@ -83,7 +101,7 @@ function verificarResposta(id: string) {
       setRespostaCorreta(dados.acertou);
       setAlternativaCorretaAPI(dados.resposta_correta);
       setRespondida(true);
-      props.aoResponder(dados.acertou);
+      props.aoResponder(props.idQuestao, id, dados.acertou, dados.resposta_correta);
     })
     .catch(err => {
       console.log("Erro ao enviar resposta:", err);

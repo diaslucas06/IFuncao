@@ -2,6 +2,7 @@ from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt, JWTError
 from sqlalchemy.orm import Session
+import unicodedata
 
 from config import ALGORITHM, SECRET_KEY
 from models import db, Usuario
@@ -34,3 +35,11 @@ def pegar_usuario_logado(
     if not usuario:
         raise HTTPException(status_code=401, detail="Usuário não encontrado")
     return usuario
+
+def normalizar_texto(texto: str) -> str:
+    # Tira acentos e deixa em minúsculo
+    sem_acento = "".join(
+        c for c in unicodedata.normalize("NFD", texto)
+        if unicodedata.category(c) != "Mn"
+    )
+    return sem_acento.lower().strip()

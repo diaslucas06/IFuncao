@@ -1,13 +1,43 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 from datetime import datetime, timezone
+from urllib.parse import unquote
+from typing import List
 
 from models import Conteudo, UsuarioConteudo, Usuario
-from schemas import ConteudoSchema
-from dependencies import pegar_sessao, pegar_usuario_logado
+from schemas import ConteudoSchema, ConteudoBuscaResponse
+from dependencies import pegar_sessao, pegar_usuario_logado, normalizar_texto
 
 conteudos_routes = APIRouter(prefix="/conteudos", tags=["Conteúdos"])
+
+@conteudos_routes.get("/buscar", response_model=List[ConteudoBuscaResponse])
+def buscar_conteudos(
+    q: str = Query(..., min_length=2, description="Parte do nome do conteúdo"),
+    limite: int = Query(20, ge=1, le=100),
+    db: Session = Depends(pegar_sessao),
+):
+    palavras = normalizar_texto(unquote(q)).split()
+
+    if not palavras:
+        return []
+
+    conteudos = db.query(
+        Conteudo.cont_id,
+        Conteudo.cont_nome,
+        Conteudo.cont_etapa,
+    ).all()
+
+    resultados = []
+    for c in conteudos:
+        nome = normalizar_texto(c.cont_nome)
+        if all(p in nome for p in palavras):
+            resultados.append((c, nome))
+
+    termo = " ".join(palavras)
+    resultados.sort(key=lambda r: (not r[1].startswith(termo), r[1]))
+
+    return [c for c, _ in resultados[:limite]]
 
 @conteudos_routes.get("/{cont_etapa}")
 async def conteudos_etapa(

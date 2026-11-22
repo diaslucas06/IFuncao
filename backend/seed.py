@@ -51,7 +51,7 @@ def povoar_conteudo_3(db: Session):
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="1 - Observando pela manhã a sombra de um prédio no chão, uma pessoa verificou que essa media 63 metros quando os raios de Sol faziam um ângulo de 30° com a superfície. Baseado nessas informações, calcule a altura do prédio.",
+            ques_enunciado="Observando pela manhã a sombra de um prédio no chão, uma pessoa verificou que essa media 63 metros quando os raios de Sol faziam um ângulo de 30° com a superfície. Baseado nessas informações, calcule a altura do prédio.",
             ques_alternativas={
                 "A": "a) 30,50 m",
                 "B": "b) 20,10 m",
@@ -65,7 +65,7 @@ def povoar_conteudo_3(db: Session):
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="2 - Uma ciclista participando de um campeonato se aproxima da linha de chegada que se encontra no alto de uma ladeira. O comprimento total dessa última parte da prova é de 60 m e o ângulo formado entre a rampa e a horizontal é de 30°. Sabendo disso, calcule a altura vertical que a ciclista precisa subir.",
+            ques_enunciado="Uma ciclista participando de um campeonato se aproxima da linha de chegada que se encontra no alto de uma ladeira. O comprimento total dessa última parte da prova é de 60 m e o ângulo formado entre a rampa e a horizontal é de 30°. Sabendo disso, calcule a altura vertical que a ciclista precisa subir.",
             ques_alternativas={
                 "A": "a) 25 m",
                 "B": "b) 30 m",
@@ -78,7 +78,7 @@ def povoar_conteudo_3(db: Session):
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="3 - (EPCAR-MG) Um avião decola de um ponto B sob inclinação constante de 15° com a horizontal. A 2 km de B se encontra a projeção vertical C do ponto mais alto D de uma serra de 600 m de altura. Dados: cos 15° = 0,97; sen 15° = 0,26; tg 15° = 0,27. É correto afirmar que:",
+            ques_enunciado="(EPCAR-MG) Um avião decola de um ponto B sob inclinação constante de 15° com a horizontal. A 2 km de B se encontra a projeção vertical C do ponto mais alto D de uma serra de 600 m de altura. Dados: cos 15° = 0,97; sen 15° = 0,26; tg 15° = 0,27. É correto afirmar que:",
             ques_alternativas={
                 "A": "a) Não haverá colisão do avião com a serra antes de alcançar 540 m de altura.",
                 "B": "b) Haverá colisão do avião com a serra em 540 m de altura.",
@@ -91,7 +91,7 @@ def povoar_conteudo_3(db: Session):
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="4 - Um avião decolou sob um ângulo constante de 40º e percorreu em linha reta 8000 m. Nesta situação, qual a altura que se encontrava o avião ao percorrer essa distância? Considere: sen 40º = 0,64; cos 40º = 0,77; tg 40º = 0,84.",
+            ques_enunciado="Um avião decolou sob um ângulo constante de 40º e percorreu em linha reta 8000 m. Nesta situação, qual a altura que se encontrava o avião ao percorrer essa distância? Considere: sen 40º = 0,64; cos 40º = 0,77; tg 40º = 0,84.",
             ques_alternativas={
                 "A": "a) 5120 m",
                 "B": "b) 6000 m",
@@ -104,7 +104,7 @@ def povoar_conteudo_3(db: Session):
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="5 - Um menino de 1,30 m de altura avista o ponto mais alto de um morro sob um ângulo visual de 20º em relação à horizontal. Considerando que ele está a uma distância de 500 m da base do morro, calcule a altura (h) deste ponto. Considere: sen 20º = 0,34; cos 20º = 0,93; tg 20º = 0,36.",
+            ques_enunciado="Um menino de 1,30 m de altura avista o ponto mais alto de um morro sob um ângulo visual de 20º em relação à horizontal. Considerando que ele está a uma distância de 500 m da base do morro, calcule a altura (h) deste ponto. Considere: sen 20º = 0,34; cos 20º = 0,93; tg 20º = 0,36.",
             ques_alternativas={
                 "A": "a) 192,1 m",
                 "B": "b) 131 m",
@@ -117,7 +117,7 @@ def povoar_conteudo_3(db: Session):
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="6 - Um terreno possui o formato de um retângulo cuja base mede 8 cm, sabendo que o ângulo formado entre a base e a diagonal é de 30º, qual o valor que mais se aproxima da diagonal? (Use √3 = 1,7)",
+            ques_enunciado="Um terreno possui o formato de um retângulo cuja base mede 8 cm, sabendo que o ângulo formado entre a base e a diagonal é de 30º, qual o valor que mais se aproxima da diagonal? (Use √3 = 1,7)",
             ques_alternativas={
                 "A": "a) 5",
                 "B": "b) 6",
@@ -131,7 +131,7 @@ def povoar_conteudo_3(db: Session):
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="7 - Qual deve ser o valor do seno de um ângulo, sabendo que ele se encontra no primeiro quadrante e que o cosseno desse mesmo ângulo é igual a 3/5?",
+            ques_enunciado="Qual deve ser o valor do seno de um ângulo, sabendo que ele se encontra no primeiro quadrante e que o cosseno desse mesmo ângulo é igual a 3/5?",
             ques_alternativas={
                 "A": "a) 4/5",
                 "B": "b) 2/5",
@@ -145,7 +145,7 @@ def povoar_conteudo_3(db: Session):
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="8 - Um teleférico foi instalado ligando uma base ao cume de uma montanha. Para a instalação, foram utilizados 1358 m de cabos, dispostos a uma angulação de 30° em relação ao solo. Qual a altura da montanha?",
+            ques_enunciado="Um teleférico foi instalado ligando uma base ao cume de uma montanha. Para a instalação, foram utilizados 1358 m de cabos, dispostos a uma angulação de 30° em relação ao solo. Qual a altura da montanha?",
             ques_alternativas={
                 "A": "a) 450 m",
                 "B": "b) 300 m",
@@ -159,7 +159,7 @@ def povoar_conteudo_3(db: Session):
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="9 - Sendo o ângulo oposto ao cateto 'a' igual a 30° e a hipotenusa igual a 47 m em um triângulo retângulo, calcule a medida da altura 'a' do triângulo.",
+            ques_enunciado="Sendo o ângulo oposto ao cateto 'a' igual a 30° e a hipotenusa igual a 47 m em um triângulo retângulo, calcule a medida da altura 'a' do triângulo.",
             ques_alternativas={
                 "A": "a) 20 m",
                 "B": "b) 23,50 m",
@@ -173,7 +173,7 @@ def povoar_conteudo_3(db: Session):
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.DIFICIL,
-            ques_enunciado="10 - A vista superior de um parque mostra dois caminhos para se chegar ao ponto C, a partir do ponto A. Uma das opções é ir para B, onde há bebedouros e lugares de descanso e, depois, ir para C. Caso um visitante do parque queira ir direto para C, quantos metros ele terá caminhado a menos do que a primeira opção? Considerar as aproximações: sen 58° = 0,85; cos 58° = 0,53; tan 58° = 1,60.",
+            ques_enunciado="A vista superior de um parque mostra dois caminhos para se chegar ao ponto C, a partir do ponto A. Uma das opções é ir para B, onde há bebedouros e lugares de descanso e, depois, ir para C. Caso um visitante do parque queira ir direto para C, quantos metros ele terá caminhado a menos do que a primeira opção? Considerar as aproximações: sen 58° = 0,85; cos 58° = 0,53; tan 58° = 1,60.",
             ques_alternativas={
                 "A": "a) 7,54 m",
                 "B": "b) 3,50 m",
@@ -240,7 +240,7 @@ def povoar_conteudo_4(db: Session):
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "1 - (UFMA) Considere as seguintes afirmações:\n"
+                "(UFMA) Considere as seguintes afirmações:\n"
                 "I. Uma função é uma relação que associa a cada elemento do seu domínio um único elemento no seu contradomínio.\n"
                 "II. Toda relação é uma função.\n"
                 "III. Dada uma função sobrejetora, então seu contradomínio é diferente de sua imagem.\n"
@@ -260,7 +260,7 @@ def povoar_conteudo_4(db: Session):
             ques_cont_id=conteudo4.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="2 - Dada a função f: Z → Z definida por f(x) = 2x, podemos afirmar que f é:",
+            ques_enunciado="Dada a função f: Z → Z definida por f(x) = 2x, podemos afirmar que f é:",
             ques_alternativas={
                 "A": "a) Apenas sobrejetora",
                 "B": "b) Apenas injetora",
@@ -274,7 +274,7 @@ def povoar_conteudo_4(db: Session):
             ques_cont_id=conteudo4.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="3 - Seja f(x) = √(x - 2) inversível em todo o seu domínio. Se g(x) é função inversa de f(x), o valor de g(f(5)) é igual a:",
+            ques_enunciado="Seja f(x) = √(x - 2) inversível em todo o seu domínio. Se g(x) é função inversa de f(x), o valor de g(f(5)) é igual a:",
             ques_alternativas={
                 "A": "a) 5",
                 "B": "b) 4",
@@ -287,7 +287,7 @@ def povoar_conteudo_4(db: Session):
             ques_cont_id=conteudo4.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="4 - Qual deve ser o valor de m para que a função definida por f(x) = (2m - 6)x + 4 seja decrescente?",
+            ques_enunciado="Qual deve ser o valor de m para que a função definida por f(x) = (2m - 6)x + 4 seja decrescente?",
             ques_alternativas={
                 "A": "a) m < 3",
                 "B": "b) m > 3",
@@ -300,7 +300,7 @@ def povoar_conteudo_4(db: Session):
             ques_cont_id=conteudo4.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="5 - (Cefet - MG - 2015) Um motorista de táxi cobra, para cada corrida, uma taxa fixa de R$ 5,00 e mais R$ 2,00 por quilômetro rodado. O valor total arrecadado (R) num dia é função da quantidade total (x) de quilômetros percorridos e calculado por meio da função R(x) = ax + b, em que a é o preço cobrado por quilômetro e b, a soma de todas as taxas fixas recebidas no dia. Se, em um dia, o taxista realizou 10 corridas e arrecadou R$ 410,00, então a média de quilômetros rodados por corrida foi de:",
+            ques_enunciado="(Cefet - MG - 2015) Um motorista de táxi cobra, para cada corrida, uma taxa fixa de R$ 5,00 e mais R$ 2,00 por quilômetro rodado. O valor total arrecadado (R) num dia é função da quantidade total (x) de quilômetros percorridos e calculado por meio da função R(x) = ax + b, em que a é o preço cobrado por quilômetro e b, a soma de todas as taxas fixas recebidas no dia. Se, em um dia, o taxista realizou 10 corridas e arrecadou R$ 410,00, então a média de quilômetros rodados por corrida foi de:",
             ques_alternativas={
                 "A": "a) 14",
                 "B": "b) 16",
@@ -313,7 +313,7 @@ def povoar_conteudo_4(db: Session):
             ques_cont_id=conteudo4.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.DIFICIL,
-            ques_enunciado="6 - (Unicamp - 2016) Considere a função afim f(x) = ax + b definida para todo número real x, onde a e b são números reais. Sabendo que f(4) = 2, podemos afirmar que f(f(3) + f(5)) é igual a:",
+            ques_enunciado="(Unicamp - 2016) Considere a função afim f(x) = ax + b definida para todo número real x, onde a e b são números reais. Sabendo que f(4) = 2, podemos afirmar que f(f(3) + f(5)) é igual a:",
             ques_alternativas={
                 "A": "a) 5",
                 "B": "b) 4",
@@ -326,7 +326,7 @@ def povoar_conteudo_4(db: Session):
             ques_cont_id=conteudo4.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="7 - (Encceja 2018) Uma prestadora de serviços cobra pela visita à residência do cliente e pelo tempo necessário para realizar o serviço na residência. O valor da visita é R$ 40 e o valor da hora para realização do serviço é R$ 20. Uma expressão que indica o valor a ser pago (P) em função das horas (h) necessárias à execução do serviço é:",
+            ques_enunciado="(Encceja 2018) Uma prestadora de serviços cobra pela visita à residência do cliente e pelo tempo necessário para realizar o serviço na residência. O valor da visita é R$ 40 e o valor da hora para realização do serviço é R$ 20. Uma expressão que indica o valor a ser pago (P) em função das horas (h) necessárias à execução do serviço é:",
             ques_alternativas={
                 "A": "A) P = 40h",
                 "B": "B) P = 60h",
@@ -339,7 +339,7 @@ def povoar_conteudo_4(db: Session):
             ques_cont_id=conteudo4.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="8 - (UFSM) Sabe-se que o preço a ser pago por uma corrida de táxi inclui uma parcela fixa, que é denominada bandeirada, e uma parcela variável, que é função da distância percorrida. Se o preço da bandeirada é de R$ 4,60 e o quilômetro rodado é R$ 0,96, a distância percorrida pelo passageiro que pagou R$ 19 para ir de sua casa ao shopping é de:",
+            ques_enunciado="(UFSM) Sabe-se que o preço a ser pago por uma corrida de táxi inclui uma parcela fixa, que é denominada bandeirada, e uma parcela variável, que é função da distância percorrida. Se o preço da bandeirada é de R$ 4,60 e o quilômetro rodado é R$ 0,96, a distância percorrida pelo passageiro que pagou R$ 19 para ir de sua casa ao shopping é de:",
             ques_alternativas={
                 "A": "A) 5 km",
                 "B": "B) 10 km",
@@ -353,7 +353,7 @@ def povoar_conteudo_4(db: Session):
             ques_cont_id=conteudo4.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="9 - Podemos afirmar que o zero da função f(x) = -2x + 5 é igual a:",
+            ques_enunciado="Podemos afirmar que o zero da função f(x) = -2x + 5 é igual a:",
             ques_alternativas={
                 "A": "A) 2",
                 "B": "B) 2,5",
@@ -367,7 +367,7 @@ def povoar_conteudo_4(db: Session):
             ques_cont_id=conteudo4.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="10 - Um fazendeiro resolveu investir em uma colheitadeira para facilitar o serviço na plantação. Sabendo que o valor pago foi de R$ 300.000 no ano da compra, é bastante comum que máquinas desse porte percam o seu valor V ao decorrer dos anos t. Supondo que a taxa de depreciação de uma máquina desse porte é de R$ 22.000 por ano, devido ao seu constante uso, podemos afirmar que o valor da colheitadeira, ao final de 7 anos, será de:",
+            ques_enunciado="Um fazendeiro resolveu investir em uma colheitadeira para facilitar o serviço na plantação. Sabendo que o valor pago foi de R$ 300.000 no ano da compra, é bastante comum que máquinas desse porte percam o seu valor V ao decorrer dos anos t. Supondo que a taxa de depreciação de uma máquina desse porte é de R$ 22.000 por ano, devido ao seu constante uso, podemos afirmar que o valor da colheitadeira, ao final de 7 anos, será de:",
             ques_alternativas={
                 "A": "A) R$ 154.000",
                 "B": "B) R$ 246.000",
@@ -439,7 +439,7 @@ def povoar_conteudo_5(db: Session):
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="1 - (UERJ - 2016) Observe a função f, definida por f(x) = x² - 2kx + 29. Se f(x) ≥ 4, para todo número real x, o valor mínimo da função f é 4. Assim, o valor positivo do parâmetro k é:",
+            ques_enunciado="(UERJ - 2016) Observe a função f, definida por f(x) = x² - 2kx + 29. Se f(x) ≥ 4, para todo número real x, o valor mínimo da função f é 4. Assim, o valor positivo do parâmetro k é:",
             ques_alternativas={
                 "A": "a) 5",
                 "B": "b) 6",
@@ -452,7 +452,7 @@ def povoar_conteudo_5(db: Session):
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="2 - Dada a função f(x) = x² - 4x + 5, o valor de f(2) é:",
+            ques_enunciado="Dada a função f(x) = x² - 4x + 5, o valor de f(2) é:",
             ques_alternativas={
                 "A": "A) 0.",
                 "B": "B) 1.",
@@ -466,7 +466,7 @@ def povoar_conteudo_5(db: Session):
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="3 - A concavidade da parábola da função f(x) = -3x² + 2x + 1 é:",
+            ques_enunciado="A concavidade da parábola da função f(x) = -3x² + 2x + 1 é:",
             ques_alternativas={
                 "A": "A) voltada para cima.",
                 "B": "B) inexistente.",
@@ -480,7 +480,7 @@ def povoar_conteudo_5(db: Session):
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="4 - A trajetória de uma bola chutada é descrita pela função h(t) = -5t² + 20t, em que h(t) é a altura em metros e t é o tempo em segundos. A altura máxima atingida pela bola é:",
+            ques_enunciado="A trajetória de uma bola chutada é descrita pela função h(t) = -5t² + 20t, em que h(t) é a altura em metros e t é o tempo em segundos. A altura máxima atingida pela bola é:",
             ques_alternativas={
                 "A": "A) 10 m.",
                 "B": "B) 15 m.",
@@ -494,7 +494,7 @@ def povoar_conteudo_5(db: Session):
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="5 - Dada a função f(x) = 2^(x+3) + 10, o valor de x para que f(x) = 42 é de:",
+            ques_enunciado="Dada a função f(x) = 2^(x+3) + 10, o valor de x para que f(x) = 42 é de:",
             ques_alternativas={
                 "A": "A) 2",
                 "B": "B) 3",
@@ -508,7 +508,7 @@ def povoar_conteudo_5(db: Session):
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="6 - O gráfico, a seguir, é a representação de uma função exponencial decrescente que passa pelos pontos (-1, 2) e (0, 1). Analisando o gráfico, a lei de formação dessa função exponencial é:",
+            ques_enunciado="O gráfico, a seguir, é a representação de uma função exponencial decrescente que passa pelos pontos (-1, 2) e (0, 1). Analisando o gráfico, a lei de formação dessa função exponencial é:",
             ques_alternativas={
                 "A": "A) f(x) = 5^x",
                 "B": "B) f(x) = 0,2^x",
@@ -523,7 +523,7 @@ def povoar_conteudo_5(db: Session):
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "7 - Dada uma função de R → R com a lei de formação f(x) = a^x, em que a é um número positivo diferente de 1, julgue as afirmativas a seguir:\n"
+                "Dada uma função de R → R com a lei de formação f(x) = a^x, em que a é um número positivo diferente de 1, julgue as afirmativas a seguir:\n"
                 "I → Essa função será crescente se a for positivo.\n"
                 "II → Se x = 0, então, f(x) = 1.\n"
                 "III → Essa é uma função exponencial.\n"
@@ -542,7 +542,7 @@ def povoar_conteudo_5(db: Session):
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.DIFICIL,
-            ques_enunciado="8 - Observe o gráfico da função logarítmica que possui assíntota vertical em x = 3 e corta o eixo x no ponto (4, 0) (translação horizontal de 3 unidades para a direita em relação a y = log₂(x)). A função representada no gráfico pode ser definida como:",
+            ques_enunciado="Observe o gráfico da função logarítmica que possui assíntota vertical em x = 3 e corta o eixo x no ponto (4, 0) (translação horizontal de 3 unidades para a direita em relação a y = log₂(x)). A função representada no gráfico pode ser definida como:",
             ques_alternativas={
                 "A": "a) f(x) = log₂(x - 3)",
                 "B": "b) f(x) = log₂(x + 3)",
@@ -555,7 +555,7 @@ def povoar_conteudo_5(db: Session):
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="9 - Seja f(x) = log₂(x) e g(x) = log₃(x) a lei de formação de duas funções f(x) e g(x), então o valor de f(8) – g(9) é igual a:",
+            ques_enunciado="Seja f(x) = log₂(x) e g(x) = log₃(x) a lei de formação de duas funções f(x) e g(x), então o valor de f(8) – g(9) é igual a:",
             ques_alternativas={
                 "A": "A) 0.",
                 "B": "B) 1.",
@@ -569,7 +569,7 @@ def povoar_conteudo_5(db: Session):
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="10 - Durante os estudos sobre o crescimento de uma determinada árvore, foi possível modelar o crescimento dela no decorrer do tempo por meio da função A(t) = 1 + log₃(5 + t), em que t é o tempo em anos e A(t) é a altura em metros. Sendo assim, podemos afirmar que a altura dessa árvore, após 4 anos, será de:",
+            ques_enunciado="Durante os estudos sobre o crescimento de uma determinada árvore, foi possível modelar o crescimento dela no decorrer do tempo por meio da função A(t) = 1 + log₃(5 + t), em que t é o tempo em anos e A(t) é a altura em metros. Sendo assim, podemos afirmar que a altura dessa árvore, após 4 anos, será de:",
             ques_alternativas={
                 "A": "A) 1 metro.",
                 "B": "B) 2 metros.",
@@ -641,7 +641,7 @@ def povoar_conteudo_6(db: Session):
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="1 - Considere o triângulo ABC e determine o valor de x, sabendo que o segmento AD é a bissetriz relativa ao lado BC e determina os segmentos proporcionais na razão (3x + 3) / 12 = (6x - 3) / 21.",
+            ques_enunciado="Considere o triângulo ABC e determine o valor de x, sabendo que o segmento AD é a bissetriz relativa ao lado BC e determina os segmentos proporcionais na razão (3x + 3) / 12 = (6x - 3) / 21.",
             ques_alternativas={
                 "A": "a) 9",
                 "B": "b) 10",
@@ -655,7 +655,7 @@ def povoar_conteudo_6(db: Session):
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="2 - As retas t, u e v são paralelas. Aplicando o Teorema de Tales às retas transversais da figura, determine o valor da medida do segmento x.",
+            ques_enunciado="As retas t, u e v são paralelas. Aplicando o Teorema de Tales às retas transversais da figura, determine o valor da medida do segmento x.",
             ques_alternativas={
                 "A": "a) 18",
                 "B": "b) 20",
@@ -669,7 +669,7 @@ def povoar_conteudo_6(db: Session):
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="3 - Existem 5 bolas dispostas em uma mesa de bilhar. A reta formada entre as bolas 1 e 2 é paralela à reta formada entre as bolas 4 e 5. Conforme as medidas dispostas na imagem responda: qual a distância entre as bolas 1 e 3?",
+            ques_enunciado="Existem 5 bolas dispostas em uma mesa de bilhar. A reta formada entre as bolas 1 e 2 é paralela à reta formada entre as bolas 4 e 5. Conforme as medidas dispostas na imagem responda: qual a distância entre as bolas 1 e 3?",
             ques_alternativas={
                 "A": "a) 20 cm",
                 "B": "b) 30 cm",
@@ -684,7 +684,7 @@ def povoar_conteudo_6(db: Session):
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "4 - (Colégio Pedro II - 2012) Para melhorar a qualidade do solo, aumentando a produtividade do milho e da soja, em uma fazenda é feito o rodízio entre essas culturas e a área destinada ao pasto. Com essa finalidade, a área produtiva da fazenda foi dividida em três partes conforme a figura.\n"
+                "(Colégio Pedro II - 2012) Para melhorar a qualidade do solo, aumentando a produtividade do milho e da soja, em uma fazenda é feito o rodízio entre essas culturas e a área destinada ao pasto. Com essa finalidade, a área produtiva da fazenda foi dividida em três partes conforme a figura.\n"
                 "Considere que:\n"
                 "• os pontos A, B, C e D estão alinhados;\n"
                 "• os pontos H, G, F e E estão alinhados;\n"
@@ -705,7 +705,7 @@ def povoar_conteudo_6(db: Session):
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="5 - (Enem - 2009) A rampa de um hospital tem na sua parte mais elevada uma altura de 2,2 metros. Um paciente ao caminhar sobre a rampa percebe que se deslocou 3,2 metros e alcançou uma altura de 0,8 metros. A distância em metros que o paciente ainda deve caminhar para atingir o ponto mais alto da rampa é:",
+            ques_enunciado="(Enem - 2009) A rampa de um hospital tem na sua parte mais elevada uma altura de 2,2 metros. Um paciente ao caminhar sobre a rampa percebe que se deslocou 3,2 metros e alcançou uma altura de 0,8 metros. A distância em metros que o paciente ainda deve caminhar para atingir o ponto mais alto da rampa é:",
             ques_alternativas={
                 "A": "a) 1,16 metros.",
                 "B": "b) 3,0 metros.",
@@ -719,7 +719,7 @@ def povoar_conteudo_6(db: Session):
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="6 - Existem alguns procedimentos que podem ser usados para descobrir se dois triângulos são semelhantes sem ter de analisar a proporcionalidade de todos os lados e, ao mesmo tempo, as medidas de todos os ângulos desses triângulos. A respeito desses casos, assinale a alternativa correta:",
+            ques_enunciado="Existem alguns procedimentos que podem ser usados para descobrir se dois triângulos são semelhantes sem ter de analisar a proporcionalidade de todos os lados e, ao mesmo tempo, as medidas de todos os ângulos desses triângulos. A respeito desses casos, assinale a alternativa correta:",
             ques_alternativas={
                 "A": "a) Para que dois triângulos sejam semelhantes, basta que eles tenham três ângulos correspondentes congruentes.",
                 "B": "b) Para que dois triângulos sejam semelhantes, basta que eles tenham dois lados proporcionais e um ângulo congruente, em qualquer ordem.",
@@ -733,7 +733,7 @@ def povoar_conteudo_6(db: Session):
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="7 - Na imagem a seguir, é possível perceber dois triângulos que compartilham parte de dois lados. Sabendo que os segmentos BA e DE são paralelos, qual a medida de x?",
+            ques_enunciado="Na imagem a seguir, é possível perceber dois triângulos que compartilham parte de dois lados. Sabendo que os segmentos BA e DE são paralelos, qual a medida de x?",
             ques_alternativas={
                 "A": "a) 210 m",
                 "B": "b) 220 m",
@@ -747,7 +747,7 @@ def povoar_conteudo_6(db: Session):
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="8 - Carla ao procurar seu gatinho o avistou em cima de uma árvore. Ela então pediu ajuda a sua mãe e colocaram uma escada junto à árvore para ajudar o gato a descer. Sabendo que o gato estava a 8 metros do chão e a base da escada estava posicionada a 6 metros da árvore, qual o comprimento da escada utilizada para salvar o gatinho?",
+            ques_enunciado="Carla ao procurar seu gatinho o avistou em cima de uma árvore. Ela então pediu ajuda a sua mãe e colocaram uma escada junto à árvore para ajudar o gato a descer. Sabendo que o gato estava a 8 metros do chão e a base da escada estava posicionada a 6 metros da árvore, qual o comprimento da escada utilizada para salvar o gatinho?",
             ques_alternativas={
                 "A": "a) 8 metros.",
                 "B": "b) 10 metros.",
@@ -760,7 +760,7 @@ def povoar_conteudo_6(db: Session):
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.DIFICIL,
-            ques_enunciado="9 - (IFRJ - 2013) O pátio de esportes do Campus Arrozal de um Instituto Federal é retangular, com 100 m de comprimento e 50 m de largura, representado pelo retângulo ABCD desta figura. Alberto e Bruno são dois alunos, que estão praticando esportes no pátio. Alberto caminha do ponto A ao ponto C pela diagonal do retângulo e volta ao ponto de partida pelo mesmo caminho. Bruno parte do ponto B, dá uma volta completa no pátio, andando pelas linhas laterais, e volta ao ponto de partida. Assim, considerando √5 = 2,24, afirma-se que Bruno andou mais que Alberto:",
+            ques_enunciado="(IFRJ - 2013) O pátio de esportes do Campus Arrozal de um Instituto Federal é retangular, com 100 m de comprimento e 50 m de largura, representado pelo retângulo ABCD desta figura. Alberto e Bruno são dois alunos, que estão praticando esportes no pátio. Alberto caminha do ponto A ao ponto C pela diagonal do retângulo e volta ao ponto de partida pelo mesmo caminho. Bruno parte do ponto B, dá uma volta completa no pátio, andando pelas linhas laterais, e volta ao ponto de partida. Assim, considerando √5 = 2,24, afirma-se que Bruno andou mais que Alberto:",
             ques_alternativas={
                 "A": "a) 38 m.",
                 "B": "b) 64 m.",
@@ -774,7 +774,7 @@ def povoar_conteudo_6(db: Session):
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "10 - Em um triângulo retângulo ABC, com ângulo reto em A, a altura relativa à hipotenusa encontra-a no ponto H. Denotam-se por m e n as projeções dos catetos e por h a altura. Considere as afirmações:\n"
+                "Em um triângulo retângulo ABC, com ângulo reto em A, a altura relativa à hipotenusa encontra-a no ponto H. Denotam-se por m e n as projeções dos catetos e por h a altura. Considere as afirmações:\n"
                 "I. h² = m · n\n"
                 "II. b² = a · n\n"
                 "III. c² = a · m\n"
@@ -814,9 +814,9 @@ def povoar_conteudo_7(db: Session):
             "É a fração que dá origem à dízima periódica ao dividir o numerador pelo denominador:\n"
             "• Dízima Simples (Método Algébrico): Nomeia-se a dízima como x, multiplica-se por 10^n (sendo n o número de algarismos do período) e subtrai-se a equação original.\n"
             "  - Exemplo: x = 0,323232... → 100x = 32,323232... → 100x - x = 32 → 99x = 32 → x = 32/99.\n"
-            "  - Regra prática: Na dízima 3,1717..., o período tem 2 algarismos (denominador 99), logo x = (317 - 3) / 99 = 314/99.\n"
+            "  - Regra prática: Na dízima 3,1717..., o período tem 2 algarismos (denominador 99), logo x = (313) / 99 = 314/99.\n"
             "• Dízima Composta: Multiplica-se primeiro por uma potência de 10 para deslocar o antiperíodo para antes da vírgula e depois aplica-se o processo da dízima simples.\n"
-            "  - Exemplo: x = 2,34555... → 100x = 234,555... e 1000x = 2345,555... → 900x = 2345 - 234 → x = 2111/900.\n\n"
+            "  - Exemplo: x = 2,34555... → 100x = 234,555... e 1000x = 2345,555... → 900x = 234234 → x = 2111/900.\n\n"
             "4. INTERVALOS REAIS\n"
             "São subconjuntos do conjunto dos números reais (R). Dados dois números reais a e b, com a < b, temos:\n"
             "• Intervalo aberto: ]a, b[ = {x ∈ R | a < x < b} (os extremos a e b não pertencem ao intervalo; bolinha aberta).\n"
@@ -844,7 +844,7 @@ def povoar_conteudo_7(db: Session):
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="1 - Qual é a fração irredutível geratriz da dízima periódica 1,2431313131...?",
+            ques_enunciado="Qual é a fração irredutível geratriz da dízima periódica 1,2431313131...?",
             ques_alternativas={
                 "A": "a) 12431/1000",
                 "B": "b) 12431/9900",
@@ -858,7 +858,7 @@ def povoar_conteudo_7(db: Session):
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "2 - Analise as afirmativas abaixo:\n"
+                "Analise as afirmativas abaixo:\n"
                 "I. Os números decimais exatos são assim chamados por possuírem uma representação decimal finita.\n"
                 "II. O número 0,1010010001... é uma dízima periódica.\n"
                 "III. Uma fração irredutível só terá representação decimal exata se o denominador tiver apenas os fatores primos 2 ou 5.\n"
@@ -877,7 +877,7 @@ def povoar_conteudo_7(db: Session):
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="3 - O valor da soma 0,232323... + 0,878787... vale:",
+            ques_enunciado="O valor da soma 0,232323... + 0,878787... vale:",
             ques_alternativas={
                 "A": "a) 1",
                 "B": "b) 1,0101...",
@@ -890,7 +890,7 @@ def povoar_conteudo_7(db: Session):
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="4 - (PUC/RJ - 2003) A soma 1,3333... + 0,16666... é igual a:",
+            ques_enunciado="(PUC/RJ - 2003) A soma 1,3333... + 0,16666... é igual a:",
             ques_alternativas={
                 "A": "a) 1/2",
                 "B": "b) 1",
@@ -904,7 +904,7 @@ def povoar_conteudo_7(db: Session):
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="5 - Seja x = 1,123123… A diferença entre o numerador e o denominador da sua representação fracionária é:",
+            ques_enunciado="Seja x = 1,123123… A diferença entre o numerador e o denominador da sua representação fracionária é:",
             ques_alternativas={
                 "A": "A) 123.",
                 "B": "B) 999.",
@@ -919,7 +919,7 @@ def povoar_conteudo_7(db: Session):
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "6 - Analise os números reais a seguir:\n"
+                "Analise os números reais a seguir:\n"
                 "I. 4/6\n"
                 "II. 0,4555...\n"
                 "III. π\n"
@@ -939,7 +939,7 @@ def povoar_conteudo_7(db: Session):
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="7 - (Pref. de Niterói) Simplificando a expressão (1,333... + 3/2) / (1,5 + 4/3), obtém-se:",
+            ques_enunciado="(Pref. de Niterói) Simplificando a expressão (1,333... + 3/2) / (1,5 + 4/3), obtém-se:",
             ques_alternativas={
                 "A": "A) 0",
                 "B": "B) 1",
@@ -953,7 +953,7 @@ def povoar_conteudo_7(db: Session):
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="8 - A fração geratriz da dízima 15,2222… é:",
+            ques_enunciado="A fração geratriz da dízima 15,2222… é:",
             ques_alternativas={
                 "A": "A) 152/9",
                 "B": "B) 152/90",
@@ -967,7 +967,7 @@ def povoar_conteudo_7(db: Session):
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="9 - A fração geratriz da dízima periódica 1,44444... é:",
+            ques_enunciado="A fração geratriz da dízima periódica 1,44444... é:",
             ques_alternativas={
                 "A": "a) 17/9.",
                 "B": "b) 11/9.",
@@ -982,7 +982,7 @@ def povoar_conteudo_7(db: Session):
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "10 - (Objetiva Concursos) Considerando-se os intervalos numéricos A = [-5, 21], B = [0, 12], C = [-1, 17], analisar os itens abaixo:\n"
+                "(Objetiva Concursos) Considerando-se os intervalos numéricos A = [-5, 21], B = [0, 12], C = [-1, 17], analisar os itens abaixo:\n"
                 "I. O intervalo A contém os valores do intervalo B, assim como o intervalo B contém os valores do intervalo C.\n"
                 "II. Os valores do intervalo C estão contidos no intervalo A, mas não estão contidos no intervalo B.\n"
                 "III. Os valores do intervalo B estão contidos no intervalo C, e os valores do intervalo B estão contidos no intervalo A.\n"
@@ -1009,7 +1009,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "1 - (Enem 2020) Uma empresa de ônibus utiliza um sistema de vendas de passagens que fornece a imagem de todos os assentos do ônibus, "
+                "(Enem 2020) Uma empresa de ônibus utiliza um sistema de vendas de passagens que fornece a imagem de todos os assentos do ônibus, "
                 "diferenciando os assentos já vendidos, por uma cor mais escura, dos assentos ainda disponíveis. A empresa monitora, permanentemente, "
                 "o número de assentos já vendidos e compara-o com o número total de assentos do ônibus para avaliar a necessidade de alocação de veículos extras. "
                 "Na imagem tem-se a informação dos assentos já vendidos e dos ainda disponíveis em um determinado instante.\n"
@@ -1026,7 +1026,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "2 - (Enem 2020) O consumo de espumantes no Brasil tem aumentado nos últimos anos. Uma das etapas do seu processo de produção consiste no "
+                "(Enem 2020) O consumo de espumantes no Brasil tem aumentado nos últimos anos. Uma das etapas do seu processo de produção consiste no "
                 "envasamento da bebida em garrafas semelhantes às da imagem. Nesse processo, a vazão do líquido no interior da garrafa é constante e cessa "
                 "quando atinge o nível de envasamento.\n"
                 "Qual esboço de gráfico melhor representa a variação da altura do líquido em função do tempo, na garrafa indicada na imagem?"
@@ -1051,7 +1051,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "3 - O estádio do Maracanã passou por algumas modificações estruturais para a realização da Copa do Mundo de 2014, como, por exemplo, "
+                "O estádio do Maracanã passou por algumas modificações estruturais para a realização da Copa do Mundo de 2014, como, por exemplo, "
                 "as dimensões do campo retangular. Para se adaptar aos padrões da Fifa, as dimensões do campo foram reduzidas de 110 m × 75 m para 105 m × 68 m.\n"
                 "Em quantos metros quadrados a área do campo do Maracanã foi reduzida?"
             ),
@@ -1066,7 +1066,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "4 - O uso de aplicativos de transporte tem sido uma alternativa à população que busca preços mais competitivos para se locomover, "
+                "O uso de aplicativos de transporte tem sido uma alternativa à população que busca preços mais competitivos para se locomover, "
                 "principalmente nas grandes cidades. Em geral, o valor V a ser pago, em real, varia em função de: tarifa base F (valor fixo), tempo T (em minuto) "
                 "e distância D (em quilômetro). Um desses aplicativos cobra R$ 2,00 de valor fixo, acrescido de R$ 0,26 por minuto de viagem e de R$ 1,40 por quilômetro rodado.\n"
                 "Nessas condições, a expressão que fornece o valor V a ser pago por uma viagem desse aplicativo é:"
@@ -1088,7 +1088,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "5 - Os 100 funcionários de uma empresa estão distribuídos em dois setores: Produção e Administração. Os funcionários de um mesmo setor "
+                "Os 100 funcionários de uma empresa estão distribuídos em dois setores: Produção e Administração. Os funcionários de um mesmo setor "
                 "recebem salários com valores iguais. O quadro apresenta a quantidade de funcionários por setor e seus respectivos salários.\n"
                 "A média dos salários dos 100 funcionários dessa empresa, em real, é:"
             ),
@@ -1109,7 +1109,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "6 - O ideal é consumir 1 grama de carboidrato para cada minuto de caminhada. Um casal realizará diariamente 30 minutos de caminhada, "
+                "O ideal é consumir 1 grama de carboidrato para cada minuto de caminhada. Um casal realizará diariamente 30 minutos de caminhada, "
                 "ingerindo, antes dessa atividade, a quantidade ideal de carboidratos recomendada. Para ter o consumo ideal apenas por meio do consumo de "
                 "pão de fôrma integral, o casal planeja garantir o suprimento de pães para um período de 30 dias ininterruptos. Sabe-se que cada pacote desse "
                 "pão vem com 18 fatias, e que cada uma delas tem 15 gramas de carboidratos.\n"
@@ -1129,7 +1129,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "7 - Um investidor iniciante observou o gráfico que apresenta a evolução dos valores de duas criptomoedas A e B em relação ao tempo.\n"
+                "Um investidor iniciante observou o gráfico que apresenta a evolução dos valores de duas criptomoedas A e B em relação ao tempo.\n"
                 "Durante horas consecutivas, esses valores foram observados em nove instantes, representados por horas exatas.\n"
                 "Em quantos desses instantes a criptomoeda A estava mais valorizada do que a criptomoeda B?"
             ),
@@ -1144,7 +1144,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "8 - Um agricultor é informado sobre um método de proteção para sua lavoura que consiste em inserir larvas específicas, de rápida reprodução. "
+                "Um agricultor é informado sobre um método de proteção para sua lavoura que consiste em inserir larvas específicas, de rápida reprodução. "
                 "A reprodução dessas larvas faz com que sua população multiplique-se por 10 a cada 3 dias e, para evitar eventuais desequilíbrios, é possível cessar "
                 "essa reprodução aplicando-se um produto X. O agricultor decide iniciar esse método com 100 larvas e dispõe de 5 litros do produto X, cuja aplicação "
                 "recomendada é de exatamente 1 litro para cada população de 200 000 larvas. A quantidade total do produto X de que ele dispõe deverá ser aplicada de uma única vez.\n"
@@ -1164,7 +1164,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "9 - Para concretar a laje de sua residência, uma pessoa contratou uma construtora. Tal empresa informa que o preço y do concreto bombeado é "
+                "Para concretar a laje de sua residência, uma pessoa contratou uma construtora. Tal empresa informa que o preço y do concreto bombeado é "
                 "composto de duas partes: uma fixa, chamada de taxa de bombeamento, e uma variável, que depende do volume x de concreto utilizado. "
                 "Sabe-se que a taxa de bombeamento custa R$ 500,00 e que o metro cúbico do concreto bombeado é de R$ 250,00.\n"
                 "A expressão que representa o preço y em função do volume x, em metro cúbico, é:"
@@ -1186,7 +1186,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "10 - Entre maratonistas, um parâmetro utilizado é o de economia de corrida (EC). O valor desse parâmetro é calculado pela razão entre o consumo "
+                "Entre maratonistas, um parâmetro utilizado é o de economia de corrida (EC). O valor desse parâmetro é calculado pela razão entre o consumo "
                 "de oxigênio, em mililitro (mL) por minuto (min), e a massa, em quilograma (kg), do atleta correndo a uma velocidade constante.\n"
                 "A unidade de medida da grandeza descrita pelo parâmetro EC é:"
             ),
@@ -1207,7 +1207,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "11 - A figura ilustra uma roda-gigante no exato instante em que a cadeira onde se encontra a pessoa P está no ponto mais alto dessa roda-gigante.\n"
+                "A figura ilustra uma roda-gigante no exato instante em que a cadeira onde se encontra a pessoa P está no ponto mais alto dessa roda-gigante.\n"
                 "Com o passar do tempo, à medida que a roda-gigante gira, com velocidade angular constante e no sentido horário, a altura da cadeira onde se "
                 "encontra a pessoa P, em relação ao solo, vai se alterando.\n"
                 "O gráfico que melhor representa a variação dessa altura, em função do tempo, contado a partir do instante em que a cadeira da pessoa P se "
@@ -1230,7 +1230,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "12 - (Enem 2017) Em um teleférico turístico, bondinhos saem de estações ao nível do mar e do topo de uma montanha. A travessia dura 1,5 minuto "
+                "(Enem 2017) Em um teleférico turístico, bondinhos saem de estações ao nível do mar e do topo de uma montanha. A travessia dura 1,5 minuto "
                 "e ambos os bondinhos se deslocam à mesma velocidade. Quarenta segundos após o bondinho A partir da estação ao nível do mar, ele cruza com o "
                 "bondinho B, que havia saído do topo da montanha.\n"
                 "Quantos segundos após a partida do bondinho B partiu o bondinho A?"
@@ -1249,7 +1249,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.DIFICIL,
             ques_enunciado=(
-                "13 - (Enem 2013) O dono de um sítio pretende colocar uma haste de sustentação para melhor firmar dois postes de comprimentos iguais a 6 m e 4 m. "
+                "(Enem 2013) O dono de um sítio pretende colocar uma haste de sustentação para melhor firmar dois postes de comprimentos iguais a 6 m e 4 m. "
                 "A figura representa a situação real na qual os postes são descritos pelos segmentos AC e BD e a haste é representada pelo segmento EF, "
                 "todos perpendiculares ao solo, que é indicado pelo segmento de reta AB. Os segmentos AD e BC representam cabos de aço que serão instalados.\n"
                 "Qual deve ser o valor do comprimento da haste EF?"
@@ -1268,7 +1268,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "14 - Um adolescente, tendo em vista uma alimentação saudável, consome diariamente 7,5 dL de leite durante 1 mês (30 dias). "
+                "Um adolescente, tendo em vista uma alimentação saudável, consome diariamente 7,5 dL de leite durante 1 mês (30 dias). "
                 "Sabe-se que o preço de um litro de leite é R$ 1,98.\n"
                 "Nessas condições, o custo mensal com o consumo de leite desse adolescente é de:"
             ),
@@ -1289,7 +1289,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "15 - (Enem 2020) Pesquisadores da Universidade de Tecnologia de Viena, na Áustria, produziram miniaturas de objetos em impressoras 3D de alta precisão. "
+                "(Enem 2020) Pesquisadores da Universidade de Tecnologia de Viena, na Áustria, produziram miniaturas de objetos em impressoras 3D de alta precisão. "
                 "A escultura apresentada é uma miniatura de um carro de Fórmula 1, com 100 micrômetros de comprimento. Um micrômetro é a milionésima parte de um metro.\n"
                 "Usando notação científica, qual é a representação do comprimento dessa miniatura, em metro?"
             ),
@@ -1310,7 +1310,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "16 - De forma geral, são necessários 50 kg de bauxita para produzir 10 kg de alumínio. O Brasil fechou 2020 como um dos principais líderes "
+                "De forma geral, são necessários 50 kg de bauxita para produzir 10 kg de alumínio. O Brasil fechou 2020 como um dos principais líderes "
                 "mundiais em reciclagem de latas de alumínio, obtendo um índice de reciclagem de 97,4% de um total de 4,0 × 10⁵ toneladas de latas vendidas. "
                 "Considere que a lata é constituída de alumínio puro.\n"
                 "Levando em conta apenas a reciclagem de latas, qual é o valor mais próximo da massa de bauxita, em tonelada, que deixou de ser extraída da natureza em 2020 no Brasil?"
@@ -1335,7 +1335,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "17 - Ao calcular a média de suas notas em 4 provas, um estudante dividiu, por engano, a soma das notas por 5. Com isso, a média obtida foi "
+                "1o calcular a média de suas notas em 4 provas, um estudante dividiu, por engano, a soma das notas por 5. Com isso, a média obtida foi "
                 "1 unidade menor do que deveria ser, caso fosse calculada corretamente.\n"
                 "O valor correto da média das notas desse estudante é:"
             ),
@@ -1350,7 +1350,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "18 - O gráfico apresenta o valor total de exportações e o valor total de importações, ao longo de um período, em bilhão de dólares. "
+                "O gráfico apresenta o valor total de exportações e o valor total de importações, ao longo de um período, em bilhão de dólares. "
                 "O saldo da balança comercial brasileira é dado pelo valor total de exportações menos o valor total de importações num mesmo período.\n"
                 "Considere que os saldos nos três meses destacados sejam: S1 (junho de 2009), S2 (janeiro de 2010) e S3 (junho de 2010).\n"
                 "A ordenação dos saldos S1, S2 e S3, do maior para o menor, é:"
@@ -1364,7 +1364,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
                 "E": "e) S3, S2 e S1.",
             },
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Pelo gráfico: S1 ≈ 14,5 - 10 = 4,5 bi; S2 < 0 (importações superaram exportações); S3 ≈ 17,1 - 14,8 = 2,3 bi. Logo, S1 > S3 > S2.",
+            ques_resolucao="Pelo gráfico: S1 ≈ 14,10 = 4,5 bi; S2 < 0 (importações superaram exportações); S3 ≈ 17,1 - 14,8 = 2,3 bi. Logo, S1 > S3 > S2.",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
@@ -1372,7 +1372,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "19 - Pesquisas indicam que o número de bactérias X é duplicado a cada quarto de hora. Um aluno resolveu fazer uma observação para verificar "
+                "Pesquisas indicam que o número de bactérias X é duplicado a cada quarto de hora. Um aluno resolveu fazer uma observação para verificar "
                 "a veracidade dessa afirmação. Ele usou uma população inicial de 10⁵ bactérias X e encerrou a observação ao final de uma hora.\n"
                 "Após uma hora do início do período de observação desse aluno, o número de bactérias X foi de:"
             ),
@@ -1393,7 +1393,7 @@ def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
             ques_enunciado=(
-                "20 - Uma pessoa ampliou uma foto no computador e, ao imprimi-la, verificou que a qualidade não estava boa. Ao pesquisar, descobriu que "
+                "Uma pessoa ampliou uma foto no computador e, ao imprimi-la, verificou que a qualidade não estava boa. Ao pesquisar, descobriu que "
                 "um parâmetro que define a qualidade da imagem, ou resolução, pode ser considerado pela quantidade de pontos, chamados pixels, que há em "
                 "cada quadradinho de 1 cm de lado contido na imagem.\n"
                 "Considerando a pesquisa realizada, a unidade de medida do parâmetro de qualidade de uma imagem é expressa por:"

@@ -130,3 +130,11 @@ class SimuladoHistoricoItem(BaseModel):
 
     class Config:
         from_attributes = True
+
+class ConteudoBuscaResponse(BaseModel):
+    cont_id: int
+    cont_nome: str
+    cont_etapa: str
+
+    class Config:
+        from_attributes = True

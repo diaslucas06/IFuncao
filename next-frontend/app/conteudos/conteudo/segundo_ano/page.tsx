@@ -6,21 +6,19 @@ import Footer from "@/components/Footer";
 import { CardBackground } from "@/components/CardProfile";
 import CardHistorico from "@/components/CardHistorico";
 import BarraPesquisa from "@/components/BarraPesquisa";
-import { useState, useEffect, use } from "react";
+import { useState } from "react";
 import { useAuth } from "@/utils/auth";
-import { buscarConteudo } from "@/utils/buscarConteudo";
 import { conteudoEtapa } from "@/utils/conteudoEtapa";
 
 interface Conteudo {
     cont_id: number,
     cont_nome: string,
-    cont_porcentagem: number
 }
 
 export default function conteudo1ano() {
-    const [conteudo, setConteudo] = useState<Conteudo | null>(null);
     const [erro, setErro] = useState("");
     const {pessoa_logada, carregando} = useAuth()
+    const [conteudosBuscados, setConteudosBuscados] = useState<Array<Conteudo> | null> (null);
 
     const conteudos = conteudoEtapa('2', setErro)
 
@@ -36,47 +34,77 @@ export default function conteudo1ano() {
                     <div className="flex flex-col justify-between gap-5">
                         <div className="flex flex-col lg:flex-row justify-between items-center">
                             <h1 className="h1_inicio">Conteúdos - 2° ano</h1>
-                            <BarraPesquisa setErro={setErro} setConteudo={setConteudo} etapa="1" buscarConteudo={buscarConteudo} />
+                            <BarraPesquisa setConteudosBuscados={setConteudosBuscados} setErro={setErro} etapa="1"/>
                         </div>
-                        {conteudo ? 
+                        {erro &&
+                            <CardBackground className="w-full bg-(--settings-card-color)">
+                                <p className="font-bold text-2xl">{erro}</p>
+                            </CardBackground>
+                        }
+                        {conteudosBuscados ? 
                             <CardBackground className="w-full bg-(--settings-card-color)">
                                 <div className="flex flex-wrap gap-3 lg:gap-8 lp:gap-11">
-                                    <div key={conteudo.cont_id} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
-                                        <CardHistorico nome={conteudo.cont_nome}  porcentagem={conteudo.cont_porcentagem} index={0}/> 
-                                    </div>
+                                    {conteudosBuscados?.map((conteudo, index) => (
+                                        <div key={index} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
+                                            <CardHistorico nome={conteudo.cont_nome} index={index}/> 
+                                        </div>
+                                    ))}
                                 </div>
                             </CardBackground>
-                            : 
+                            :
                             <>
-                                {erro ? 
+                                { conteudos ? 
                                     <CardBackground className="w-full bg-(--settings-card-color)">
-                                        <p className="font-bold text-2xl">{erro}</p>
+                                        <div className="flex flex-wrap gap-3 lg:gap-8 lp:gap-11">
+                                            {conteudos?.map((conteudo, index) => (
+                                                <div key={index} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
+                                                    <CardHistorico nome={conteudo.cont_nome} index={index}/> 
+                                                </div>
+                                            ))}
+                                        </div>
                                     </CardBackground>
-                                    : 
+                                    :
                                     ''
                                 }
-                                <CardBackground className="w-full bg-(--settings-card-color)">
-                                    <div className="flex flex-wrap gap-3 lg:gap-8 lp:gap-11">
-                                        {conteudos?.map((conteudo, index) => (
-                                            <div key={index} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
-                                                <CardHistorico nome={conteudo.cont_nome}  porcentagem={conteudo.cont_porcentagem} index={index}/> 
-                                            </div>
-                                        ))}
-                                    </div>
-                                </CardBackground>
+                                
                             </>
                         }
+                        
                     </div>
                 </main>
                     
-                <Footer position="fixed"/>
+                {conteudos ?
+                    <Footer/>
+                    :
+                    <Footer position="fixed"/>
+                }
+                                
             </div>
         )
     }
     return (
         <div className="container">
             <HeaderNotLogged/>
-            <Footer/>
+            <main className="flex flex-col p-10 gap-10">
+                <div className="flex flex-col justify-between gap-5">
+                    <h1 className="h1_inicio">Conteúdos - 2° ano</h1>
+                    <CardBackground className="w-full bg-(--settings-card-color)">
+                        <div className="flex flex-wrap gap-3 lg:gap-8 lp:gap-11">
+                            {conteudos?.map((conteudo, index) => (
+                                <div key={index} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
+                                    <CardHistorico nome={conteudo.cont_nome} index={index}/> 
+                                </div>
+                            ))}
+                        </div>
+                    </CardBackground>
+                </div>
+            </main>
+            {conteudos ?
+                <Footer/>
+                :
+                <Footer position="fixed"/>
+            }
+            
         </div>
     )
 }

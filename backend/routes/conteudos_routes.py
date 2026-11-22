@@ -1,17 +1,17 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
-from sqlalchemy import select
+from sqlalchemy import select, func
 from datetime import datetime, timezone
 from urllib.parse import unquote
 from typing import List
 
-from models import Conteudo, UsuarioConteudo, Usuario
-from schemas import ConteudoSchema, ConteudoBuscaResponse
+from models import Conteudo, UsuarioConteudo, Usuario, EtapaEnum
+from schemas import ConteudoSchema, ConteudoResponse
 from dependencies import pegar_sessao, pegar_usuario_logado, normalizar_texto
 
 conteudos_routes = APIRouter(prefix="/conteudos", tags=["Conteúdos"])
 
-@conteudos_routes.get("/buscar", response_model=List[ConteudoBuscaResponse])
+@conteudos_routes.get("/buscar", response_model=List[ConteudoResponse])
 def buscar_conteudos(
     q: str = Query(..., min_length=2, description="Parte do nome do conteúdo"),
     limite: int = Query(20, ge=1, le=100),
@@ -38,6 +38,51 @@ def buscar_conteudos(
     resultados.sort(key=lambda r: (not r[1].startswith(termo), r[1]))
 
     return [c for c, _ in resultados[:limite]]
+
+@conteudos_routes.get("/buscar/{cont_etapa}", response_model=List[ConteudoResponse])
+def buscar_conteudos_etapa(
+    cont_etapa: EtapaEnum,
+    q: str = Query(..., min_length=2, description="Parte do nome do conteúdo"),
+    limite: int = Query(20, ge=1, le=100),
+    db: Session = Depends(pegar_sessao),
+):
+    palavras = normalizar_texto(unquote(q)).split()
+
+    if not palavras:
+        return []
+
+    conteudos = db.query(
+        Conteudo.cont_id,
+        Conteudo.cont_nome,
+        Conteudo.cont_etapa,
+    ).filter(Conteudo.cont_etapa == cont_etapa).all()
+
+    resultados = []
+    for c in conteudos:
+        nome = normalizar_texto(c.cont_nome)
+        if all(p in nome for p in palavras):
+            resultados.append((c, nome))
+
+    termo = " ".join(palavras)
+    resultados.sort(key=lambda r: (not r[1].startswith(termo), r[1]))
+
+    return [c for c, _ in resultados[:limite]]
+
+@conteudos_routes.get("/historico", response_model=List[ConteudoResponse])
+def listar_historico(
+    limite: int = Query(10, ge=1, le=20),
+    db: Session = Depends(pegar_sessao),
+    usuario: Usuario = Depends(pegar_usuario_logado),
+):
+    return (
+        db.query(Conteudo)
+        .join(UsuarioConteudo, UsuarioConteudo.usercont_cont_id == Conteudo.cont_id)
+        .filter(UsuarioConteudo.usercont_user_id == usuario.user_id)
+        .group_by(Conteudo.cont_id)
+        .order_by(func.max(UsuarioConteudo.usercont_ultimo_acesso).desc())
+        .limit(limite)
+        .all()
+    )
 
 @conteudos_routes.get("/{cont_etapa}")
 async def conteudos_etapa(
@@ -89,19 +134,3 @@ async def listar_conteudo(
     db.refresh(conteudo)
     return conteudo
 
-# @conteudos_routes.get("/historico")
-# def listar_historico(
-#     limite: int = 10,
-#     db: Session = Depends(pegar_sessao),
-#     usuario: Usuario = Depends(pegar_usuario_logado),
-# ):
-    
-#     historico = db.query(Conteudo).join(UsuarioConteudo, UsuarioConteudo.usercont_cont_id == Conteudo.cont_id).filter(UsuarioConteudo.usercont_user_id == usuario.user_id).order_by(UsuarioConteudo.usercont_ultimo_acesso.desc()).limit(limite).all()
-
-#     if not historico:
-#         raise HTTPException(
-#             status_code=status.HTTP_404_NOT_FOUND,
-#             detail="Nenhum conteúdo acessado por esse usuário."
-#         )
-    
-#     return historico

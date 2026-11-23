@@ -3,6 +3,7 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import jwt, JWTError
 from sqlalchemy.orm import Session
 import unicodedata
+from datetime import timedelta, date
 
 from config import ALGORITHM, SECRET_KEY
 from models import db, Usuario
@@ -43,3 +44,13 @@ def normalizar_texto(texto: str) -> str:
         if unicodedata.category(c) != "Mn"
     )
     return sem_acento.lower().strip()
+
+def calcular_ofensiva(dias: set[date]) -> int:
+    hoje = date.today()
+    dia = hoje if hoje in dias else hoje - timedelta(days=1)
+
+    ofensiva = 0
+    while dia in dias:
+        ofensiva += 1
+        dia -= timedelta(days=1)
+    return ofensiva

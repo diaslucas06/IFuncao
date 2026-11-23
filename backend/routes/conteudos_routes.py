@@ -1,13 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
 from sqlalchemy import select, func
-from datetime import datetime, timezone
+from datetime import datetime, timezone, date, timedelta
 from urllib.parse import unquote
 from typing import List
 
-from models import Conteudo, UsuarioConteudo, Usuario, EtapaEnum
-from schemas import ConteudoSchema, ConteudoResponse
-from dependencies import pegar_sessao, pegar_usuario_logado, normalizar_texto
+from models import Conteudo, UsuarioConteudo, Usuario, EtapaEnum, RespostaQuestao, Acesso
+from schemas import ConteudoSchema, ConteudoResponse, ProgressoEtapaResponse, EvolucaoResponse
+from dependencies import pegar_sessao, pegar_usuario_logado, normalizar_texto, calcular_ofensiva
 
 conteudos_routes = APIRouter(prefix="/conteudos", tags=["Conteúdos"])
 
@@ -98,6 +98,92 @@ async def conteudos_etapa(
         )
     
     return conteudos
+
+# Essa é a da página do perfil
+@conteudos_routes.get("/progresso", response_model=List[ProgressoEtapaResponse])
+def progresso_por_etapa(
+    db: Session = Depends(pegar_sessao),
+    usuario: Usuario = Depends(pegar_usuario_logado),
+):
+    totais = dict(
+        db.query(Conteudo.cont_etapa, func.count(Conteudo.cont_id))
+        .group_by(Conteudo.cont_etapa)
+        .all()
+    )
+
+    concluidos = dict(
+        db.query(Conteudo.cont_etapa, func.count(UsuarioConteudo.usercont_id))
+        .join(UsuarioConteudo, UsuarioConteudo.usercont_cont_id == Conteudo.cont_id)
+        .filter(
+            UsuarioConteudo.usercont_user_id == usuario.user_id,
+            UsuarioConteudo.usercont_concluido.is_(True),
+        )
+        .group_by(Conteudo.cont_etapa)
+        .all()
+    )
+
+    resposta = []
+    for etapa in EtapaEnum:
+        total = totais.get(etapa, 0)
+        feitos = concluidos.get(etapa, 0)
+        resposta.append(
+            ProgressoEtapaResponse(
+                etapa=etapa.value,
+                total_conteudos=total,
+                concluidos=feitos,
+                porcentagem=round(feitos / total * 100, 1) if total else 0.0,
+            )
+        )
+
+    return resposta
+
+# Essa é a da página de evolução
+@conteudos_routes.get("/evolucao", response_model=EvolucaoResponse)
+def evolucao_usuario(
+    db: Session = Depends(pegar_sessao),
+    usuario: Usuario = Depends(pegar_usuario_logado),
+):
+    conteudos_concluidos = (
+        db.query(func.count(UsuarioConteudo.usercont_id))
+        .filter(
+            UsuarioConteudo.usercont_user_id == usuario.user_id,
+            UsuarioConteudo.usercont_concluido.is_(True),
+        )
+        .scalar()
+    )
+
+    total_conteudos = db.query(func.count(Conteudo.cont_id)).scalar()
+
+    questoes_respondidas = (
+        db.query(func.count(RespostaQuestao.respques_id))
+        .filter(RespostaQuestao.respques_user_id == usuario.user_id)
+        .scalar()
+    )
+
+    acertos = (
+        db.query(func.count(RespostaQuestao.respques_id))
+        .filter(
+            RespostaQuestao.respques_user_id == usuario.user_id,
+            RespostaQuestao.respques_acertou.is_(True),
+        )
+        .scalar()
+    )
+
+    linhas = (
+        db.query(func.date(Acesso.ace_hora_inicio))
+        .filter(Acesso.ace_user_id == usuario.user_id)
+        .distinct()
+        .all()
+    )
+    dias = {date.fromisoformat(d) for (d,) in linhas if d}
+
+    return EvolucaoResponse(
+        conteudos_concluidos=conteudos_concluidos,
+        total_conteudos=total_conteudos,
+        questoes_respondidas=questoes_respondidas,
+        total_acertos=round(acertos / questoes_respondidas * 100, 1) if questoes_respondidas else 0.0,
+        ofensiva=calcular_ofensiva(dias),
+    )
 
 @conteudos_routes.get("/{cont_etapa}/{cont_nome}", response_model=ConteudoSchema)
 async def listar_conteudo(

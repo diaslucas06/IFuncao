@@ -139,3 +139,15 @@ class ConteudoResponse(BaseModel):
     class Config:
         from_attributes = True
 
+class ProgressoEtapaResponse(BaseModel):
+    etapa: str
+    total_conteudos: int
+    concluidos: int
+    porcentagem: float
+
+class EvolucaoResponse(BaseModel):
+    conteudos_concluidos: int
+    total_conteudos: int
+    questoes_respondidas: int
+    total_acertos: float
+    ofensiva: int

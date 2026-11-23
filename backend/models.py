@@ -75,6 +75,7 @@ class Conteudo(Base):
     cont_texto: Mapped[str] = mapped_column(Text)
     cont_texto_resumo: Mapped[str] = mapped_column(Text)
     cont_slide_pdf: Mapped[str] = mapped_column(String(255))
+    cont_imagem_url: Mapped[str] = mapped_column(String(255))
     cont_relacionados: Mapped[dict] = mapped_column(JSON)
 
     questoes: Mapped[List["Questao"]] = relationship(back_populates="conteudo")

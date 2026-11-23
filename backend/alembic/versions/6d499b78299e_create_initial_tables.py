@@ -1,8 +1,8 @@
-"""criacao inicial das tabelas
+"""create initial tables
 
-Revision ID: a1dd762d7ef7
+Revision ID: 6d499b78299e
 Revises: 
-Create Date: 2026-11-21 20:44:47.451257
+Create Date: 2026-11-23 10:11:33.964999
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'a1dd762d7ef7'
+revision: str = '6d499b78299e'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -28,6 +28,7 @@ def upgrade() -> None:
     sa.Column('cont_texto', sa.Text(), nullable=False),
     sa.Column('cont_texto_resumo', sa.Text(), nullable=False),
     sa.Column('cont_slide_pdf', sa.String(length=255), nullable=False),
+    sa.Column('cont_imagem_url', sa.String(length=255), nullable=False),
     sa.Column('cont_relacionados', sa.JSON(), nullable=False),
     sa.PrimaryKeyConstraint('cont_id')
     )

@@ -9,6 +9,7 @@ import CardHistorico from "@/components/CardHistorico";
 import { Settings, LogOut } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CarouselItem, Carousel, CarouselContent, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import { acessarHistorico } from "@/utils/acessarHistorico";
 
 interface Usuario {
     user_nome: string;
@@ -22,7 +23,8 @@ interface Usuario {
 
 export default function perfil() {
     const [perfil, setPerfil] = useState<Usuario | null>(null);
-    const [erro, setErro] = useState<string | null>(null);
+    const [erro, setErro] = useState('');
+    const historico = acessarHistorico(setErro);
 
     useEffect (() => {
         const usuario = localStorage.getItem('usuario');
@@ -63,24 +65,13 @@ export default function perfil() {
         'Matemática Enem': 0
     }
 
-    let historico = [
-        {'id': 1, 'nome': 'MATEMÁTICA BÁSICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 50},
-        {'id': 2, 'nome': 'TRIGONOMETRIA', 'link': '/conteudos/matematica_basica', 'porcentagem': 0},
-        {'id': 3, 'nome': 'GEOMETRIA', 'link': '/conteudos/matematica_basica', 'porcentagem': 80},
-        {'id': 4, 'nome': 'PROGRESSÃO ARITMÉTICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 100},
-        {'id': 5, 'nome': 'MATEMÁTICA FINANCEIRA', 'link': '/conteudos/matematica_basica', 'porcentagem': 40},
-        {'id': 6, 'nome': 'MATRIZ', 'link': '/conteudos/matematica_basica', 'porcentagem': 100},
-        {'id': 7, 'nome': 'PROGRESSÃO GEOMÉTRICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 20},
-        {'id': 8, 'nome': 'DIVISÃO', 'link': '/conteudos/matematica_basica', 'porcentagem': 100},
-        {'id': 9, 'nome': 'PROGRESSÃO GEOMÉTRICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 20},
-        {'id': 10, 'nome': 'DIVISÃO', 'link': '/conteudos/matematica_basica', 'porcentagem': 100},
-        {'id': 11, 'nome': 'PROGRESSÃO GEOMÉTRICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 20},
-    ]
+    let novaFoto = perfil?.user_foto_url.replace("75", "150");
+    novaFoto = novaFoto?.replace('100', '200')
 
     return (
         <div>
             <Header/>
-            <Profile usuario={perfil?.user_nome} ano={perfil?.user_ano_letivo} matricula={perfil?.user_matricula} curso={perfil?.user_curso} imagem={perfil?.user_foto_url}/>
+            <Profile usuario={perfil?.user_nome} ano={perfil?.user_ano_letivo} matricula={perfil?.user_matricula} curso={perfil?.user_curso} imagem={novaFoto}/>
             <main className="flex flex-col p-5 pt-10 gap-5 md:p-10 md:pt-20 lg:gap-7 lg:pt-33 lp:pt-35 pc:pt-45">
                 <div className="flex flex-1 flex-wrap justify-between gap-5">
                     <CardBackground className="flex gap-[20px] flex-1/1 lg:flex-1 pc:flex-1 pc:w-[47%]">
@@ -120,23 +111,30 @@ export default function perfil() {
                 <div className="flex justify-between gap-5">
                     <CardBackground className="w-full gap-[20px]">
                         <CardH1>Histórico de conteúdos acessados</CardH1>
-                        <div className="flex items-center w-full px-10">
-                            <Carousel opts={{
-                                    align: "start",
-                                    slidesToScroll: 1,
-                                }} 
-                                className="flex flex-col flex-wrap items-center justify-between w-full ml:flex-row">
-                                <CarouselContent className="flex-col ml:flex-row">
-                                    {historico.map((conteudo, index) => (
-                                        <CarouselItem className="basis-1/2 lg:basis-1/3 lp:basis-1/4" key={conteudo.id}>
-                                            <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
-                                        </CarouselItem>
-                                    ))}
-                                </CarouselContent>
-                                <CarouselPrevious />
-                                <CarouselNext />
-                            </Carousel>
-                         </div>
+                            {historico &&
+                                <div className="flex items-center w-full px-10">
+                                    <Carousel opts={{
+                                            align: "start",
+                                            slidesToScroll: 1,
+                                        }} 
+                                        className="flex flex-col flex-wrap items-center justify-between w-full ml:flex-row">
+                                        <CarouselContent className="flex-col ml:flex-row">
+                                            {historico?.map((conteudo, index) => (
+                                                <CarouselItem className="basis-1/2 lg:basis-1/3 lp:basis-1/4" key={conteudo.cont_id}>
+                                                    <div key={index} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
+                                                        <CardHistorico nome={conteudo.cont_nome} index={index}/> 
+                                                    </div>
+                                                </CarouselItem>
+                                            ))}
+                                        </CarouselContent>
+                                        <CarouselPrevious />
+                                        <CarouselNext />
+                                    </Carousel>
+                                </div>
+                            }    
+                            
+                            {erro && <p>{erro}</p>}
+                         
                     </CardBackground>
                 </div>
             </main>

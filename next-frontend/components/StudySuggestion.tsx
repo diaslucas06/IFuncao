@@ -29,7 +29,7 @@ export default function StudySuggestion(props: StudySuggestionProps) {
       <div className="w-full ml:w-auto mt-2 ml:mt-0">
 
         <Link href="/conteudoRecomendado"
-          className="bg-(--sugestion-button-color) text-(--sugestion-button-text-color) md:text-xl lp:text-2xl flex items-center p-2 px-4 md:px-6 rounded-sm font-bold whitespace-nowrap"
+          className="bg-(--sugestion-button-color) text-(--sugestion-button-text-color) md:text-xl lp:text-2xl flex items-center p-2 px-4 md:px-6 rounded-sm font-bold whitespace-nowrap hover:bg-(--profile-button-color-hover)"
         >
           Ir para conteúdo
         </Link>

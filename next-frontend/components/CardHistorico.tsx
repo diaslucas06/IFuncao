@@ -7,7 +7,7 @@ const cores = [
     {
         'bg': 'bg-(--neutral-0)', 
         'texto': 'text-(--primary-900)',
-        'hover': 'bg-(--neutral-100)'
+        'hover': 'bg-(--profile-button-color-hover)'
     },
     {
         'bg': 'bg-(--primary-800)', 

@@ -33,6 +33,10 @@ export function conteudoEtapa(etapa:string, setErro:any) {
             return resposta.json(); 
         })
         .then((objetoDados) => {
+            if (objetoDados.length == 0) {
+                setErro("Nenhum conteúdo encontrado para essa etapa.")
+                return;
+            }
             setConteudos(objetoDados)
         })
         .catch((err) => {

@@ -13,10 +13,15 @@ import CardInicio from "@/components/CardInicio";
 import CardOlimpiada from "@/components/CardOlimpiada";
 import StudySuggestion from "@/components/StudySuggestion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { useAuth } from "@/utils/auth"
+import { useAuth } from "@/utils/auth";
+import { acessarHistorico } from "@/utils/acessarHistorico";
+import { useState } from "react";
+import { CardH1 } from "@/components/CardProfile";
 
 export default function Inicio() {
+  const [erro, setErro] = useState('')
   const { pessoa_logada, carregando } = useAuth()
+  const historico = acessarHistorico(setErro);
   
   if (carregando) {
     return null; 
@@ -33,20 +38,6 @@ export default function Inicio() {
   };
 
   if (pessoa_logada) {
-
-    let historico = [
-        {'id': 1, 'nome': 'MATEMÁTICA BÁSICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 50},
-        {'id': 2, 'nome': 'TRIGONOMETRIA', 'link': '/conteudos/matematica_basica', 'porcentagem': 0},
-        {'id': 3, 'nome': 'GEOMETRIA', 'link': '/conteudos/matematica_basica', 'porcentagem': 80},
-        {'id': 4, 'nome': 'PROGRESSÃO ARITMÉTICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 100},
-        {'id': 5, 'nome': 'MATEMÁTICA FINANCEIRA', 'link': '/conteudos/matematica_basica', 'porcentagem': 40},
-        {'id': 6, 'nome': 'MATRIZ', 'link': '/conteudos/matematica_basica', 'porcentagem': 100},
-        {'id': 7, 'nome': 'PROGRESSÃO GEOMÉTRICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 20},
-        {'id': 8, 'nome': 'DIVISÃO', 'link': '/conteudos/matematica_basica', 'porcentagem': 100},
-        {'id': 9, 'nome': 'PROGRESSÃO GEOMÉTRICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 20},
-        {'id': 10, 'nome': 'DIVISÃO', 'link': '/conteudos/matematica_basica', 'porcentagem': 100},
-        {'id': 11, 'nome': 'PROGRESSÃO GEOMÉTRICA', 'link': '/conteudos/matematica_basica', 'porcentagem': 20},
-    ]
 
     return (
       <div>
@@ -77,37 +68,33 @@ export default function Inicio() {
               />
             </div>
           </div>
-          <div className="flex flex-col justify-between gap-3 md:gap-5">
-            <h1 className="h1_inicio">Histórico de conteúdos acessados</h1>
-            <CardBackground className="w-full gap-[20px] bg-(--settings-card-color)">
-                <div className="flex items-center w-full">
-                  <div className="items-center w-full px-10 hidden ml:flex">
-                    <Carousel opts={{
-                            align: "start",
-                            slidesToScroll: 1,
-                        }} 
-                        className="flex flex-col flex-wrap items-center justify-between w-full ml:flex-row">
-                        <CarouselContent>
-                            {historico.map((conteudo, index) => (
-                                <CarouselItem className="basis-1/2 lg:basis-1/3 lp:basis-1/4" key={conteudo.id}>
-                                    <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                        <CarouselPrevious />
-                        <CarouselNext />
-                    </Carousel>
-                  </div>
-                  <div className="flex-col items-center w-full gap-2 flex ml:hidden">
-                    {historico.map((conteudo, index) => (
-                        <div className="w-full basis-1/2 lg:basis-1/3 lp:basis-1/4" key={conteudo.id}>
-                            <CardHistorico nome={conteudo.nome}  link={conteudo.link}  porcentagem={conteudo.porcentagem} index={index}/>
-                        </div>
-                    ))}
-                  </div>
-                </div>
-            </CardBackground>
-          </div>
+          <CardBackground className="w-full gap-[20px]">
+            <CardH1>Histórico de conteúdos acessados</CardH1>
+                {historico &&
+                    <div className="flex items-center w-full px-10">
+                        <Carousel opts={{
+                                align: "start",
+                                slidesToScroll: 1,
+                            }} 
+                            className="flex flex-col flex-wrap items-center justify-between w-full ml:flex-row">
+                            <CarouselContent className="flex-col ml:flex-row">
+                                {historico?.map((conteudo, index) => (
+                                    <CarouselItem className="basis-1/2 lg:basis-1/3 lp:basis-1/4" key={conteudo.cont_id}>
+                                        <div key={index} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
+                                            <CardHistorico nome={conteudo.cont_nome} index={index}/> 
+                                        </div>
+                                    </CarouselItem>
+                                ))}
+                            </CarouselContent>
+                            <CarouselPrevious />
+                            <CarouselNext />
+                        </Carousel>
+                    </div>
+                }    
+                
+                {erro && <p>{erro}</p>}
+              
+        </CardBackground>
           <CardInicio img="/images/illustrations/olimpiadas.png" alt="Olimpíadas">
             As olimpíadas de Matemática nacionais são ótimas formas de se incentivar a estudar e praticar a matéria, oferecendo inúmeros benefícios que vão muito além da competição, impactando a vida acadêmica e pessoal dos estudante. As olimpíadas nacionais de matemática são:
           </CardInicio>
@@ -120,47 +107,46 @@ export default function Inicio() {
         <Footer/>
       </div>
     )
-  } else {
-    return (
-      <div className="flex flex-col justify-between h-screen">
-        <HeaderNotLogged />
-        <main className="flex items-center justify-center h-full flex-col lg:flex-row">
+  }
+  return (
+    <div className="flex flex-col justify-between h-screen">
+      <HeaderNotLogged />
+      <main className="flex items-center justify-center h-full flex-col lg:flex-row">
 
-        <section className="w-full h-full lp:w-1/2 bg-(--primary-800) text-(--neutral-0) flex flex-col justify-center items-center lg:items-start px-6 ml:px-12 pt-16 pb-10">
+      <section className="w-full h-full lp:w-1/2 bg-(--primary-800) text-(--neutral-0) flex flex-col justify-center items-center lg:items-start px-6 ml:px-12 pt-16 pb-10">
 
-          <div className="w-full ml:max-w-lg lp:max-w-[650px] mb-5">
+        <div className="w-full ml:max-w-lg lp:max-w-[650px] mb-5">
 
-            <h1 className="text-2xl ml:text-3xl lp:text-4xl font-bold leading-[1.2]">
-              Domine a Matemática do Ensino Médio ao ENEM.
-            </h1>
+          <h1 className="text-2xl ml:text-3xl lp:text-4xl font-bold leading-[1.2]">
+            Domine a Matemática do Ensino Médio ao ENEM.
+          </h1>
 
-            <p className="mt-4 lp:mt-6 text-sm leading-relaxed ml:text-base lp:text-7 lp:leading-[1.5] pc:text-[28px]">
-              No IFunção, você simplifica o que parece complexo. Acesse conteúdos
-              completos do 1º ao 3º ano e conquiste a base necessária para
-              gabaritar as provas mais difíceis.
-            </p>
+          <p className="mt-4 lp:mt-6 text-sm leading-relaxed ml:text-base lp:text-7 lp:leading-[1.5] pc:text-[28px]">
+            No IFunção, você simplifica o que parece complexo. Acesse conteúdos
+            completos do 1º ao 3º ano e conquiste a base necessária para
+            gabaritar as provas mais difíceis.
+          </p>
 
-            <Link
-              href="/login"
-              className="flex items-center justify-center mt-6 bg-(--primary-700) hover:bg-(--primary-500) text-sm lp:text-2xl p-2 md:p-3 lp:p-4 lp:w-1/2 font-medium rounded-full"
-            >
-              Acessar Conteúdos
-            </Link>
+          <Link
+            href="/login"
+            className="flex items-center justify-center mt-6 bg-(--primary-700) hover:bg-(--primary-500) text-sm lp:text-2xl p-2 md:p-3 lp:p-4 lp:w-1/2 font-medium rounded-full"
+          >
+            Acessar Conteúdos
+          </Link>
 
-          </div>
-
-        </section>
-
-        <div className="w-full lp:w-1/2 flex items-center justify-center p-6 pc:p-12">
-          <Image
-            src="/images/illustrations/home-illustration.svg" alt="Imagem dos estudantes" width={900} height={750}
-            className="h-auto  object-contain pc:w-[800px]"
-          />
         </div>
 
-      </main>
-      <Footer/>
+      </section>
+
+      <div className="w-full lp:w-1/2 flex items-center justify-center p-6 pc:p-12">
+        <Image
+          src="/images/illustrations/home-illustration.svg" alt="Imagem dos estudantes" width={900} height={750}
+          className="h-auto  object-contain pc:w-[800px]"
+        />
       </div>
-    );
-  }
+
+    </main>
+    <Footer/>
+    </div>
+  );
 }

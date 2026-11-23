@@ -2,6 +2,7 @@ import CardStatus from "@/components/CardStatus";
 import Header from "@/components/Header";
 import { BookOpen, CircleCheckBig, Target, Flame } from "lucide-react";
 import StudySuggestion from "@/components/StudySuggestion";
+import Simulado from "@/components/Simulado";
 
 export default function Progresso() {
   const dadosProgresso = {
@@ -45,15 +46,16 @@ export default function Progresso() {
             <CardStatus titulo="Ofensiva" valor={String(dadosProgresso.ofensiva)} icone={Flame} bgColor="bg-(--primary-200)" textColor="text-(--neutral-0)"
               iconeColor="text-(--neutral-0)" descricao="dias"
             />
-
-            <div className="col-span-2 mt-2">
-              <StudySuggestion
-                conteudoRecomendado={dadosProgresso.conteudoRecomendado}
-                etapa={dadosProgresso.etapa}
-              />
-            </div>
-
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mt-6">
+            <StudySuggestion
+              conteudoRecomendado={dadosProgresso.conteudoRecomendado}
+              etapa={dadosProgresso.etapa}
+            />
+            <Simulado />
+          </div>
+
         </section>
       </main>
     </div>

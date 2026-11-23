@@ -12,7 +12,7 @@ export default function StudySuggestion(props: StudySuggestionProps) {
 
       <div className="flex-1">
       
-        <h1 className="font-bold text-2xl text-center md:text-start md:text-[28px] lg:text-[32px] lp:text-[40px] text-(--base-text-color)">
+        <h1 className="font-bold text-2xl md:text-start md:text-[28px] lg:text-[32px] lp:text-[40px] text-(--base-text-color)">
           Sugestão de estudo
         </h1>
 

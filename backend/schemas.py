@@ -43,6 +43,8 @@ class PerfilSchema(BaseModel):
     user_curso: Optional[str] = None
     user_data_nascimento: Optional[date] = None
     user_foto_url: Optional[str] = None
+    user_idade: Optional[int] = None
+    user_media_matematica: Optional[float] = None
 
     class Config:
         from_attributes = True

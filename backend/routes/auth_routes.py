@@ -7,7 +7,7 @@ from jose import jwt
 from config import ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY
 from models import Usuario
 from schemas import LoginSchema, UsuarioSchema, PerfilSchema, LoginResponseSchema
-from dependencies import pegar_sessao, pegar_usuario_logado 
+from dependencies import pegar_sessao, pegar_usuario_logado, calcular_idade, calcular_media_matematica 
 
 auth_routes = APIRouter(prefix="/auth", tags=["Autenticação"])
 
@@ -121,4 +121,15 @@ async def login(dados_login: LoginSchema, db: Session = Depends(pegar_sessao)):
 @auth_routes.get("/perfil", response_model=PerfilSchema, status_code=status.HTTP_200_OK)
 async def dados_perfil(usuario: Usuario = Depends(pegar_usuario_logado)):
     """Retorna os dados do perfil do usuário autenticado."""
-    return usuario
+    return {
+        "user_id": usuario.user_id,
+        "user_nome": usuario.user_nome,
+        "user_matricula": usuario.user_matricula,
+        "user_email": usuario.user_email,
+        "user_ano_letivo": usuario.user_ano_letivo,
+        "user_curso": usuario.user_curso,
+        "user_data_nascimento": usuario.user_data_nascimento,
+        "user_foto_url": usuario.user_foto_url,
+        "user_idade": calcular_idade(usuario.user_data_nascimento),
+        "user_media_matematica": calcular_media_matematica(usuario),
+    }

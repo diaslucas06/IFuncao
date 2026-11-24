@@ -1,4 +1,5 @@
 'use client'
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Profile from "@/components/Profile";
@@ -10,8 +11,10 @@ import { Settings, LogOut } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CarouselItem, Carousel, CarouselContent, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { acessarHistorico } from "@/utils/acessarHistorico";
+import { acessarProgresso } from "@/utils/acessarProgresso";
 
 interface Usuario {
+    user_id: number;
     user_nome: string;
     user_matricula: number;
     user_email: string;
@@ -19,12 +22,15 @@ interface Usuario {
     user_curso: string;
     user_data_nascimento: string;
     user_foto_url: string;
+    user_idade: number;
+    user_media_matematica: number;
 }
 
 export default function perfil() {
     const [perfil, setPerfil] = useState<Usuario | null>(null);
     const [erro, setErro] = useState('');
     const historico = acessarHistorico(setErro);
+    const progressos = acessarProgresso(setErro);
 
     useEffect (() => {
         const usuario = localStorage.getItem('usuario');
@@ -56,22 +62,17 @@ export default function perfil() {
             setErro(err.message);
             window.location.href = '/login';
         });
+        
     }, [])
-
-    let progresso = {
-        'primeiro': 100,
-        'segundo': 100,
-        'terceiro': 50,
-        'Matemática Enem': 0
-    }
 
     let novaFoto = perfil?.user_foto_url.replace("75", "150");
     novaFoto = novaFoto?.replace('100', '200')
 
+
     return (
         <div>
             <Header/>
-            <Profile usuario={perfil?.user_nome} ano={perfil?.user_ano_letivo} matricula={perfil?.user_matricula} curso={perfil?.user_curso} imagem={novaFoto}/>
+            <Profile usuario={perfil?.user_nome} ano={perfil?.user_ano_letivo} matricula={perfil?.user_matricula} curso={perfil?.user_curso} imagem={novaFoto} idade={perfil?.user_idade}/>
             <main className="flex flex-col p-5 pt-10 gap-5 md:p-10 md:pt-20 lg:gap-7 lg:pt-33 lp:pt-35 pc:pt-45">
                 <div className="flex flex-1 flex-wrap justify-between gap-5">
                     <CardBackground className="flex gap-[20px] flex-1/1 lg:flex-1 pc:flex-1 pc:w-[47%]">
@@ -88,10 +89,12 @@ export default function perfil() {
                     <CardBackground className="flex gap-[20px] flex-1/1 lg:flex-1 pc:flex-none pc:w-[25%]">
                         <CardH1>Seu progresso por ano</CardH1>
                         <div>
-                            <BarraProgresso ano={1} porcentagem={progresso.primeiro}/>
-                            <BarraProgresso ano={2} porcentagem={progresso.segundo}/>
-                            <BarraProgresso ano={3} porcentagem={progresso.terceiro}/>
-                            <BarraProgresso ano={'Matemática Enem'} porcentagem={progresso["Matemática Enem"]}/>
+                            {progressos?.map((progresso, index) => (
+                                erro ? 
+                                <BarraProgresso key={index} ano={index == 3 ? 'Matemática ENEM': index+1} porcentagem={0}/>
+                                :
+                                <BarraProgresso key={index} ano={index == 3 ? 'Matemática ENEM': index+1} porcentagem={progresso.porcentagem}/>
+                            ))}
                         </div>
                     </CardBackground>
                     <div className="flex flex-col justify-between gap-4 w-full md:flex-row lg:flex-row pc:w-[25%] pc:flex-col">
@@ -99,7 +102,7 @@ export default function perfil() {
                             <CardH1>Sua média</CardH1>
                             <CardP>Média das notas em matemática do ano letivo: </CardP>
                             <div>
-                                <p className="text-base md:text-3xl lp:text-4xl text-(--profile-text-card-color) font-extrabold"></p>
+                                <p className="text-base md:text-3xl lp:text-4xl text-(--profile-text-card-color) font-extrabold">{perfil?.user_media_matematica}</p>
                             </div>
                         </CardBackground>
                         <CardBackground className="flex flex-1 gap-2 justify-around md:gap-0 lp:justify-around">

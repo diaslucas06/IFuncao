@@ -2,7 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import Resumo from "@/components/ContentSummary";
+import ContentSummary from "@/components/ContentSummary";
 import Header from "@/components/Header";
 import CardRelatedContent from "@/components/CardRelatedContent";
 import dynamic from "next/dynamic";
@@ -128,7 +128,7 @@ function ConteudoDetalhe() {
     <div>
       <Header />
       <main className="p-5 mt-2 sm:mt-6 mx-5">
-        <Resumo dados={dadosResumo} />
+        <ContentSummary dados={dadosResumo} />
 
         <div className="w-full flex flex-col lg:flex-row gap-6 lg:items-start">
           <div className="w-full lg:w-2/3 lg:mt-4 min-w-0">

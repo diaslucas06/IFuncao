@@ -5,7 +5,8 @@ interface ProfileProps {
     ano?: number,
     curso?: string,
     matricula?: number,
-    imagem?: string
+    imagem?: string,
+    idade?: number
 }
 
 export default function Profile(props:ProfileProps) {
@@ -24,7 +25,7 @@ export default function Profile(props:ProfileProps) {
                 <Image className='absolute border-(--primary-800) border-3 rounded-[325px] aspect-square object-cover md:w-[200px] lg:w-[245px] lp:w-[270px] pc:w-[325px]' src={verificar_imagem(props.imagem) ? props.imagem : '/images/icons/user.png'} alt="User" width={150} height={200}/>
                 <div className='hidden gap-2 lg:gap-5 md:pl-60 lg:pl-70 lp:pl-75 pc:pl-95 md:flex md:flex-col'>
                     <h1 className="font-bold font-poppins-sans md:text-[32px] lg:text-4xl lp:text-[40px] pc:text-5xl">{props.usuario}</h1>
-                    <p className="font-poppins-sans md:text-xl lg:text-2xl lp:text-[28px] pc:text-[32px]">{props.curso}, {props.ano}° ano</p>
+                    <p className="font-poppins-sans md:text-xl lg:text-2xl lp:text-[28px] pc:text-[32px]">{props.curso}, {props.ano}° ano, {props.idade} anos</p>
                 </div> 
             </div>
             <div className='flex flex-col items-center pt-18 pl-10 text-center pr-10 md:pl-60 lg:pl-70 lp:pl-75 pc:pl-95 md:hidden'>

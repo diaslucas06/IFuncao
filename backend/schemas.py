@@ -49,6 +49,12 @@ class PerfilSchema(BaseModel):
     class Config:
         from_attributes = True
 
+class PerfilAtualizarSchema(BaseModel):
+    user_nome: Optional[str] = None
+    user_curso: Optional[str] = None
+    user_foto_url: Optional[str] = None
+    user_ano_letivo: Optional[Union[int, str]] = None
+
 
 class ConteudoSchema(BaseModel):
     cont_id: int

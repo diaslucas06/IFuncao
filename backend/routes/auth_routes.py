@@ -6,7 +6,7 @@ from jose import jwt
 
 from config import ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY
 from models import Usuario
-from schemas import LoginSchema, UsuarioSchema, PerfilSchema, LoginResponseSchema
+from schemas import LoginSchema, UsuarioSchema, PerfilSchema, LoginResponseSchema, PerfilAtualizarSchema
 from dependencies import pegar_sessao, pegar_usuario_logado, calcular_idade, calcular_media_matematica 
 
 auth_routes = APIRouter(prefix="/auth", tags=["Autenticação"])
@@ -121,6 +121,41 @@ async def login(dados_login: LoginSchema, db: Session = Depends(pegar_sessao)):
 @auth_routes.get("/perfil", response_model=PerfilSchema, status_code=status.HTTP_200_OK)
 async def dados_perfil(usuario: Usuario = Depends(pegar_usuario_logado)):
     """Retorna os dados do perfil do usuário autenticado."""
+    return {
+        "user_id": usuario.user_id,
+        "user_nome": usuario.user_nome,
+        "user_matricula": usuario.user_matricula,
+        "user_email": usuario.user_email,
+        "user_ano_letivo": usuario.user_ano_letivo,
+        "user_curso": usuario.user_curso,
+        "user_data_nascimento": usuario.user_data_nascimento,
+        "user_foto_url": usuario.user_foto_url,
+        "user_idade": calcular_idade(usuario.user_data_nascimento),
+        "user_media_matematica": calcular_media_matematica(usuario),
+    }
+
+@auth_routes.patch("/perfil", response_model=PerfilSchema, status_code=status.HTTP_200_OK)
+async def atualizar_perfil(
+    dados: PerfilAtualizarSchema,
+    usuario: Usuario = Depends(pegar_usuario_logado),
+    db: Session = Depends(pegar_sessao),
+):
+    """Atualiza dados do perfil do usuário autenticado."""
+    if dados.user_nome is not None:
+        usuario.user_nome = dados.user_nome
+    if dados.user_curso is not None:
+        usuario.user_curso = dados.user_curso
+    if dados.user_foto_url is not None:
+        usuario.user_foto_url = dados.user_foto_url
+    if dados.user_ano_letivo is not None:
+        try:
+            usuario.user_ano_letivo = int(dados.user_ano_letivo)
+        except (ValueError, TypeError):
+            pass
+
+    db.commit()
+    db.refresh(usuario)
+
     return {
         "user_id": usuario.user_id,
         "user_nome": usuario.user_nome,

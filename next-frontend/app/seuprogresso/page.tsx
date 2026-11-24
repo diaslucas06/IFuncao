@@ -1,20 +1,12 @@
-import CardStatus from "@/components/CardStatus";
+"use client";
+
 import Header from "@/components/Header";
-import { BookOpen, CircleCheckBig, Target, Flame } from "lucide-react";
-import StudySuggestion from "@/components/StudySuggestion";
+import EvolucaoSection from "@/components/EvolucaoSection";
 import Simulado from "@/components/Simulado";
+import StudySuggestion from "@/components/StudySuggestion";
+import { CardBackground } from "@/components/CardProfile";
 
 export default function Progresso() {
-  const dadosProgresso = {
-    assuntosConcluidos: 3,
-    totalAssuntos: 30,
-    questoesRespondidas: 120,
-    totalAcertos: 89,
-    ofensiva: 10,
-    conteudoRecomendado: "Análise Combinatória",
-    etapa: 1,
-  };
-
   return (
     <div className="min-h-screen flex flex-col bg-(--background-color)">
       <Header />
@@ -26,36 +18,15 @@ export default function Progresso() {
             Sua Evolução
           </h1>
 
-          <div className="grid grid-cols-2 lp:grid-cols-4 gap-4 lg:gap-6 mt-6">
-            
-            <CardStatus
-              titulo="Assuntos concluídos" valor={`${dadosProgresso.assuntosConcluidos}/${dadosProgresso.totalAssuntos}`} icone={BookOpen} bgColor="bg-(--neutral-0)"
-              textColor="text-(--neutral-900)" iconeColor="text-(--primary-300)"
-            />
+          <EvolucaoSection/>
 
-            <CardStatus
-              titulo="Questões respondidas" valor={String(dadosProgresso.questoesRespondidas)} icone={CircleCheckBig} bgColor="bg-(--primary-800)"
-              textColor="text-(--neutral-0)" iconeColor="text-(--neutral-0)"
-            />
-
-            <CardStatus
-              titulo="Total de acertos" valor={`${dadosProgresso.totalAcertos}%`} icone={Target} bgColor="bg-(--primary-300)"
-              textColor="text-(--neutral-0)" iconeColor="text-(--neutral-0)"
-            />
-
-            <CardStatus titulo="Ofensiva" valor={String(dadosProgresso.ofensiva)} icone={Flame} bgColor="bg-(--primary-200)" textColor="text-(--neutral-0)"
-              iconeColor="text-(--neutral-0)" descricao="dias"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mt-6">
-            <StudySuggestion
-              conteudoRecomendado={dadosProgresso.conteudoRecomendado}
-              etapa={dadosProgresso.etapa}
-            />
-            <Simulado />
-          </div>
-
+           <div className="flex flex-col justify-between gap-3 md:gap-5">
+              <h1 className="h1_inicio mt-2">Sugestões com base no seu desempenho</h1>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+                <StudySuggestion/>
+                <Simulado />
+              </div>
+            </div>
         </section>
       </main>
     </div>

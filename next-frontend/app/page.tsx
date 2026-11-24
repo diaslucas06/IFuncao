@@ -17,6 +17,8 @@ import { useAuth } from "@/utils/auth";
 import { acessarHistorico } from "@/utils/acessarHistorico";
 import { useState } from "react";
 import { CardH1 } from "@/components/CardProfile";
+import Simulado from "@/components/Simulado";
+import EvolucaoSection from "@/components/EvolucaoSection";
 
 export default function Inicio() {
   const [erro, setErro] = useState('')
@@ -48,24 +50,15 @@ export default function Inicio() {
           </CardInicio>
           <div className="flex flex-col justify-between gap-3 md:gap-5">
             <h1 className="h1_inicio">Sua Evolução</h1>
-            <CardBackground className="w-full flex flex-row justify-between gap-2 md:gap-4 bg-(--settings-card-color) grid grid-cols-2 lg:grid-cols-4">
-              <CardStatus titulo="Assuntos concluídos" valor={`${dadosProgresso.assuntosConcluidos}/${dadosProgresso.totalAssuntos}`} icone={BookOpen} bgColor="bg-(--neutral-0)" textColor="text-(--neutral-900)" iconeColor="text-(--primary-300)"/>
-              <CardStatus titulo="Questões respondidas" valor={String(dadosProgresso.questoesRespondidas)} icone={CircleCheckBig} bgColor="bg-(--primary-800)" textColor="text-(--neutral-0)" iconeColor="text-(--neutral-0)"/>
-              <CardStatus titulo="Total de acertos" valor={`${dadosProgresso.totalAcertos}%`} icone={Target} bgColor="bg-(--primary-300)" textColor="text-(--neutral-0)" iconeColor="text-(--neutral-0)"/>
-              <CardStatus titulo="Ofensiva" valor={String(dadosProgresso.ofensiva)} icone={Flame} bgColor="bg-(--primary-200)" textColor="text-(--neutral-0)" iconeColor="text-(--neutral-0)" descricao="dias"/>
+            <CardBackground className="">
+              <EvolucaoSection />
             </CardBackground>
           </div>
           <div className="flex flex-col justify-between gap-3 md:gap-5">
             <h1 className="h1_inicio">Sugestões com base no seu desempenho</h1>
-            <div className="flex flex-col md:flex-row justify-between gap-5">
-              <StudySuggestion
-                conteudoRecomendado={dadosProgresso.conteudoRecomendado}
-                etapa={dadosProgresso.etapa}
-              />
-              <StudySuggestion
-                conteudoRecomendado={dadosProgresso.conteudoRecomendado}
-                etapa={dadosProgresso.etapa}
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+              <StudySuggestion />
+              <Simulado />
             </div>
           </div>
           <CardBackground className="w-full gap-[20px]">

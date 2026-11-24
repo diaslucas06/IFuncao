@@ -84,6 +84,21 @@ def listar_historico(
         .all()
     )
 
+@conteudos_routes.delete("/historico", status_code=status.HTTP_200_OK)
+def apagar_historico(
+    db: Session = Depends(pegar_sessao),
+    usuario: Usuario = Depends(pegar_usuario_logado),
+):
+    """Apaga o histórico de conteúdos acessados pelo usuário autenticado."""
+    removidos = (
+        db.query(UsuarioConteudo)
+        .filter(UsuarioConteudo.usercont_user_id == usuario.user_id)
+        .delete(synchronize_session=False)
+    )
+    db.commit()
+    return {"mensagem": "Histórico de conteúdos apagado com sucesso.", "total_removidos": removidos}
+
+
 @conteudos_routes.get("/{cont_etapa}")
 async def conteudos_etapa(
     cont_etapa: str,

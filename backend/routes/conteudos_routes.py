@@ -39,35 +39,6 @@ def buscar_conteudos(
 
     return [c for c, _ in resultados[:limite]]
 
-@conteudos_routes.get("/buscar/{cont_etapa}", response_model=List[ConteudoResponse])
-def buscar_conteudos_etapa(
-    cont_etapa: EtapaEnum,
-    q: str = Query(..., min_length=2, description="Parte do nome do conteúdo"),
-    limite: int = Query(20, ge=1, le=100),
-    db: Session = Depends(pegar_sessao),
-):
-    palavras = normalizar_texto(unquote(q)).split()
-
-    if not palavras:
-        return []
-
-    conteudos = db.query(
-        Conteudo.cont_id,
-        Conteudo.cont_nome,
-        Conteudo.cont_etapa,
-    ).filter(Conteudo.cont_etapa == cont_etapa).all()
-
-    resultados = []
-    for c in conteudos:
-        nome = normalizar_texto(c.cont_nome)
-        if all(p in nome for p in palavras):
-            resultados.append((c, nome))
-
-    termo = " ".join(palavras)
-    resultados.sort(key=lambda r: (not r[1].startswith(termo), r[1]))
-
-    return [c for c, _ in resultados[:limite]]
-
 @conteudos_routes.get("/historico", response_model=List[ConteudoResponse])
 def listar_historico(
     limite: int = Query(10, ge=1, le=20),
@@ -84,6 +55,34 @@ def listar_historico(
         .all()
     )
 
+@conteudos_routes.get("/finalizar")
+def finalizar_conteudo(
+    cont_nome: str,
+    db: Session = Depends(pegar_sessao),
+    usuario: Usuario = Depends(pegar_usuario_logado),
+):
+    conteudo = db.query(Conteudo).filter(Conteudo.cont_nome == cont_nome).first()
+        
+    if not conteudo:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Nenhum conteúdo encontrado com este título."
+        )
+    
+    usuario_conteudo = db.query(UsuarioConteudo).filter(UsuarioConteudo.usercont_user_id == usuario.user_id, UsuarioConteudo.usercont_cont_id == conteudo.cont_id).first()
+
+    if not usuario_conteudo:
+        usuario_conteudo = UsuarioConteudo(
+            usercont_user_id=usuario.user_id,
+            usercont_cont_id=conteudo.cont_id,
+        )
+        db.add(usuario_conteudo)
+
+    usuario_conteudo.usercont_concluido = True
+    usuario_conteudo.usercont_ultimo_acesso = datetime.now()
+    db.commit()
+    return {"mensagem": f"{usuario.user_nome} conclui o conteúdo {conteudo.cont_nome}"}
+    
 @conteudos_routes.delete("/historico", status_code=status.HTTP_200_OK)
 def apagar_historico(
     db: Session = Depends(pegar_sessao),
@@ -97,22 +96,6 @@ def apagar_historico(
     )
     db.commit()
     return {"mensagem": "Histórico de conteúdos apagado com sucesso.", "total_removidos": removidos}
-
-
-@conteudos_routes.get("/{cont_etapa}")
-async def conteudos_etapa(
-    cont_etapa: str,
-    db: Session = Depends(pegar_sessao),
-):
-    conteudos = db.query(Conteudo).filter(Conteudo.cont_etapa == cont_etapa).all()
-
-    if not conteudos:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Nenhum conteúdo encontrado para essa etapa."
-        )
-    
-    return conteudos
 
 # Essa é a da página do perfil
 @conteudos_routes.get("/progresso", response_model=List[ProgressoEtapaResponse])
@@ -199,6 +182,50 @@ def evolucao_usuario(
         total_acertos=round(acertos / questoes_respondidas * 100, 1) if questoes_respondidas else 0.0,
         ofensiva=calcular_ofensiva(dias),
     )
+
+@conteudos_routes.get("/buscar/{cont_etapa}", response_model=List[ConteudoResponse])
+def buscar_conteudos_etapa(
+    cont_etapa: EtapaEnum,
+    q: str = Query(..., min_length=2, description="Parte do nome do conteúdo"),
+    limite: int = Query(20, ge=1, le=100),
+    db: Session = Depends(pegar_sessao),
+):
+    palavras = normalizar_texto(unquote(q)).split()
+
+    if not palavras:
+        return []
+
+    conteudos = db.query(
+        Conteudo.cont_id,
+        Conteudo.cont_nome,
+        Conteudo.cont_etapa,
+    ).filter(Conteudo.cont_etapa == cont_etapa).all()
+
+    resultados = []
+    for c in conteudos:
+        nome = normalizar_texto(c.cont_nome)
+        if all(p in nome for p in palavras):
+            resultados.append((c, nome))
+
+    termo = " ".join(palavras)
+    resultados.sort(key=lambda r: (not r[1].startswith(termo), r[1]))
+
+    return [c for c, _ in resultados[:limite]]
+
+@conteudos_routes.get("/{cont_etapa}")
+async def conteudos_etapa(
+    cont_etapa: str,
+    db: Session = Depends(pegar_sessao),
+):
+    conteudos = db.query(Conteudo).filter(Conteudo.cont_etapa == cont_etapa).all()
+
+    if not conteudos:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Nenhum conteúdo encontrado para essa etapa."
+        )
+    
+    return conteudos
 
 @conteudos_routes.get("/{cont_etapa}/{cont_nome}", response_model=ConteudoSchema)
 async def listar_conteudo(

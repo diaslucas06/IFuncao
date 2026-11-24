@@ -6,10 +6,12 @@ import Link from "next/link";
 type Relacionado = {
   id: number;
   titulo: string;
+  etapa?: string;
 };
 
 type Conteudo = {
   id: number;
+  etapa?: string;
   relacionados: Relacionado[];
 };
 
@@ -39,7 +41,7 @@ export default function CardRelatedContent({
           >
             <hr className="my-2.5 w-full" />
 
-            <Link href={`/resumos/${item.id}`}>
+            <Link href={`/conteudos/resumo?etapa=${item.etapa || conteudo.etapa || "1"}&nome=${encodeURIComponent(item.titulo)}`}>
               {item.titulo}
             </Link>
           </li>

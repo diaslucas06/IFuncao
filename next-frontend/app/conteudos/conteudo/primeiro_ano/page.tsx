@@ -9,6 +9,7 @@ import { BarraPesquisaEtapa } from "@/components/BarraPesquisa";
 import { useState } from "react";
 import { useAuth } from "@/utils/auth";
 import { conteudoEtapa } from "@/utils/conteudoEtapa";
+import Link from "next/link";
 
 interface Conteudo {
     cont_id: number,
@@ -46,7 +47,9 @@ export default function conteudo1ano() {
                                 <div className="flex flex-wrap gap-3 lg:gap-8 lp:gap-11">
                                     {conteudosBuscados?.map((conteudo, index) => (
                                         <div key={index} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
-                                            <CardHistorico nome={conteudo.cont_nome} index={index}/> 
+                                            <Link href={`/conteudos/resumo?etapa=1&nome=${encodeURIComponent(conteudo.cont_nome)}`}>
+                                                <CardHistorico nome={conteudo.cont_nome} index={index} />
+                                            </Link>
                                         </div>
                                     ))}
                                 </div>
@@ -58,7 +61,9 @@ export default function conteudo1ano() {
                                         <div className="flex flex-wrap gap-3 lg:gap-8 lp:gap-11">
                                             {conteudos?.map((conteudo, index) => (
                                                 <div key={index} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
-                                                    <CardHistorico nome={conteudo.cont_nome} index={index}/> 
+                                                   <Link href={`/conteudos/resumo?etapa=1&nome=${encodeURIComponent(conteudo.cont_nome)}`}>
+                                                     <CardHistorico nome={conteudo.cont_nome} index={index} />
+                                                    </Link>
                                                 </div>
                                             ))}
                                         </div>
@@ -93,7 +98,9 @@ export default function conteudo1ano() {
                                 <div className="flex flex-wrap gap-3 lg:gap-8 lp:gap-11">
                                     {conteudos?.map((conteudo, index) => (
                                         <div key={index} className="basis-1/3 lg:basis-8/26 lp:basis-2/9 pc:basis-3/13">
-                                            <CardHistorico nome={conteudo.cont_nome} index={index}/> 
+                                           <Link href={`/conteudos/resumo?etapa=1&nome=${encodeURIComponent(conteudo.cont_nome)}`}>
+                                                <CardHistorico nome={conteudo.cont_nome} index={index} />
+                                            </Link>
                                         </div>
                                     ))}
                                 </div>

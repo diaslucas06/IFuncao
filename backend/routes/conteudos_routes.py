@@ -39,6 +39,44 @@ def buscar_conteudos(
 
     return [c for c, _ in resultados[:limite]]
 
+# Essa é a da página do perfil
+@conteudos_routes.get("/progresso", response_model=List[ProgressoEtapaResponse])
+def progresso_por_etapa(
+    db: Session = Depends(pegar_sessao),
+    usuario: Usuario = Depends(pegar_usuario_logado),
+):
+    totais = dict(
+        db.query(Conteudo.cont_etapa, func.count(Conteudo.cont_id))
+        .group_by(Conteudo.cont_etapa)
+        .all()
+    )
+
+    concluidos = dict(
+        db.query(Conteudo.cont_etapa, func.count(UsuarioConteudo.usercont_id))
+        .join(UsuarioConteudo, UsuarioConteudo.usercont_cont_id == Conteudo.cont_id)
+        .filter(
+            UsuarioConteudo.usercont_user_id == usuario.user_id,
+            UsuarioConteudo.usercont_concluido.is_(True),
+        )
+        .group_by(Conteudo.cont_etapa)
+        .all()
+    )
+
+    resposta = []
+    for etapa in EtapaEnum:
+        total = totais.get(etapa, 0)
+        feitos = concluidos.get(etapa, 0)
+        resposta.append(
+            ProgressoEtapaResponse(
+                etapa=etapa.value,
+                total_conteudos=total,
+                concluidos=feitos,
+                porcentagem=round(feitos / total * 100, 1) if total else 0.0,
+            )
+        )
+
+    return resposta
+
 @conteudos_routes.get("/historico", response_model=List[ConteudoResponse])
 def listar_historico(
     limite: int = Query(10, ge=1, le=20),
@@ -97,43 +135,7 @@ def apagar_historico(
     db.commit()
     return {"mensagem": "Histórico de conteúdos apagado com sucesso.", "total_removidos": removidos}
 
-# Essa é a da página do perfil
-@conteudos_routes.get("/progresso", response_model=List[ProgressoEtapaResponse])
-def progresso_por_etapa(
-    db: Session = Depends(pegar_sessao),
-    usuario: Usuario = Depends(pegar_usuario_logado),
-):
-    totais = dict(
-        db.query(Conteudo.cont_etapa, func.count(Conteudo.cont_id))
-        .group_by(Conteudo.cont_etapa)
-        .all()
-    )
 
-    concluidos = dict(
-        db.query(Conteudo.cont_etapa, func.count(UsuarioConteudo.usercont_id))
-        .join(UsuarioConteudo, UsuarioConteudo.usercont_cont_id == Conteudo.cont_id)
-        .filter(
-            UsuarioConteudo.usercont_user_id == usuario.user_id,
-            UsuarioConteudo.usercont_concluido.is_(True),
-        )
-        .group_by(Conteudo.cont_etapa)
-        .all()
-    )
-
-    resposta = []
-    for etapa in EtapaEnum:
-        total = totais.get(etapa, 0)
-        feitos = concluidos.get(etapa, 0)
-        resposta.append(
-            ProgressoEtapaResponse(
-                etapa=etapa.value,
-                total_conteudos=total,
-                concluidos=feitos,
-                porcentagem=round(feitos / total * 100, 1) if total else 0.0,
-            )
-        )
-
-    return resposta
 
 # Essa é a da página de evolução
 @conteudos_routes.get("/evolucao", response_model=EvolucaoResponse)

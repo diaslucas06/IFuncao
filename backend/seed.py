@@ -1,4 +1,4 @@
-from sqlalchemy.orm import Session
+﻿from sqlalchemy.orm import Session
 from models import Conteudo, Questao, EtapaEnum, DificuldadeEnum, AlternativaEnum
 from contextlib import contextmanager
 
@@ -6,7 +6,7 @@ from dependencies import pegar_sessao
 
 sessao_seed = contextmanager(pegar_sessao)
 
-def povoar_conteudo_1(session, base_url="https://seu-storage-publico.com"):
+def povoar_conteudo_1(session, base_url=""):
     conteudo1 = Conteudo(
         cont_nome="Grandezas e Unidades de Medida",
         cont_etapa=EtapaEnum.ETAPA_1,
@@ -171,7 +171,7 @@ def povoar_conteudo_1(session, base_url="https://seu-storage-publico.com"):
     session.commit()
 
 # CONTEÚDO 4 (Funções e Função Afim - Função do 1º Grau)
-def povoar_conteudo_2(session, base_url="https://seu-storage-publico.com"):
+def povoar_conteudo_2(session, base_url=""):
     conteudo2 = Conteudo(
         cont_nome="Razão, Proporção e Regra de Três",
         cont_etapa=EtapaEnum.ETAPA_1,
@@ -319,7 +319,7 @@ def povoar_conteudo_2(session, base_url="https://seu-storage-publico.com"):
     session.commit()
 
 # CONTEÚDO 5 (Função Quadrática, Exponencial e Logarítmica)
-def povoar_conteudo_3(session, base_url="https://seu-storage-publico.com"):
+def povoar_conteudo_3(session, base_url=""):
     conteudo3 = Conteudo(
         cont_nome="Teoria dos Conjuntos e Conjuntos Numéricos",
         cont_etapa=EtapaEnum.ETAPA_1,
@@ -467,7 +467,7 @@ def povoar_conteudo_3(session, base_url="https://seu-storage-publico.com"):
     session.commit()
 
 # CONTEÚDO 6 (Geometria Plana - Teorema de Tales, Semelhança e Relações Métricas)
-def povoar_conteudo_4(session, base_url="https://seu-storage-publico.com"):
+def povoar_conteudo_4(session, base_url=""):
     conteudo4 = Conteudo(
         cont_nome="Frações Decimais, Dízimas Periódicas e Intervalos Reais",
         cont_etapa=EtapaEnum.ETAPA_1,
@@ -631,7 +631,7 @@ def povoar_conteudo_4(session, base_url="https://seu-storage-publico.com"):
     session.commit()
 
 # CONTEÚDO 7 (Frações Decimais, Dízimas Periódicas e Intervalos Reais)
-def povoar_conteudo_5(session, base_url="https://seu-storage-publico.com"):
+def povoar_conteudo_5(session, base_url=""):
     conteudo5 = Conteudo(
         cont_nome="Geometria Plana (Teorema de Tales, Semelhança e Relações Métricas)",
         cont_etapa=EtapaEnum.ETAPA_1,
@@ -781,7 +781,7 @@ def povoar_conteudo_5(session, base_url="https://seu-storage-publico.com"):
     session.add_all(questoes)
     session.commit()
 
-def povoar_conteudo_6(session, base_url="https://seu-storage-publico.com"):
+def povoar_conteudo_6(session, base_url=""):
     conteudo6 = Conteudo(
         cont_nome="Trigonometria no Triângulo Retângulo",
         cont_etapa=EtapaEnum.ETAPA_1,
@@ -927,7 +927,7 @@ def povoar_conteudo_6(session, base_url="https://seu-storage-publico.com"):
     session.add_all(questoes)
     session.commit()
 
-def povoar_conteudo_7(session, base_url="https://seu-storage-publico.com"):
+def povoar_conteudo_7(session, base_url=""):
     conteudo7 = Conteudo(
         cont_nome="Funções e Função Afim (Função do 1º Grau)",
         cont_etapa=EtapaEnum.ETAPA_1,
@@ -1072,7 +1072,7 @@ def povoar_conteudo_7(session, base_url="https://seu-storage-publico.com"):
     session.add_all(questoes)
     session.commit()
 
-def povoar_conteudo_8(session, base_url="https://seu-storage-publico.com"):
+def povoar_conteudo_8(session, base_url=""):
     conteudo8 = Conteudo(
         cont_nome="Função Quadrática, Exponencial e Logarítmica",
         cont_etapa=EtapaEnum.ETAPA_1,
@@ -1219,7 +1219,7 @@ def povoar_conteudo_8(session, base_url="https://seu-storage-publico.com"):
     session.add_all(questoes)
     session.commit()
 
-def povoar_simulado_1(db: Session, base_url: str = "https://seu-storage-publico.com"):
+def povoar_simulado_1(db: Session, base_url: str = ""):
     questoes = [
         Questao(
             ques_cont_id=None,

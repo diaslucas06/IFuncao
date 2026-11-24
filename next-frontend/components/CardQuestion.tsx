@@ -145,7 +145,7 @@ function verificarResposta(id: string) {
         {Object.entries(props.alternativas).map(([chave, texto]) => {
           return (
             <div key={chave} className={`p-2 flex items-center gap-2 cursor-pointer w-full border rounded-md ${respondida && respostaCorreta !== null ? (chave === alternativaCorretaAPI ? "bg-(--light-green) border-(--primary-100) text-(--question-resolution-text)" : chave === alternativaSelecionada ? "border-(--alert) bg-(--neutral-50) text-(--question-resolution-text)" : "hidden") : "text-(--question-option-text) border-(--question-option-border) shadow-sm shadow-(--neutral-500)"}`}>
-              <input type="radio" onChange={() => verificarResposta(chave)} checked={alternativaSelecionada === chave} disabled={respondida || verificando} className={`w-5 h-5 ${respondida ? (chave === alternativaCorretaAPI ? "accent-(--primary-900)" : chave === alternativaSelecionada ? "accent-(--dark)" : "") : ""}`} />
+              <input type="radio" onChange={() => verificarResposta(chave)} checked={alternativaSelecionada === chave} disabled={respondida || verificando} className={`w-5 h-5 hover:cursor-pointer ${respondida ? (chave === alternativaCorretaAPI ? "accent-(--primary-900)" : chave === alternativaSelecionada ? "accent-(--dark)" : "") : ""}`} />
               <label className="pl-1.5 font-normal md:text-xl lp:text-2xl cursor-pointer w-full">{texto}</label>
             </div>
           );

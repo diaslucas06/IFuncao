@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import CardStatus from "@/components/CardStatus";
 import Header from "@/components/Header";
 import { BookOpen, CircleCheckBig, Target, Flame } from "lucide-react";
@@ -5,15 +8,71 @@ import StudySuggestion from "@/components/StudySuggestion";
 import Simulado from "@/components/Simulado";
 
 export default function Progresso() {
-  const dadosProgresso = {
-    assuntosConcluidos: 3,
-    totalAssuntos: 30,
-    questoesRespondidas: 120,
-    totalAcertos: 89,
-    ofensiva: 10,
-    conteudoRecomendado: "Análise Combinatória",
-    etapa: 1,
-  };
+  const [dadosProgresso, setDadosProgresso] = useState({
+    assuntosConcluidos: 0,
+    totalAssuntos: 0,
+    questoesRespondidas: 0,
+    totalAcertos: 0,
+    ofensiva: 0,
+    conteudoRecomendado: "Nenhuma sugestão",
+    etapa: 0,
+  });
+
+  useEffect(() => {
+    const usuario = localStorage.getItem("usuario");
+    const token = usuario ? JSON.parse(usuario).access_token : "";
+    if (!token) return;
+
+    const headers = { Authorization: `Bearer ${token}` };
+
+    fetch("http://localhost:8000/conteudos/historico", { headers })
+      .then((res) => res.json())
+      .then((lista) => {
+        if (Array.isArray(lista)) {
+          setDadosProgresso((prev) => ({
+            ...prev,
+            assuntosConcluidos: lista.length,
+          }));
+        }
+      });
+
+    fetch("http://localhost:8000/simulados/historico", { headers })
+      .then((res) => res.json())
+      .then((simulados) => {
+        if (!Array.isArray(simulados) || simulados.length === 0) return;
+
+        let questoes = 0;
+        let acertos = 0;
+        let pior = simulados[0];
+
+        simulados.forEach((s) => {
+          questoes += s.sim_total_questoes || 0;
+          acertos += s.sim_acertos || 0;
+          if (s.sim_acertos < pior.sim_acertos) pior = s;
+        });
+
+        const etapaPior = Number(String(pior.sim_etapa).replace(/\D/g, "")) || 1;
+
+        setDadosProgresso((prev) => ({
+          ...prev,
+          questoesRespondidas: questoes,
+          totalAcertos: questoes > 0 ? Math.round((acertos / questoes) * 100) : 0,
+          ofensiva: simulados.length,
+          etapa: etapaPior,
+        }));
+
+        fetch(`http://localhost:8000/conteudos/${etapaPior}`)
+          .then((res) => res.json())
+          .then((conteudos) => {
+            if (conteudos?.[0]?.cont_nome) {
+              setDadosProgresso((prev) => ({
+                ...prev,
+                conteudoRecomendado: conteudos[0].cont_nome,
+              }));
+            }
+          });
+      });
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-(--background-color)">

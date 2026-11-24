@@ -17,6 +17,7 @@ import { useAuth } from "@/utils/auth";
 import { acessarHistorico } from "@/utils/acessarHistorico";
 import { useState } from "react";
 import { CardH1 } from "@/components/CardProfile";
+import Simulado from "@/components/Simulado";
 
 export default function Inicio() {
   const [erro, setErro] = useState('')
@@ -57,15 +58,12 @@ export default function Inicio() {
           </div>
           <div className="flex flex-col justify-between gap-3 md:gap-5">
             <h1 className="h1_inicio">Sugestões com base no seu desempenho</h1>
-            <div className="flex flex-col md:flex-row justify-between gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
               <StudySuggestion
                 conteudoRecomendado={dadosProgresso.conteudoRecomendado}
                 etapa={dadosProgresso.etapa}
               />
-              <StudySuggestion
-                conteudoRecomendado={dadosProgresso.conteudoRecomendado}
-                etapa={dadosProgresso.etapa}
-              />
+              <Simulado />
             </div>
           </div>
           <CardBackground className="w-full gap-[20px]">

@@ -63,31 +63,54 @@ function ConteudoDetalhe() {
       .catch(() => setCarregando(false));
   }, [etapa, nome]);
 
-  const finalizarConteudo = () => {
+  const finalizarConteudo = async () => {
     if (!conteudo || finalizando || finalizado) return;
     setFinalizando(true);
 
     const dadosUsuario = localStorage.getItem("usuario");
     const token = dadosUsuario ? JSON.parse(dadosUsuario).access_token : "";
-    const etapaAtual = conteudo.cont_etapa || etapa;
 
-    fetch("http://localhost:8000/conteudos/finalizar", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-      body: JSON.stringify({ cont_id: conteudo.cont_id, etapa: Number(etapaAtual) }),
-    })
-      .then((resposta) => {
-        if (resposta.ok) {
-          setFinalizado(true);
-          const nomeArquivo = ARQUIVOS_SLIDES[conteudo.cont_id];
-          if (nomeArquivo) sessionStorage.removeItem(`slide_atual_/slides/etapa-${etapaAtual}/${nomeArquivo}`);
-          setTimeout(() => router.push(`/conteudos/${etapaAtual}ano`), 2000);
-        } else {
-          alert("Não foi possível finalizar o conteúdo. Tente novamente.");
+    if (!token) {
+      alert("Sua sessão expirou. Faça login novamente.");
+      router.push("/login");
+      setFinalizando(false);
+      return;
+    }
+
+    const etapaAtual = String(conteudo.cont_etapa || etapa);
+    const nomeConteudo = encodeURIComponent(conteudo.cont_nome);
+
+    try {
+      const resposta = await fetch(
+        `http://localhost:8000/conteudos/finalizar?cont_nome=${nomeConteudo}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      })
-      .catch(() => alert("Erro de conexão ao tentar finalizar o conteúdo."))
-      .finally(() => setFinalizando(false));
+      );
+
+      if (resposta.ok) {
+        setFinalizado(true);
+        const nomeArquivo = ARQUIVOS_SLIDES[conteudo.cont_id];
+        if (nomeArquivo) {
+          sessionStorage.removeItem(`slide_atual_/slides/etapa-${etapaAtual}/${nomeArquivo}`);
+        }
+        setTimeout(() => router.push(`/conteudos`), 2000);
+      } else if (resposta.status === 401) {
+        localStorage.removeItem("usuario");
+        alert("Sua sessão expirou. Faça login novamente.");
+        router.push("/login");
+      } else {
+        const erroApi = await resposta.json().catch(() => null);
+        alert(erroApi?.detail || "Não foi possível finalizar o conteúdo. Tente novamente.");
+      }
+    } catch {
+      alert("Erro de conexão ao tentar finalizar o conteúdo.");
+    } finally {
+      setFinalizando(false);
+    }
   };
 
   if (carregando) return <div>Carregando...</div>;
@@ -109,7 +132,9 @@ function ConteudoDetalhe() {
     conteudo: conteudo.cont_texto,
   };
 
-  const listaBruta = Array.isArray(conteudo.cont_relacionados) ? conteudo.cont_relacionados : conteudo.cont_relacionados?.topicos || conteudo.cont_relacionados?.relacionados || [];
+  const listaBruta = Array.isArray(conteudo.cont_relacionados)
+    ? conteudo.cont_relacionados
+    : conteudo.cont_relacionados?.topicos || conteudo.cont_relacionados?.relacionados || [];
 
   const dadosRelacionados = {
     id: conteudo.cont_id,
@@ -132,7 +157,11 @@ function ConteudoDetalhe() {
 
         <div className="w-full flex flex-col lg:flex-row gap-6 lg:items-start">
           <div className="w-full lg:w-2/3 lg:mt-4 min-w-0">
-            {urlPdf && <PdfSlideViewer pdfUrl={urlPdf} onFinalizar={finalizarConteudo} finalizando={finalizando} finalizado={finalizado} />}
+            {urlPdf && (
+              <PdfSlideViewer
+                pdfUrl={urlPdf} onFinalizar={finalizarConteudo} finalizando={finalizando} finalizado={finalizado}
+              />
+            )}
           </div>
 
           <div className="w-full lg:w-1/3 lg:mt-4 min-w-0">

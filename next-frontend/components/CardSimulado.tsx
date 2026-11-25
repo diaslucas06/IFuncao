@@ -40,7 +40,7 @@ export default function CardSimulado(props: CardSimuladoProps) {
 
       {props.imagemUrl && (
         <div className="my-3">
-          <img  src={props.imagemUrl} alt="Ilustração da questão" 
+          <img  src={props.imagemUrl} alt="Ilustração da questão" referrerPolicy="no-referrer"
            className="max-h-64 rounded-md object-contain" 
           />
         </div>

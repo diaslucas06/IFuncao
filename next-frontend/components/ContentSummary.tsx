@@ -21,12 +21,7 @@ export default function ContentSummary({ dados }: ContentSummaryProps) {
             return (
               <p
                 key={i}
-                className={
-                  linhaLimpa === ""
-                    ? "h-2 text-xl"
-                    : comecaComNumero
-                    ? "text-2xl font-bold text-2xl pb-5"
-                    : "text-xl"
+                className={linhaLimpa === "" ? "h-2 text-xl" : comecaComNumero ? "text-2xl font-bold text-2xl pb-5" : "text-xl"
                 }
               >
                 {linha}

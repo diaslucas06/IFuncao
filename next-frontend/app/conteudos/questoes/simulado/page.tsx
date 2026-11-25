@@ -146,6 +146,9 @@ export default function simulado() {
                 <h3 className="font-bold">
                   Questão {index + 1}
                 </h3>
+                {questao.ques_imagem_url && (
+                  <img src={questao.ques_imagem_url} alt="Ilustração da questão" referrerPolicy="no-referrer" className="max-h-64 rounded-md object-contain my-2" />
+                )}
                 <p>
                   Sua resposta: {questao.alternativa_escolhida || "Não respondida"}
                 </p>
@@ -159,6 +162,9 @@ export default function simulado() {
                   <p className="mt-2">
                     Resolução: {questao.ques_resolucao}
                   </p>
+                )}
+                {questao.ques_resolucao_imagem_url && (
+                  <img src={questao.ques_resolucao_imagem_url} alt="Imagem da resolução" referrerPolicy="no-referrer" className="max-h-64 rounded-md object-contain my-2" />
                 )}
               </div>
             ))}

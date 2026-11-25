@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -6,68 +5,69 @@ import Link from "next/link";
 
 export default function StudySuggestion() {
   const [conteudoRecomendado, setConteudoRecomendado] = useState("Nenhuma sugestão");
-  const [etapa, setEtapa] = useState(0);
+  const [etapa, setEtapa] = useState<string | number>(0);
+  const [temSugestao, setTemSugestao] = useState(false);
 
   useEffect(() => {
-    async function buscarSugestao() {
-      try {
-        const dadosUsuario = localStorage.getItem("usuario");
-        if (!dadosUsuario) return;
+    const dadosUsuario = localStorage.getItem("usuario");
+    if (!dadosUsuario) return;
 
-        const token = JSON.parse(dadosUsuario).access_token;
-        if (!token) return;
+    const token = JSON.parse(dadosUsuario).access_token;
+    if (!token) return;
 
-        const resposta = await fetch("http://localhost:8000/simulados/historico", {
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          }
-        });
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
 
+    fetch("http://localhost:8000/simulados/historico", { headers })
+      .then((resposta) => {
         if (!resposta.ok) {
-          throw new Error("Erro ao buscar simulados");
+          throw new Error(`Erro ao buscar simulados: ${resposta.status}`);
         }
-
-        const simulados = await resposta.json();
-
-        if (!simulados.length) return;
+        return resposta.json();
+      })
+      .then((simulados) => {
+        if (!Array.isArray(simulados) || simulados.length === 0) return null;
 
         let piorSimulado = simulados[0];
-
         for (const sim of simulados) {
           if (sim.sim_acertos < piorSimulado.sim_acertos) {
             piorSimulado = sim;
           }
         }
 
-        const numeroEtapa = Number(String(piorSimulado.sim_etapa).slice(-1)) || 1;
-        setEtapa(numeroEtapa);
+        const etapaRaw = String(piorSimulado.sim_etapa);
+        const etapaFormatada =
+          etapaRaw === "ENEM" ? "ENEM" : Number(etapaRaw.slice(-1)) || 1;
+        setEtapa(etapaFormatada);
 
-        const respostaConteudos = await fetch(`http://localhost:8000/conteudos/${numeroEtapa}`);
-
-        if (!respostaConteudos.ok) {
-          throw new Error("Erro ao buscar conteúdos da etapa");
-        }
-
-        const listaConteudos = await respostaConteudos.json();
-
-        if (listaConteudos.length > 0) {
+        return fetch(`http://localhost:8000/conteudos/${etapaFormatada}`, { headers })
+          .then((respostaConteudos) => {
+            if (!respostaConteudos.ok) {
+              throw new Error(`Erro ao buscar conteúdos: ${respostaConteudos.status}`);
+            }
+            return respostaConteudos.json();
+          });
+      })
+      .then((listaConteudos) => {
+        if (Array.isArray(listaConteudos) && listaConteudos.length > 0) {
           setConteudoRecomendado(listaConteudos[0].cont_nome);
+          setTemSugestao(true);
         }
-
-      } catch (erro) {
+      })
+      .catch((erro) => {
         console.log("Erro ao buscar sugestão:", erro);
-      }
-    }
-
-    buscarSugestao();
+      });
   }, []);
+
+  const hrefDestino = temSugestao
+    ? `/conteudos/resumo?etapa=${etapa}&nome=${encodeURIComponent(conteudoRecomendado)}`
+    : "/conteudos";
 
   return (
     <div className="bg-(--sugestion-card-color) flex flex-col lp:flex-row border-l-4 justify-between items-start lp:items-end basis-1/2 gap-2 md:gap-4 p-4 rounded-sm border-(--primary-200) shadow-md shadow-black/20">
-
       <div className="flex-1">
-      
         <h1 className="font-bold text-2xl md:text-start md:text-[28px] lg:text-[32px] lp:text-[40px] text-(--base-text-color)">
           Sugestão de estudo
         </h1>
@@ -77,21 +77,20 @@ export default function StudySuggestion() {
         </h2>
 
         <p className="text-base md:text-xl lp:text-2xl pc:text-[32px] text-(--sugestion-tag-color) mt-1">
-          {conteudoRecomendado} - {etapa}
+          {temSugestao
+            ? `${conteudoRecomendado} - ${etapa === "ENEM" ? "ENEM" : `${etapa}º Ano`}`
+            : "Realize um simulado para receber sugestões"}
         </p>
-
       </div>
 
       <div className="w-full ml:w-auto mt-2 ml:mt-0">
-
-        <Link href={`/conteudos/${etapa}`}
+        <Link
+          href={hrefDestino}
           className="bg-(--sugestion-button-color) text-(--sugestion-button-text-color) md:text-xl lp:text-2xl flex items-center p-2 px-4 md:px-6 rounded-sm font-bold whitespace-nowrap hover:bg-(--profile-button-color-hover)"
         >
-          Ir para conteúdo
+          {temSugestao ? "Ir para conteúdo" : "Ver conteúdos"}
         </Link>
-
       </div>
-
     </div>
   );
 }

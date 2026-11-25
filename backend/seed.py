@@ -32,7 +32,7 @@ def povoar_conteudo_1(session, base_url=""):
         ),
         cont_texto_resumo="Estudo das unidades de medida decimais e não decimais (comprimento, capacidade, massa, volume e tempo), grandezas diretamente e inversamente proporcionais e notação científica.",
         cont_slide_pdf=f"{base_url}/pdfs/GM-1ANO_2.pdf",
-        cont_imagem_url=f"{base_url}/imagens/conteudos/gm_escala_conversao_metros.png",
+        cont_imagem_url=None,
         cont_relacionados={"topicos": ["Unidades de Medida", "Conversão de Medidas", "Grandezas Proporcionais", "Notação Científica"]},
     )
     session.add(conteudo1)
@@ -87,7 +87,7 @@ def povoar_conteudo_1(session, base_url=""):
             ques_alternativas={"A": "a) 16 x 10⁻¹⁸ C", "B": "b) 1,6 x 10⁻¹⁹ C", "C": "c) 160 x 10⁻¹⁷ C", "D": "d) 0,16 x 10⁻²⁰ C"},
             ques_resposta_correta=AlternativaEnum.B,
             ques_resolucao="Deslocando a vírgula 19 casas para a direita até obter um algarismo significativo antes da vírgula, temos 1,6 · 10⁻¹⁹ C.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gm_r04_notacao_eletron.png",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo1.cont_id,
@@ -98,7 +98,7 @@ def povoar_conteudo_1(session, base_url=""):
             ques_alternativas={"A": "a) 15 h", "B": "b) 20 h", "C": "c) 25 h", "D": "d) 30 h", "E": "e) 35 h"},
             ques_resposta_correta=AlternativaEnum.C,
             ques_resolucao="Total de aulas: 6 · 5 = 30 aulas. Tempo em minutos: 30 · 50 = 1500 min. Convertendo em horas: 1500 / 60 = 25 h.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gm_r05_horas_aula.png",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo1.cont_id,
@@ -109,7 +109,7 @@ def povoar_conteudo_1(session, base_url=""):
             ques_alternativas={"A": "A) R$ 950.000", "B": "B) R$ 975.000", "C": "C) R$ 1.225.000", "D": "D) R$ 1.375.000", "E": "E) R$ 1.625.000"},
             ques_resposta_correta=AlternativaEnum.D,
             ques_resolucao="A soma das idades é 24 + 28 + 44 = 96. Pela proporção 96 / 3.000.000 = 44 / x, temos x = (44 · 3.000.000) / 96 = R$ 1.375.000.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gm_r06_divisao_heranca.png",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo1.cont_id,
@@ -153,7 +153,7 @@ def povoar_conteudo_1(session, base_url=""):
             ques_alternativas={"A": "A) 30°", "B": "B) 60°", "C": "C) 90°", "D": "D) 120°", "E": "E) 150°"},
             ques_resposta_correta=AlternativaEnum.D,
             ques_resolucao="Sendo a = k/1, b = k/3 e c = k/6, e sabendo que a + b + c = 180°, temos k + k/3 + k/6 = 180° → 9k/6 = 180° → k = 120°. Logo, o maior ângulo mede 120°.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gm_r09_angulos_triangulo.png",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo1.cont_id,
@@ -170,7 +170,7 @@ def povoar_conteudo_1(session, base_url=""):
     session.add_all(questoes)
     session.commit()
 
-# CONTEÚDO 4 (Funções e Função Afim - Função do 1º Grau)
+# CONTEÚDO 2 (Razão, Proporção e Regra de Três)
 def povoar_conteudo_2(session, base_url=""):
     conteudo2 = Conteudo(
         cont_nome="Razão, Proporção e Regra de Três",
@@ -197,7 +197,7 @@ def povoar_conteudo_2(session, base_url=""):
         ),
         cont_texto_resumo="Estudo de razão, porcentagem como razão centesimal, proporção e suas quatro propriedades, regra de três simples (direta e inversa) e regra de três composta.",
         cont_slide_pdf=f"{base_url}/pdfs/GM-1ANO_2.pdf",
-        cont_imagem_url=f"{base_url}/imagens/conteudos/rp_propriedades_proporcao.png",
+        cont_imagem_url=None,
         cont_relacionados={"topicos": ["Razão e Proporção", "Propriedades das Proporções", "Regra de Três Simples e Composta", "Porcentagem"]},
     )
     session.add(conteudo2)
@@ -212,8 +212,8 @@ def povoar_conteudo_2(session, base_url=""):
             ques_imagem_url=None,
             ques_alternativas={"A": "a) 4", "B": "b) 6", "C": "c) 8", "D": "d) 12"},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Dividindo o número de candidatos pelas vagas: 1600 / 200 = 8 candidatos por vaga.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/rp_r01_razao_vagas.png",
+            ques_resolucao="Comparando o número de candidatos com o número de vagas em uma divisão: 1600 : 200 = 1600/200 = 8/1. Sendo assim, a razão é 8 para 1, ou seja, há 8 candidatos para cada vaga no concurso.",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo2.cont_id,
@@ -223,8 +223,8 @@ def povoar_conteudo_2(session, base_url=""):
             ques_imagem_url=None,
             ques_alternativas={"A": "a) 56", "B": "b) 72", "C": "c) 88", "D": "d) 94"},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Pela proporção 4 / 7 = 32 / x, temos x = 56 mulheres. Total de participantes: 32 + 56 = 88.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/rp_r02_proporcao_selecao.png",
+            ques_resolucao="Pela regra fundamental da proporção: 4/7 = 32/x → 4x = 32 · 7 → x = 224/4 → x = 56 mulheres. Somando homens e mulheres: 56 + 32 = 88 participantes.",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo2.cont_id,
@@ -234,8 +234,8 @@ def povoar_conteudo_2(session, base_url=""):
             ques_imagem_url=None,
             ques_alternativas={"A": "a) [40 kg; 45 kg]", "B": "b) [45 kg; 50 kg]", "C": "c) [55 kg; 60 kg]", "D": "d) [75 kg; 80 kg]", "E": "e) [80 kg; 85 kg]"},
             ques_resposta_correta=AlternativaEnum.E,
-            ques_resolucao="Pela proporção 5 / 7 = 60 / x, temos 5x = 420 → x = 84 kg, pertencente ao intervalo [80 kg; 85 kg].",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/rp_r03_peso_netuno.png",
+            ques_resolucao="Montando a proporção: 5/7 = 60/x → 5x = 60 · 7 → 5x = 420 → x = 420/5 = 84 kg, valor que pertence ao intervalo [80 kg; 85 kg].",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo2.cont_id,
@@ -245,7 +245,7 @@ def povoar_conteudo_2(session, base_url=""):
             ques_imagem_url=None,
             ques_alternativas={"A": "A) 1", "B": "B) 2", "C": "C) 3", "D": "D) 4", "E": "E) 5"},
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Pela igualdade x / 6 = 6 / 18 → 18x = 36 → x = 2.",
+            ques_resolucao="Sabemos que x/6 = 6/18. Multiplicando cruzado: 18x = 36 → x = 36/18 → x = 2.",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
@@ -256,7 +256,7 @@ def povoar_conteudo_2(session, base_url=""):
             ques_imagem_url=None,
             ques_alternativas={"A": "A) 3279", "B": "B) 3490", "C": "C) 3521", "D": "D) 3674", "E": "E) 4001"},
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Calculando 1/4 de 13116: 13116 / 4 = 3279 pessoas.",
+            ques_resolucao="Calculando 1/4 de 13116: (1/4) · 13116 = 13116 / 4 = 3279 pessoas.",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
@@ -267,8 +267,8 @@ def povoar_conteudo_2(session, base_url=""):
             ques_imagem_url=None,
             ques_alternativas={"A": "a) 29", "B": "b) 30", "C": "c) 33", "D": "d) 28", "E": "e) 31"},
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Restam 8 funcionários trabalhando 9 h/dia. Como funcionários e horas são inversamente proporcionais aos dias: 27 / x = (8 / 10) · (9 / 8) → x = 30 dias.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/rp_r06_setas_regra_tres.png",
+            ques_resolucao="Restam 10 - 2 = 8 funcionários trabalhando 8 + 1 = 9 h/dia. Como funcionários e horas por dia são inversamente proporcionais aos dias, invertemos suas razões: 27/x = (8/10) · (9/8) → 27/x = 72/80 → 72x = 27 · 80 → x = 2160/72 = 30 dias.",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo2.cont_id,
@@ -278,8 +278,8 @@ def povoar_conteudo_2(session, base_url=""):
             ques_imagem_url=None,
             ques_alternativas={"A": "a) R$ 24,00", "B": "b) R$ 18,00", "C": "c) R$ 22,00", "D": "d) R$ 14,00"},
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Pela regra de três direta: 30 / 12 = 60 / x → 30x = 720 → x = R$ 24,00.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/rp_r07_proporcao_desconto.png",
+            ques_resolucao="Porcentagem e desconto são diretamente proporcionais (30% está para R$ 60,00 assim como 12% está para x): 30x = 60 · 12 → x = 720/30 → x = R$ 24,00.",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo2.cont_id,
@@ -289,8 +289,8 @@ def povoar_conteudo_2(session, base_url=""):
             ques_imagem_url=None,
             ques_alternativas={"A": "a) 90", "B": "b) 98", "C": "c) 120", "D": "d) 112"},
             ques_resposta_correta=AlternativaEnum.D,
-            ques_resolucao="Um quarto da equipe equivale a 3 agentes. Como agentes e dias são inversamente proporcionais: 28 / x = 3 / 12 → 3x = 336 → x = 112 dias.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/rp_r08_agentes_saude.png",
+            ques_resolucao="Um quarto da equipe equivale a (1/4) · 12 = 3 profissionais. Como agentes e dias são inversamente proporcionais: 3x = 12 · 28 → x = 336/3 → x = 112 dias.",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo2.cont_id,
@@ -300,25 +300,32 @@ def povoar_conteudo_2(session, base_url=""):
             ques_imagem_url=None,
             ques_alternativas={"A": "a) 12 dias", "B": "b) 14 dias", "C": "c) 16 dias", "D": "d) 18 dias"},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Homens e horas por dia são inversamente proporcionais aos dias: 6 / x = (5 / 10) · (6 / 8) → 6 / x = 30 / 80 → x = 16 dias.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/rp_r09_regra_tres_obra.png",
+            ques_resolucao="Homens trabalhando e horas por dia são inversamente proporcionais aos dias: 6/x = (5/10) · (6/8) → 6/x = 30/80 → 30x = 480 → x = 16 dias.",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo2.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Maria está interessada em comprar livros para a sua biblioteca pessoal. Ela percebeu que em uma livraria, os livros do mesmo autor têm um desconto progressivo, conforme a quantidade comprada. Na tabela está faltando o percentual de desconto para 3 ou mais livros. Sabe-se que a variação do desconto é proporcional ao número de livros. Se Maria comprasse 4 livros do mesmo autor pelo mesmo valor de R$ 150,00 cada, qual seria o valor total com o desconto aplicado?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/rp_q10_tabela_desconto.png",
+            ques_enunciado=(
+                "Maria está interessada em comprar livros para a sua biblioteca pessoal. Ela percebeu que em uma livraria, os livros do mesmo autor têm um desconto progressivo, conforme a quantidade comprada.\n"
+                "Tabela de descontos:\n"
+                "• 1 livro: 0% de desconto\n"
+                "• 2 livros: 6% de desconto\n"
+                "• 3 ou mais livros: ?\n"
+                "Na tabela está faltando o percentual de desconto para 3 ou mais livros. Sabe-se que a variação do desconto é proporcional ao número de livros. Se Maria comprasse 4 livros do mesmo autor pelo mesmo valor de R$ 150,00 cada, qual seria o valor total com o desconto aplicado?"
+            ),
+            ques_imagem_url=None,
             ques_alternativas={"A": "a) R$ 45,00", "B": "b) R$ 54,00", "C": "c) R$ 58,00", "D": "d) R$ 64,00"},
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Pela proporção 2 / 3 = 6 / x → x = 9% de desconto. Para 4 livros de R$ 150,00 (R$ 600,00), 9% corresponde a R$ 54,00.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/rp_r10_calculo_desconto.png",
+            ques_resolucao="Como a variação do desconto é proporcional, pela regra de três simples: 2/3 = 6/x → 2x = 18 → x = 9% de desconto. Comprando 4 livros de R$ 150,00 (total de R$ 600,00), o desconto de 9% é 600 · 0,09 = R$ 54,00.",
+            ques_resolucao_imagem_url=None,
         ),
     ]
     session.add_all(questoes)
     session.commit()
 
-# CONTEÚDO 5 (Função Quadrática, Exponencial e Logarítmica)
+# CONTEÚDO 3 (Teoria dos Conjuntos e Conjuntos Numéricos)
 def povoar_conteudo_3(session, base_url=""):
     conteudo3 = Conteudo(
         cont_nome="Teoria dos Conjuntos e Conjuntos Numéricos",
@@ -340,7 +347,7 @@ def povoar_conteudo_3(session, base_url=""):
         ),
         cont_texto_resumo="Estudo das relações de pertinência e inclusão, operações entre conjuntos (união, intersecção e diferença), diagramas de Venn e conjuntos numéricos (N, Z, Q, I e R).",
         cont_slide_pdf=f"{base_url}/pdfs/C-1ANO.pdf",
-        cont_imagem_url=f"{base_url}/imagens/conteudos/conj_diagrama_euler_venn.png",
+        cont_imagem_url=None,
         cont_relacionados={"topicos": ["Conjuntos", "Diagramas de Venn", "Conjuntos Numéricos"]},
     )
     session.add(conteudo3)
@@ -351,122 +358,156 @@ def povoar_conteudo_3(session, base_url=""):
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Em um diagrama de Venn com três conjuntos A, B e C, a região que reúne os elementos pertencentes simultaneamente a A e B, mas que não pertencem a C, é representada por:",
-            ques_imagem_url=f"{base_url}/imagens/questoes/conj_q01_diagrama_azul.png",
-            ques_alternativas={"A": "a) A - B - C", "B": "b) (A ∪ B) - C", "C": "c) (A ∩ B) - C", "D": "d) (A ∩ C) - B", "E": "e) A ∩ B ∩ C"},
+            ques_enunciado="A região destacada em azul pode ser descrita pela operação:",
+            ques_imagem_url="https://s4.static.brasilescola.uol.com.br/exercicios/2021/03/3-questao-12.jpg",
+            ques_alternativas={"A": "A) A – B – C", "B": "B) A ∪ B – C", "C": "C) A ∩ C – B", "D": "D) A ∩ B – C", "E": "E) A ∩ B ∩ C"},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Os elementos comuns a A e B formam a intersecção (A ∩ B). Excluindo-se os elementos de C, obtemos (A ∩ B) - C.",
+            ques_resolucao="Analisando o diagrama, a região em destaque corresponde à intersecção entre os conjuntos A e C (A ∩ C) menos os elementos que pertencem ao conjunto B, resultando em A ∩ C – B.",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Qual expressão representa o conjunto dos elementos que pertencem exclusivamente ao conjunto A, desconsiderando qualquer elemento de B ou C?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/conj_q02_area_hachurada.png",
-            ques_alternativas={"A": "a) A ∩ (B ∪ C)", "B": "b) A - (B ∪ C)", "C": "c) A ∪ (B - C)", "D": "d) A ∩ (B - C)"},
+            ques_enunciado="Observe a área hachurada da figura e marque a alternativa que a representa.",
+            ques_imagem_url="https://static.todamateria.com.br/upload/di/ag/diagramadevennexerciciosconjuntos-cke.jpg",
+            ques_alternativas={"A": "a) C ∪ (A ∩ B)", "B": "b) C – (A ∪ B)", "C": "c) C ∩ (A – B)", "D": "d) C ∪ (A ∪ B)"},
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Para obter os elementos exclusivos de A, retira-se de A toda a união dos demais conjuntos: A - (B ∪ C).",
+            ques_resolucao="A área hachurada representa os elementos de C que não pertencem aos conjuntos A nem B. Como A e B estão unidos (A ∪ B), a região destacada é a diferença C – (A ∪ B).",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Em uma pesquisa com 180 estudantes sobre cursos de idiomas, 40 afirmaram não estudar nenhum idioma, 95 estudam inglês e 30 estudam inglês e espanhol. Quantos estudantes cursam exclusivamente espanhol?",
+            ques_enunciado=(
+                "(UNB-Adaptada) De 200 pessoas que foram pesquisadas sobre suas preferências em assistir aos campeonatos de corrida pela televisão, foram colhidos os seguintes dados:\n"
+                "- 55 dos entrevistados não assistem;\n"
+                "- 101 assistem às corridas de Fórmula 1;\n"
+                "- 27 assistem às corridas de Fórmula 1 e de Motovelocidade;\n"
+                "Quantas das pessoas entrevistadas assistem, exclusivamente, às corridas de Motovelocidade?"
+            ),
             ques_imagem_url=None,
-            ques_alternativas={"A": "a) 35", "B": "b) 45", "C": "c) 55", "D": "d) 65"},
+            ques_alternativas={"A": "a) 32", "B": "b) 44", "C": "c) 56", "D": "d) 28"},
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Dos 180 estudantes, 180 - 40 = 140 estudam ao menos um idioma. Subtraindo os 95 que estudam inglês, restam 140 - 95 = 45 que estudam apenas espanhol.",
+            ques_resolucao="1º passo: determinar o total de pessoas que assistem às corridas: 200 - 55 = 145 pessoas. 2º passo: como 101 assistem Fórmula 1 (sendo 74 apenas Fórmula 1 e 27 ambos), temos 74 + 27 + (x - 27) = 145 → x + 74 = 145 → x = 71 pessoas que assistem Motovelocidade. Subtraindo a intersecção: 71 - 27 = 44 assistem exclusivamente Motovelocidade.",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Em uma turma de 40 alunos, todos praticam futebol ou vôlei. Sabendo que 25 jogam futebol e 22 jogam vôlei, quantos alunos praticam apenas futebol?",
+            ques_enunciado="Em uma escola de formação de condutores, constatou-se que todos os 34 alunos estavam tirando a primeira carteira nacional de habilitação (CNH). O professor perguntou quantos estavam ali para tirar a CNH da categoria A, e 12 estudantes levantaram a mão, posteriormente, ele perguntou quantos estavam ali para obter CNH da categoria B, e 29 levantaram a mão, sendo assim, a quantidade de candidatos que pretendem tirar somente a CNH da categoria A é:",
             ques_imagem_url=None,
-            ques_alternativas={"A": "a) 7", "B": "b) 15", "C": "c) 18", "D": "d) 22", "E": "e) 25"},
+            ques_alternativas={"A": "A) 22", "B": "B) 7", "C": "C) 5", "D": "D) 19", "E": "E) 10"},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="A intersecção é 25 + 22 - 40 = 7 alunos que praticam ambos. Assim, apenas futebol: 25 - 7 = 18 alunos.",
+            ques_resolucao="Somando os dois grupos: 29 + 12 = 41. Como o total é 34 alunos, há 41 - 34 = 7 alunos na intersecção (tirando ambas as categorias). Subtraindo esses 7 do total da categoria A: 12 - 7 = 5 alunos tiram somente a CNH A.",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Sejam P o conjunto dos múltiplos naturais de 6, Q o conjunto dos múltiplos naturais de 3 e R o conjunto dos números naturais ímpares. Analise as afirmações: I. P ⊂ Q; II. Q ⊂ P; III. P ∩ R = ∅. Estão corretas:",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) Apenas I e II", "B": "b) Apenas II e III", "C": "c) Apenas I e III", "D": "d) Apenas I", "E": "e) Todas"},
-            ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Todo múltiplo de 6 é múltiplo de 3 (I é verdadeira) e também é par, não possuindo elementos em comum com os ímpares (III é verdadeira). A II é falsa, pois 3 ∈ Q e 3 ∉ P.",
-            ques_resolucao_imagem_url=None,
-        ),
-        Questao(
-            ques_cont_id=conteudo3.cont_id,
-            ques_etapa=EtapaEnum.ETAPA_1,
-            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="A respeito dos conjuntos numéricos, assinale a alternativa verdadeira:",
+            ques_enunciado=(
+                "Dados os conjuntos A, B e C, cujos termos possuem as seguintes características:\n"
+                "A → conjunto dos números pares\n"
+                "B → conjunto dos números ímpares\n"
+                "C → conjunto dos múltiplos de 4\n"
+                "Julgue as afirmativas a seguir:\n"
+                "I – A está contido em C.\n"
+                "II – C está contido em A.\n"
+                "III – A intersecção entre A e B é igual ao conjunto vazio."
+            ),
             ques_imagem_url=None,
             ques_alternativas={
-                "A": "a) Todo número real é racional.",
-                "B": "b) A intersecção entre Q e I possui infinitos elementos.",
-                "C": "c) A dízima periódica 2,454545... pertence ao conjunto dos números racionais.",
-                "D": "d) Todo número inteiro pertence ao conjunto dos números naturais.",
+                "A": "A) Somente I e II são verdadeiras.",
+                "B": "B) Somente II e III são verdadeiras.",
+                "C": "C) Somente I e III são verdadeiras.",
+                "D": "D) Somente I é verdadeira.",
+                "E": "E) Todas as afirmativas são verdadeiras.",
+            },
+            ques_resposta_correta=AlternativaEnum.B,
+            ques_resolucao="I → Falsa, pois nem todo número par (múltiplo de 2) é múltiplo de 4 (ex.: 2 e 6). II → Verdadeira, pois todos os múltiplos de 4 são pares (C ⊂ A). III → Verdadeira, pois nenhum número é par e ímpar simultaneamente (A ∩ B = ∅).",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=conteudo3.cont_id,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado="Qual proposição abaixo é verdadeira?",
+            ques_imagem_url=None,
+            ques_alternativas={
+                "A": "a) Todo número inteiro é racional e todo número real é um número inteiro.",
+                "B": "b) A intersecção do conjunto dos números racionais com o conjunto dos números irracionais tem 1 elemento.",
+                "C": "c) O número 1,83333... é um número racional.",
+                "D": "d) A divisão de dois números inteiros é sempre um número inteiro.",
             },
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Toda dízima periódica pode ser escrita como fração geratriz de números inteiros, pertencendo ao conjunto Q.",
+            ques_resolucao="a) Falsa: nem todo real é inteiro (ex.: 1/2). b) Falsa: Q ∩ I = ∅. c) Verdadeira: 1,83333... é uma dízima periódica que equivale à fração 11/6, pertencendo a Q. d) Falsa: 7 / 3 = 2,333..., que não é inteiro.",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Qual notação indica corretamente uma relação de inclusão entre dois conjuntos A e B?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/conj_q07_quadro_inclusao.png",
-            ques_alternativas={"A": "a) A ⊂ B", "B": "b) A ∈ B", "C": "c) A ∉ B", "D": "d) x ⊂ B"},
+            ques_enunciado="Nos conjuntos (A e B) no quadro abaixo, qual alternativa representa uma relação de inclusão?",
+            ques_imagem_url="https://static.todamateria.com.br/upload/co/nj/conjuntosab.jpg",
+            ques_alternativas={"A": "a) Primeira opção", "B": "b) Segunda opção", "C": "c) Terceira opção", "D": "d) Quarta opção"},
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Os símbolos de inclusão (⊂, ⊃) são empregados exclusivamente para relacionar conjuntos entre si.",
+            ques_resolucao="A primeira opção (alternativa A) é a única em que um conjunto está totalmente incluído no outro (B ⊂ A ou A ⊃ B).",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Dados A = {1, 3, 5}, B = {3, 5, 7} e C = {7, 9}, qual é o conjunto resultante da operação (A ∪ B) ∩ (B ∪ C)?",
+            ques_enunciado="Seja A = {2, 5}, B = {2, 5, 6} e C = {6, 10}, determine os elementos da operação (A ∪ B) ∩ (B ∪ C).",
             ques_imagem_url=None,
-            ques_alternativas={"A": "a) {3, 5, 7}", "B": "b) {1, 3, 5}", "C": "c) {7, 9}", "D": "d) {1, 3, 5, 7, 9}", "E": "e) {3, 7}"},
+            ques_alternativas={"A": "A) {2, 5, 6}", "B": "B) {2, 5}", "C": "C) {6, 10}", "D": "D) {2, 5, 6, 10}", "E": "E) {2, 10}"},
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Temos A ∪ B = {1, 3, 5, 7} e B ∪ C = {3, 5, 7, 9}. Os elementos comuns a ambos são {3, 5, 7}.",
+            ques_resolucao="Calculando as uniões: A ∪ B = {2, 5, 6} e B ∪ C = {2, 5, 6, 10}. A intersecção entre esses dois resultados é {2, 5, 6}.",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Em um clube, 150 sócios praticam natação ou corrida. Sabe-se que 90 praticam natação e 85 praticam corrida. Quantos sócios praticam as duas modalidades?",
+            ques_enunciado="(IFPE 2016) Em uma cooperativa de agricultores do município de Vitória de Santo Antão, foi realizada uma consulta em relação ao cultivo de cana-de-açúcar e do algodão. Constatou-se que 125 associados cultivavam a cana-de-açúcar, 85 cultivavam o algodão e 45 cultivavam ambos. Sabendo que todos os cooperativados cultivavam pelo menos uma dessas duas culturas, qual é o número de agricultores da cooperativa?",
             ques_imagem_url=None,
-            ques_alternativas={"A": "a) 15", "B": "b) 20", "C": "c) 25", "D": "d) 30", "E": "e) 35"},
+            ques_alternativas={"A": "A) 210", "B": "B) 255", "C": "C) 165", "D": "D) 125", "E": "E) 45"},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Pelo princípio da inclusão-exclusão: n(A ∩ B) = 90 + 85 - 150 = 25 sócios.",
+            ques_resolucao="Pelo princípio da inclusão-exclusão: n(A ∪ B) = n(A) + n(B) - n(A ∩ B) = 125 + 85 - 45 = 165 agricultores.",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo3.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Julgue as afirmativas: I. A soma de dois números inteiros é sempre um número inteiro; II. A diferença entre dois números naturais é sempre um número natural; III. O produto de dois números racionais é sempre racional; IV. A união Q ∪ I resulta em R. É falsa apenas:",
+            ques_enunciado=(
+                "Sobre os conjuntos numéricos, podemos afirmar que:\n"
+                "I – a soma de dois números racionais é sempre um número racional.\n"
+                "II – a divisão de dois números naturais é sempre um número natural.\n"
+                "III – a diferença entre dois números inteiros é sempre um número inteiro.\n"
+                "IV – o produto entre dois números reais é sempre igual a um número real.\n"
+                "Julgando as afirmativas, temos que:"
+            ),
             ques_imagem_url=None,
-            ques_alternativas={"A": "a) I", "B": "b) II", "C": "c) III", "D": "d) IV", "E": "e) Nenhuma"},
+            ques_alternativas={
+                "A": "A) somente a afirmativa I é falsa.",
+                "B": "B) somente a afirmativa II é falsa.",
+                "C": "C) somente a afirmativa III é falsa.",
+                "D": "D) somente a afirmativa IV é falsa.",
+                "E": "E) todas as afirmativas são verdadeiras.",
+            },
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="A afirmativa II é falsa, pois a subtração de dois naturais pode resultar em um inteiro negativo (ex.: 3 - 5 = -2 ∉ N).",
+            ques_resolucao="I) Verdadeira: a soma de dois racionais sempre resulta em um racional. II) Falsa: a divisão de dois naturais pode gerar um número não natural (ex.: 7 ÷ 2 = 3,5). III) Verdadeira: a diferença de dois inteiros é sempre inteira. IV) Verdadeira: o produto de dois reais é sempre real.",
             ques_resolucao_imagem_url=None,
         ),
     ]
     session.add_all(questoes)
     session.commit()
 
-# CONTEÚDO 6 (Geometria Plana - Teorema de Tales, Semelhança e Relações Métricas)
+# CONTEÚDO 4 (Frações Decimais, Dízimas Periódicas e Intervalos Reais)
 def povoar_conteudo_4(session, base_url=""):
     conteudo4 = Conteudo(
         cont_nome="Frações Decimais, Dízimas Periódicas e Intervalos Reais",
@@ -496,7 +537,7 @@ def povoar_conteudo_4(session, base_url=""):
         ),
         cont_texto_resumo="Estudo das frações decimais, dízimas periódicas simples e compostas, obtenção da fração geratriz e representação de intervalos na reta real.",
         cont_slide_pdf=f"{base_url}/pdfs/IFUNÇÃO-1-ANO.pdf",
-        cont_imagem_url=f"{base_url}/imagens/conteudos/fi_intervalos_reta_real.png",
+        cont_imagem_url=None,
         cont_relacionados={"topicos": ["Conjuntos Numéricos", "Números Racionais e Irracionais", "Fração Geratriz", "Intervalos Reais"]},
     )
     session.add(conteudo4)
@@ -507,130 +548,149 @@ def povoar_conteudo_4(session, base_url=""):
             ques_cont_id=conteudo4.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Qual é a fração irredutível geratriz da dízima periódica composta 2,1545454...?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/fi_q01_dizima_composta.png",
-            ques_alternativas={"A": "a) 2154/990", "B": "b) 2133/990", "C": "c) 237/100", "D": "d) 237/110"},
+            ques_enunciado="Qual é a fração irredutível geratriz da dízima periódica 1,2431313131...?",
+            ques_imagem_url=None,
+            ques_alternativas={"A": "a) 12431/1000", "B": "b) 12431/9900", "C": "c) 12307/1000", "D": "d) 12307/9900"},
             ques_resposta_correta=AlternativaEnum.D,
-            ques_resolucao="Aplicando a regra da dízima composta: (2154 - 21) / 990 = 2133 / 990. Dividindo numerador e denominador por 9, obtemos 237 / 110.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fi_r01_formula_geratriz.png",
-        ),
-        Questao(
-            ques_cont_id=conteudo4.cont_id,
-            ques_etapa=EtapaEnum.ETAPA_1,
-            ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado=(
-                "Analise as afirmativas sobre números decimais:\n"
-                "I. Uma fração irredutível gera um decimal exato apenas quando seu denominador possui exclusivamente os fatores primos 2 e/ou 5.\n"
-                "II. O número 0,2020020002... é uma dízima periódica simples.\n"
-                "III. A fração geratriz de 0,555... é 5/9.\n"
-                "IV. Toda dízima periódica é um número racional.\n"
-                "São verdadeiras:"
-            ),
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) I, II e III", "B": "b) I, II e IV", "C": "c) II, III e IV", "D": "d) I, III e IV"},
-            ques_resposta_correta=AlternativaEnum.D,
-            ques_resolucao="Apenas a II é falsa, pois 0,2020020002... não possui período fixo repetitivo, sendo um número irracional.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fi_r02_geratriz_sete_nonos.png",
-        ),
-        Questao(
-            ques_cont_id=conteudo4.cont_id,
-            ques_etapa=EtapaEnum.ETAPA_1,
-            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="O resultado da adição 0,343434... + 0,767676... corresponde a:",
-            ques_imagem_url=f"{base_url}/imagens/questoes/fi_q03_soma_dizimas.png",
-            ques_alternativas={"A": "a) 1", "B": "b) 1,0101...", "C": "c) 1,1111...", "D": "d) 1,1010..."},
-            ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Somando as frações geratrizes: 34/99 + 76/99 = 110/99 = 10/9 = 1,1111...",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fi_r03_soma_fracoes.png",
-        ),
-        Questao(
-            ques_cont_id=conteudo4.cont_id,
-            ques_etapa=EtapaEnum.ETAPA_1,
-            ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="A soma 1,6666... + 0,16666... é igual a:",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 5/3", "B": "b) 2", "C": "c) 7/6", "D": "d) 9/5", "E": "e) 11/6"},
-            ques_resposta_correta=AlternativaEnum.E,
-            ques_resolucao="Convertendo em frações: 1,6666... = 5/3 e 0,16666... = 1/6. Somando: 5/3 + 1/6 = 10/6 + 1/6 = 11/6.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fi_r04_soma_puc.png",
-        ),
-        Questao(
-            ques_cont_id=conteudo4.cont_id,
-            ques_etapa=EtapaEnum.ETAPA_1,
-            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Seja y = 1,245245... A diferença entre o numerador e o denominador da sua fração geratriz (antes de simplificações) é:",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 245", "B": "b) 999", "C": "c) 1244", "D": "d) 754", "E": "e) 1245"},
-            ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Temos y = 1 + 245/999 = 1244/999. Subtraindo denominador de numerador: 1244 - 999 = 245.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fi_r05_fracao_1122_999.png",
-        ),
-        Questao(
-            ques_cont_id=conteudo4.cont_id,
-            ques_etapa=EtapaEnum.ETAPA_1,
-            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Observe os números: I. 5/6; II. 0,3777...; III. √3; IV. 3/4. Geram dízimas periódicas apenas:",
-            ques_imagem_url=f"{base_url}/imagens/questoes/fi_q06_numeros_reais.png",
-            ques_alternativas={"A": "a) II e III", "B": "b) I e II", "C": "c) III e IV", "D": "d) I, II e III", "E": "e) II, III e IV"},
-            ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="5/6 = 0,8333... e 0,3777... são dízimas periódicas. √3 é irracional e 3/4 = 0,75 é decimal exato.",
+            ques_resolucao="Em 1,24313131..., temos parte inteira i = 1, antiperíodo a = 24 (2 algarismos → dois 0s) e período p = 31 (2 algarismos → dois 9s). Aplicando a regra prática: x = (12431 - 124) / 9900 = 12307 / 9900.",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo4.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Simplificando a expressão (0,666... + 1,5) ÷ (13/6), obtém-se:",
-            ques_imagem_url=f"{base_url}/imagens/questoes/fi_q07_expressao_fracionaria.png",
-            ques_alternativas={"A": "a) 0", "B": "b) 1", "C": "c) 2/3", "D": "d) 3/2", "E": "e) 13/6"},
-            ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Substituindo 0,666... = 2/3 e 1,5 = 3/2, temos (2/3 + 3/2) = 13/6. Dividindo 13/6 por 13/6, o resultado é 1.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fi_r07_simplificacao_niteroi.png",
-        ),
-        Questao(
-            ques_cont_id=conteudo4.cont_id,
-            ques_etapa=EtapaEnum.ETAPA_1,
-            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="A fração geratriz da dízima periódica 12,4444... é:",
+            ques_enunciado=(
+                "Analise as afirmativas abaixo:\n"
+                "I. Os números decimais exatos são assim chamados por possuírem uma representação decimal finita.\n"
+                "II. O número 0,12345... é uma dízima periódica.\n"
+                "III. Uma fração irredutível só terá representação decimal exata se o denominador tiver apenas os fatores primos 2 ou 5.\n"
+                "IV. A fração geratriz da dízima 1,2333... é 37/30.\n"
+                "São verdadeiras:"
+            ),
             ques_imagem_url=None,
-            ques_alternativas={"A": "a) 124/9", "B": "b) 124/90", "C": "c) 112/9", "D": "d) 112/99", "E": "e) 12/4"},
-            ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Somando parte inteira e parte periódica: 12 + 4/9 = (108 + 4) / 9 = 112/9.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fi_r08_geratriz_137_9.png",
-        ),
-        Questao(
-            ques_cont_id=conteudo4.cont_id,
-            ques_etapa=EtapaEnum.ETAPA_1,
-            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="A fração geratriz da dízima periódica 2,7777... é:",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 27/9", "B": "b) 23/9", "C": "c) 19/9", "D": "d) 25/9", "E": "e) 21/9"},
+            ques_alternativas={"A": "a) I, II e III", "B": "b) I, II e IV", "C": "c) II, III e IV", "D": "d) I, III e IV"},
             ques_resposta_correta=AlternativaEnum.D,
-            ques_resolucao="Pelo método prático: 2 + 7/9 = (18 + 7) / 9 = 25/9.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fi_r09_metodos_geratriz.png",
+            ques_resolucao="I. Verdadeira: decimal exato tem representação decimal finita. II. Falsa: 0,12345... não possui período repetitivo. III. Verdadeira: no sistema decimal (base 10 = 2 · 5), a divisão é exata apenas quando o denominador irredutível possui fatores primos 2 ou 5. IV. Verdadeira: x = (123 - 12) / 90 = 111/90 = 37/30.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=conteudo4.cont_id,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado="O valor da soma 0,232323... + 0,878787... vale:",
+            ques_imagem_url=None,
+            ques_alternativas={"A": "a) 1", "B": "b) 1,0101...", "C": "c) 1,1111...", "D": "d) 1,1010..."},
+            ques_resposta_correta=AlternativaEnum.C,
+            ques_resolucao="Obtendo as frações geratrizes: 0,232323... = 23/99 e 0,878787... = 87/99. Somando as frações: 23/99 + 87/99 = 110/99 = 10/9 = 1,1111...",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=conteudo4.cont_id,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
+            ques_enunciado="(PUC/RJ - 2003) A soma 1,3333... + 0,16666... é igual a:",
+            ques_imagem_url=None,
+            ques_alternativas={"A": "a) 1/2", "B": "b) 5/2", "C": "c) 4/3", "D": "d) 5/3", "E": "e) 3/2"},
+            ques_resposta_correta=AlternativaEnum.E,
+            ques_resolucao="Transformando em frações geratrizes: 1,3333... = (13 - 1)/9 = 12/9 = 4/3 e 0,16666... = (16 - 1)/90 = 15/90 = 1/6. Somando: 4/3 + 1/6 = (8 + 1)/6 = 9/6 = 3/2.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=conteudo4.cont_id,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado="Seja x = 1,123123... A diferença entre o numerador e o denominador da sua representação fracionária é:",
+            ques_imagem_url=None,
+            ques_alternativas={"A": "A) 123.", "B": "B) 999.", "C": "C) 321.", "D": "D) 112.", "E": "E) 1122."},
+            ques_resposta_correta=AlternativaEnum.A,
+            ques_resolucao="Encontrando a fração geratriz: x = 1 + 0,123123... = 1 + 123/999 = (999 + 123)/999 = 1122/999. A diferença entre numerador e denominador é 1122 - 999 = 123.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=conteudo4.cont_id,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado=(
+                "Analise os números reais a seguir:\n"
+                "I) 2/3\n"
+                "II) 0,2555...\n"
+                "III) 3,141592...\n"
+                "IV) 1/2\n"
+                "Podemos escrever como uma dízima periódica:"
+            ),
+            ques_imagem_url=None,
+            ques_alternativas={
+                "A": "A) somente II e III.",
+                "B": "B) somente I e II.",
+                "C": "C) somente III e IV.",
+                "D": "D) somente I, II e III.",
+                "E": "E) somente II, III e IV.",
+            },
+            ques_resposta_correta=AlternativaEnum.B,
+            ques_resolucao="I → 2/3 = 0,6666... é dízima periódica simples. II → 0,2555... é dízima periódica composta. III → 3,141592... (π) é irracional (não periódico). IV → 1/2 = 0,5 é decimal exato.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=conteudo4.cont_id,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
+            ques_enunciado="(Pref. de Niterói) Simplificando a expressão (1,3333... + 3/2) / (1,5 + 4/3), obtém-se:",
+            ques_imagem_url=None,
+            ques_alternativas={"A": "A) 1/2", "B": "B) 1", "C": "C) 3/2", "D": "D) 2", "E": "E) 3"},
+            ques_resposta_correta=AlternativaEnum.B,
+            ques_resolucao="Substituindo 1,3333... = 1 + 3/9 = 4/3 e 1,5 = 15/10 = 3/2: no numerador temos 4/3 + 3/2 = (8 + 9)/6 = 17/6; no denominador temos 3/2 + 4/3 = 17/6. Dividindo (17/6) / (17/6), obtém-se 1.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=conteudo4.cont_id,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado="A fração geratriz da dízima 15,2222... é:",
+            ques_imagem_url=None,
+            ques_alternativas={"A": "A) 133/99", "B": "B) 90/134", "C": "C) 137/9", "D": "D) 135/90", "E": "E) 2/9"},
+            ques_resposta_correta=AlternativaEnum.C,
+            ques_resolucao="Separando a parte inteira da periódica: x = 15 + 0,2222... = 15 + 2/9 = (135 + 2)/9 = 137/9.",
+            ques_resolucao_imagem_url=None,
+        ),
+        Questao(
+            ques_cont_id=conteudo4.cont_id,
+            ques_etapa=EtapaEnum.ETAPA_1,
+            ques_nivel_dificuldade=DificuldadeEnum.FACIL,
+            ques_enunciado="A fração geratriz da dízima periódica 1,44444... é:",
+            ques_imagem_url=None,
+            ques_alternativas={"A": "a) 17/9.", "B": "b) 11/9.", "C": "c) 5/9.", "D": "d) 13/9.", "E": "e) 12/9."},
+            ques_resposta_correta=AlternativaEnum.D,
+            ques_resolucao="Pelo método prático: 1 + 4/9 = 9/9 + 4/9 = 13/9. Pelo método algébrico: 10x - x = 14,444... - 1,444... → 9x = 13 → x = 13/9.",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo4.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "Dados os intervalos reais A = [-4, 18], B = [1, 10] e C = [-2, 15], analise os itens:\n"
-                "I. A contém B e B contém C.\n"
-                "II. C está contido em A, mas não está contido em B.\n"
-                "III. B está contido em C e também está contido em A.\n"
-                "Estão corretos:"
+                "(Objetiva Concursos) Considerando-se os intervalos numéricos A = [-5, 21], B = [0, 12], C = [-1, 17], analisar os itens abaixo:\n"
+                "I. O intervalo A contém os valores do intervalo B, assim como o intervalo B contém os valores do intervalo C.\n"
+                "II. Os valores do intervalo C estão contidos no intervalo A, mas não estão contidos no intervalo B.\n"
+                "III. Os valores do intervalo B estão contidos no intervalo C, e os valores do intervalo B estão contidos no intervalo A.\n"
+                "Está(ão) CORRETO(S):"
             ),
             ques_imagem_url=None,
-            ques_alternativas={"A": "a) Apenas I", "B": "b) Apenas III", "C": "c) Apenas I e II", "D": "d) Apenas I e III", "E": "e) Apenas II e III"},
+            ques_alternativas={
+                "A": "A) Somente o item I.",
+                "B": "B) Somente o item III.",
+                "C": "C) Somente os itens I e II.",
+                "D": "D) Somente os itens I e III.",
+                "E": "E) Somente os itens II e III.",
+            },
             ques_resposta_correta=AlternativaEnum.E,
-            ques_resolucao="Na reta real, observa-se a relação de inclusão B ⊂ C ⊂ A. Logo, B não contém C (I falsa), enquanto II e III são verdadeiras.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fi_r10_reta_intervalos.png",
+            ques_resolucao="Na reta real, observa-se a relação de inclusão B ⊂ C ⊂ A (pois [0, 12] está dentro de [-1, 17], que está dentro de [-5, 21]). Assim, o item I é falso (B não contém C), enquanto os itens II e III são verdadeiros.",
+            ques_resolucao_imagem_url="https://sabermatematica.com.br/wp-content/uploads/2022/05/intervalos-reais-exercicios.png",
         ),
     ]
     session.add_all(questoes)
     session.commit()
 
-# CONTEÚDO 7 (Frações Decimais, Dízimas Periódicas e Intervalos Reais)
+# CONTEÚDO 5 (Geometria Plana - Teorema de Tales, Semelhança e Relações Métricas)
 def povoar_conteudo_5(session, base_url=""):
     conteudo5 = Conteudo(
         cont_nome="Geometria Plana (Teorema de Tales, Semelhança e Relações Métricas)",
@@ -655,7 +715,7 @@ def povoar_conteudo_5(session, base_url=""):
         ),
         cont_texto_resumo="Estudo do Teorema de Tales, casos de semelhança de triângulos (AA, LLL, LAL), relações métricas no triângulo retângulo e Teorema de Pitágoras.",
         cont_slide_pdf=f"{base_url}/pdfs/GP-1-ANO_2.pdf",
-        cont_imagem_url=f"{base_url}/imagens/conteudos/gp1_teorema_tales_relacoes_metricas.png",
+        cont_imagem_url=None,
         cont_relacionados={"topicos": ["Teorema de Tales", "Semelhança de Triângulos", "Teorema de Pitágoras", "Trigonometria no Triângulo Retângulo"]},
     )
     session.add(conteudo5)
@@ -666,115 +726,132 @@ def povoar_conteudo_5(session, base_url=""):
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Em um triângulo ABC, a bissetriz interna AD divide o lado BC em dois segmentos de medidas 8 cm e 12 cm. Sabendo que o lado AB mede 10 cm, qual é a medida do lado AC?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/gp1_q01_triangulo_bissetriz.png",
-            ques_alternativas={"A": "a) 13 cm", "B": "b) 14 cm", "C": "c) 15 cm", "D": "d) 16 cm", "E": "e) 18 cm"},
+            ques_enunciado="Considere o triângulo seguinte e determine o valor de x, sabendo que o segmento AD é a bissetriz relativa ao lado BC.",
+            ques_imagem_url="https://media.brainly.com.br/image/rs:fill/w:750/q:75/plain/https://pt-static.z-dn.net/files/dc1/786cd9683719019bfe50e910819465f2.jpg",
+            ques_alternativas={"A": "a) 9", "B": "b) 10", "C": "c) 11", "D": "d) 12", "E": "e) 13"},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Pelo teorema da bissetriz interna: AB / 8 = AC / 12 → 10 / 8 = AC / 12 → 8 · AC = 120 → AC = 15 cm.",
+            ques_resolucao="Pelo teorema da bissetriz interna: (3x + 3) / 12 = (6x - 3) / 21 → 21(3x + 3) = 12(6x - 3) → 63x + 63 = 72x - 36 → 63 + 36 = 72x - 63x → 99 = 9x → x = 11.",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Três retas paralelas cortam duas transversais. Na primeira transversal determinam segmentos de 6 cm e 9 cm; na segunda, segmentos de 10 cm e x. O valor de x é:",
-            ques_imagem_url=f"{base_url}/imagens/questoes/gp1_q02_retas_paralelas.png",
-            ques_alternativas={"A": "a) 12 cm", "B": "b) 14 cm", "C": "c) 15 cm", "D": "d) 16 cm", "E": "e) 18 cm"},
+            ques_enunciado="As retas t, u e v são paralelas. Determine o valor da medida do segmento x.",
+            ques_imagem_url="https://pt-static.z-dn.net/files/d4b/62846777c14d1b2cdf8a95a8d36ab54f.jpg",
+            ques_alternativas={"A": "a) 18", "B": "b) 20", "C": "c) 21", "D": "d) 22", "E": "e) 24"},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Pelo Teorema de Tales: 6 / 9 = 10 / x → 6x = 90 → x = 15 cm.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp1_r02_proporcao_tales.png",
+            ques_resolucao="Utilizando o Teorema de Tales, escrevemos a proporção entre os segmentos: 3/9 = 7/x → 3x = 7 · 9 → 3x = 63 → x = 63/3 → x = 21 cm.",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Uma reta paralela à base de um triângulo divide um dos lados em segmentos de 12 cm e 8 cm. Se o segmento superior do outro lado mede 18 cm, quanto mede o segmento inferior x?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/gp1_q03_mesa_bilhar.png",
-            ques_alternativas={"A": "a) 8 cm", "B": "b) 10 cm", "C": "c) 12 cm", "D": "d) 14 cm", "E": "e) 16 cm"},
+            ques_enunciado="Existem 5 bolas dispostas em uma mesa de bilhar. A reta formada entre as bolas 1 e 2 é paralela à reta formada entre as bolas 4 e 5. Conforme as medidas dispostas na imagem, responda: qual a distância entre as bolas 1 e 3?",
+            ques_imagem_url="https://media.brainly.com.br/image/rs:fill/w:750/q:75/plain/https://pt-static.z-dn.net/files/d9b/d8f990ae473f5ba04045719be1ccd051.jpg",
+            ques_alternativas={"A": "a) 20", "B": "b) 30", "C": "c) 40", "D": "d) 50", "E": "e) 60"},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Aplicando o Teorema de Tales: 12 / 8 = 18 / x → 12x = 144 → x = 12 cm.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp1_r03_distancia_bolas.png",
+            ques_resolucao="Pelo Teorema de Tales: 75/50 = 60/x → 75x = 50 · 60 → 75x = 3000 → x = 3000/75 → x = 40. Portanto, a bola 1 está a 40 cm de distância da bola 3.",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Uma quadra situada entre duas ruas não paralelas é dividida por muros paralelos em três lotes cujas frentes na Rua A medem 20 m, 30 m e 50 m. Sabendo que a frente total da quadra na Rua B mede 150 m, qual é a medida da frente do lote central na Rua B?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/gp1_q04_terreno_fazenda.png",
-            ques_alternativas={"A": "a) 40 m", "B": "b) 45 m", "C": "c) 50 m", "D": "d) 55 m", "E": "e) 60 m"},
+            ques_enunciado=(
+                "(Colégio Pedro II - 2012) Para melhorar a qualidade do solo, aumentando a produtividade do milho e da soja, em uma fazenda é feito o rodízio entre essas culturas e a área destinada ao pasto. Com essa finalidade, a área produtiva da fazenda foi dividida em três partes conforme a figura.\n"
+                "Considere que:\n"
+                "- os pontos A, B, C e D estão alinhados;\n"
+                "- os pontos H, G, F e E estão alinhados;\n"
+                "- os segmentos AH, BG, CF e DE são, dois a dois, paralelos entre si;\n"
+                "- AB = 500 m, BC = 600 m, CD = 700 m e HE = 1980 m.\n"
+                "Nessas condições, a medida do segmento GF é, em metros,"
+            ),
+            ques_imagem_url="https://d23vy2bv3rsfba.cloudfront.net/questoes_imagens/0_c6e76cfd40197a1800252093d9f98e8e_171269.jpg.jpeg",
+            ques_alternativas={"A": "a) 665.", "B": "b) 660.", "C": "c) 655.", "D": "d) 650.", "E": "e) 645."},
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="A frente total na Rua A é 20 + 30 + 50 = 100 m. Pelo Teorema de Tales: 30 / 100 = x / 150 → x = 45 m.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp1_r04_segmento_fg.png",
+            ques_resolucao="Como o valor informado foi do segmento HE (1980 m), que é a soma de HG, GF e FE, utilizamos também a soma de AB, BC e CD: 500 + 600 + 700 = 1800 m. Pelo Teorema de Tales: 1800/1980 = 600/GF → GF = (1980 · 600) / 1800 → GF = 660 m.",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Uma rampa retilínea atinge altura máxima de 1,8 m. Após percorrer 4,0 m sobre ela, um pedestre encontra-se a 0,6 m de altura. Quantos metros ainda faltam para alcançar o topo?",
+            ques_enunciado="(Enem - 2009) A rampa de um hospital tem na sua parte mais elevada uma altura de 2,2 metros. Um paciente ao caminhar sobre a rampa percebe que se deslocou 3,2 metros e alcançou uma altura de 0,8 metros. A distância em metros que o paciente ainda deve caminhar para atingir o ponto mais alto da rampa é",
             ques_imagem_url=None,
-            ques_alternativas={"A": "a) 6,0 m", "B": "b) 7,2 m", "C": "c) 7,5 m", "D": "d) 8,0 m", "E": "e) 12,0 m"},
+            ques_alternativas={"A": "a) 1,16 metros.", "B": "b) 3,0 metros.", "C": "c) 5,4 metros.", "D": "d) 5,6 metros.", "E": "e) 7,04 metros."},
             ques_resposta_correta=AlternativaEnum.D,
-            ques_resolucao="Por semelhança de triângulos: 4,0 / 0,6 = L / 1,8 → L = 12,0 m. O trecho restante é 12,0 - 4,0 = 8,0 m.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp1_r05_esquema_rampa.png",
+            ques_resolucao="As duas alturas verticais (0,8 m e 2,2 m) formam ângulo de 90° com o solo, sendo paralelas entre si. Chamando de y o comprimento total da rampa, pelo Teorema de Tales (ou semelhança de triângulos): 3,2 / 0,8 = y / 2,2 → 0,8y = 3,2 · 2,2 → 0,8y = 7,04 → y = 7,04 / 0,8 → y = 8,8 m. Subtraindo o trecho já percorrido: x = 8,8 - 3,2 = 5,6 m.",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Sobre os critérios de semelhança de triângulos, assinale a afirmação correta:",
+            ques_enunciado="Existem alguns procedimentos que podem ser usados para descobrir se dois triângulos são semelhantes sem ter de analisar a proporcionalidade de todos os lados e, ao mesmo tempo, as medidas de todos os ângulos desses triângulos. A respeito desses casos, assinale a alternativa correta:",
             ques_imagem_url=None,
             ques_alternativas={
-                "A": "a) Dois triângulos com dois ângulos correspondentes congruentes são semelhantes pelo caso AA.",
-                "B": "b) Dois triângulos semelhantes possuem necessariamente o mesmo perímetro.",
-                "C": "c) Ter três lados proporcionais garante a congruência entre os triângulos.",
-                "D": "d) Triângulos retângulos são sempre semelhantes entre si.",
+                "A": "a) Para que dois triângulos sejam semelhantes, basta que eles tenham três ângulos correspondentes congruentes.",
+                "B": "b) Para que dois triângulos sejam semelhantes, basta que eles tenham dois lados proporcionais e um ângulo congruente, em qualquer ordem.",
+                "C": "c) Para que dois triângulos sejam congruentes, basta que eles tenham os três lados correspondentes com medidas proporcionais.",
+                "D": "d) Dois triângulos que possuem dois lados correspondentes proporcionais não serão semelhantes em qualquer hipótese.",
+                "E": "e) Dois triângulos que possuem apenas dois ângulos correspondentes congruentes não podem ser considerados semelhantes.",
             },
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Como a soma dos ângulos internos é 180°, dois ângulos correspondentes congruentes garantem o terceiro e asseguram a semelhança (caso AA).",
+            ques_resolucao="a) Correta: pelo caso AA (ou AAA), ter os ângulos correspondentes congruentes garante que os triângulos sejam semelhantes. b) Incorreta: pelo caso LAL, o ângulo congruente precisa estar entre os dois lados proporcionais. c) Incorreta: três lados proporcionais garantem semelhança (caso LLL), não necessariamente congruência. d) Incorreta: serão semelhantes se o ângulo entre esses lados for congruente. e) Incorreta: dois ângulos correspondentes congruentes já garantem a semelhança (caso AA).",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="No mesmo instante em que um poste vertical de 6 m projeta uma sombra de 4 m, um prédio próximo projeta uma sombra de 20 m. Qual é a altura do prédio?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/gp1_q07_triangulos_paralelos.png",
-            ques_alternativas={"A": "a) 22 m", "B": "b) 24 m", "C": "c) 26 m", "D": "d) 28 m", "E": "e) 30 m"},
+            ques_enunciado="Na imagem a seguir, é possível perceber dois triângulos que compartilham parte de dois lados. Sabendo que os segmentos BA e DE são paralelos, qual a medida de x?",
+            ques_imagem_url="https://pt-static.z-dn.net/files/dd4/ad2dd1a3196ad410f65a4de9d807b938.jpg",
+            ques_alternativas={"A": "a) 210 m", "B": "b) 220 m", "C": "c) 230 m", "D": "d) 240 m", "E": "e) 250 m"},
             ques_resposta_correta=AlternativaEnum.E,
-            ques_resolucao="Por semelhança de triângulos: H / 20 = 6 / 4 → 4H = 120 → H = 30 m.",
+            ques_resolucao="Quando um triângulo é cortado por um segmento paralelo a um de seus lados, forma-se um segundo triângulo menor semelhante ao primeiro. Aplicando a proporção: 400/x = 160/100 → 160x = 400 · 100 → 160x = 40000 → x = 40000/160 → x = 250 m.",
             ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Uma escada apoiada em uma parede vertical atinge 12 m de altura, com sua base afastada 5 m da parede. Qual é o comprimento dessa escada?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/gp1_q08_escada_arvore.png",
-            ques_alternativas={"A": "a) 11 m", "B": "b) 13 m", "C": "c) 15 m", "D": "d) 17 m"},
+            ques_enunciado="Carla ao procurar seu gatinho o avistou em cima de uma árvore. Ela então pediu ajuda a sua mãe e colocaram uma escada junto à árvore para ajudar o gato a descer. Sabendo que o gato estava a 8 metros do chão e a base da escada estava posicionada a 6 metros da árvore, qual o comprimento da escada utilizada para salvar o gatinho?",
+            ques_imagem_url="https://pt-static.z-dn.net/files/d4b/ac04d16bb649cb333902ae5085802d22.jpg",
+            ques_alternativas={"A": "a) 8 metros.", "B": "b) 10 metros.", "C": "c) 12 metros.", "D": "d) 14 metros."},
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Pelo Teorema de Pitágoras: x² = 12² + 5² = 144 + 25 = 169 → x = 13 m.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp1_r08_pitagoras_escada.png",
+            ques_resolucao="A altura do gato (8 m) e a distância da base da escada até a árvore (6 m) formam um ângulo reto, sendo a escada a hipotenusa a do triângulo retângulo. Pelo Teorema de Pitágoras: a² = b² + c² → a² = 8² + 6² → a² = 64 + 36 → a² = 100 → a = √100 → a = 10 metros.",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.DIFICIL,
-            ques_enunciado="Uma quadra poliesportiva retangular mede 80 m de comprimento por 60 m de largura. Um atleta atravessa a diagonal ida e volta, enquanto outro dá uma volta completa pelo contorno da quadra. Quantos metros o segundo atleta percorreu a mais que o primeiro?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/gp1_q09_patio_retangular.png",
-            ques_alternativas={"A": "a) 40 m", "B": "b) 60 m", "C": "c) 80 m", "D": "d) 100 m"},
+            ques_enunciado="(IFRJ - 2013) O pátio de esportes do Campus Arrozal de um Instituto Federal é retangular, com 100 m de comprimento e 50 m de largura, representado pelo retângulo ABCD desta figura. Alberto e Bruno são dois alunos que estão praticando esportes no pátio. Alberto caminha do ponto A ao ponto C pela diagonal do retângulo e volta ao ponto de partida pelo mesmo caminho. Bruno parte do ponto B, dá uma volta completa no pátio, andando pelas linhas laterais, e volta ao ponto de partida. Assim, considerando √5 = 2,24, afirma-se que Bruno andou mais que Alberto",
+            ques_imagem_url="https://pt-static.z-dn.net/files/dec/8d4e0057f3899c4dbf002e65095ca53b.jpg",
+            ques_alternativas={"A": "a) 38 m.", "B": "b) 64 m.", "C": "c) 76 m.", "D": "d) 82 m."},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Diagonal: d = √(80² + 60²) = 100 m (ida e volta = 200 m). Perímetro: 2 · (80 + 60) = 280 m. Diferença: 280 - 200 = 80 m.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp1_r09_diagonal_patio.png",
+            ques_resolucao="Calculando a diagonal d pelo Teorema de Pitágoras: d² = 100² + 50² = 10.000 + 2.500 = 12.500 → d = √(2² · 5⁴ · 5) = 2 · 5²√5 = 50√5. Substituindo √5 = 2,24: d = 50 · 2,24 = 112 m. Como Alberto foi e voltou, percorreu 2 · 112 = 224 m. Já Bruno percorreu o perímetro: p = 100 + 50 + 100 + 50 = 300 m. Diferença: 300 - 224 = 76 m.",
+            ques_resolucao_imagem_url=None,
         ),
         Questao(
             ques_cont_id=conteudo5.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Em um triângulo retângulo de hipotenusa a, catetos b e c, altura h e projeções m e n, considere: I. h² = m · n; II. b² = a · n; III. c² = a · m; IV. a + h = b + c. São verdadeiras apenas:",
+            ques_enunciado=(
+                "Em um triângulo retângulo ABC, com ângulo reto em A, a altura relativa à hipotenusa BC encontra-a no ponto D. Denotam-se por p = BD, q = DC as projeções dos catetos e por h = AD a altura.\n"
+                "Considere as afirmações:\n"
+                "I. h² = p × q\n"
+                "II. AB² = BC × BD\n"
+                "III. AC² = BC × DC\n"
+                "IV. AB² + AC² = p × q\n"
+                "É correto afirmar que são verdadeiras apenas:"
+            ),
             ques_imagem_url=None,
             ques_alternativas={"A": "a) I, II e III", "B": "b) I, II e IV", "C": "c) I, III e IV", "D": "d) II, III e IV"},
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="As relações I, II e III são válidas no triângulo retângulo. A IV é incorreta, pois a relação métrica verdadeira é a · h = b · c.",
+            ques_resolucao="I. Verdadeira: o quadrado da altura relativa à hipotenusa é igual ao produto das projeções dos catetos (h² = p · q). II. Verdadeira: o quadrado de um cateto é igual ao produto da hipotenusa pela sua projeção (AB² = BC · BD). III. Verdadeira: analogamente para o outro cateto (AC² = BC · DC). IV. Falsa: pelo Teorema de Pitágoras, AB² + AC² = BC² (e não p · q).",
             ques_resolucao_imagem_url=None,
         ),
     ]
@@ -1638,9 +1715,9 @@ SEEDS = {
     "Teoria dos Conjuntos e Conjuntos Numéricos": povoar_conteudo_3,
     "Frações Decimais, Dízimas Periódicas e Intervalos Reais": povoar_conteudo_4,
     "Geometria Plana (Teorema de Tales, Semelhança e Relações Métricas)": povoar_conteudo_5,
-    "Trigonometria no Triângulo Retângulo": povoar_conteudo_6,
-    "Funções e Função Afim (Função do 1º Grau)": povoar_conteudo_7,
-    "Função Quadrática, Exponencial e Logarítmica": povoar_conteudo_8,
+    # "Trigonometria no Triângulo Retângulo": povoar_conteudo_6,
+    # "Funções e Função Afim (Função do 1º Grau)": povoar_conteudo_7,
+    # "Função Quadrática, Exponencial e Logarítmica": povoar_conteudo_8,
 }
 
 

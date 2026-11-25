@@ -689,6 +689,7 @@ def povoar_conteudo_4(session, base_url=""):
     ]
     session.add_all(questoes)
     session.commit()
+
 # CONTEÚDO 5 (Geometria Plana - Teorema de Tales, Semelhança e Relações Métricas)
 def povoar_conteudo_5(session, base_url=""):
     conteudo5 = Conteudo(
@@ -857,6 +858,7 @@ def povoar_conteudo_5(session, base_url=""):
     session.add_all(questoes)
     session.commit()
 
+# CONTEÚDO 6: Trigonometria no triângulo Retângulo
 def povoar_conteudo_6(session, base_url=""):
     conteudo6 = Conteudo(
         cont_nome="Trigonometria no Triângulo Retângulo",
@@ -888,121 +890,122 @@ def povoar_conteudo_6(session, base_url=""):
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="A sombra de uma torre horizontal mede 30 m no momento em que os raios solares formam um ângulo de 60° com o solo. Adotando √3 ≈ 1,73, qual é a altura aproximada da torre?",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 17,3 m", "B": "b) 30,0 m", "C": "c) 51,9 m", "D": "d) 60,0 m", "E": "e) 73,2 m"},
+            ques_enunciado="Observando pela manhã a sombra de um prédio no chão, uma pessoa verificou que essa media 63 metros quando os raios de Sol faziam um ângulo de 30° com a superfície. Baseado nessas informações, calcule a altura do prédio.",
+            ques_imagem_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyJp8EPgKefa7NlH3pq6cvChphWI-xqFj_-tcm1_UhSX42_80F1Osu1-l8&s=10",
+            ques_alternativas={"A": "a) 30,50 m", "B": "b) 20,10 m", "C": "c) 36,37 m", "D": "d) 38,45 m", "E": "e) 40,08 m"},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Pela tangente de 60°: tg 60° = h / 30 → √3 = h / 30 → h = 30 · 1,73 = 51,9 m.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp2_r01_altura_predio.png",
+            ques_resolucao="O prédio, a sombra e o raio de Sol determinam um triângulo retângulo. Utilizando o ângulo de 30° e a tangente, temos: tg 30° = h / 63 → h = 63 · (√3 / 3) → h = 21√3 → h ≈ 36,37 m.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Uma rampa retilínea possui 40 m de comprimento e forma um ângulo de 30° com o plano horizontal. Qual é a altura vertical vencida ao final da rampa?",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 15 m", "B": "b) 20 m", "C": "c) 25 m", "D": "d) 30 m"},
+            ques_enunciado="Uma ciclista participando de um campeonato se aproxima da linha de chegada que se encontra no alto de uma ladeira. O comprimento total dessa última parte da prova é de 60 m e o ângulo formado entre a rampa e a horizontal é de 30°. Sabendo disso, calcule a altura vertical que a ciclista precisa subir.",
+            ques_imagem_url="https://media.brainly.com.br/image/rs:fill/w:1920/q:75/plain/https://pt-static.z-dn.net/files/da4/1d3aed694c9bb498bbed985d9c49f0d8.jpg",
+            ques_alternativas={"A": "a) 25 m", "B": "b) 30 m", "C": "c) 35 m", "D": "d) 45 m"},
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Usando o seno de 30°: sen 30° = h / 40 → 1/2 = h / 40 → h = 20 m.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp2_r02_altura_ladeira.png",
+            ques_resolucao="A rampa representa a hipotenusa (60 m) e a altura vertical (h) é o cateto oposto ao ângulo de 30°: sen 30° = h / 60 → h = 60 · (1 / 2) → h = 30 m.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Um drone decola em trajetória retilínea inclinada a 30° com o solo a partir de um ponto situado a 1000 m de distância horizontal de uma torre de 600 m de altura. Adotando √3 ≈ 1,73, ao cruzar a vertical da torre o drone estará:",
-            ques_imagem_url=f"{base_url}/imagens/questoes/gp2_q03_aviao_serra.png",
+            ques_enunciado="(EPCAR-MG) Um avião decola de um ponto B sob inclinação constante de 15° com a horizontal. A 2 km de B se encontra a projeção vertical C do ponto mais alto D de uma serra de 600 m de altura, conforme a figura.\nDados: cos 15° = 0,97; sen 15° = 0,26; tg 15° = 0,27\nÉ correto afirmar que:",
+            ques_imagem_url="https://media.brainly.com.br/image/rs:fill/w:1920/q:75/plain/https://pt-static.z-dn.net/files/d10/f141d1c1da53d0953f265d616bb1c769.jpg",
             ques_alternativas={
-                "A": "a) Acima do topo da torre, a 650 m.",
-                "B": "b) Abaixo do topo da torre, a aproximadamente 576,7 m.",
-                "C": "c) Exatamente no topo da torre, a 600 m.",
-                "D": "d) A 500 m de altura.",
+                "A": "a) Não haverá colisão do avião com a serra antes de alcançar 540 m de altura.",
+                "B": "b) Haverá colisão do avião com a serra em 540 m de altura.",
+                "C": "c) Haverá colisão do avião com a serra em D.",
+                "D": "d) Se o avião decolar 220 m antes de B, mantendo a mesma inclinação, não haverá colisão do avião com a serra.",
             },
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Temos tg 30° = h / 1000 → h = 1000 · (√3 / 3) ≈ 1000 · 0,5767 = 576,7 m, abaixo dos 600 m da torre.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp2_r03_trajetoria_aviao.png",
+            ques_resolucao="Passando 2 km para 2000 m e utilizando a tangente de 15° para definir a altura h: tg 15° = h / 2000 → h = 2000 · 0,27 → h = 540 m. Como a serra tem 600 m de altura, o avião colidirá com ela aos 540 m.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Uma pipa está presa por uma linha esticada de 100 m que forma 37° com o solo horizontal. Sabendo que sen 37° = 0,60 e cos 37° = 0,80, a altura da pipa em relação ao solo é:",
-            ques_imagem_url=f"{base_url}/imagens/questoes/gp2_q04_decolagem_aviao.png",
-            ques_alternativas={"A": "a) 60 m", "B": "b) 75 m", "C": "c) 80 m", "D": "d) 90 m"},
+            ques_enunciado="A figura abaixo representa um avião que decolou sob um ângulo constante de 40º e percorreu em linha reta 8000 m. Nesta situação, qual a altura que se encontrava o avião ao percorrer essa distância?\nConsidere: sen 40º = 0,64; cos 40º = 0,77; tg 40º = 0,84",
+            ques_imagem_url="https://pt-static.z-dn.net/files/dcc/4f6ce275eaacdce237cc2a1fad3ee5d4.jpg",
+            ques_alternativas={"A": "a) 5120 m", "B": "b) 6000 m", "C": "c) 4570 m", "D": "d) 3540 m"},
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Aplicando o seno: sen 37° = h / 100 → 0,60 = h / 100 → h = 60 m.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp2_r04_altura_aviao.png",
+            ques_resolucao="A distância percorrida representa a hipotenusa e a altura o cateto oposto ao ângulo de 40°: sen 40° = h / 8000 → 0,64 = h / 8000 → h = 8000 · 0,64 = 5120 m.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Um topógrafo de 1,70 m de altura observa o topo de um farol a 200 m de distância horizontal sob um ângulo de elevação de 25°. Dado tg 25° = 0,47, a altura total do farol é:",
-            ques_imagem_url=f"{base_url}/imagens/questoes/gp2_q05_menino_morro.png",
-            ques_alternativas={"A": "a) 94,00 m", "B": "b) 92,30 m", "C": "c) 98,50 m", "D": "d) 95,70 m"},
+            ques_enunciado="Um menino avista o ponto mais alto de um morro, conforme figura abaixo. Considerando que ele está a uma distância de 500 m da base do morro, calcule a altura (h) deste ponto.\nConsidere: sen 20º = 0,34; cos 20º = 0,93; tg 20º = 0,36",
+            ques_imagem_url="https://media.brainly.com.br/image/rs:fill/w:640/q:75/plain/https://pt-static.z-dn.net/files/dfa/720ffdffeb90dae528cd6f666f2e7478.jpg",
+            ques_alternativas={"A": "a) 192,1 m", "B": "b) 131 m", "C": "c) 500,3 m", "D": "d) 181,3 m"},
             ques_resposta_correta=AlternativaEnum.D,
-            ques_resolucao="A altura acima da linha de visão é x = 200 · 0,47 = 94,00 m. Somando a altura do observador: 94,00 + 1,70 = 95,70 m.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp2_r05_altura_morro.png",
+            ques_resolucao="Usando a tangente de 20°: tg 20° = x / 500 → x = 500 · 0,36 = 180 m. Somando a altura do menino (1,30 m): h = 180 + 1,30 = 181,3 m.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Um terreno retangular tem 12 m de frente e sua diagonal forma um ângulo de 30° com essa frente. Usando √3 ≈ 1,7, qual valor mais se aproxima do comprimento da diagonal?",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 10 m", "B": "b) 11 m", "C": "c) 12 m", "D": "d) 13 m", "E": "e) 14 m"},
+            ques_enunciado="Um terreno possui o formato de um retângulo cuja base mede 8 cm, sabendo que o ângulo formado entre a base e a diagonal é de 30º, qual o valor que mais se aproxima da diagonal? (Use √3 = 1,7)",
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) 5", "B": "b) 6", "C": "c) 7", "D": "d) 8", "E": "e) 9"},
             ques_resposta_correta=AlternativaEnum.E,
-            ques_resolucao="Pelo cosseno de 30°: cos 30° = 12 / d → 1,7 / 2 = 12 / d → d = 24 / 1,7 ≈ 14,1 m (mais próximo de 14 m).",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp2_r06_diagonal_retangulo.png",
+            ques_resolucao="Seja x a diagonal: cos 30° = 8 / x → √3 / 2 = 8 / x → x = 16 / √3 = (16 · √3) / 3. Substituindo √3 = 1,7: x = (16 · 1,7) / 3 = 27,2 / 3 ≈ 9,06 cm.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Sabendo que α é um ângulo do primeiro quadrante e que sen α = 5/13, qual é o valor de cos α?",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 12/13", "B": "b) 8/13", "C": "c) 5/12", "D": "d) 1/13", "E": "e) 7/13"},
+            ques_enunciado="Qual deve ser o valor do seno de um ângulo, sabendo que ele se encontra no primeiro quadrante e que o cosseno desse mesmo ângulo é igual a 3/5?",
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) 4/5", "B": "b) 2/5", "C": "c) 3/4", "D": "d) 1/5", "E": "e) 2/3"},
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Pela relação fundamental sen²α + cos²α = 1: (5/13)² + cos²α = 1 → cos²α = 1 - 25/169 = 144/169 → cos α = 12/13.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp2_r07_relacao_fundamental.png",
+            ques_resolucao="Pela relação fundamental sen²x + cos²x = 1: sen²x + (3/5)² = 1 → sen²x = 1 - 9/25 = 16/25 → sen x = √(16/25) = 4/5.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Um cabo de sustentação de 80 m liga o topo de uma antena ao solo horizontal, formando um ângulo de 30° com o chão. Qual é a altura da antena?",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 20 m", "B": "b) 25 m", "C": "c) 30 m", "D": "d) 35 m", "E": "e) 40 m"},
+            ques_enunciado="Um teleférico foi instalado ligando uma base ao cume de uma montanha. Para a instalação, foram utilizados 1358 m de cabos, dispostos a uma angulação de 30° em relação ao solo. Qual a altura da montanha?",
+            ques_imagem_url="https://static.todamateria.com.br/upload/im/ag/image-627.jpg",
+            ques_alternativas={"A": "a) 450", "B": "b) 300", "C": "c) 400", "D": "d) 579", "E": "e) 679"},
             ques_resposta_correta=AlternativaEnum.E,
-            ques_resolucao="Pelo seno de 30°: sen 30° = h / 80 → 0,5 = h / 80 → h = 40 m.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp2_r08_altura_teleferico.png",
+            ques_resolucao="Usando o seno de 30° (0,5): sen 30° = h / 1358 → h = 1358 · 0,5 = 679 m.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Em um triângulo retângulo com hipotenusa medindo 36 cm e um ângulo agudo de 30°, o cateto oposto a esse ângulo mede:",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 12 cm", "B": "b) 18 cm", "C": "c) 24 cm", "D": "d) 27 cm", "E": "e) 30 cm"},
+            ques_enunciado="Sendo o ângulo igual a 30° e a hipotenusa 47 m, calcule a medida da altura a do triângulo.",
+            ques_imagem_url="https://pt-static.z-dn.net/files/df9/aa6f625a6eae79f03cd3e219340d81da.jpg",
+            ques_alternativas={"A": "a) 20", "B": "b) 23,50", "C": "c) 30,50", "D": "d) 40", "E": "e) 50"},
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Usando o seno de 30°: sen 30° = x / 36 → 1/2 = x / 36 → x = 18 cm.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp2_r09_cateto_oposto.png",
+            ques_resolucao="Pelo seno de 30°: sen 30° = a / 47 → a = 47 · (1 / 2) = 23,50 m.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo6.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.DIFICIL,
-            ques_enunciado="Para ir do ponto A ao ponto C, um pedestre pode caminhar 30 m até B e depois virar 90° e caminhar mais 40 m até C. Se optar por seguir em linha reta de A até C, quantos metros economizará?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/gp2_q10_vista_parque.png",
-            ques_alternativas={"A": "a) 20 m", "B": "b) 25 m", "C": "c) 30 m", "D": "d) 50 m"},
+            ques_enunciado="A vista superior de um parque mostra dois caminhos para se chegar ao ponto C, a partir do ponto A. Uma das opções é ir para B, onde há bebedouros e lugares de descanso e, depois, ir para C. Caso um visitante do parque queira ir direto para C, quantos metros ele terá caminhado a menos do que a primeira opção?\nConsiderar as aproximações:\n- sen 58° = 0,85\n- cos 58° = 0,53\n- tan 58° = 1,60",
+            ques_imagem_url="https://pt-static.z-dn.net/files/df7/ce3f796a7eeed703aa49dca554288d73.png",
+            ques_alternativas={"A": "a) 7,54", "B": "b) 3,50", "C": "c) 5", "D": "d) 6,75"},
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="O atalho AC é a hipotenusa: AC = √(30² + 40²) = 50 m. O caminho via B soma 30 + 40 = 70 m. A economia é 70 - 50 = 20 m.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/gp2_r10_caminhos_parque.png",
+            ques_resolucao="Passo 1: sen 58° = 17 / h → h = 17 / 0,85 = 20 m.\nPasso 2: AB = 20 - 9,46 = 10,54 m.\nPasso 3: AB + BC = 10,54 + 17 = 27,54 m.\nPasso 4: Diferença (AB + BC) - AC = 27,54 - 20 = 7,54 m.",
+            ques_resolucao_imagem_url="",
         ),
     ]
     session.add_all(questoes)
     session.commit()
 
+# CONTEÚDO 7: FUNÇÕES E FUNÇÃO AFIM (FUNÇÃO DO 1º GRAU) 
 def povoar_conteudo_7(session, base_url=""):
     conteudo7 = Conteudo(
         cont_nome="Funções e Função Afim (Função do 1º Grau)",
@@ -1033,121 +1036,156 @@ def povoar_conteudo_7(session, base_url=""):
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "Analise as afirmações sobre funções:\n"
-                "I. Toda função associa cada elemento do domínio a um único elemento do contradomínio.\n"
-                "II. Em uma função sobrejetora, o conjunto imagem é igual ao contradomínio.\n"
-                "III. Toda função injetora admite função inversa.\n"
-                "Estão corretas:"
+                "(UFMA) Considere as seguintes afirmações:\n"
+                "I. Uma função é uma relação que associa a cada elemento do seu domínio um único elemento no seu contradomínio.\n"
+                "II. Toda relação é uma função.\n"
+                "III. Dada uma função sobrejetora, então seu contradomínio é diferente de sua imagem.\n"
+                "IV. Uma função será injetora se, e somente se, elementos distintos do domínio possuírem imagens distintas.\n"
+                "Assinale a alternativa correta:"
             ),
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) Apenas I", "B": "b) Apenas II", "C": "c) Apenas III", "D": "d) Apenas II e III", "E": "e) Apenas I e II"},
+            ques_imagem_url="",
+            ques_alternativas={
+                "A": "a) I, II e III estão corretas.",
+                "B": "b) I e II estão corretas.",
+                "C": "c) III e I estão corretas.",
+                "D": "d) II, III e IV estão corretas.",
+                "E": "e) I e IV estão corretas.",
+            },
             ques_resposta_correta=AlternativaEnum.E,
-            ques_resolucao="I e II correspondem às definições formais de função e sobrejetividade. III é falsa, pois apenas funções bijetoras admitem inversa.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao=(
+                "I. Correta, pois cada elemento do domínio está associado a um único elemento do contradomínio.\n"
+                "II. Incorreta, pois nem toda relação é função.\n"
+                "III. Incorreta, pois na função sobrejetora a imagem é igual ao contradomínio.\n"
+                "IV. Correta, pois cada elemento distinto do domínio possui imagem distinta. Portanto, apenas I e IV estão corretas."
+            ),
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Considere a função f: N → N definida por f(x) = 3x. Essa função é:",
-            ques_imagem_url=f"{base_url}/imagens/questoes/fa_q02_funcao_inteiros.png",
-            ques_alternativas={"A": "a) Apenas sobrejetora", "B": "b) Apenas injetora", "C": "c) Bijetora", "D": "d) Nem injetora nem sobrejetora"},
+            ques_enunciado="Dada a função f: N → Z definida por f(n) = 3n - 5. Podemos afirmar que f é:",
+            ques_imagem_url="",
+            ques_alternativas={
+                "A": "a) Apenas sobrejetora",
+                "B": "b) Apenas injetora",
+                "C": "c) Bijetora",
+                "D": "d) Nem injetora e nem sobrejetora",
+                "E": "e) Injetora e sobrejetora apenas para os números ímpares",
+            },
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Valores distintos de x geram múltiplos distintos de 3 (injetora), mas o contradomínio N contém números que não são múltiplos de 3 (não sobrejetora).",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fa_r02_imagem_funcao.png",
+            ques_resolucao="A função f(n) = 3n - 5 é injetora pois para cada dois valores distintos de n ∈ N obtemos sempre dois valores distintos de k ∈ Z, mas não é sobrejetora, pois Im(f) = {-5, -2, 1, 4, 7, ...} ≠ CD(f) = Z. Portanto, f é apenas injetora.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Seja f: R → R definida por f(x) = 2x + 1 e g(x) sua função inversa. O valor de g(f(7)) é:",
-            ques_imagem_url=f"{base_url}/imagens/questoes/fa_q03_funcao_inversa.png",
-            ques_alternativas={"A": "a) 7", "B": "b) 15", "C": "c) 3", "D": "d) 1"},
+            ques_enunciado="Seja f(x) = √(5x - 3) inversível em todo o seu domínio. Se g(x) é função inversa de f, o valor de g(f(5)) é igual a:",
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) 5", "B": "b) 4", "C": "c) 3", "D": "d) 2"},
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Pela propriedade da composição de funções inversas, f⁻¹(f(x)) = x para todo x real, logo g(f(7)) = 7.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fa_r03_funcao_inversa.png",
+            ques_resolucao="O domínio de f exige 5x - 3 ≥ 0 → x ≥ 3/5. Como x = 5 pertence ao domínio de f e a função é inversível, aplicamos f⁻¹(f(x)) = x, logo g(f(5)) = 5.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Para que valores reais de k a função afim f(x) = (3k - 12)x + 5 é decrescente?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/fa_q04_funcao_decrescente.png",
-            ques_alternativas={"A": "a) k < 4", "B": "b) k > 4", "C": "c) k = 4", "D": "d) k ≤ 4"},
-            ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Uma função afim é decrescente quando seu coeficiente angular é negativo: 3k - 12 < 0 → 3k < 12 → k < 4.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fa_r04_coeficiente_angular.png",
+            ques_enunciado="Qual deve ser o valor de m para que a função definida por y = (3m - 5)x + 9 seja decrescente?",
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) m > 5/3", "B": "b) m < -3/5", "C": "c) m < 5/3", "D": "d) m > -3/5"},
+            ques_resposta_correta=AlternativaEnum.C,
+            ques_resolucao="Para que a função y = ax + b seja decrescente devemos ter a < 0. Assim: 3m - 5 < 0 → 3m < 5 → m < 5/3.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Um entregador recebe R$ 4,00 fixos por entrega realizada mais R$ 1,50 por quilômetro rodado. Em um dia em que fez 8 entregas e recebeu R$ 152,00 no total, quantos quilômetros ele percorreu?",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 60 km", "B": "b) 72 km", "C": "c) 80 km", "D": "d) 96 km"},
+            ques_enunciado=(
+                "(Cefet - MG - 2015) Um motorista de táxi cobra, para cada corrida, uma taxa fixa de R$ 5,00 e mais R$ 2,00 por quilômetro rodado. "
+                "O valor total arrecadado (R) num dia é função da quantidade total (x) de quilômetros percorridos e calculado por meio da função R(x) = ax + b, "
+                "em que a é o preço cobrado por quilômetro e b, a soma de todas as taxas fixas recebidas no dia. Se, em um dia, o taxista realizou 10 corridas "
+                "e arrecadou R$ 410,00, então a média de quilômetros rodados por corrida foi de:"
+            ),
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) 14", "B": "b) 16", "C": "c) 18", "D": "d) 20"},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Montando a equação: 8 · 4 + 1,5x = 152 → 32 + 1,5x = 152 → 1,5x = 120 → x = 80 km.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fa_r05_calculo_taxista.png",
+            ques_resolucao="Temos a = 2 e b = 10 · 5 = 50, logo R(x) = 2x + 50. Fazendo R(x) = 410: 410 = 2x + 50 → 2x = 360 → x = 180 km no dia. Dividindo pelas 10 corridas: 180 / 10 = 18 km.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.DIFICIL,
-            ques_enunciado="Seja f(x) = ax + b uma função afim tal que f(3) = 4. O valor de f((f(1) + f(5)) / 2) é igual a:",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 1", "B": "b) 2", "C": "c) 3", "D": "d) 4"},
+            ques_enunciado="(Unicamp - 2016) Considere a função afim f(x) = ax + b definida para todo número real x, onde a e b são números reais. Sabendo que f(4) = 2, podemos afirmar que f(f(3) + f(5)) é igual a:",
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) 5", "B": "b) 4", "C": "c) 3", "D": "d) 2"},
             ques_resposta_correta=AlternativaEnum.D,
-            ques_resolucao="Temos (f(1) + f(5)) / 2 = ((a + b) + (5a + b)) / 2 = (6a + 2b) / 2 = 3a + b = f(3) = 4.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fa_r06_soma_funcoes.png",
+            ques_resolucao="Como f(4) = 4a + b = 2, temos f(f(3) + f(5)) = f((3a + b) + (5a + b)) = f(8a + 2b) = f(2(4a + b)) = f(2 · 2) = f(4) = 2.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Um técnico de informática cobra R$ 50,00 pela visita e R$ 35,00 por hora de atendimento. A lei que expressa o custo total C em função das horas h trabalhadas é:",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) C = 50h", "B": "b) C = 85h", "C": "c) C = 35 + 50h", "D": "d) C = 50 + 35h"},
+            ques_enunciado=(
+                "(Encceja 2018) Uma prestadora de serviços cobra pela visita à residência do cliente e pelo tempo necessário para realizar o serviço na residência. "
+                "O valor da visita é R$ 40 e o valor da hora para realização do serviço é R$ 20. Uma expressão que indica o valor a ser pago (P) em função das horas (h) necessárias à execução do serviço é:"
+            ),
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) P = 40h", "B": "b) P = 60h", "C": "c) P = 20 + 40h", "D": "d) P = 40 + 20h"},
             ques_resposta_correta=AlternativaEnum.D,
-            ques_resolucao="O valor fixo de R$ 50,00 é o coeficiente linear e R$ 35,00 é o coeficiente angular, resultando em C = 50 + 35h.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao="A função é P = ah + b, em que b = 40 (taxa fixa da visita) e a = 20 (valor por hora). Substituindo, temos P = 40 + 20h.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Uma corrida de aplicativo tem tarifa base de R$ 5,00 mais R$ 1,20 por quilômetro percorrido. Se o valor final pago foi R$ 23,00, qual foi a distância da viagem?",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 10 km", "B": "b) 12 km", "C": "c) 15 km", "D": "d) 18 km", "E": "e) 20 km"},
+            ques_enunciado=(
+                "(UFSM) Sabe-se que o preço a ser pago por uma corrida de táxi inclui uma parcela fixa, que é denominada bandeirada, e uma parcela variável, "
+                "que é função da distância percorrida. Se o preço da bandeirada é de R$ 4,60 e o quilômetro rodado é R$ 0,96, a distância percorrida pelo passageiro "
+                "que pagou R$ 19 para ir de sua casa ao shopping é de:"
+            ),
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) 5 km", "B": "b) 10 km", "C": "c) 15 km", "D": "d) 20 km", "E": "e) 25 km"},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Resolvendo 5 + 1,2d = 23 → 1,2d = 18 → d = 18 / 1,2 = 15 km.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao="Sendo d a distância em quilômetros: 19 = 0,96d + 4,6 → 14,4 = 0,96d → d = 14,4 / 0,96 = 15 km.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="O zero da função afim f(x) = -4x + 10 é:",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 2", "B": "b) 2,5", "C": "c) -2,5", "D": "d) 4", "E": "e) -4"},
+            ques_enunciado="Podemos afirmar que o zero da função f(x) = -2x + 5 é igual a:",
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) 2", "B": "b) 2,5", "C": "c) -2,5", "D": "d) -3", "E": "e) 3"},
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Fazendo f(x) = 0: -4x + 10 = 0 → 4x = 10 → x = 10 / 4 = 2,5.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao="Igualando a função a zero: -2x + 5 = 0 → -2x = -5 → x = (-5) / (-2) = 2,5.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo7.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Uma máquina industrial adquirida por R$ 200.000,00 sofre depreciação linear de R$ 15.000,00 por ano de uso. Qual será o valor contábil dessa máquina após 6 anos?",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) R$ 90.000,00", "B": "b) R$ 100.000,00", "C": "c) R$ 110.000,00", "D": "d) R$ 125.000,00", "E": "e) R$ 140.000,00"},
+            ques_enunciado=(
+                "Um fazendeiro resolveu investir em uma colheitadeira para facilitar o serviço na plantação. Sabendo que o valor pago foi de R$ 300.000 no ano da compra, "
+                "é bastante comum que máquinas desse porte percam o seu valor V ao decorrer dos anos t. Supondo que a taxa de depreciação de uma máquina desse porte é de "
+                "R$ 22.000 por ano, devido ao seu constante uso, podemos afirmar que o valor da colheitadeira, ao final de 7 anos, será de:"
+            ),
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) R$ 154.000", "B": "b) R$ 246.000", "C": "c) R$ 146.000", "D": "d) R$ 174.000", "E": "e) R$ 210.000"},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Pela função V(t) = 200.000 - 15.000t, temos V(6) = 200.000 - 15.000 · 6 = 200.000 - 90.000 = R$ 110.000,00.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao="A lei de formação é V(t) = -22.000t + 300.000. Para t = 7 anos: V(7) = -22.000 · 7 + 300.000 = -154.000 + 300.000 = R$ 146.000.",
+            ques_resolucao_imagem_url="",
         ),
     ]
     session.add_all(questoes)
     session.commit()
 
+# CONTEÚDO 8: FUNÇÃO QUADRÁTICA, EXPONENCIAL E LOGARÍTMICA 
 def povoar_conteudo_8(session, base_url=""):
     conteudo8 = Conteudo(
         cont_nome="Função Quadrática, Exponencial e Logarítmica",
@@ -1180,121 +1218,129 @@ def povoar_conteudo_8(session, base_url=""):
             ques_cont_id=conteudo8.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="A função quadrática f(x) = x² - 2kx + 20 assume valor mínimo igual a 4. Qual é o valor positivo do parâmetro k?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/fq_q01_lei_funcao.png",
-            ques_alternativas={"A": "a) 4", "B": "b) 5", "C": "c) 8", "D": "d) 16"},
+            ques_enunciado="(UERJ - 2016) Observe a função f, definida por: f(x) = x² - 2kx + 29, para x ∈ ℝ. Se f(x) ≥ 4, para todo número real x, o valor mínimo da função f é 4. Assim, o valor positivo do parâmetro k é:",
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) 5", "B": "b) 6", "C": "c) 10", "D": "d) 15"},
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Usando yv = -Δ / 4a = 4: -(4k² - 80) / 4 = 4 → -k² + 20 = 4 → k² = 16 → k = 4.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fq_r01_vertice_yv.png",
+            ques_resolucao="Como a = 1 > 0, o vértice é ponto de mínimo e yv = 4. Usando yv = -Δ / 4a: 4 = -((-2k)² - 4 · 1 · 29) / 4 → 16 = -(4k² - 116) → 4k² = 100 → k² = 25 → k = ±5. Como pede o valor positivo, k = 5.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo8.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Dada a função f(x) = x² - 5x + 7, o valor numérico de f(3) é:",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 0", "B": "b) 1", "C": "c) 3", "D": "d) 7", "E": "e) 13"},
+            ques_enunciado="Dada a função f(x) = x² - 4x + 5, o valor de f(2) é:",
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) 0.", "B": "b) 1.", "C": "c) 3.", "D": "d) 4.", "E": "e) 7."},
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Substituindo x = 3: f(3) = 3² - 5 · 3 + 7 = 9 - 15 + 7 = 1.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao="Calculando f(2): f(2) = 2² - 4 · 2 + 5 = 4 - 8 + 5 = 1.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo8.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Sobre o gráfico da função f(x) = -2x² + 4x - 1, pode-se afirmar que a parábola possui:",
-            ques_imagem_url=None,
+            ques_enunciado="A concavidade da parábola da função f(x) = -3x² + 2x + 1 é:",
+            ques_imagem_url="",
             ques_alternativas={
-                "A": "a) Concavidade voltada para cima.",
-                "B": "b) Ponto de mínimo no vértice.",
-                "C": "c) Concavidade voltada para baixo.",
-                "D": "d) Interseção com o eixo y em (0, 4).",
+                "A": "a) voltada para cima.",
+                "B": "b) inexistente.",
+                "C": "c) voltada para baixo.",
+                "D": "d) vertical.",
+                "E": "e) horizontal.",
             },
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Como o coeficiente a = -2 é negativo, a parábola tem concavidade voltada para baixo.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao="O que determina a concavidade da parábola é o valor do coeficiente a, que é igual a -3 (negativo); nesse caso, a parábola possui a concavidade voltada para baixo.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo8.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="A altura h (em metros) de um projétil lançado verticalmente após t segundos é dada por h(t) = -5t² + 30t. Qual é a altura máxima atingida?",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 30 m", "B": "b) 40 m", "C": "c) 45 m", "D": "d) 50 m", "E": "e) 60 m"},
+            ques_enunciado="A trajetória de uma bola chutada é descrita pela função h(t) = -5t² + 20t, em que h(t) é a altura em metros e t é o tempo em segundos. A altura máxima atingida pela bola é:",
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) 10 m.", "B": "b) 15 m.", "C": "c) 20 m.", "D": "d) 25 m.", "E": "e) 30 m."},
             ques_resposta_correta=AlternativaEnum.C,
-            ques_resolucao="Calculando yv = -Δ / 4a: Δ = 30² - 4·(-5)·0 = 900 → yv = -900 / (-20) = 45 m.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fq_r04_altura_maxima.png",
+            ques_resolucao="Para calcular o vértice da parábola: Δ = b² - 4ac = 20² - 4 · (-5) · 0 = 400. Assim, yv = -Δ / 4a = -400 / (4 · (-5)) = -400 / (-20) = 20 m.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo8.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Dada a função exponencial f(x) = 3^(x+1) + 5, qual valor de x satisfaz f(x) = 32?",
-            ques_imagem_url=None,
+            ques_enunciado="Dada a função f(x) = 2^(x+3) + 10, o valor de x para que f(x) = 42 é de:",
+            ques_imagem_url="",
             ques_alternativas={"A": "a) 2", "B": "b) 3", "C": "c) 4", "D": "d) 5", "E": "e) 6"},
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Resolvendo 3^(x+1) + 5 = 32 → 3^(x+1) = 27 → 3^(x+1) = 3³ → x + 1 = 3 → x = 2.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao="Igualando a lei de formação a 42: 2^(x+3) + 10 = 42 → 2^(x+3) = 32 → 2^(x+3) = 2⁵ → x + 3 = 5 → x = 5 - 3 = 2.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo8.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="Uma função exponencial do tipo f(x) = a^x possui gráfico decrescente e passa pelo ponto (-1, 4). Sua lei de formação é:",
-            ques_imagem_url=f"{base_url}/imagens/questoes/fq_q06_grafico_exponencial.png",
-            ques_alternativas={"A": "a) f(x) = 4^x", "B": "b) f(x) = 2^x", "C": "c) f(x) = 0,5^x", "D": "d) f(x) = 0,25^x", "E": "e) f(x) = 0,2^x"},
+            ques_enunciado="O gráfico, a seguir, é a representação de uma função exponencial. Analisando o gráfico, a lei de formação dessa função exponencial é:",
+            ques_imagem_url="https://media.brainly.com.br/image/rs:fill/w:828/q:75/plain/https://pt-static.z-dn.net/files/dea/fd8eba92c4770abf1bb37e9da4e81e26.jpg",
+            ques_alternativas={"A": "a) f(x) = 5^x", "B": "b) f(x) = 0,2^x", "C": "c) f(x) = 2^x", "D": "d) f(x) = 0,5^x", "E": "e) f(x) = 0,5^(-x)"},
             ques_resposta_correta=AlternativaEnum.D,
-            ques_resolucao="Substituindo (-1, 4): a⁻¹ = 4 → 1/a = 4 → a = 1/4 = 0,25. Portanto, f(x) = 0,25^x.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fq_r06_lei_exponencial.png",
+            ques_resolucao="Analisando o plano cartesiano, o ponto (-1, 2) pertence à função exponencial decrescente f(x) = a^x: a⁻¹ = 2 → 1/a = 2 → a = 1/2 = 0,5. Portanto, f(x) = 0,5^x.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo8.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Sobre f(x) = a^x (com a > 0 e a ≠ 1), julgue: I. A função é crescente para todo a > 0; II. f(0) = 1; III. O gráfico não corta o eixo x. É falsa apenas:",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) I", "B": "b) II", "C": "c) III", "D": "d) Nenhuma", "E": "e) Todas"},
+            ques_enunciado="Dada uma função de R → R com a lei de formação f(x) = a^x, em que a é um número positivo diferente de 1, julgue as afirmativas a seguir:\nI → Essa função será crescente se a for positivo.\nII → Se x = 0, então, f(x) = 1.\nIII → Essa é uma função exponencial.\nMarque a alternativa correta:",
+            ques_imagem_url="",
+            ques_alternativas={
+                "A": "a) Somente a afirmativa I é falsa.",
+                "B": "b) Somente a afirmativa II é falsa.",
+                "C": "c) Somente a afirmativa III é falsa.",
+                "D": "d) Todas as afirmativas são verdadeiras.",
+                "E": "e) Todas as afirmativas são falsas.",
+            },
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="A afirmação I é falsa porque a função é crescente apenas quando a > 1 (para 0 < a < 1, ela é decrescente).",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao="I → Falsa, pois para ser crescente a deve ser maior que 1 (se 0 < a < 1, mesmo positivo, será decrescente). II → Verdadeira, f(0) = a⁰ = 1. III → Verdadeira, pois a variável está no expoente.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo8.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.DIFICIL,
-            ques_enunciado="Qual lei define a função logarítmica cujo domínio real é D = {x ∈ R | x > 2} e cuja raiz ocorre em x = 3?",
-            ques_imagem_url=f"{base_url}/imagens/questoes/fq_q08_grafico_logaritmica.png",
-            ques_alternativas={"A": "a) f(x) = log₂(x - 2)", "B": "b) f(x) = log₂(x + 2)", "C": "c) f(x) = log₂(x - 3)", "D": "d) f(x) = log₂(x + 3)"},
-            ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="A condição x - 2 > 0 define o domínio x > 2, e para x = 3 temos log₂(3 - 2) = log₂(1) = 0.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/fq_r08_translacao_log.png",
+            ques_enunciado="Observe o gráfico da função logarítmica abaixo. A função g(x) representada no gráfico pode ser definida como:",
+            ques_imagem_url="https://static.todamateria.com.br/upload/fu/nc/funcao-0-cke.jpg",
+            ques_alternativas={"A": "a) g(x) = log₃(x)", "B": "b) g(x) = log₃(x + 4)", "C": "c) g(x) = log₂(x - 3)", "D": "d) g(x) = log₂(x + 3)"},
+            ques_resposta_correta=AlternativaEnum.C,
+            ques_resolucao="Observa-se que o gráfico de g(x) é uma translação horizontal de 3 unidades para a direita (assíntota vertical em x = 3 e raiz em x = 4, onde g(4) = log₂(4 - 3) = log₂(1) = 0). Logo, g(x) = log₂(x - 3).",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo8.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.FACIL,
-            ques_enunciado="Dadas f(x) = log₂(x) e g(x) = log₅(x), o valor de f(16) - g(25) é:",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 1", "B": "b) 2", "C": "c) 3", "D": "d) 4", "E": "e) 6"},
+            ques_enunciado="Seja f(x) = log₂(x) e g(x) = log₃(x) a lei de formação de duas funções f(x) e g(x), então o valor de f(8) – g(9) é igual a:",
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) 0.", "B": "b) 1.", "C": "c) 2.", "D": "d) –1.", "E": "e) –2."},
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Como 2⁴ = 16 e 5² = 25, temos f(16) = 4 e g(25) = 2. Logo, 4 - 2 = 2.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao="Calculando f(8) = log₂(8) = 3 e g(9) = log₃(9) = 2. Por fim, a diferença entre elas é 3 - 2 = 1.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=conteudo8.cont_id,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
-            ques_enunciado="O crescimento de uma cultura em laboratório é modelado por P(t) = 2 + log₂(4 + t), em que t é o tempo em horas e P(t) é a massa em gramas. Após 12 horas, a massa será de:",
-            ques_imagem_url=None,
-            ques_alternativas={"A": "a) 3 g", "B": "b) 4 g", "C": "c) 5 g", "D": "d) 6 g", "E": "e) 8 g"},
+            ques_enunciado="Durante os estudos sobre o crescimento de uma determinada árvore, foi possível modelar o crescimento dela no decorrer do tempo por meio da função A(t) = 1 + log₃(5 + t), em que t é o tempo em anos e A(t) é a altura em metros. Sendo assim, podemos afirmar que a altura dessa árvore, após 4 anos, será de:",
+            ques_imagem_url="",
+            ques_alternativas={"A": "a) 1 metro.", "B": "b) 2 metros.", "C": "c) 2 metros e meio.", "D": "d) 3 metros.", "E": "e) 3 metros e meio."},
             ques_resposta_correta=AlternativaEnum.D,
-            ques_resolucao="Substituindo t = 12: P(12) = 2 + log₂(4 + 12) = 2 + log₂(16) = 2 + 4 = 6 g.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao="Substituindo t = 4: A(4) = 1 + log₃(5 + 4) = 1 + log₃(9) = 1 + 2 = 3 metros.",
+            ques_resolucao_imagem_url="",
         ),
     ]
     session.add_all(questoes)
     session.commit()
 
+# SIMULADO 1: ETAPA 1 
 def povoar_simulado_1(db: Session, base_url: str = ""):
     questoes = [
         Questao(
@@ -1308,11 +1354,11 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "Na imagem tem-se a informação dos assentos já vendidos e dos ainda disponíveis em um determinado instante.\n"
                 "A razão entre o número de assentos já vendidos e o total de assentos desse ônibus, no instante considerado na imagem, é:"
             ),
-            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q01_assentos_onibus.png",
+            ques_imagem_url="https://arquivos.qconcursos.com/images/provas/78987/98d75f163cb9f8f53a4e.png",
             ques_alternativas={"A": "a) 16/42", "B": "b) 16/26", "C": "c) 26/42", "D": "d) 42/26", "E": "e) 42/16"},
             ques_resposta_correta=AlternativaEnum.A,
             ques_resolucao="Contando os assentos na imagem, há 16 assentos escuros (já vendidos) em um total de 42 lugares. Assim, a razão procurada é 16/42.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/sim1_r01_razao_assentos.png",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1324,20 +1370,20 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "quando atinge o nível de envasamento.\n"
                 "Qual esboço de gráfico melhor representa a variação da altura do líquido em função do tempo, na garrafa indicada na imagem?"
             ),
-            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q02_garrafa_graficos.png",
+            ques_imagem_url="https://i0.wp.com/humorquantico.com/wp-content/uploads/2021/11/O-consumo-de-espumantes-no-Brasil-tem-aumentado.png?w=397&ssl=1",
             ques_alternativas={
-                "A": "a) Gráfico A",
-                "B": "b) Gráfico B",
-                "C": "c) Gráfico C",
-                "D": "d) Gráfico D",
-                "E": "e) Gráfico E",
+                "A": "a) https://i0.wp.com/humorquantico.com/wp-content/uploads/2021/11/a.png?w=469&ssl=1",
+                "B": "b) https://i0.wp.com/humorquantico.com/wp-content/uploads/2021/11/B.png?w=454&ssl=1",
+                "C": "c) https://i0.wp.com/humorquantico.com/wp-content/uploads/2021/11/C.png?w=459&ssl=1",
+                "D": "d) https://i0.wp.com/humorquantico.com/wp-content/uploads/2021/11/D.png?w=452&ssl=1",
+                "E": "e) https://i0.wp.com/humorquantico.com/wp-content/uploads/2021/11/E.png?w=448&ssl=1",
             },
             ques_resposta_correta=AlternativaEnum.B,
             ques_resolucao=(
-                "Como a vazão é constante: na 1ª seção (cilíndrica, de diâmetro constante), a altura cresce linearmente (reta inclinada). "
-                "Na 2ª seção (afunilamento da garrafa), o diâmetro diminui com a altura, fazendo o nível subir cada vez mais rápido (curva crescente côncava para cima)."
+                "Na 1ª seção (cilíndrica), o volume por unidade de altura é constante; como a vazão é constante, a altura cresce linearmente (reta inclinada). "
+                "Na 2ª seção (afunilamento da garrafa), conforme a altura aumenta o diâmetro diminui, fazendo o nível subir cada vez mais rápido (curva crescente côncava para cima)."
             ),
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/sim1_r02_secoes_garrafa.png",
+            ques_resolucao_imagem_url="https://sabermatematica.com.br/wp-content/uploads/2021/06/resposta-da-questao-grafico-da-funcao-garrafa-enem-2020.png",
         ),
         Questao(
             ques_cont_id=None,
@@ -1348,11 +1394,11 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "as dimensões do campo retangular. Para se adaptar aos padrões da Fifa, as dimensões do campo foram reduzidas de 110 m × 75 m para 105 m × 68 m.\n"
                 "Em quantos metros quadrados a área do campo do Maracanã foi reduzida?"
             ),
-            ques_imagem_url=None,
+            ques_imagem_url="",
             ques_alternativas={"A": "a) 24", "B": "b) 35", "C": "c) 555", "D": "d) 1110", "E": "e) 1145"},
             ques_resposta_correta=AlternativaEnum.D,
             ques_resolucao="Área original: 110 · 75 = 8.250 m². Área nova: 105 · 68 = 7.140 m². Redução: 8.250 - 7.140 = 1.110 m².",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1364,7 +1410,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "e distância D (em quilômetro). Um desses aplicativos cobra R$ 2,00 de valor fixo, acrescido de R$ 0,26 por minuto de viagem e de R$ 1,40 por quilômetro rodado.\n"
                 "Nessas condições, a expressão que fornece o valor V a ser pago por uma viagem desse aplicativo é:"
             ),
-            ques_imagem_url=None,
+            ques_imagem_url="",
             ques_alternativas={
                 "A": "a) 2,00F + 0,26T + 1,40D",
                 "B": "b) 2,00 + 0,26T + 1,40D",
@@ -1374,7 +1420,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
             },
             ques_resposta_correta=AlternativaEnum.B,
             ques_resolucao="Somando o valor fixo de R$ 2,00 ao custo por minuto (0,26T) e ao custo por quilômetro (1,40D), temos V = 2,00 + 0,26T + 1,40D.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1385,7 +1431,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "recebem salários com valores iguais. O quadro apresenta a quantidade de funcionários por setor e seus respectivos salários.\n"
                 "A média dos salários dos 100 funcionários dessa empresa, em real, é:"
             ),
-            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q05_quadro_salarios.png",
+            ques_imagem_url="https://qcon-assets-production.s3.amazonaws.com/images/provas/101194/Captura_de%20Tela%20%283497%29.png",
             ques_alternativas={
                 "A": "a) 2 000,00.",
                 "B": "b) 2 500,00.",
@@ -1395,7 +1441,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
             },
             ques_resposta_correta=AlternativaEnum.C,
             ques_resolucao="Média ponderada: (75 · 2.000 + 25 · 7.000) / 100 = (150.000 + 175.000) / 100 = 325.000 / 100 = R$ 3.250,00.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1408,14 +1454,14 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "pão vem com 18 fatias, e que cada uma delas tem 15 gramas de carboidratos.\n"
                 "A quantidade mínima de pacotes de pão de fôrma necessários para prover o suprimento a esse casal é:"
             ),
-            ques_imagem_url=None,
+            ques_imagem_url="",
             ques_alternativas={"A": "a) 6", "B": "b) 7", "C": "c) 8", "D": "d) 9", "E": "e) 10"},
             ques_resposta_correta=AlternativaEnum.B,
             ques_resolucao=(
                 "Consumo diário do casal: 30 g · 2 pessoas = 60 g/dia. Em 30 dias: 60 · 30 = 1.800 g. "
                 "Cada pacote fornece 18 · 15 = 270 g. Dividindo: 1.800 / 270 ≈ 6,67 pacotes, sendo necessários no mínimo 7 pacotes."
             ),
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1426,11 +1472,11 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "Durante horas consecutivas, esses valores foram observados em nove instantes, representados por horas exatas.\n"
                 "Em quantos desses instantes a criptomoeda A estava mais valorizada do que a criptomoeda B?"
             ),
-            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q07_grafico_criptomoedas.png",
+            ques_imagem_url="https://qcon-assets-production.s3.amazonaws.com/images/provas/101194/Captura_de%20Tela%20%283507%29.png",
             ques_alternativas={"A": "a) 3", "B": "b) 4", "C": "c) 6", "D": "d) 7", "E": "e) 9"},
             ques_resposta_correta=AlternativaEnum.B,
-            ques_resolucao="Comparando as coordenadas de A (eixo horizontal) e B (eixo vertical) em cada um dos 9 pontos, verifica-se que x_A > y_B em 4 instantes.",
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/sim1_r07_diagonal_criptomoedas.png",
+            ques_resolucao="Traçando a reta diagonal x = y que divide o gráfico ao meio, verifica-se que há 4 pontos abaixo/à direita dela (onde o valor de A supera o de B).",
+            ques_resolucao_imagem_url="https://paperx-dex-assets.s3.sa-east-1.amazonaws.com/images/1701697515850-jXXnrFXLXG.png",
         ),
         Questao(
             ques_cont_id=None,
@@ -1443,14 +1489,14 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "recomendada é de exatamente 1 litro para cada população de 200 000 larvas. A quantidade total do produto X de que ele dispõe deverá ser aplicada de uma única vez.\n"
                 "Quantos dias após iniciado esse método o agricultor deverá aplicar o produto X?"
             ),
-            ques_imagem_url=None,
+            ques_imagem_url="",
             ques_alternativas={"A": "a) 2", "B": "b) 4", "C": "c) 6", "D": "d) 12", "E": "e) 18"},
             ques_resposta_correta=AlternativaEnum.D,
             ques_resolucao=(
                 "Com 5 L, pode-se controlar 5 · 200.000 = 1.000.000 = 10⁶ larvas. "
                 "Pela função exponencial P(t) = 100 · 10^(t/3) = 10⁶ → 10^(t/3) = 10⁴ → t/3 = 4 → t = 12 dias."
             ),
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1462,7 +1508,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "Sabe-se que a taxa de bombeamento custa R$ 500,00 e que o metro cúbico do concreto bombeado é de R$ 250,00.\n"
                 "A expressão que representa o preço y em função do volume x, em metro cúbico, é:"
             ),
-            ques_imagem_url=None,
+            ques_imagem_url="",
             ques_alternativas={
                 "A": "a) y = 250x",
                 "B": "b) y = 500x",
@@ -1472,7 +1518,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
             },
             ques_resposta_correta=AlternativaEnum.D,
             ques_resolucao="A função afim é formada pela parcela variável (250x) somada à taxa fixa de bombeamento (500), resultando em y = 250x + 500.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1483,7 +1529,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "de oxigênio, em mililitro (mL) por minuto (min), e a massa, em quilograma (kg), do atleta correndo a uma velocidade constante.\n"
                 "A unidade de medida da grandeza descrita pelo parâmetro EC é:"
             ),
-            ques_imagem_url=None,
+            ques_imagem_url="",
             ques_alternativas={
                 "A": "a) min/mL.kg",
                 "B": "b) mL/min . kg",
@@ -1493,7 +1539,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
             },
             ques_resposta_correta=AlternativaEnum.B,
             ques_resolucao="Dividindo a unidade de consumo de oxigênio (mL/min) pela unidade de massa (kg), obtém-se (mL/min) / kg = mL / (min · kg).",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1506,17 +1552,17 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "O gráfico que melhor representa a variação dessa altura, em função do tempo, contado a partir do instante em que a cadeira da pessoa P se "
                 "encontra na posição mais alta da roda-gigante, é:"
             ),
-            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q11_roda_gigante.png",
+            ques_imagem_url="https://static.wixstatic.com/media/295c7b_12567336d7fb431ebbd157bc20337cae~mv2.png/v1/fill/w_299,h_314,al_c,q_85,enc_avif,quality_auto/295c7b_12567336d7fb431ebbd157bc20337cae~mv2.png",
             ques_alternativas={
-                "A": "a) Gráfico A",
-                "B": "b) Gráfico B",
-                "C": "c) Gráfico C",
-                "D": "d) Gráfico D",
-                "E": "e) Gráfico E",
+                "A": "a) https://static.wixstatic.com/media/295c7b_3e76590a1f094d49ba46b9d65983890a~mv2.png/v1/fill/w_347,h_135,al_c,q_85,enc_avif,quality_auto/295c7b_3e76590a1f094d49ba46b9d65983890a~mv2.png",
+                "B": "b) https://static.wixstatic.com/media/295c7b_359a976db3a54df1949adc96d3a93cce~mv2.png/v1/fill/w_342,h_131,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/295c7b_359a976db3a54df1949adc96d3a93cce~mv2.png",
+                "C": "c) https://static.wixstatic.com/media/295c7b_cba5904adc1e4953be8104d14d97e22c~mv2.png/v1/fill/w_342,h_128,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/295c7b_cba5904adc1e4953be8104d14d97e22c~mv2.png",
+                "D": "d) https://static.wixstatic.com/media/295c7b_699278815a5344bc89fc729d3711c74b~mv2.png/v1/fill/w_344,h_128,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/295c7b_699278815a5344bc89fc729d3711c74b~mv2.png",
+                "E": "e) https://static.wixstatic.com/media/295c7b_9c62c8bce3cc4c11901241d966ea1efd~mv2.png/v1/fill/w_345,h_131,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/295c7b_9c62c8bce3cc4c11901241d966ea1efd~mv2.png",
             },
             ques_resposta_correta=AlternativaEnum.A,
             ques_resolucao="O movimento circular uniforme descreve uma função cossenoidal suave que inicia no ponto máximo, desce até o mínimo e retorna ao máximo sem quinas.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1528,14 +1574,14 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "bondinho B, que havia saído do topo da montanha.\n"
                 "Quantos segundos após a partida do bondinho B partiu o bondinho A?"
             ),
-            ques_imagem_url=None,
+            ques_imagem_url="",
             ques_alternativas={"A": "a) 5", "B": "b) 10", "C": "c) 15", "D": "d) 20", "E": "e) 25"},
             ques_resposta_correta=AlternativaEnum.B,
             ques_resolucao=(
                 "A travessia total leva 1,5 min = 90 s. Como as velocidades são iguais, o ponto de encontro divide o percurso em trechos percorridos em 40 s e 50 s. "
                 "Logo, B já viajava há 50 s quando cruzou com A (que viajava há 40 s), tendo partido 50 - 40 = 10 segundos antes."
             ),
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1547,14 +1593,14 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "todos perpendiculares ao solo, que é indicado pelo segmento de reta AB. Os segmentos AD e BC representam cabos de aço que serão instalados.\n"
                 "Qual deve ser o valor do comprimento da haste EF?"
             ),
-            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q13_postes_haste.png",
+            ques_imagem_url="https://cdn.sanity.io/images/bpg6rp2y/production/5785709cff5f9a90a992733167bd3bf894b32e06-654x253.png?w=1200&auto=format",
             ques_alternativas={"A": "a) 1 m", "B": "b) 2 m", "C": "c) 2,4 m", "D": "d) 3 m", "E": "e) 2√6 m"},
             ques_resposta_correta=AlternativaEnum.C,
             ques_resolucao=(
-                "Por semelhança de triângulos, a altura EF é dada pelo produto das alturas dos postes dividido pela soma delas: "
-                "h = (6 · 4) / (6 + 4) = 24 / 10 = 2,4 m."
+                "Por semelhança de triângulos (ADB ~ AEF e ACB ~ FEB), obtém-se 6x = h(x + y) e 4y = h(x + y), logo x = (2/3)y. "
+                "Substituindo, a altura EF é h = (6 · 4) / (6 + 4) = 24 / 10 = 2,4 m."
             ),
-            ques_resolucao_imagem_url=f"{base_url}/imagens/respostas/sim1_r13_semelhanca_postes.png",
+            ques_resolucao_imagem_url="https://cdn.sanity.io/images/bpg6rp2y/production/5785709cff5f9a90a992733167bd3bf894b32e06-654x253.png?w=1200&auto=format",
         ),
         Questao(
             ques_cont_id=None,
@@ -1565,7 +1611,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "Sabe-se que o preço de um litro de leite é R$ 1,98.\n"
                 "Nessas condições, o custo mensal com o consumo de leite desse adolescente é de:"
             ),
-            ques_imagem_url=None,
+            ques_imagem_url="",
             ques_alternativas={
                 "A": "a) R$ 14,85",
                 "B": "b) R$ 22,50",
@@ -1575,7 +1621,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
             },
             ques_resposta_correta=AlternativaEnum.C,
             ques_resolucao="Convertendo: 7,5 dL = 0,75 L/dia. Em 30 dias: 0,75 · 30 = 22,5 L. Custo total: 22,5 · 1,98 = R$ 44,55.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1586,7 +1632,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "A escultura apresentada é uma miniatura de um carro de Fórmula 1, com 100 micrômetros de comprimento. Um micrômetro é a milionésima parte de um metro.\n"
                 "Usando notação científica, qual é a representação do comprimento dessa miniatura, em metro?"
             ),
-            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q15_carro_micrometro.png",
+            ques_imagem_url="https://arquivos.qconcursos.com/images/provas/78987/f30713e636c32a1aa668.png",
             ques_alternativas={
                 "A": "a) 1,0 × 10⁻²",
                 "B": "b) 1,0 × 10⁻³",
@@ -1596,7 +1642,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
             },
             ques_resposta_correta=AlternativaEnum.C,
             ques_resolucao="Como 1 micrômetro = 10⁻⁶ m, temos 100 micrômetros = 100 · 10⁻⁶ m = 10² · 10⁻⁶ m = 1,0 · 10⁻⁴ m.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1608,7 +1654,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "Considere que a lata é constituída de alumínio puro.\n"
                 "Levando em conta apenas a reciclagem de latas, qual é o valor mais próximo da massa de bauxita, em tonelada, que deixou de ser extraída da natureza em 2020 no Brasil?"
             ),
-            ques_imagem_url=None,
+            ques_imagem_url="",
             ques_alternativas={
                 "A": "a) 1,0 × 10⁴ ton",
                 "B": "b) 3,9 × 10⁵ ton",
@@ -1621,22 +1667,22 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "Alumínio reciclado: 0,974 · 4,0 · 10⁵ = 3,896 · 10⁵ t. Como são necessários 5 kg de bauxita para cada 1 kg de alumínio, "
                 "a massa de bauxita poupada é 5 · 3,896 · 10⁵ = 19,48 · 10⁵ ≈ 1,9 · 10⁶ toneladas."
             ),
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
             ques_etapa=EtapaEnum.ETAPA_1,
             ques_nivel_dificuldade=DificuldadeEnum.MEDIO,
             ques_enunciado=(
-                "1o calcular a média de suas notas em 4 provas, um estudante dividiu, por engano, a soma das notas por 5. Com isso, a média obtida foi "
+                "Ao calcular a média de suas notas em 4 provas, um estudante dividiu, por engano, a soma das notas por 5. Com isso, a média obtida foi "
                 "1 unidade menor do que deveria ser, caso fosse calculada corretamente.\n"
                 "O valor correto da média das notas desse estudante é:"
             ),
-            ques_imagem_url=None,
+            ques_imagem_url="",
             ques_alternativas={"A": "a) 4", "B": "b) 5", "C": "c) 6", "D": "d) 19", "E": "e) 21"},
             ques_resposta_correta=AlternativaEnum.B,
             ques_resolucao="Seja S a soma das notas e M a média correta: S / 4 = M → S = 4M. Pelo erro: S / 5 = M - 1 → 4M = 5M - 5 → M = 5.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1648,7 +1694,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "Considere que os saldos nos três meses destacados sejam: S1 (junho de 2009), S2 (janeiro de 2010) e S3 (junho de 2010).\n"
                 "A ordenação dos saldos S1, S2 e S3, do maior para o menor, é:"
             ),
-            ques_imagem_url=f"{base_url}/imagens/questoes/sim1_q18_balanca_comercial.png",
+            ques_imagem_url="https://qcon-assets-production.s3.amazonaws.com/images/provas/126089/Captura_de%20Tela%20%287088%29.png",
             ques_alternativas={
                 "A": "a) S1, S3 e S2.",
                 "B": "b) S2, S1 e S3.",
@@ -1657,8 +1703,8 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "E": "e) S3, S2 e S1.",
             },
             ques_resposta_correta=AlternativaEnum.A,
-            ques_resolucao="Pelo gráfico: S1 ≈ 14,10 = 4,5 bi; S2 < 0 (importações superaram exportações); S3 ≈ 17,1 - 14,8 = 2,3 bi. Logo, S1 > S3 > S2.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao="Pelo gráfico: S1 ≈ 14,5 - 10 = 4,5 bi; S2 < 0 (importações superaram exportações); S3 ≈ 17,1 - 14,8 = 2,3 bi. Logo, S1 > S3 > S2.",
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1669,7 +1715,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "a veracidade dessa afirmação. Ele usou uma população inicial de 10⁵ bactérias X e encerrou a observação ao final de uma hora.\n"
                 "Após uma hora do início do período de observação desse aluno, o número de bactérias X foi de:"
             ),
-            ques_imagem_url=None,
+            ques_imagem_url="",
             ques_alternativas={
                 "A": "a) 2⁻² . 10⁵",
                 "B": "b) 2⁻¹ . 10⁵",
@@ -1679,7 +1725,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
             },
             ques_resposta_correta=AlternativaEnum.E,
             ques_resolucao="Em 1 hora há 4 quartos de hora (4 períodos de 15 minutos). Como a população dobra 4 vezes, o total final será 2⁴ · 10⁵.",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
         Questao(
             ques_cont_id=None,
@@ -1691,7 +1737,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
                 "cada quadradinho de 1 cm de lado contido na imagem.\n"
                 "Considerando a pesquisa realizada, a unidade de medida do parâmetro de qualidade de uma imagem é expressa por:"
             ),
-            ques_imagem_url=None,
+            ques_imagem_url="",
             ques_alternativas={
                 "A": "a) cm² ⋅ pixel",
                 "B": "b) cm ⋅ pixel",
@@ -1701,7 +1747,7 @@ def povoar_simulado_1(db: Session, base_url: str = ""):
             },
             ques_resposta_correta=AlternativaEnum.E,
             ques_resolucao="Um quadrado de 1 cm de lado possui área igual a 1 cm². A razão entre a quantidade de pixels e a área é expressa em pixel / cm².",
-            ques_resolucao_imagem_url=None,
+            ques_resolucao_imagem_url="",
         ),
     ]
     db.add_all(questoes)
@@ -1714,9 +1760,9 @@ SEEDS = {
     "Teoria dos Conjuntos e Conjuntos Numéricos": povoar_conteudo_3,
     "Frações Decimais, Dízimas Periódicas e Intervalos Reais": povoar_conteudo_4,
     "Geometria Plana (Teorema de Tales, Semelhança e Relações Métricas)": povoar_conteudo_5,
-    # "Trigonometria no Triângulo Retângulo": povoar_conteudo_6,
-    # "Funções e Função Afim (Função do 1º Grau)": povoar_conteudo_7,
-    # "Função Quadrática, Exponencial e Logarítmica": povoar_conteudo_8,
+    "Trigonometria no Triângulo Retângulo": povoar_conteudo_6,
+    "Funções e Função Afim (Função do 1º Grau)": povoar_conteudo_7,
+    "Função Quadrática, Exponencial e Logarítmica": povoar_conteudo_8,
 }
 
 

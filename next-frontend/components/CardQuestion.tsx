@@ -121,9 +121,9 @@ function verificarResposta(id: string) {
       <p className="font-normal md:text-xl lp:text-2xl mt-1.5">{props.enunciado}</p>
 
       {props.imagemUrl && (
-        <div className="my-3">
-          <img  src={props.imagemUrl} alt="Ilustração da questão" 
-           className="max-h-64 rounded-md object-contain" 
+        <div className="my-4 flex justify-center items-center w-full">
+          <img src={props.imagemUrl} alt="Ilustração da questão" referrerPolicy="no-referrer"
+           className="w-auto max-w-full max-h-96 rounded-md object-contain mx-auto" 
           />
         </div>
       )}
@@ -134,9 +134,9 @@ function verificarResposta(id: string) {
           <p className="p-1 font-normal md:text-xl lp:text-2xl text-(--question-card-text)">{props.resolucao}</p>
 
           {props.resolucaoImagemUrl && (
-           <div className="my-2">
-            <img  src={props.resolucaoImagemUrl} alt="Imagem da resolução" 
-              className="max-h-64 rounded-md object-contain" 
+           <div className="my-4 flex justify-center items-center w-full">
+            <img src={props.resolucaoImagemUrl} alt="Imagem da resolução" referrerPolicy="no-referrer"
+              className="w-auto max-w-full max-h-96 rounded-md object-contain mx-auto" 
             />
             </div>
           )}

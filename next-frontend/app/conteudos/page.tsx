@@ -41,7 +41,7 @@ export default function seuprogresso() {
                                 <CardConteudo index={0} link="/conteudos/conteudo/primeiro_ano" linha1="1" linha2="ano"/>
                                 <CardConteudo index={1} link="/conteudos/conteudo/segundo_ano" linha1="2" linha2="ano"/>
                                 <CardConteudo index={2} link="/conteudos/conteudo/terceiro_ano" linha1="3" linha2="ano"/>
-                                <CardConteudo index={3} link="/conteudos/conteudo/enem" linha1="MATEMÁTICA" linha2="ENEM"/>
+                                <CardConteudo index={3} link="/conteudos/grafico" linha1="MATEMÁTICA" linha2="ENEM" />
                             </div>
                         </CardBackground>
                     </div>

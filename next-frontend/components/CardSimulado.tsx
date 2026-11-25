@@ -39,19 +39,30 @@ export default function CardSimulado(props: CardSimuladoProps) {
       <p className="font-normal md:text-xl lp:text-2xl mt-1.5">{props.enunciado}</p>
 
       {props.imagemUrl && (
-        <div className="my-3">
-          <img  src={props.imagemUrl} alt="Ilustração da questão" referrerPolicy="no-referrer"
-           className="max-h-64 rounded-md object-contain" 
+        <div className="my-4 flex justify-center items-center w-full">
+          <img src={props.imagemUrl} alt="Ilustração da questão" referrerPolicy="no-referrer"
+           className="w-auto max-w-full max-h-96 rounded-md object-contain mx-auto" 
           />
         </div>
       )}
 
       <div className="flex flex-col justify-between gap-2 mt-3">
         {Object.entries(props.alternativas).map(([chave, texto]) => {
+          const matchImagem = texto.match(/^(?:[a-eA-E]\)\s*)?(https?:\/\/\S+|\/imagens\/\S+)$/);
+          const urlImagemAlternativa = matchImagem ? matchImagem[1] : null;
+          const prefixoLetra = texto.match(/^([a-eA-E]\))/)?.[1];
+
           return (
-            <div key={chave} className="p-2 flex items-center gap-2 cursor-pointer w-full border rounded-md text-(--question-option-text) border-(--question-option-border) shadow-sm shadow-(--neutral-500)">
+            <div key={chave} onClick={() => verificarResposta(chave)} className="p-2 flex items-center gap-2 cursor-pointer w-full border rounded-md text-(--question-option-text) border-(--question-option-border) shadow-sm shadow-(--neutral-500)">
               <input type="radio" onChange={() => verificarResposta(chave)} checked={alternativaSelecionada === chave} disabled={Boolean(alternativaSelecionada)} className="w-5 h-5 hover:cursor-pointer accent-(--primary-900)" />
-              <label className="pl-1.5 font-normal md:text-xl lp:text-2xl cursor-pointer w-full">{texto}</label>
+              {urlImagemAlternativa ? (
+                <div className="pl-1.5 flex items-center gap-3 w-full">
+                  {prefixoLetra && <span className="font-normal md:text-xl lp:text-2xl">{prefixoLetra}</span>}
+                  <img src={urlImagemAlternativa} alt={`Alternativa ${chave}`} referrerPolicy="no-referrer" className="max-h-40 w-auto object-contain rounded-md" />
+                </div>
+              ) : (
+                <label className="pl-1.5 font-normal md:text-xl lp:text-2xl cursor-pointer w-full">{texto}</label>
+              )}
             </div>
           );
         })} 
